@@ -1,12 +1,14 @@
 package com.ssafy.wouldUmarryme.marry.account.domain;
 
 
+import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +29,9 @@ public class Account {
     private String name;
 
     private String phone;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Storyboard> storyboards;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
