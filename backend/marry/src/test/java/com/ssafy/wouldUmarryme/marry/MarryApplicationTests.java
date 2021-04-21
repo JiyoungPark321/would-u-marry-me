@@ -1,10 +1,10 @@
-package com.ssafy.wouldUmarryme.wouldUmarryme;
+package com.ssafy.wouldUmarryme.marry;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WouldUmarrymeApplicationTests {
+class MarryApplicationTests {
 
 	@Test
 	void contextLoads() {
