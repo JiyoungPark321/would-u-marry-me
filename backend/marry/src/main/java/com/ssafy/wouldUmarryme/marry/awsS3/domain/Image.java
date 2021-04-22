@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter @Setter
 @Table(name = "images")
-public class File {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

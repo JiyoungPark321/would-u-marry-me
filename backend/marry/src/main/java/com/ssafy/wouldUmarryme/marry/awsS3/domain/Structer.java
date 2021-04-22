@@ -1,7 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 
-import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,5 +27,6 @@ public class Structer {
     private String structerFullPath;
 
     @OneToOne(mappedBy = "structer")
-    private Storyboard storyboard;
+    private Story story;
+
 }

@@ -17,7 +17,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="USER_ID")
+    @Column(name ="account_id")
     private Long id;
 
     //유저 아이디
