@@ -1,14 +1,19 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.service;
 
 
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Image;
-import com.ssafy.wouldUmarryme.marry.awsS3.repository.FileRepository;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
+import com.ssafy.wouldUmarryme.marry.awsS3.repository.*;
+import com.ssafy.wouldUmarryme.marry.story.domain.Story;
+import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -16,7 +21,12 @@ import java.io.IOException;
 public class FileService {
 
     private final AwsS3Service awsS3Service;
-    private final FileRepository fileRepository;
+    private final ImageRepository fileRepository;
+    private final SpotRepository structerRepository;
+    private final StoryBoardRepository storyBoardRepository;
+    private final StoryRepository storyRepository;
+    private final BackgroundRepository backgroundRepository;
+
 
     public void create(Image image) {
         fileRepository.save(image);
@@ -35,9 +45,39 @@ public class FileService {
         return img;
     }
 
-    public Image setStructer(MultipartFile image) {
-    }
+//    public Story setSpot(MultipartFile image, Long storyboard_id, Long index) {
+//        String name = image.getOriginalFilename();
+//        Optional<Spot> spot = structerRepository.findBySpotPath(name);
+//        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyboard_id);
+//
+//        //해당 Story를 전에 만든 적이 있는지 체크
+//        Optional<Story> story = storyRepository.findByStoryBoardAndIndex(storyboard.get(),index);
+//
+//        //없다면
+//        if(story.isEmpty()){
+//            Story newStory = Story.builder()
+//                    .index(index)
+//                    .spot(spot.get())
+//                    .storyboard(storyboard.get())
+//                    .build();
+//            return storyRepository.save(newStory);
+//
+//        }
+//        //있다면
+//        else{
+//            Story newStory = story.get();
+//            newStory.setSpot(spot.get());
+//            return storyRepository.save(newStory);
+//        }
+//    }
 
-    public Image setBackground(MultipartFile image) {
+    public Storyboard setBackground(MultipartFile image,Long storyboard_id) {
+        String name = image.getOriginalFilename();
+        Optional<Background> background = backgroundRepository.findByBackgroundPath(name);
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyboard_id);
+
+        Storyboard newStoryBoard = storyboard.get();
+        newStoryBoard.setBackground(background.get());
+        return storyBoardRepository.save(newStoryBoard);
     }
 }

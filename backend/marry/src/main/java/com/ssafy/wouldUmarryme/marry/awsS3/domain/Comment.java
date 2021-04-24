@@ -12,21 +12,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "structer")
-public class Structer {
-
+@Table(name = "comments")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "structer_id")
+    @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "structer_path")
-    private String structerPath;
+    @Column(name = "comment_value")
+    private String value;
 
-    @Column(name = "structer_full_path")
-    private String structerFullPath;
-
-    @OneToOne(mappedBy = "structer")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="story_id")
     private Story story;
 
+    //몇번째위치의 멘트인지
+    @Column(name="comment_index")
+    private int index;
 }
