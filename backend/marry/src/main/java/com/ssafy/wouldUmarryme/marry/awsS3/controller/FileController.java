@@ -2,8 +2,7 @@ package com.ssafy.wouldUmarryme.marry.awsS3.controller;
 
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Image;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.FileService;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
 //import com.ssafy.wouldUmarryme.marry.story.domain.Story;
@@ -25,7 +24,7 @@ public class FileController {
 
     //이미저 저장
     @PostMapping("/image")
-    public Image create(MultipartFile image, @ApiIgnore @CurrentAccount Account account) throws IOException {
+    public StoryImage create(MultipartFile image, @ApiIgnore @CurrentAccount Account account) throws IOException {
         return fileService.createImage(image);
     }
 

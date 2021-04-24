@@ -2,10 +2,8 @@ package com.ssafy.wouldUmarryme.marry.awsS3.service;
 
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Image;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.awsS3.repository.*;
-import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,14 +26,14 @@ public class FileService {
     private final BackgroundRepository backgroundRepository;
 
 
-    public void create(Image image) {
+    public void create(StoryImage image) {
         fileRepository.save(image);
     }
 
 
-    public Image createImage(MultipartFile image) throws IOException {
+    public StoryImage createImage(MultipartFile image) throws IOException {
         // 이미지 정보 생성
-        Image img = new Image();
+        StoryImage img = new StoryImage();
         String imgPath = awsS3Service.uploadProfileImage(image);
 
         img.setImagePath(imgPath);
