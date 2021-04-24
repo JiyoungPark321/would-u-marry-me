@@ -1,7 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Comment;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Image;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryComment;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,11 +43,11 @@ public class Story {
 
     //이미지 저장
     @OneToMany(mappedBy = "story",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Image> images = new ArrayList<>();
+    private List<StoryImage> images = new ArrayList<>();
 
     //글 저장
     @OneToMany(mappedBy="story",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
+    private List<StoryComment> comments = new ArrayList<>();
 
     @Builder
     public Story(int index, Spot spot, Storyboard storyboard){

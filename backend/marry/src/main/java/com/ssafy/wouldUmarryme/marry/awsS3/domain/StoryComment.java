@@ -12,14 +12,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "comments")
-public class Comment {
+@Table(name = "storycomments")
+public class StoryComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
+    @Column(name = "storycomment_id")
     private Long id;
 
-    @Column(name = "comment_value")
+    @Column(name = "storycomment_value")
     private String value;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,6 +27,6 @@ public class Comment {
     private Story story;
 
     //몇번째위치의 멘트인지
-    @Column(name="comment_index")
+    @Column(name="storycomment_index")
     private int index;
 }

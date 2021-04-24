@@ -4,6 +4,7 @@ import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
+import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,5 +45,9 @@ public class Storyboard {
 
     @OneToMany(mappedBy = "storyboard", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Story> stories = new ArrayList<>();
+
+    @OneToOne(mappedBy = "storyboard",cascade = CascadeType.ALL)
+    private WeddingCard weddingCard;
+
 
 }

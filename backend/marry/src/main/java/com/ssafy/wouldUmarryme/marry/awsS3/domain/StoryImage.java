@@ -10,18 +10,18 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
-@Table(name = "images")
-public class Image {
+@Table(name = "storyimages")
+public class StoryImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "image_id")
+    @Column(name = "storyimage_id")
     private Long id;
 
-    @Column(name = "image_path")
+    @Column(name = "storyimage_path")
     private String imagePath;
 
-    @Column(name = "img_full_path")
+    @Column(name = "storyimg_full_path")
     private String imgFullPath;
 
     @ManyToOne( fetch = FetchType.LAZY)
@@ -29,7 +29,7 @@ public class Image {
     private Story story;
 
     //몇번째위치의 사진인지
-    @Column(name = "image_index")
+    @Column(name = "storyimage_index")
     private int index;
 
 
