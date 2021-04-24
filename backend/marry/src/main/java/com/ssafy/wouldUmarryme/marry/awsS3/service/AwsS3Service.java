@@ -32,14 +32,14 @@ public class AwsS3Service {
 
     @Transactional
 //    public String upload(List<MultipartFile> files) throws IOException {
-    public String uploadProfileImage(MultipartFile file) throws IOException {
+    public String uploadProfileImage(MultipartFile image) throws IOException {
         amazonS3 = awsConfiguration.setS3Client();
-        String fileName = file.getOriginalFilename();
+        String imageName = image.getOriginalFilename();
 
-        amazonS3.putObject(new PutObjectRequest(awsS3Property.getBucket(), fileName, file.getInputStream(), null)
+        amazonS3.putObject(new PutObjectRequest(awsS3Property.getBucket(), imageName, image.getInputStream(), null)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
 
-        return fileName;
+        return imageName;
     }
 
 //    @Transactional

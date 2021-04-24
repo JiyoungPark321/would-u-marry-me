@@ -1,6 +1,9 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Structer;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Comment;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Image;
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Setter
@@ -22,41 +26,33 @@ public class Story {
     private Long id;
 
     //몇번째 story인지
+    @Column(name="story_index")
     private int index;
 
-    @ManyToOne
+    //몇번째 템플릿인지
+    @Column(name="story_template")
+    private int template;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storyboard_id")
     private Storyboard storyboard;
 
-    @OneToOne
-    @JoinColumn(name="structer_id")
-    private Structer structer;
+    @OneToOne( fetch = FetchType.LAZY)
+    @JoinColumn(name="spot_id")
+    private Spot spot;
 
     //이미지 저장
-    @Column(name = "image_path1")
-    private String imagePath1;
-
-    @Column(name = "img_full_path1")
-    private String imgFullPath1;
-
-    @Column(name = "image_path2")
-    private String imagePath2;
-
-    @Column(name = "img_full_path2")
-    private String imgFullPath2;
-
-    @Column(name = "image_path3")
-    private String imagePath3;
-
-    @Column(name = "img_full_path3")
-    private String imgFullPath3;
+    @OneToMany(mappedBy = "story",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Image> images = new ArrayList<>();
 
     //글 저장
-    @Column(name="sentence1")
-    private String sentence1;
+    @OneToMany(mappedBy="story",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 
-    @Column(name="sentence2")
-    private String sentence2;
-
-
+    @Builder
+    public Story(int index, Spot spot, Storyboard storyboard){
+        this.index= index;
+        this.spot=spot;
+        this.storyboard=storyboard;
+    }
 }

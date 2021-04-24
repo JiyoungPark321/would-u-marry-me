@@ -26,6 +26,6 @@ public class Background {
     @Column(name = "background_full_path")
     private String backgroundFullPath;
 
-    @OneToOne(mappedBy = "background")
+    @OneToOne(mappedBy = "background", fetch = FetchType.LAZY)
     private Storyboard storyboard;
 }
