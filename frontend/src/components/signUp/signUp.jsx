@@ -6,7 +6,7 @@ const SignUp = () => {
     <div className={styles['sign-up']}>
       <div className={styles.title}>
         <button className={styles['back-button']}>
-          <i class="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left"></i>
         </button>
         <p className={styles['sign-up-text']}>회원가입</p>
       </div>
@@ -66,7 +66,7 @@ const SignUp = () => {
         />
         <label
           className={styles['agreement-text']}
-          for="agreement"
+          htmlFor="agreement"
         >
           가입에 동의 하시겠습니까?
         </label>
