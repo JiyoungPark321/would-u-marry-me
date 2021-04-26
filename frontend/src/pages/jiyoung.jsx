@@ -1,6 +1,7 @@
 import React from 'react';
-import SignUp from '../components/signUp/signUp';
 import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
+import Intro from '../components/intro/intro';
+import SignUp from '../components/signUp/signUp';
 
 const Jiyoung = () => {
   
@@ -12,6 +13,7 @@ const Jiyoung = () => {
       <StepProgressBar onClickHandler={() => {
         console.log('hi');
       }}/>
+      <Intro />
       <SignUp />
     </div>
   );
