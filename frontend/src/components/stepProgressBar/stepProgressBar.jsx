@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import styles from './stepProgressBar.module.css';
 
-type StepProgressBarProps = {
-  onClickHandler: () => void;
-};
 
-const StepProgressBar = ({onClickHandler}: StepProgressBarProps) => {
+const StepProgressBar = ({onClickHandler}) => {
   const [stepNumber, setStepNumber] = useState(1);
 
-  const moveStep = (newStepNumber: number) => {
+  const moveStep = (newStepNumber) => {
     setStepNumber(newStepNumber);
     // props 로 내려받은 함수 실행
     onClickHandler();
