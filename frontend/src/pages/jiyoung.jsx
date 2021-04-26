@@ -1,4 +1,5 @@
 import React from 'react';
+import Intro from '../components/intro/intro';
 import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
 
 const Jiyoung = () => {
@@ -11,6 +12,7 @@ const Jiyoung = () => {
       <StepProgressBar onClickHandler={() => {
         console.log('hi');
       }}/>
+      <Intro />
     </div>
   );
 }
