@@ -1,6 +1,11 @@
 import React from 'react';
-import Intro from '../components/intro/intro';
 import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
+import Intro from '../components/intro/intro';
+import SignUp from '../components/signUp/signUp';
+import SignIn from '../components/signIn/signIn';
+import FindPassword from '../components/findPassword/findPassword';
+import ChangePassword from '../components/changePassword/changePassword';
+import EditMemberInfo from '../components/editMemberInfo/editMemberInfo';
 
 const Jiyoung = () => {
   
@@ -13,6 +18,11 @@ const Jiyoung = () => {
         console.log('hi');
       }}/>
       <Intro />
+      <SignUp />
+      <SignIn />
+      <FindPassword />
+      <ChangePassword />
+      <EditMemberInfo />
     </div>
   );
 }
