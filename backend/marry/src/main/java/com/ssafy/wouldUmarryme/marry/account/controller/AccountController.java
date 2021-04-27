@@ -1,25 +1,25 @@
 package com.ssafy.wouldUmarryme.marry.account.controller;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
-import com.ssafy.wouldUmarryme.marry.account.domain.UserRole;
+
 import com.ssafy.wouldUmarryme.marry.account.dto.request.SingupRequest;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.UpdateAccountRequest;
 
 
 import com.ssafy.wouldUmarryme.marry.account.service.AccountService;
-import io.swagger.annotations.Api;
+import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
+
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.convertObjectToJson;
-import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
+
+
 import javax.validation.Valid;
-import java.util.Optional;
+
 
 
 @RestController
@@ -45,9 +45,11 @@ public class AccountController {
 //    )
     @PutMapping
     @ApiOperation(value="회원 수정")
-    public Object update(@Valid @RequestBody @ApiParam(value="회원 정보 수정 (비밀번호, 닉네임, 전화번호)",required = true) UpdateAccountRequest updateAccountRequest,String id){
+    public Object update(@Valid @RequestBody @ApiParam(value="회원 정보 수정 (비밀번호, 닉네임, 전화번호)",required = true) UpdateAccountRequest updateAccountRequest,
+                         @ApiIgnore @CurrentAccount Account account//-> jwt토큰 확인
+    ){
 
-        Object response = accountService.updateAccount(updateAccountRequest,id);
+        Object response = accountService.updateAccount(updateAccountRequest,account);
         return response;
     }
 
@@ -57,15 +59,6 @@ public class AccountController {
 //            @Valid @RequestBody @ApiParam(value = "회원정보 탈퇴 시 필요한 회원정보 (비밀번호) ",required = true) String password){
 //
 //    }
-
-
-
-
-
-
-
-
-
 
 //    @ApiOperation(value = "사용자 정보 조회")
 //    @GetMapping
