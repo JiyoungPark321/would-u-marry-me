@@ -5,6 +5,7 @@ import SignUp from '../components/signUp/signUp';
 import SignIn from '../components/signIn/signIn';
 import FindPassword from '../components/findPassword/findPassword';
 import ChangePassword from '../components/changePassword/changePassword';
+import EditMemberInfo from '../components/editMemberInfo/editMemberInfo';
 
 const Jiyoung = () => {
   
@@ -21,6 +22,7 @@ const Jiyoung = () => {
       <SignIn />
       <FindPassword />
       <ChangePassword />
+      <EditMemberInfo />
     </div>
   );
 }
