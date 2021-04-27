@@ -2,6 +2,7 @@ import React from 'react';
 import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
 import Intro from '../components/intro/intro';
 import SignUp from '../components/signUp/signUp';
+import SignIn from '../components/signIn/signIn';
 
 const Jiyoung = () => {
   
@@ -15,6 +16,7 @@ const Jiyoung = () => {
       }}/>
       <Intro />
       <SignUp />
+      <SignIn />
     </div>
   );
 }
