@@ -27,17 +27,17 @@ public class AccountService {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final Long OWN = 0L;
 
 
     public Object duplicateAndBlankCheckWhenSignUp(String uid,String password,String name,String phone){
+
         if(accountRepository.findByUid(uid).isPresent()){
             return makeResponse("400",null,"this id already exists", HttpStatus.BAD_REQUEST);
         }
         if("".equals(uid)||"".equals(password)||"".equals(name)||"".equals(phone)){
             return makeResponse("400",null,"data is blank",HttpStatus.BAD_REQUEST);
         }
-        if(accountRepository.findAccountByName(name)!=null){
+        if(!accountRepository.findAccountByName(name).isEmpty()){
             return makeResponse("400",null,"this nickname already exists", HttpStatus.BAD_REQUEST);
         }
         return null;
@@ -47,6 +47,7 @@ public class AccountService {
         String password=singup.getPassword().trim();
         String name=singup.getName().trim();
         String phone=singup.getPhone().trim();
+
 
         Object response = duplicateAndBlankCheckWhenSignUp(uid,password,name,phone);
 
@@ -75,8 +76,8 @@ public class AccountService {
         return account;
     }
 
-    public Object updateAccount(UpdateAccountRequest update,String id){
-        Optional<Account> curAccount=accountRepository.findById((int) Long.parseLong(id));
+    public Object updateAccount(UpdateAccountRequest update,Account account){
+        Optional<Account> curAccount=accountRepository.findById(account.getId());
         if(!curAccount.isPresent()) {
             return makeResponse("404", null, "account not found", HttpStatus.NOT_FOUND);
         }
