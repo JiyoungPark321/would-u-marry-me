@@ -18,7 +18,7 @@ const SignUp = () => {
             type="text" 
             placeholder="Id" 
           />
-          <button className={styles['duplicate-check']} >중복체크</button>
+          <button className={styles['duplicate-check-button']} >중복체크</button>
         </div>
       </div>
       <div>
@@ -45,7 +45,7 @@ const SignUp = () => {
             type="text"
             placeholder="Nickname" 
         />
-          <button className={styles['duplicate-check']} >중복체크</button>
+          <button className={styles['duplicate-check-button']} >중복체크</button>
         </div>
       </div>
       <div>
