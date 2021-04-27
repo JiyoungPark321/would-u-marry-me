@@ -3,6 +3,7 @@ import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
 import Intro from '../components/intro/intro';
 import SignUp from '../components/signUp/signUp';
 import SignIn from '../components/signIn/signIn';
+import FindPassword from '../components/findPassword/findPassword';
 
 const Jiyoung = () => {
   
@@ -17,6 +18,7 @@ const Jiyoung = () => {
       <Intro />
       <SignUp />
       <SignIn />
+      <FindPassword />
     </div>
   );
 }
