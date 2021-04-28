@@ -1,11 +1,11 @@
 import React from 'react';
 import StepProgressBar from '../components/stepProgressBar/stepProgressBar';
 import Intro from '../components/intro/intro';
-import SignUp from '../components/signUp/signUp';
-import SignIn from '../components/signIn/signIn';
-import FindPassword from '../components/findPassword/findPassword';
-import ChangePassword from '../components/changePassword/changePassword';
-import EditMemberInfo from '../components/editMemberInfo/editMemberInfo';
+import SignUpForm from '../components/signUpForm/signUpForm';
+import SignInForm from '../components/signInForm/signInForm';
+import FindPasswordForm from '../components/findPasswordForm/findPasswordForm';
+import ChangePasswordForm from '../components/changePasswordForm/changePasswordForm';
+import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
 
 const Jiyoung = () => {
@@ -19,11 +19,11 @@ const Jiyoung = () => {
         console.log('hi');
       }}/>
       <Intro />
-      <SignUp />
-      <SignIn />
-      <FindPassword />
-      <ChangePassword />
-      <EditMemberInfo />
+      <SignUpForm />
+      <SignInForm />
+      <FindPasswordForm />
+      <ChangePasswordForm />
+      <EditMemberInfoForm />
       <PasswordAuthentication />
     </div>
   );

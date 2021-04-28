@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './editMemberInfo.module.css';
+import styles from './editMemberInfoForm.module.css';
 
-const EditMemberInfo = () => {
+const EditMemberInfoForm = () => {
   return (
     <div className={styles['edit-member-info']}>
       <div className={styles.title}>
@@ -80,4 +80,4 @@ const EditMemberInfo = () => {
   );
 };
 
-export default EditMemberInfo;
+export default EditMemberInfoForm;

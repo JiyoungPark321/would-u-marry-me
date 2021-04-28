@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './signIn.module.css';
+import styles from './signInForm.module.css';
 
-const SignIn = () => {
+const SignInForm = () => {
   return (
     <div className={styles['sign-in']}>
       <p className={styles['sign-in-text']}>로그인</p>
@@ -50,4 +50,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInForm;

@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './changePassword.module.css';
+import styles from './changePasswordForm.module.css';
 
-const ChangePassword = () => {
+const ChangePasswordForm = () => {
   return (
     <div className={styles['change-password']}>
       <p className={styles['change-password-text']}>비밀번호 변경</p>
@@ -42,4 +42,4 @@ const ChangePassword = () => {
   );
 };
 
-export default ChangePassword;
+export default ChangePasswordForm;

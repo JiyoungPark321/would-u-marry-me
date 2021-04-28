@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './findPassword.module.css';
+import styles from './findPasswordForm.module.css';
 
-const FindPassword = () => {
+const FindPasswordForm = () => {
   return (
     <div className={styles['find-password']}>
       <div className={styles.title}>
@@ -60,4 +60,4 @@ const FindPassword = () => {
   );
 };
 
-export default FindPassword;
+export default FindPasswordForm;
