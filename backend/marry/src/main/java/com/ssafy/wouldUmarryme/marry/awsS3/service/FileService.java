@@ -2,8 +2,8 @@ package com.ssafy.wouldUmarryme.marry.awsS3.service;
 
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
-import com.ssafy.wouldUmarryme.marry.awsS3.repository.*;
+import com.ssafy.wouldUmarryme.marry.story.domain.StoryImage;
+import com.ssafy.wouldUmarryme.marry.story.repository.*;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class FileService {
 
     private final AwsS3Service awsS3Service;
-    private final ImageRepository fileRepository;
+    private final StoryImageRepository fileRepository;
     private final SpotRepository structerRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final StoryRepository storyRepository;
@@ -76,6 +76,6 @@ public class FileService {
 
         Storyboard newStoryBoard = storyboard.get();
         newStoryBoard.setBackground(background.get());
-        return storyBoardRepository.save(newStoryBoard);
+        return storyBoardRepository.save(newStoryBoard).get();
     }
 }

@@ -1,4 +1,4 @@
-package com.ssafy.wouldUmarryme.marry.awsS3.domain;
+package com.ssafy.wouldUmarryme.marry.story.domain;
 
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import lombok.Getter;

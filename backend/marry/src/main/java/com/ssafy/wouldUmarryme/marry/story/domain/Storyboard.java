@@ -5,11 +5,13 @@ import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,11 @@ public class Storyboard {
 
     @OneToOne(mappedBy = "storyboard",cascade = CascadeType.ALL)
     private WeddingCard weddingCard;
+
+    @Builder
+    public Storyboard(@NotNull String title){
+        this.title=title;
+    }
 
 
 }

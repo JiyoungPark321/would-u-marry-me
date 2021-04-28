@@ -1,4 +1,4 @@
-package com.ssafy.wouldUmarryme.marry.awsS3.repository;
+package com.ssafy.wouldUmarryme.marry.story.repository;
 
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
@@ -9,5 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface StoryRepository extends JpaRepository<Story,Long> {
-    //Optional<Story> findByStoryBoardAndIndex(Storyboard storyBoard,Long index);
+    Optional<Story> findByStoryBoardAndIndex(Storyboard storyBoard, int index);
+
 }

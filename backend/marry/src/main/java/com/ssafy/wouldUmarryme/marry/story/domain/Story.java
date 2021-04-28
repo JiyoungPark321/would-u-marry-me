@@ -1,7 +1,5 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryComment;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import lombok.Builder;
 import lombok.Getter;

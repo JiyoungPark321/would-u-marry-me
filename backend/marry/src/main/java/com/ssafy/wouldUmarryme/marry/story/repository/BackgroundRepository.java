@@ -1,4 +1,4 @@
-package com.ssafy.wouldUmarryme.marry.awsS3.repository;
+package com.ssafy.wouldUmarryme.marry.story.repository;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
