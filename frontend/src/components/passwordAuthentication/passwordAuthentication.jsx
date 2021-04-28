@@ -11,11 +11,11 @@ const PasswordAuthentication = () => {
       <div>
         <label 
           className={styles['input-label']}
-          htmlFor="authentication-password"
+          htmlFor="password-authentication-password"
         >비밀번호</label>
         <input 
           className={styles['input-field-style2']} 
-          id="authentication-password"
+          id="password-authentication-password"
           type="text" 
           placeholder="Password" 
         />
