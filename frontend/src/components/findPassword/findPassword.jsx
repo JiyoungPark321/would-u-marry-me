@@ -12,20 +12,28 @@ const FindPassword = () => {
       </div>
       <div>
         <div className={styles['id-container']}>
-          <p className={styles['input-label']}>아이디</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="find-password-id"
+          >아이디</label>
           <div>
             <input 
-              className={styles['input-field-style2']} 
+              className={styles['input-field-style2']}
+              id="find-password-id"
               type="text" 
               placeholder="Id" 
             />
           </div>
         </div>
         <div className={styles['phone-number-container']}>
-          <p className={styles['input-label']}>전화번호</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="find-password-phone-number"  
+          >전화번호</label>
           <div>
             <input
-              className={styles['input-field-style1']} 
+              className={styles['input-field-style1']}
+              id="find-password-phone-number"
               type="text"
               placeholder="PhoneNumber" 
           />
@@ -33,9 +41,13 @@ const FindPassword = () => {
           </div>
         </div>
         <div>
-          <p className={styles['input-label']}>인증번호 입력</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="find-password-verification-code-number"    
+          >인증번호 입력</label>
           <input 
-            className={styles['input-field-style2']} 
+            className={styles['input-field-style2']}
+            id="find-password-verification-code-number"
             type="text" 
             placeholder="Verification Code Number" 
           />

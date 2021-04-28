@@ -7,19 +7,27 @@ const SignIn = () => {
       <p className={styles['sign-in-text']}>로그인</p>
       <div>
         <div className={styles['id-container']}>
-          <p className={styles['input-label']}>아이디</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="sign-in-id"
+          >아이디</label>
           <div>
             <input 
-              className={styles['input-field-style2']} 
+              className={styles['input-field-style2']}
+              id="sign-in-id" 
               type="text" 
               placeholder="Id" 
             />
           </div>
         </div>
         <div>
-          <p className={styles['input-label']}>비밀번호</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="sign-in-password"
+          >비밀번호</label>
           <input 
-            className={styles['input-field-style2']} 
+            className={styles['input-field-style2']}
+            id="sign-in-password" 
             type="text" 
             placeholder="Password" 
           />

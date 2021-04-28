@@ -11,10 +11,14 @@ const SignUp = () => {
         <p className={styles['sign-up-text']}>회원가입</p>
       </div>
       <div>
-        <p className={styles['input-label']}>아이디</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="sign-up-id"
+        >아이디</label>
         <div>
           <input 
-            className={styles['input-field-style1']} 
+            className={styles['input-field-style1']}
+            id="sign-up-id"
             type="text" 
             placeholder="Id" 
           />
@@ -22,26 +26,38 @@ const SignUp = () => {
         </div>
       </div>
       <div>
-        <p className={styles['input-label']}>비밀번호</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="sign-up-password"
+        >비밀번호</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="sign-up-password"
           type="text" 
           placeholder="Password" 
         />
       </div>
       <div>
-        <p className={styles['input-label']}>비밀번호 확인</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="sign-up-password-check"
+        >비밀번호 확인</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="sign-up-password-check"
           type="text" 
           placeholder="Password Check" 
         />
       </div>
       <div>
-        <p className={styles['input-label']}>닉네임</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="sign-up-nickname"
+        >닉네임</label>
         <div>
           <input
-            className={styles['input-field-style1']} 
+            className={styles['input-field-style1']}
+            id="sign-up-nickname"
             type="text"
             placeholder="Nickname" 
         />
@@ -49,9 +65,13 @@ const SignUp = () => {
         </div>
       </div>
       <div>
-        <p className={styles['input-label']}>전화번호</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="sign-up-phone-number"
+        >전화번호</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="sign-up-phone-number"
           type="text" 
           placeholder="PhoneNumber" 
         />
@@ -60,13 +80,13 @@ const SignUp = () => {
         <input
           className={styles['agreement-checkbox']}
           type="checkbox" 
-          id="agreement" 
+          id="sign-up-agreement" 
           name="agreement" 
           value="agreement" 
         />
         <label
           className={styles['agreement-text']}
-          htmlFor="agreement"
+          htmlFor="sign-up-agreement"
         >
           가입에 동의 하시겠습니까?
         </label>

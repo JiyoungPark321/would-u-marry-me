@@ -7,19 +7,27 @@ const ChangePassword = () => {
       <p className={styles['change-password-text']}>비밀번호 변경</p>
       <div>
         <div className={styles['new-password-container']}>
-          <p className={styles['input-label']}>새 비밀번호</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="change-password-new-password"
+          >새 비밀번호</label>
           <div>
             <input 
-              className={styles['input-field-style2']} 
+              className={styles['input-field-style2']}
+              id="change-password-new-password"
               type="text" 
               placeholder="New Password" 
             />
           </div>
         </div>
         <div>
-          <p className={styles['input-label']}>비밀번호</p>
+          <label 
+            className={styles['input-label']}
+            htmlFor="change-password-new-password-check"
+          >비밀번호</label>
           <input 
-            className={styles['input-field-style2']} 
+            className={styles['input-field-style2']}
+            id="change-password-new-password-check"
             type="text" 
             placeholder="New Password Check" 
           />
