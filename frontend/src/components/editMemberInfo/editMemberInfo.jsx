@@ -11,34 +11,50 @@ const EditMemberInfo = () => {
         <p className={styles['edit-member-info-text']}>회원 정보 수정</p>
       </div>
       <div>
-        <p className={styles['input-label']}>아이디</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="edit-member-info-id"
+        >아이디</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="edit-member-info-id"
           type="text" 
           placeholder="Id" 
         />
       </div>
       <div>
-        <p className={styles['input-label']}>새 비밀번호</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="edit-member-info-new-password"
+        >새 비밀번호</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="edit-member-info-new-password"
           type="text" 
           placeholder="New Password" 
         />
       </div>
       <div>
-        <p className={styles['input-label']}>새 비밀번호 확인</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="edit-member-info-new-password-check"  
+        >새 비밀번호 확인</label>
         <input 
-          className={styles['input-field-style2']} 
+          className={styles['input-field-style2']}
+          id="edit-member-info-new-password-check"
           type="text" 
           placeholder="New Password Check" 
         />
       </div>
       <div>
-        <p className={styles['input-label']}>닉네임</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="edit-member-info-nickname"  
+        >닉네임</label>
         <div>
           <input
             className={styles['input-field-style1']} 
+            id="edit-member-info-nickname"
             type="text"
             placeholder="Nickname" 
         />
@@ -46,9 +62,13 @@ const EditMemberInfo = () => {
         </div>
       </div>
       <div>
-        <p className={styles['input-label']}>전화번호</p>
+        <label 
+          className={styles['input-label']}
+          htmlFor="edit-member-info-phone-number"
+        >전화번호</label>
         <input 
           className={styles['input-field-style2']} 
+          id="edit-member-info-phone-number"
           type="text" 
           placeholder="PhoneNumber" 
         />
