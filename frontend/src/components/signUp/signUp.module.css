@@ -32,6 +32,7 @@
 }
 
 .input-label {
+  display: flex;
   font-size: 0.875rem;
   margin-bottom: 0.5em;
 }
@@ -75,12 +76,6 @@
   border: solid 1px #e8e8e8;
   border-radius: 8px;
   padding: 10px;
-}
-
-.input-field-style2:focus {
-  outline: none;
-  border: 2px solid #af9d9f;
-  border-radius: 8px;
 }
 
 .agreement-container {
