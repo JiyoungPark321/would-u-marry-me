@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './signUp.module.css';
+import styles from './signUpForm.module.css';
 
-const SignUp = () => {
+const SignUpForm = () => {
   return (
     <div className={styles['sign-up']}>
       <div className={styles.title}>
@@ -98,4 +98,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpForm;
