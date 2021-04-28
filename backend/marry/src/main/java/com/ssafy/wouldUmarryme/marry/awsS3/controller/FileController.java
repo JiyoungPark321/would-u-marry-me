@@ -2,7 +2,7 @@ package com.ssafy.wouldUmarryme.marry.awsS3.controller;
 
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.StoryImage;
+import com.ssafy.wouldUmarryme.marry.story.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.FileService;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
 //import com.ssafy.wouldUmarryme.marry.story.domain.Story;

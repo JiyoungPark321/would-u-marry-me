@@ -31,7 +31,6 @@ public class AwsS3Service {
 
 
     @Transactional
-//    public String upload(List<MultipartFile> files) throws IOException {
     public String uploadProfileImage(MultipartFile image) throws IOException {
         amazonS3 = awsConfiguration.setS3Client();
         String imageName = image.getOriginalFilename();
