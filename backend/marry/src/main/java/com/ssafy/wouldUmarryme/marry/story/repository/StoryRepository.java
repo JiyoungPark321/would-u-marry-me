@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface StoryRepository extends JpaRepository<Story,Long> {
-    Optional<Story> findByStoryBoardAndIndex(Storyboard storyBoard, int index);
+    Optional<Story> findByStoryboardAndIndex(Storyboard storyBoard, int index);
 
 }
