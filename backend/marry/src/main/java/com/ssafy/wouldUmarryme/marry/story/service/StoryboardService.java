@@ -44,7 +44,7 @@ public class StoryboardService {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setSpotRequest.getStoryBoardId());
 
         //해당 Story를 전에 만든 적이 있는지 체크
-        Optional<Story> story = storyRepository.findByStoryBoardAndIndex(storyboard.get(),setSpotRequest.getStoryIndex());
+        Optional<Story> story = storyRepository.findByStoryboardAndIndex(storyboard.get(),setSpotRequest.getStoryIndex());
 
         //없다면
         Story newStory;

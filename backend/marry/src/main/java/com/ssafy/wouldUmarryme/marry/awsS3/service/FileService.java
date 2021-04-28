@@ -43,39 +43,5 @@ public class FileService {
         return img;
     }
 
-//    public Story setSpot(MultipartFile image, Long storyboard_id, Long index) {
-//        String name = image.getOriginalFilename();
-//        Optional<Spot> spot = structerRepository.findBySpotPath(name);
-//        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyboard_id);
-//
-//        //해당 Story를 전에 만든 적이 있는지 체크
-//        Optional<Story> story = storyRepository.findByStoryBoardAndIndex(storyboard.get(),index);
-//
-//        //없다면
-//        if(story.isEmpty()){
-//            Story newStory = Story.builder()
-//                    .index(index)
-//                    .spot(spot.get())
-//                    .storyboard(storyboard.get())
-//                    .build();
-//            return storyRepository.save(newStory);
-//
-//        }
-//        //있다면
-//        else{
-//            Story newStory = story.get();
-//            newStory.setSpot(spot.get());
-//            return storyRepository.save(newStory);
-//        }
-//    }
 
-    public Storyboard setBackground(MultipartFile image,Long storyboard_id) {
-        String name = image.getOriginalFilename();
-        Optional<Background> background = backgroundRepository.findByBackgroundPath(name);
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyboard_id);
-
-        Storyboard newStoryBoard = storyboard.get();
-        newStoryBoard.setBackground(background.get());
-        return storyBoardRepository.save(newStoryBoard).get();
-    }
 }
