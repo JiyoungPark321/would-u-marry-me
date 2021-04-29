@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.accountRepository))
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/account/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/account").permitAll()
                 .antMatchers("/account/**").hasRole("USER")
                 .anyRequest().authenticated();
