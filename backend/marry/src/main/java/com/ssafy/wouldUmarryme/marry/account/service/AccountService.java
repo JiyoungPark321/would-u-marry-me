@@ -47,9 +47,9 @@ public class AccountService {
         String userName=singup.getUserName().trim();
         String password=singup.getPassword().trim();
         String nickname=singup.getNickName().trim();
-        String phone=singup.getPhoneNumber().trim();
+        String phoneNumber=singup.getPhoneNumber().trim();
 
-        Object response = duplicateAndBlankCheckWhenSignUp(userName,password,nickname,phone);
+        Object response = duplicateAndBlankCheckWhenSignUp(userName,password,nickname,phoneNumber);
 
         if(response!=null){
             return response;
