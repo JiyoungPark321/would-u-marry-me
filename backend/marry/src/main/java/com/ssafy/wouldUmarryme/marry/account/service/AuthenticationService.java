@@ -17,8 +17,8 @@ public class AuthenticationService implements UserDetailsService {
     private final AccountRepository accountRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String uid) throws UsernameNotFoundException {
-        Account account = accountRepository.findByUid(uid).orElseThrow(
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        Account account = accountRepository.findByUserName(userName).orElseThrow(
                 () -> {
                     return new UsernameNotFoundException("해당 uid이 존재하지 않습니다");
                 }

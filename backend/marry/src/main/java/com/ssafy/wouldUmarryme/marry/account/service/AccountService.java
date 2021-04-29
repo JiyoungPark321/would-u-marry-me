@@ -29,46 +29,46 @@ public class AccountService {
 
 
 
-    public Object duplicateAndBlankCheckWhenSignUp(String uid,String password,String name,String phone){
+    public Object duplicateAndBlankCheckWhenSignUp(String userName,String password,String nickname,String phoneNumber){
 
-        if(accountRepository.findByUid(uid).isPresent()){
+        if(accountRepository.findByUserName(userName).isPresent()){
             return makeResponse("400",null,"this id already exists", HttpStatus.BAD_REQUEST);
         }
-        if("".equals(uid)||"".equals(password)||"".equals(name)||"".equals(phone)){
+        if("".equals(userName)||"".equals(password)||"".equals(nickname)||"".equals(phoneNumber)){
             return makeResponse("400",null,"data is blank",HttpStatus.BAD_REQUEST);
         }
-        if(!accountRepository.findAccountByName(name).isEmpty()){
+        if(!accountRepository.findAccountByNickName(nickname).isEmpty()){
             return makeResponse("400",null,"this nickname already exists", HttpStatus.BAD_REQUEST);
         }
         return null;
     }
     public Object createAccount(SingupRequest singup) {
-        String uid=singup.getUid().trim();
+        String userName=singup.getUserName().trim();
         String password=singup.getPassword().trim();
-        String name=singup.getName().trim();
-        String phone=singup.getPhone().trim();
+        String nickname=singup.getNickName().trim();
+        String phone=singup.getPhoneNumber().trim();
 
-
-        Object response = duplicateAndBlankCheckWhenSignUp(uid,password,name,phone);
+        Object response = duplicateAndBlankCheckWhenSignUp(userName,password,nickname,phone);
 
         if(response!=null){
             return response;
         }
 
         Account account = Account.builder()
-                .uid(singup.getUid())
+                .userName(singup.getUserName())
                 .password(passwordEncoder.encode(singup.getPassword()))
-                .name(singup.getName())
-                .phone(singup.getPhone())
+                .nickName(singup.getNickName())
+                .phoneNumber(singup.getPhoneNumber())
                 .role(UserRole.ROLE_USER)
                 .build();
+
         Account saved = this.accountRepository.save(account);
 
         return makeResponse("200",convertObjectToJson(account),"success",HttpStatus.OK);
     }
 
-    private Account getAccount(String uid) {
-        Account account = accountRepository.findByUid(uid).orElseThrow(
+    private Account getAccount(String userName) {
+        Account account = accountRepository.findByUserName(userName).orElseThrow(
                 () -> {
                     return new NotFoundException(ErrorCode.USER_NOT_FOUND);
                 }
@@ -81,14 +81,14 @@ public class AccountService {
         if(!curAccount.isPresent()) {
             return makeResponse("404", null, "account not found", HttpStatus.NOT_FOUND);
         }
-        String name=update.getName().trim();
+        String nickname=update.getNickName().trim();
         String password=update.getPassword().trim();
-        String phone=update.getPhone().trim();
+        String phone=update.getPhoneNumber().trim();
 
         Account updateAccount=curAccount.get();
-        updateAccount.setName(name);
+        updateAccount.setNickName(nickname);
         updateAccount.setPassword(password);
-        updateAccount.setPhone(phone);
+        updateAccount.setPhoneNumber(phone);
         accountRepository.save(updateAccount);
         return makeResponse("200",convertObjectToJson(updateAccount),"success",HttpStatus.OK);
     }

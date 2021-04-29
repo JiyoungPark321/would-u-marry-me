@@ -18,6 +18,6 @@ public class AccountSimpleResponse {
     }
 
     public static AccountSimpleResponse of(Account account) {
-        return new AccountSimpleResponse(account.getId(), account.getUid(), account.getName());
+        return new AccountSimpleResponse(account.getId(), account.getUserName(), account.getNickName());
     }
 }

@@ -24,13 +24,15 @@ public class Account {
 
     //유저 아이디
     @Column(unique=true)
-    private String uid;
+    private String userName;
+
+
 
     private String password;
 
-    private String name;
+    private String nickName;
 
-    private String phone;
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Storyboard> storyboards;
@@ -40,11 +42,11 @@ public class Account {
     private UserRole role = UserRole.ROLE_GUEST;
 
     @Builder
-    public Account(@NotNull String uid,@NotNull String password,@NotNull String name,@NotNull String phone,@NotNull UserRole role){
-        this.uid = uid;
+    public Account(@NotNull String userName, @NotNull String password, @NotNull String nickName, @NotNull String phoneNumber, @NotNull UserRole role){
+        this.userName = userName;
         this.password=password;
-        this.name=name;
-        this.phone=phone;
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
         this.role=role;
     }
 
