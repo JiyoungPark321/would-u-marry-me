@@ -53,17 +53,17 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter  {
 
         if (token != null) {
             // parse the token and validate it
-            String uid = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()))
+            String userName = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()))
                     .build()
                     .verify(token)
                     .getSubject();
 
             // Search in the DB if we find the user by token subject (username)
             // If so, then grab user details and create spring auth token using username, pass, authorities/roles
-            if (uid != null) {
-                Account account = accountRepository.findByUid(uid).orElseThrow(
+            if (userName != null) {
+                Account account = accountRepository.findByUserName(userName).orElseThrow(
                         () -> {
-                            return new UsernameNotFoundException("해당 uid이 존재하지 않습니다");
+                            return new UsernameNotFoundException("해당 userName이 존재하지 않습니다");
                         }
                 );
                 UserAccount userAccount = new UserAccount(account);

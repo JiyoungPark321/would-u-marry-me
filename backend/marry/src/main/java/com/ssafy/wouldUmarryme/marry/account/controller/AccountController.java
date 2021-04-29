@@ -31,7 +31,7 @@ public class AccountController {
 
     @PostMapping
     @ApiOperation(value = "회원 가입")
-    public Object signup(@Valid @RequestBody @ApiParam(value = "회원가입 시 필요한 회원정보 (아이디, 비밀번호, 닉네임, 전화번호)",
+    public Object signup(@Valid @RequestBody @ApiParam(value = "회원가입 시 필요한 회원정보 (아이디, 비밀번호(영문자, 숫자 포함 10자 ~ 20자 이하), 닉네임(한글,영문자 숫자 포함 2 ~ 7자 이하), 전화번호)",
     required = true) SingupRequest singupRequest){
 
         Object response = accountService.createAccount(singupRequest);
@@ -45,8 +45,8 @@ public class AccountController {
 //    )
     @PutMapping
     @ApiOperation(value="회원 수정")
-    public Object update(@Valid @RequestBody @ApiParam(value="회원 정보 수정 (비밀번호, 닉네임, 전화번호)",required = true) UpdateAccountRequest updateAccountRequest,
-                         @ApiIgnore @CurrentAccount Account account//-> jwt토큰 확인
+    public Object update(@Valid @RequestBody @ApiParam(value="회원 정보 수정 (비밀번호(영문자 ,숫자 포함 10자 ~ 20자 이하), 닉네임(한글,영문자 숫자 포함 2 ~ 7자 이하), 전화번호)",required = true) UpdateAccountRequest updateAccountRequest,
+                         @ApiIgnore @CurrentAccount Account account //-> jwt토큰 확인
     ){
 
         Object response = accountService.updateAccount(updateAccountRequest,account);
