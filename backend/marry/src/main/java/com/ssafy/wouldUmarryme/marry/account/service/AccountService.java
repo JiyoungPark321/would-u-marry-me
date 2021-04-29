@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.account.service;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.account.domain.UserRole;
+import com.ssafy.wouldUmarryme.marry.account.dto.request.PasswordRequest;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.SingupRequest;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.UpdateAccountRequest;
 import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
@@ -93,8 +94,18 @@ public class AccountService {
         return makeResponse("200",convertObjectToJson(updateAccount),"success",HttpStatus.OK);
     }
 
-//    public Object deleteAccount(String uid){
-//
-//    }
+    public Object deleteAccount(Account account,PasswordRequest delete){
+        Optional<Account> curAccount=accountRepository.findById(account.getId());
+        if(!curAccount.isPresent()){
+            return makeResponse("404",null,"account not found",HttpStatus.NOT_FOUND);
+        }
+        String password=delete.getPassword();
+
+        if(!password.equals(curAccount.get().getPassword())){
+            return makeResponse("400",null,"password is not match",HttpStatus.BAD_REQUEST);
+        }
+        accountRepository.delete(curAccount.get());
+        return makeResponse("200",null,"success",HttpStatus.OK);
+    }
 
 }

@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.account.controller;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 
+import com.ssafy.wouldUmarryme.marry.account.dto.request.PasswordRequest;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.SingupRequest;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.UpdateAccountRequest;
 
@@ -20,8 +21,6 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
-
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/account")
@@ -33,10 +32,8 @@ public class AccountController {
     @ApiOperation(value = "회원 가입")
     public Object signup(@Valid @RequestBody @ApiParam(value = "회원가입 시 필요한 회원정보 (아이디, 비밀번호(영문자, 숫자 포함 10자 ~ 20자 이하), 닉네임(한글,영문자 숫자 포함 2 ~ 7자 이하), 전화번호)",
     required = true) SingupRequest singupRequest){
-
         Object response = accountService.createAccount(singupRequest);
         return response;
-
     }
 //    @PutMapping
 //    @ApiOperation(value="비밀번호 변경")
@@ -52,13 +49,15 @@ public class AccountController {
         Object response = accountService.updateAccount(updateAccountRequest,account);
         return response;
     }
+    @DeleteMapping
+    @ApiOperation(value = "회원 탈퇴")
+    public Object delete(@Valid @RequestBody @ApiParam(value = "회원정보 탈퇴시 필요한 회원정보 (비밀번호)",required = true) PasswordRequest passwordRequest,
+                         @ApiIgnore @CurrentAccount Account account){
+        Object response=accountService.deleteAccount(account,passwordRequest);
+        return response;
 
-//    @DeleteMapping
-//    @ApiOperation(value="회원 삭제")
-//    public Object delete(
-//            @Valid @RequestBody @ApiParam(value = "회원정보 탈퇴 시 필요한 회원정보 (비밀번호) ",required = true) String password){
-//
-//    }
+    }
+
 
 //    @ApiOperation(value = "사용자 정보 조회")
 //    @GetMapping
@@ -67,10 +66,5 @@ public class AccountController {
 //        return new ResponseEntity<AccountSimpleResponse>(accountSimpleResponse, HttpStatus.OK);
 //    }
 
-//    @ApiOperation(value = "회원 탈퇴")
-//    @DeleteMapping
-//    public ResponseEntity<Void> deleteAccount(@ApiIgnore @CurrentAccount Account account) {
-//        accountService.deleteAccount(account);
-//        return ResponseEntity.ok().build();
-//    }
+
 }
