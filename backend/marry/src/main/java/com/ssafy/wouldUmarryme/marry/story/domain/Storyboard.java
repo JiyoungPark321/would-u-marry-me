@@ -58,7 +58,8 @@ public class Storyboard {
     private WeddingCard weddingCard;
 
     @Builder
-    public Storyboard(@NotNull String title){
+    public Storyboard(@NotNull String title,@NotNull Account account){
+        this.account = account;
         this.title=title;
     }
 

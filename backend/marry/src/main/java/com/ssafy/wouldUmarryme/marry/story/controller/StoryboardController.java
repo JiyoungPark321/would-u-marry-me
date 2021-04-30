@@ -29,8 +29,8 @@ public class StoryboardController {
     //스토리보드 생성
     @PostMapping
     @ApiOperation(value = "Create new StoryBaord")
-    public Object createStorybaord(@Valid @ApiParam(value="StoryBoard Title",required = true) String title, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.createNewStoryBoard(title);
+    public Object createStorybaord(@Valid @ApiParam(value="StoryBoard Title",required = true) String storyBoardTitle, @ApiIgnore @CurrentAccount Account account){
+        Object response = storyboardService.createNewStoryBoard(storyBoardTitle,account);
         return response;
     }
 
@@ -51,14 +51,7 @@ public class StoryboardController {
         return response;
     }
 
-    //배경 설정
-    @PutMapping("/setBackground")
-    @ApiOperation(value = "set BackgroundImg")
-    public Object setBackground(@Valid @RequestBody @ApiParam(value = "배경 이미지, 스토리보드 Id" ,required = true)SetBackgroundRequest setBackgroundRequest,@ApiIgnore @CurrentAccount Account account){
 
-        Object response= storyboardService.setBackground(setBackgroundRequest);
-        return response;
-    }
 
     //장소 설정
     @PutMapping("/setSpot")
