@@ -9,6 +9,7 @@ import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoF
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
 import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
 import { NextButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
+import MusicInfo from '../components/musicInfo/musicInfo';
 
 const Jiyoung = () => {
   
@@ -30,6 +31,8 @@ const Jiyoung = () => {
       <MoveStoryBoardButton />
       <PrevNextButton />
       <NextButton />
+      <MusicInfo />
+      <br/>
     </div>
   );
 }
