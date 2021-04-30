@@ -34,7 +34,7 @@ public class StoryboardService {
     private final SpotRepository structerRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final StoryRepository storyRepository;
-    private final BackgroundRepository backgroundRepository;
+
 
 
     //이미지 경로확인해보자!
@@ -66,22 +66,12 @@ public class StoryboardService {
     }
 
 
-    //이미지 경로 확인해보깃!
-    public Object setBackground(SetBackgroundRequest setBackgroundRequest) {
-        String name = setBackgroundRequest.getBackgroundImg().getOriginalFilename();
-        Optional<Background> background = backgroundRepository.findByBackgroundImgName(name);
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(setBackgroundRequest.getStoryBoardId());
 
-        Storyboard newStoryBoard = storyboard.get();
-        newStoryBoard.setBackground(background.get());
-        Storyboard saveStoryboard = storyBoardRepository.save(newStoryBoard);
-        return makeResponse("200",convertObjectToJson(saveStoryboard),"success", HttpStatus.OK);
 
-    }
-
-    public Object createNewStoryBoard(String title) {
+    public Object createNewStoryBoard(String title,Account account) {
         Storyboard storyboard = Storyboard.builder()
                 .title(title)
+                .account(account)
                 .build();
         Storyboard saveStoryboard = storyBoardRepository.save(storyboard);
         return makeResponse("200",convertObjectToJson(saveStoryboard),"success", HttpStatus.OK);

@@ -20,7 +20,7 @@ public class Music {
     private Long id;
 
     @Column(name = "music_name")
-    private String musicPath;
+    private String musicName;
 
     @Column(name = "music_Url")
     private String musicUrl;
