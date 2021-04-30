@@ -7,6 +7,7 @@ import FindPasswordForm from '../components/findPasswordForm/findPasswordForm';
 import ChangePasswordForm from '../components/changePasswordForm/changePasswordForm';
 import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
+import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
 
 const Jiyoung = () => {
   
@@ -25,6 +26,7 @@ const Jiyoung = () => {
       <ChangePasswordForm />
       <EditMemberInfoForm />
       <PasswordAuthentication />
+      <MoveStoryBoardButton />
     </div>
   );
 }
