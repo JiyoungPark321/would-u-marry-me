@@ -28,8 +28,9 @@ public class Story {
     private int index;
 
     //몇번째 템플릿인지
-    @Column(name="story_template")
-    private int template;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="story_template_id")
+    private StoryTemplate template;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storyboard_id")

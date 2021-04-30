@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface BackgroundRepository extends JpaRepository<Background,Long> {
-   Optional<Background> findByBackgroundPath(String BackgroundPath);
+   Optional<Background> findByBackgroundImgName(String backgroundImgName);
 }

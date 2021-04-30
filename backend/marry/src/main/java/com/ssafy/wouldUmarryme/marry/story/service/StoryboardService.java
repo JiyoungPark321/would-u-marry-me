@@ -40,7 +40,7 @@ public class StoryboardService {
     //이미지 경로확인해보자!
     public Object setSpot(SetSpotRequest setSpotRequest) {
         String name = setSpotRequest.getSpotImg().getOriginalFilename();
-        Optional<Spot> spot = structerRepository.findBySpotPath(name);
+        Optional<Spot> spot = structerRepository.findBySpotName(name);
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setSpotRequest.getStoryBoardId());
 
         //해당 Story를 전에 만든 적이 있는지 체크
@@ -69,7 +69,7 @@ public class StoryboardService {
     //이미지 경로 확인해보깃!
     public Object setBackground(SetBackgroundRequest setBackgroundRequest) {
         String name = setBackgroundRequest.getBackgroundImg().getOriginalFilename();
-        Optional<Background> background = backgroundRepository.findByBackgroundPath(name);
+        Optional<Background> background = backgroundRepository.findByBackgroundImgName(name);
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setBackgroundRequest.getStoryBoardId());
 
         Storyboard newStoryBoard = storyboard.get();

@@ -19,13 +19,26 @@ public class Music {
     @Column(name = "music_id")
     private Long id;
 
-    @Column(name = "music_path")
+    @Column(name = "music_name")
     private String musicPath;
 
-    @Column(name = "music_full_path")
-    private String musicFullPath;
+    @Column(name = "music_Url")
+    private String musicUrl;
 
     @OneToOne(mappedBy = "music", fetch = FetchType.LAZY)
     private Storyboard storyboard;
+
+    @Column(name="music_img_name")
+    private String albumImg;
+
+    @Column(name = "music_img_url")
+    private String albumImgUrl;
+
+    @Column(name="music_title")
+    private String title;
+
+    @Column(name="music_artist")
+    private String artist;
+
 
 }
