@@ -1,0 +1,16 @@
+.prev-next-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 50px;
+  color: #444444;
+}
+
+.next-button {
+  font-size: 50px;
+  color: #444444;
+}
+
+.colorWhite {
+  color: white;
+}
