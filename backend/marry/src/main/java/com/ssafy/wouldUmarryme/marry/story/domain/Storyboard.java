@@ -3,6 +3,7 @@ package com.ssafy.wouldUmarryme.marry.story.domain;
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
+import com.ssafy.wouldUmarryme.marry.awsS3.domain.Character;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import lombok.Builder;
@@ -36,12 +37,17 @@ public class Storyboard {
     @JoinColumn(name = "background_id")
     private Background background;
 
+    //캐릭터
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="character_id")
+    private Character character;
+
     //배경음악
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "music_id")
     private Music music;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="account_id")
     private Account account;
 
