@@ -22,7 +22,7 @@ public class StoryImage {
     private String imagePath;
 
     @Column(name = "storyimg_full_path")
-    private String imgFullPath;
+    private String imgUrl;
 
     @ManyToOne( fetch = FetchType.LAZY)
     @JoinColumn(name = "story_id")

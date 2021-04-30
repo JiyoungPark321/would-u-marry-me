@@ -10,21 +10,20 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "card_image")
-public class WeddingCardImage {
+@Table(name = "card_template")
+public class WeddingCardTemplate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_image_id")
+    @Column(name = "card_template_id")
     private Long id;
 
-    @Column(name = "card_image_name")
-    private String cardImageName;
+    @Column(name = "card_template_img_name")
+    private String imageName;
 
-    @Column(name = "card_image_Url")
+    @Column(name = "card_template_img_url")
     private String imgUrl;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="card_id")
-    private WeddingCard weddingcard;
-
+    @OneToOne(mappedBy = "template",fetch = FetchType.LAZY)
+    private WeddingCard weddingCard;
 }

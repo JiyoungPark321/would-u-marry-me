@@ -17,3 +17,11 @@ export const NextButton = ({ color }) => {
     </div>
   );
 };
+
+export const PrevButton = ({ color }) => {
+  return (
+    <div className={`${styles['prev-button']} ${color === "white" && styles.colorWhite}`}>
+      <i className="fas fa-arrow-circle-left"></i>
+    </div>
+  )
+}

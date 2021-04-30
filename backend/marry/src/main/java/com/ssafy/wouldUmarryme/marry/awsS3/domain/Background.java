@@ -20,11 +20,11 @@ public class Background {
     @Column(name = "background_id")
     private Long id;
 
-    @Column(name = "background_path")
-    private String backgroundPath;
+    @Column(name = "background_img_name")
+    private String backgroundImgName;
 
-    @Column(name = "background_full_path")
-    private String backgroundFullPath;
+    @Column(name = "background_img_url")
+    private String backgroundImgUrl;
 
     @OneToOne(mappedBy = "background", fetch = FetchType.LAZY)
     private Storyboard storyboard;
