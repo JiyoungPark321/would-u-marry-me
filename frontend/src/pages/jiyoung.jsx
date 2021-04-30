@@ -8,7 +8,7 @@ import ChangePasswordForm from '../components/changePasswordForm/changePasswordF
 import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
 import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
-import { NextButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
+import { NextButton, PrevButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
 
 const Jiyoung = () => {
   
@@ -30,6 +30,7 @@ const Jiyoung = () => {
       <MoveStoryBoardButton />
       <PrevNextButton />
       <NextButton />
+      <PrevButton />
     </div>
   );
 }
