@@ -6,7 +6,8 @@
   color: #444444;
 }
 
-.next-button {
+.next-button,
+.prev-button {
   font-size: 50px;
   color: #444444;
 }
