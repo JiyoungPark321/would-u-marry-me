@@ -8,6 +8,7 @@ import ChangePasswordForm from '../components/changePasswordForm/changePasswordF
 import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
 import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
+import { NextButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
 
 const Jiyoung = () => {
   
@@ -27,6 +28,8 @@ const Jiyoung = () => {
       <EditMemberInfoForm />
       <PasswordAuthentication />
       <MoveStoryBoardButton />
+      <PrevNextButton />
+      <NextButton />
     </div>
   );
 }
