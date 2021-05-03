@@ -94,7 +94,6 @@ const SignUpForm = () => {
           console.log(err);
         })
     }
-
   };
 
   return (
