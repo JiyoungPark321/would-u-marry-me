@@ -1,8 +1,8 @@
 import React from 'react';
 import {useState} from 'react'
-import styles from "./weddingTemplate2.module.css"
+import styles from "./storyTemplate2.module.css"
 
-const WeddingTemplate2 = () => {
+const StoryTemplate2 = () => {
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   // const [imgNum, setImgNum] = useState("");
@@ -21,43 +21,43 @@ const WeddingTemplate2 = () => {
   };
   return (
     <>
-    <div className={styles.template_box}>
-      <div className={styles.input_box}>
-        <div className={styles.image_box}>
+    <div className={styles['template-box']}>
+      <div className={styles['input-box']}>
+        <div className={styles['image-box']}>
           <img src={Img1}/>
-            <label className={styles.image_button}>
-              <div className={styles.image_icon}>
+            <label className={styles['image-button']}>
+              <div className={styles['image-icon']}>
                 <i className="fas fa-camera"></i>
                   <input
                     type="file"
-                    className={styles.image_input}
+                    className={styles['image-input']}
                     onChange={onImageChange1}
                   />
               </div>
             </label>
         </div>
-        <div className={styles.text_box}>
-          <button className={styles.text_button}>
-            <div className={styles.text_icon}>
+        <div className={styles['text-box']}>
+          <button className={styles['text-button']}>
+            <div className={styles['text-icon']}>
               <i className="fas fa-pencil-alt"></i>
             </div>
           </button>
         </div>
-        <div className={styles.text_box}>
-          <button className={styles.text_button}>
-            <div className={styles.text_icon}>
+        <div className={styles['text-box']}>
+          <button className={styles['text-button']}>
+            <div className={styles['text-icon']}>
               <i className="fas fa-pencil-alt"></i>
             </div>
           </button>
         </div>
-        <div className={styles.image_box}>
+        <div className={styles['image-box']}>
           <img src={Img2}/>
-          <label className={styles.image_button}>
-            <div className={styles.image_icon}>
+          <label className={styles['image-button']}>
+            <div className={styles['image-icon']}>
               <i className="fas fa-camera"></i>
                 <input
                   type="file"
-                  className={styles.image_input}
+                  className={styles['image-input']}
                   onChange={onImageChange2}
                 />
             </div>
@@ -68,4 +68,4 @@ const WeddingTemplate2 = () => {
     </>
   );
 }
-export default WeddingTemplate2;
+export default StoryTemplate2;

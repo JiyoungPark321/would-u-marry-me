@@ -1,4 +1,4 @@
-.template_box {
+.template-box {
   display: table;
   position: relative;
   width: 1400px;
@@ -8,12 +8,12 @@
   border-color: #E2D0D2;
   border-radius: 30px;
 }
-.input_box {
+.input-box {
   text-align: center;
   vertical-align: middle;
   display: table-cell;
 }
-.text_box {
+.text-box {
   display: inline-block;
   position: relative;
   width: 250px;
@@ -23,7 +23,7 @@
   border-radius: 50%;
   background-color: #F6F6E3;
 }
-.text_button {
+.text-button {
   cursor: pointer;
   position: absolute;
   width: 32px;
@@ -35,11 +35,11 @@
   background-color: transparent;
   border: none;
 }
-.text_icon {
+.text-icon {
   font-size: xx-large;
   color: #E79B09;
 }
-.image_box1 {
+.image-box1 {
   display: inline-block;
   position: relative;
   width: 300px;
@@ -49,7 +49,7 @@
   border-radius: 50%;
   background-color: #E7D9D9;
 }
-.image_box2 {
+.image-box2 {
   display: inline-block;
   position: relative;
   width: 280px;
@@ -57,7 +57,7 @@
   border-radius: 50%;
   background-color: #E2F4E2;
 }
-.image_box3 {
+.image-box3 {
   display: inline-block;
   position: relative;
   width: 750px;
@@ -67,25 +67,25 @@
   border-radius: 50%;
   background-color: #D4EAE7;
 }
-.image_box1 img{
+.image-box1 img{
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 0px;
 }
-.image_box2 img{
+.image-box2 img{
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 0px;
 }
-.image_box3 img{
+.image-box3 img{
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 0px;
 }
-.image_button {
+.image-button {
   cursor: pointer;
   position: absolute;
   background-color: transparent;
@@ -97,11 +97,11 @@
   margin-right: -16px;
   margin-top: -14px;
 }
-.image_input {
+.image-input {
   width: 100%;
   display: none;
 }
-.image_icon {
+.image-icon {
   width: 100%;
   height: 100%;
   font-size: xx-large;

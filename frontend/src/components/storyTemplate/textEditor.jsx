@@ -20,7 +20,7 @@ const TextEditor = () => {
       {/* <form action="">
         <textarea name="editor1" id="editor1" cols="30" rows="30"></textarea>
       </form> */}
-      <button className={styles.submit_button}>submit</button>
+      <button className={styles['submit-button']}>submit</button>
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import React from 'react';
-import WeddingTemplate from '../components/weddingTemplate/weddingTemplate1'
-import WeddingTemplate2 from '../components/weddingTemplate/weddingTemplate2'
-import WeddingTemplate3 from '../components/weddingTemplate/weddingTemplate3'
-import InvitationTemplate1 from '../components/invitationTemplate/invitationTemplate1'
+import StoryTemplate1 from '../components/storyTemplate/storyTemplate1'
+import StoryTemplate2 from '../components/storyTemplate/storyTemplate2'
+import StoryTemplate3 from '../components/storyTemplate/storyTemplate3'
+import WeddingTemplate1 from '../components/weddingTemplate/weddingTemplate1'
 import styles from './jaehyuk.module.css'
 const Jaehyuk = () => {
   return (
     <>
-    <div className={styles.backgournd_color}>
-      {/* <WeddingTemplate></WeddingTemplate>
-      <WeddingTemplate2></WeddingTemplate2>
-      <WeddingTemplate3></WeddingTemplate3> */}
-      <InvitationTemplate1></InvitationTemplate1>
+    <div className={styles['backgournd-color']}>
+      {/* <StoryTemplate1></StoryTemplate1>
+      <StoryTemplate2></StoryTemplate2>
+      <StoryTemplate3></StoryTemplate3> */}
+      <WeddingTemplate1></WeddingTemplate1>
     </div>
     </>
   );
