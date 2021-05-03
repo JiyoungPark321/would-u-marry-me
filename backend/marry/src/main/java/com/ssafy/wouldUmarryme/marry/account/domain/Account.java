@@ -2,10 +2,7 @@ package com.ssafy.wouldUmarryme.marry.account.domain;
 
 
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -33,6 +30,8 @@ public class Account {
     private String nickName;
 
     private String phoneNumber;
+
+    private String verificationCodeNumber;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Storyboard> storyboards;

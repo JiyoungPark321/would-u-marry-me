@@ -14,6 +14,7 @@ configurations {
 	}
 }
 
+
 jar{
 	manifest {
 		attributes "Main-Class":"com.ssafy.wouldUmarryme.marry.MarryApplication"
@@ -52,6 +53,9 @@ dependencies {
 	// aws s3
 	implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.934')
 	implementation 'com.amazonaws:aws-java-sdk-s3'
+
+	//문자 인증
+	compile group: 'net.nurigo',name:'javaSDK',version: '2.2'
 }
 
 test {
