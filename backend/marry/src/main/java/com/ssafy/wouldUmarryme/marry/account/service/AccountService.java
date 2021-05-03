@@ -2,19 +2,24 @@ package com.ssafy.wouldUmarryme.marry.account.service;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.account.domain.UserRole;
-import com.ssafy.wouldUmarryme.marry.account.dto.request.PasswordRequest;
-import com.ssafy.wouldUmarryme.marry.account.dto.request.SingupRequest;
-import com.ssafy.wouldUmarryme.marry.account.dto.request.UpdateAccountRequest;
+import com.ssafy.wouldUmarryme.marry.account.dto.request.*;
 import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
 import com.ssafy.wouldUmarryme.marry.common.exception.ErrorCode;
 import com.ssafy.wouldUmarryme.marry.common.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
+import java.util.HashMap;
 import java.util.Optional;
+import java.util.Random;
 
 import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.convertObjectToJson;
 import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
@@ -32,17 +37,15 @@ public class AccountService {
 
     public Object duplicateAndBlankCheckWhenSignUp(String userName,String password,String nickname,String phoneNumber){
 
-        if(accountRepository.findByUserName(userName).isPresent()){
-            return makeResponse("400",null,"this id already exists", HttpStatus.BAD_REQUEST);
-        }
         if("".equals(userName)||"".equals(password)||"".equals(nickname)||"".equals(phoneNumber)){
             return makeResponse("400",null,"data is blank",HttpStatus.BAD_REQUEST);
         }
-        if(!accountRepository.findAccountByNickName(nickname).isEmpty()){
+        if(!accountRepository.findAccountByNickName(nickname).isPresent()){
             return makeResponse("400",null,"this nickname already exists", HttpStatus.BAD_REQUEST);
         }
         return null;
     }
+
     public Object createAccount(SingupRequest singup) {
         String userName=singup.getUserName().trim();
         String password=singup.getPassword().trim();
@@ -68,6 +71,21 @@ public class AccountService {
         return makeResponse("200",convertObjectToJson(account),"success",HttpStatus.OK);
     }
 
+    public Object checkId(IdRequest check){
+
+        if(accountRepository.existsByUserName(check.getUserName())){
+            return makeResponse("400",convertObjectToJson(false),"userName already exists",HttpStatus.BAD_REQUEST);
+        }
+        return makeResponse("200",convertObjectToJson(true),"success",HttpStatus.OK);
+    }
+
+    public Object checkNickName(NickNameRequest check){
+        if (accountRepository.existsByNickName(check.getNickName())){
+            return makeResponse("400",convertObjectToJson(false),"nickName already exists",HttpStatus.BAD_REQUEST);
+        }
+        return makeResponse("200",convertObjectToJson(true),"success",HttpStatus.OK);
+    }
+
     private Account getAccount(String userName) {
         Account account = accountRepository.findByUserName(userName).orElseThrow(
                 () -> {
@@ -77,35 +95,108 @@ public class AccountService {
         return account;
     }
 
-    public Object updateAccount(UpdateAccountRequest update,Account account){
-        Optional<Account> curAccount=accountRepository.findById(account.getId());
-        if(!curAccount.isPresent()) {
-            return makeResponse("404", null, "account not found", HttpStatus.NOT_FOUND);
-        }
+    public Object updateAccount(Account account,UpdateAccountRequest update){
         String nickname=update.getNickName().trim();
         String password=update.getPassword().trim();
         String phone=update.getPhoneNumber().trim();
 
-        Account updateAccount=curAccount.get();
+        Account updateAccount=account;
         updateAccount.setNickName(nickname);
-        updateAccount.setPassword(password);
+        updateAccount.setPassword(passwordEncoder.encode(password));
         updateAccount.setPhoneNumber(phone);
         accountRepository.save(updateAccount);
         return makeResponse("200",convertObjectToJson(updateAccount),"success",HttpStatus.OK);
     }
 
     public Object deleteAccount(Account account,PasswordRequest delete){
-        Optional<Account> curAccount=accountRepository.findById(account.getId());
-        if(!curAccount.isPresent()){
-            return makeResponse("404",null,"account not found",HttpStatus.NOT_FOUND);
-        }
+
         String password=delete.getPassword();
 
-        if(!password.equals(curAccount.get().getPassword())){
+        if(!password.equals(account.getPassword())){
             return makeResponse("400",null,"password is not match",HttpStatus.BAD_REQUEST);
         }
-        accountRepository.delete(curAccount.get());
+        accountRepository.delete(account);
         return makeResponse("200",null,"success",HttpStatus.OK);
+    }
+
+    public Object changePassword(UpdatePasswordRequest change){
+        Optional<Account> curAccount=accountRepository.findByUserName(change.getUserName());
+        String newPassword=change.getNewPassword();
+        curAccount.get().setPassword(passwordEncoder.encode(newPassword));
+        return makeResponse("200",null,"success",HttpStatus.OK);
+    }
+
+    public Object checkPassword(Account account,PasswordRequest check) {
+        String password = check.getPassword();
+        if (!password.equals(account.getPassword())) {
+            makeResponse("400", null, "password is not match", HttpStatus.BAD_REQUEST);
+        }
+        return makeResponse("200", null, "success", HttpStatus.OK);
+    }
+
+    public Object searchPassword(SearchPasswordRequest search){
+        Optional<Account> curVer=accountRepository.findAccountByVerificationCodeNumberAndUserName(search.getVerificationCodeNumber(),search.getUserName());
+        if(!curVer.isPresent()){
+            return makeResponse("400",null,"verification code number Not Found",HttpStatus.NOT_FOUND);
+        }
+        curVer.get().setVerificationCodeNumber(null); //redis 이용하기 !!!
+
+        return  makeResponse("200",convertObjectToJson(search),"success",HttpStatus.OK);
+    }
+
+    public void verificationCodePhoneNumber(PhoneNumberRequest verificationCode,String cerNum){
+        String api_key="NCSGDLOQKCWBPEIY";
+        String api_secret="DYWTMCLZZDV1JVINXTLANKQBJZ48FB5P";
+        Message coolsms=new Message(api_key,api_secret);
+        HashMap<String,String> params=new HashMap<String,String>();
+        params.put("to",verificationCode.getPhoneNumber()); //수신 전화번호
+        params.put("from","010"); //발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+        params.put("type","SMS");
+        params.put("text","인증번호: "+"["+cerNum+"]"+"입니다.");
+        params.put("wouldUmarryme","wouldUmarrymeTEST app 1.1");
+
+        try {
+            JSONObject obj=(JSONObject) coolsms.send(params);
+        } catch (CoolsmsException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCode());
+        }
+    }
+
+    //account로 못하는 이유가 로그인을 한 상태가 아니여서 userName으로 받아야함
+    public Object sendSMS(PhoneNumberRequest phoneNumberRequest){
+        Optional<Account> curAccount=accountRepository.findByUserName(phoneNumberRequest.getUserName());
+        if(!curAccount.isPresent()){
+            return makeResponse("400",null,"userName Not Found",HttpStatus.NOT_FOUND);
+        }
+        if(!accountRepository.findAccountByPhoneNumberAndUserName(phoneNumberRequest.getPhoneNumber(),phoneNumberRequest.getUserName()).isPresent()){
+            return makeResponse("400",null,"Phone number Not Found",HttpStatus.NOT_FOUND);
+        }
+        StringBuffer temp=new StringBuffer();
+        Random rand =new Random();
+        String phoneStr="";
+        for (int i=0;i<10;i++){
+            int rIndex=rand.nextInt(3);
+            switch (rIndex){
+                case 0:
+                    temp.append((char)((int)(rand.nextInt(26))+97));
+                    break;
+                case 1:
+                    temp.append((char)((int)(rand.nextInt(26))+65));
+                    break;
+                case 2:
+                    temp.append((rand.nextInt(10)));
+                    break;
+            }
+        }
+        phoneStr=temp.toString();
+
+        System.out.println("수신자 번호 : "+ phoneNumberRequest.getPhoneNumber());
+        System.out.println("인증번호 : "+phoneStr);
+        verificationCodePhoneNumber(phoneNumberRequest,phoneStr);
+        curAccount.get().setVerificationCodeNumber(phoneStr);
+
+        return makeResponse("200",convertObjectToJson(phoneStr),"success",HttpStatus.OK);
     }
 
 }
