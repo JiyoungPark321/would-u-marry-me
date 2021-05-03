@@ -70,12 +70,31 @@
   font-weight: bold;
 }
 
+.completed-state {
+  color: white;
+  background-color: #af9d9f;
+}
+
+.error-message {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin: 0.3em 0 0 0.3em;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: rgb(233, 14, 14);
+}
+
 .input-field-style2 {
   width: 27.5rem;
   height: 40px;
   border: solid 1px #e8e8e8;
   border-radius: 8px;
   padding: 10px;
+}
+
+.password-check-container {
+  position: relative;
 }
 
 .agreement-container {
