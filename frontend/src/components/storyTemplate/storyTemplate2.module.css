@@ -1,4 +1,4 @@
-.template_box {
+.template-box {
   display: table;
   position: relative;
   width: 1400px;
@@ -8,12 +8,12 @@
   border-color: #E2D0D2;
   border-radius: 30px;
 }
-.input_box {
+.input-box {
   text-align: center;
   vertical-align: middle;
   display: table-cell;
 }
-.image_box {
+.image-box {
   margin: 15px;
   display: inline-block;
   position: relative;
@@ -22,13 +22,13 @@
   border-radius: 30px;
   background-color: #EFEFEF;
 }
-.image_box img{
+.image-box img{
   width: 100%;
   height: 100%;
   border-radius: 30px;
   border: 0px;
 }
-.image_button {
+.image-button {
   cursor: pointer;
   position: absolute;
   background-color: transparent;
@@ -40,17 +40,17 @@
   margin-right: -16px;
   margin-top: -14px;
 }
-.image_input {
+.image-input {
   width: 100%;
   display: none;
 }
-.image_icon {
+.image-icon {
   width: 100%;
   height: 100%;
   font-size: xx-large;
   color: #285181;
 }
-.text_box {
+.text-box {
   margin: 15px;
   display: inline-block;
   position: relative;
@@ -59,7 +59,7 @@
   border-radius: 30px;
   background-color: #F6F6E3;
 }
-.text_button {
+.text-button {
   cursor: pointer;
   position: absolute;
   width: 32px;
@@ -71,7 +71,7 @@
   background-color: transparent;
   border: none;
 }
-.text_icon {
+.text-icon {
   font-size: xx-large;
   color: #E79B09;
 }
