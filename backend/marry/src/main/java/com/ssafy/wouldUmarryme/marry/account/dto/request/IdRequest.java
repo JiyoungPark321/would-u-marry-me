@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class IdRequest {
-    String userName;
+    private String userName;
 }

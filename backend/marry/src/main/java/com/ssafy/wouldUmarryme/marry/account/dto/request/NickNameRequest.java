@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class NickNameRequest {
-    String nickName;
+    private String nickName;
 }

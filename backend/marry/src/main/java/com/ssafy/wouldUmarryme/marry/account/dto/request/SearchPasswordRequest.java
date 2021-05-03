@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SearchPasswordRequest {
-    String userName;
-    String phoneNumber;
-    String verificationCodeNumber;
+    private String userName;
+    private String phoneNumber;
+    private String verificationCodeNumber;
 }

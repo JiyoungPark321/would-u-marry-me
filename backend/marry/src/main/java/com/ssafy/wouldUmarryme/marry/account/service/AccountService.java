@@ -40,7 +40,7 @@ public class AccountService {
         if("".equals(userName)||"".equals(password)||"".equals(nickname)||"".equals(phoneNumber)){
             return makeResponse("400",null,"data is blank",HttpStatus.BAD_REQUEST);
         }
-        if(!accountRepository.findAccountByNickName(nickname).isPresent()){
+        if(accountRepository.findAccountByNickName(nickname).isPresent()){
             return makeResponse("400",null,"this nickname already exists", HttpStatus.BAD_REQUEST);
         }
         return null;
