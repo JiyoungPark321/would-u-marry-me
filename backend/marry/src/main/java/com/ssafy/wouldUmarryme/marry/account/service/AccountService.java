@@ -71,6 +71,7 @@ public class AccountService {
         return makeResponse("200",convertObjectToJson(account),"success",HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
     public Object checkId(IdRequest check){
 
         if(accountRepository.existsByUserName(check.getUserName())){
@@ -79,6 +80,7 @@ public class AccountService {
         return makeResponse("200",convertObjectToJson(true),"success",HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
     public Object checkNickName(NickNameRequest check){
         if (accountRepository.existsByNickName(check.getNickName())){
             return makeResponse("400",convertObjectToJson(false),"nickName already exists",HttpStatus.BAD_REQUEST);
@@ -126,6 +128,7 @@ public class AccountService {
         return makeResponse("200",null,"success",HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
     public Object checkPassword(Account account,PasswordRequest check) {
         String password = check.getPassword();
         if (!password.equals(account.getPassword())) {
@@ -143,6 +146,8 @@ public class AccountService {
 
         return  makeResponse("200",convertObjectToJson(search),"success",HttpStatus.OK);
     }
+
+    @Transactional(readOnly = true)
     public Object searchAccount(IdRequest idRequest){
         Optional<Account> curAccount=accountRepository.findByUserName(idRequest.getUserName());
         if (!curAccount.isPresent()){

@@ -1,7 +1,9 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.domain;
 
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -59,6 +61,13 @@ public class WeddingCard {
 
     @OneToMany(mappedBy = "weddingcard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<WeddingCardComment> weddingCardComments = new ArrayList<>();
+
+    @Builder
+    public WeddingCard (Storyboard storyboard,Spot spot){
+        this.storyboard=storyboard;
+        this.spot=spot;
+    }
+
 
 
 }
