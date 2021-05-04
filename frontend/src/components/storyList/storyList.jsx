@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../../service/api';
 import styles from './storyList.module.css'
 import StoryListItem from './storyListItem';
@@ -7,7 +7,7 @@ const StoryListData = [
   {
     id: 1,
     img: "https://picsum.photos/486/228",
-    title: "일재혁 💘 이재혁"
+    title: "일재혁 💘 이재혁 ㅎ하하하하하하하하하하하하하"
   },
   {
     id: 2,
@@ -37,6 +37,9 @@ const StoryListData = [
 ]
 
 const StoryList = () => {
+
+  const [newTitle, setNewTitle] = useState('');
+
   useEffect(() => {
     api.get('storyboard/getList', {
       headers: {Authorization: localStorage.getItem("jwt"),}
@@ -48,23 +51,47 @@ const StoryList = () => {
         console.log(err);
       })
   },[])
+
+
+  const startNewStoryBoard = () => {
+    // api.post('storyboard', {
+    //   title: newTitle
+    // },
+    // {
+    //   headers: {Authorization: localStorage.getItem("jwt"),}
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+  };
+
+
   return (
     <div className={styles['story-list']}>
       <div className={styles['add-story-container']}>
-        <button className={styles['add-button']}>
+        <button 
+          className={styles['add-button']}
+          onClick={startNewStoryBoard}
+        >
           +
         </button>
         <input 
           className={styles['add-title']}
           placeholder="제목을 입력하세요"
+          maxLength="25"
+          onChange={(e) => {setNewTitle(e.target.value);}}
         />
       </div>
       {
         StoryListData.map((data) => {
           return (
-            <>
-              <StoryListItem data={data} key={data.id} />
-            </>
+            <StoryListItem 
+              data={data} 
+              key={data.id}
+            />
           )
         })
       }
