@@ -3,8 +3,10 @@ package com.ssafy.wouldUmarryme.marry.common.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.account.domain.UserAccount;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.LoginRequest;
+import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,7 @@ import java.util.Date;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
+
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -59,6 +62,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         // Grab principal
         UserAccount account = (UserAccount) authResult.getPrincipal();
+
 
         // Create JWT Token
         String token = JWT.create()

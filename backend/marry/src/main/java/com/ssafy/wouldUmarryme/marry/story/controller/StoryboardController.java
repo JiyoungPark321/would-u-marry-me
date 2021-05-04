@@ -4,8 +4,6 @@ package com.ssafy.wouldUmarryme.marry.story.controller;
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
-import com.ssafy.wouldUmarryme.marry.story.dto.request.SetBackgroundRequest;
-import com.ssafy.wouldUmarryme.marry.story.dto.request.SetSpotRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
 import com.ssafy.wouldUmarryme.marry.story.service.StoryboardService;
 import io.swagger.annotations.Api;
@@ -37,7 +35,6 @@ public class StoryboardController {
     //스토리보드 리스트 조회
     @GetMapping("/getList")
     @ApiOperation(value = "Retrieve Storyboard List")
-
     public Object retrieveStoryboardList(@ApiIgnore @CurrentAccount Account account){
         Object response = storyboardService.getStoryboardList(account);
         return response;
@@ -48,16 +45,6 @@ public class StoryboardController {
     @ApiOperation(value = "Retrieve Storyboard Detail")
     public Object retrieveStoryboardDetail(@Valid @ApiParam(value="StoryBoard Title",required = true) Long storyboardId,@ApiIgnore @CurrentAccount Account account){
         Object response = storyboardService.getStoryboardDetail(storyboardId);
-        return response;
-    }
-
-
-
-    //장소 설정
-    @PutMapping("/setSpot")
-    @ApiOperation(value = "setSpot")
-    public Object setSpot(@Valid @RequestBody @ApiParam(value = "장소이미지, 스토리보드 Id, 인덱스",required = true)SetSpotRequest setSpotRequest,@ApiIgnore @CurrentAccount Account account){
-        Object response= storyboardService.setSpot(setSpotRequest);
         return response;
     }
 

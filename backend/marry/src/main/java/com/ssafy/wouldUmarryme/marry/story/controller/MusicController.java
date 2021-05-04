@@ -24,7 +24,7 @@ public class MusicController {
 
     //음악 불러오기
     @GetMapping
-    @ApiOperation(value = "retrieve Music")
+    @ApiOperation(value = "음악 선택지 불러오기")
     public Object retrieveMusic(@ApiIgnore @CurrentAccount Account account){
         Object response = musicService.getMusicList();
         return response;
@@ -32,8 +32,8 @@ public class MusicController {
 
     //음악 저장하기
     @PutMapping
-    @ApiOperation(value = "set BackgroundImg")
-    public Object setBackground(@Valid @RequestBody @ApiParam(value = "노래파일, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
+    @ApiOperation(value = "음악 저장하기")
+    public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래파일, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
 
         Object response= musicService.setMusic(setMusicRequest);
         return response;
