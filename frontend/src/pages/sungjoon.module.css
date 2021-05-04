@@ -8,19 +8,21 @@
   align-items: center;
   position: relative;
 }
+
 .menu-btn-box {
   position: absolute;
   top: 25px;
   right: 35px;
   width: 40px;
   height: 40px;
-  /* background-color: teal; */
   font-size: 35px;
   cursor: pointer;
 }
+
 .menu-btn {
   font-size: 40px;
 }
+
 .move-left {
   cursor: pointer;
   position: absolute;
@@ -28,9 +30,9 @@
   left: 50px;
   width: 50px;
   height: 50px;
-  /* background-color: red; */
   font-size: 40px;
 }
+
 .move-right {
   cursor: pointer;
   position: absolute;
@@ -38,6 +40,5 @@
   right: 50px;
   width: 50px;
   height: 50px;
-  /* background-color: red; */
   font-size: 40px;
 }

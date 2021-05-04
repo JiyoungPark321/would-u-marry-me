@@ -7,30 +7,33 @@
   border-color: #e2d0d2;
   border-radius: 30px;
 }
+
 .image-button {
   cursor: pointer;
   position: absolute;
   background-color: transparent;
   border: none;
-  /* width: 5vh;
-  height: 5vh; */
   right: 30px;
   top: 20px;
 }
+
 .image-icon {
   font-size: 30px;
   color: #285181;
 }
+
 .image-input {
   width: 100%;
   display: none;
 }
+
 .image-box img {
   width: 100%;
   height: 100%;
   border: 3px solid #e2d0d2;
   border-radius: 30px;
 }
+
 .text-box {
   position: absolute;
   top: 50%;
@@ -43,6 +46,7 @@
   background-color: #f6f6e3;
   z-index: 2;
 }
+
 .text-button {
   cursor: pointer;
   position: absolute;
@@ -55,6 +59,7 @@
   background-color: transparent;
   border: none;
 }
+
 .text-icon {
   font-size: 30px;
   color: #e79b09;

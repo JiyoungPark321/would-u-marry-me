@@ -16,8 +16,6 @@
 }
 
 .text-box {
-  /* display: inline-block; */
-  /* position: relative; */
   position: absolute;
   left: 297px;
   top: 37px;
@@ -51,8 +49,6 @@
   top: 239px;
   width: 300px;
   height: 300px;
-  /* top: 50%;
-  right: 50%; */
   border: none;
   border-radius: 50%;
   background-color: #e7d9d9;
@@ -64,8 +60,6 @@
 }
 
 .image-box2 {
-  /* display: inline-block; */
-  /* position: relative; */
   position: absolute;
   width: 280px;
   height: 280px;
@@ -76,8 +70,6 @@
 }
 
 .image-box3 {
-  /* display: inline-block; */
-  /* position: relative; */
   position: absolute;
   top: 58px;
   right: 72px;
