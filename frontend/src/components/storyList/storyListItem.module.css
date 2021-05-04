@@ -33,14 +33,39 @@
   color: #615254;
 }
 
+.title-edit-input {
+  height: 100%;
+  width: 80%;
+  border: solid 2px #c5a5a8;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .story-item-title {
-  height: 20%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  margin-top: 5px;
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
   width: 10%;
+  font-size: 15px;
+}
+
+.edit-mode-state {
+  display: none;
+}
+
+.save-title-button:hover {
+  color: #437fd8;
+}
+
+.cancel-button:hover {
+  color: black;
 }
 
 .edit-title-button:hover {
