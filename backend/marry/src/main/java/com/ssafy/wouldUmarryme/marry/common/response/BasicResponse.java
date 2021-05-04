@@ -12,7 +12,7 @@ public class BasicResponse {
     @ApiModelProperty(value="Message",position = 2)
     public String message;
     @ApiModelProperty(value = "데이터를 담는 곳 ",position = 3)
-    public String data;
+    public Object data;
     @ApiModelProperty(value = "object",position = 4)
     public Object object;
 }
