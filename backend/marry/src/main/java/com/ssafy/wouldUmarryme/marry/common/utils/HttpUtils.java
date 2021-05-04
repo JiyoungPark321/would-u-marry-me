@@ -10,12 +10,13 @@ public class HttpUtils {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static ResponseEntity<BasicResponse> makeResponse(String status, String data, String message, HttpStatus httpStatus){
+    public static ResponseEntity<BasicResponse> makeResponse(String status, Object data, String message, HttpStatus httpStatus){
 
         BasicResponse result= BasicResponse.builder().status(status).message(message).data(data).build();
         return new ResponseEntity<>(result,httpStatus);
     }
 
+    //Object를 json로 바꿔주려고 (json은 string type)
     public static String convertObjectToJson(Object object){
         try{
             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);

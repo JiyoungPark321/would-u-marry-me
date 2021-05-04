@@ -9,6 +9,7 @@ import com.ssafy.wouldUmarryme.marry.common.exception.ErrorCode;
 import com.ssafy.wouldUmarryme.marry.common.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 
+import lombok.ToString;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
@@ -27,6 +28,7 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 @Service
 @Transactional
 @RequiredArgsConstructor
+
 public class AccountService {
 
     private final AccountRepository accountRepository;
@@ -153,12 +155,19 @@ public class AccountService {
         if (!curAccount.isPresent()){
             return makeResponse("400",null,"User Not Found",HttpStatus.NOT_FOUND);
         }
-        return makeResponse("200",convertObjectToJson(curAccount.get()),"success",HttpStatus.OK);
+
+//        SearchAccountResponse searchAccountResponse= SearchAccountResponse.builder()
+//                .id(curAccount.get().getId())
+//                .userName(curAccount.get().getUserName())
+//                .nickName(curAccount.get().getNickName())
+//                .phoneNumber(curAccount.get().getPhoneNumber()).build();
+
+        return makeResponse("200",SearchAccountResponse.toSearchAccountResponse(curAccount.get()),"success",HttpStatus.OK);
     }
 
     public void verificationCodePhoneNumber(PhoneNumberRequest verificationCode,String cerNum){
-        String api_key="NCSGDLOQKCWBPEIY";
-        String api_secret="DYWTMCLZZDV1JVINXTLANKQBJZ48FB5P";
+        String api_key="";
+        String api_secret="";
         Message coolsms=new Message(api_key,api_secret);
         HashMap<String,String> params=new HashMap<String,String>();
         params.put("to",verificationCode.getPhoneNumber()); //수신 전화번호
