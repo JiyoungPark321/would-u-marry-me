@@ -16,7 +16,7 @@ public class WeddingCardTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_template_id")
-    private Long id;
+    private Long id; //1, 2, 3, 4
 
     @Column(name = "card_template_img_name")
     private String imageName;

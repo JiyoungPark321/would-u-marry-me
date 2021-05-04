@@ -7,7 +7,6 @@ import com.ssafy.wouldUmarryme.marry.account.dto.request.*;
 import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
 import com.ssafy.wouldUmarryme.marry.common.exception.ErrorCode;
 import com.ssafy.wouldUmarryme.marry.common.exception.NotFoundException;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import net.nurigo.java_sdk.api.Message;
