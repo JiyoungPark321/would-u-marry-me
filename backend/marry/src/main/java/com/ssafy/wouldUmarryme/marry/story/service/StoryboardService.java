@@ -5,7 +5,9 @@ import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.CreateStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.RetrieveStoryBoardDetailRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
 import com.ssafy.wouldUmarryme.marry.story.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -28,29 +30,29 @@ public class StoryboardService {
     private final StoryBoardRepository storyBoardRepository;
 
 
-    public Object createNewStoryBoard(String title,Account account) {
+    public Object createNewStoryBoard(CreateStoryboardRequest createStoryboardRequest, Account account) {
         Storyboard storyboard = Storyboard.builder()
-                .title(title)
+                .title(createStoryboardRequest.getStoryboardTitle())
                 .account(account)
                 .build();
         Storyboard saveStoryboard = storyBoardRepository.save(storyboard);
-        return makeResponse("200",convertObjectToJson(saveStoryboard),"success", HttpStatus.OK);
+        return makeResponse("200",saveStoryboard,"success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
     public Object getStoryboardList(Account account){
         List<Storyboard> lists = storyBoardRepository.findAllByAccount(account);
-        return makeResponse("200",convertObjectToJson(lists),"success", HttpStatus.OK);
+        return makeResponse("200",lists,"success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
-    public Object getStoryboardDetail(Long storyboardId) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyboardId);
+    public Object getStoryboardDetail(RetrieveStoryBoardDetailRequest retrieveStoryBoardDetailRequest) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(retrieveStoryBoardDetailRequest.getStoryboardId());
         if(storyboard.isEmpty()){
             return makeResponse("400",null,"fail",HttpStatus.NOT_FOUND);
         }
         else{
-            return makeResponse("200",convertObjectToJson(storyboard.get()),"success",HttpStatus.OK);
+            return makeResponse("200",storyboard.get(),"success",HttpStatus.OK);
         }
     }
 
@@ -63,7 +65,7 @@ public class StoryboardService {
             Storyboard updateStoryboard = storyboard.get();
             updateStoryboard.setTitle(updateStoryboardTitleRequest.getTitle());
             Storyboard saveStoryboard = storyBoardRepository.save(updateStoryboard);
-            return makeResponse("200",convertObjectToJson(saveStoryboard),"success",HttpStatus.OK);
+            return makeResponse("200",saveStoryboard,"success",HttpStatus.OK);
         }
     }
 

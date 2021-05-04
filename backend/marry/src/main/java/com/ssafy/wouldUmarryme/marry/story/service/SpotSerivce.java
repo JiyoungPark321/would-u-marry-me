@@ -24,6 +24,6 @@ public class SpotSerivce {
     @Transactional(readOnly = true)
     public Object getSpotList() {
         List<Spot> spotList = spotRepository.findAll();
-        return makeResponse("200",convertObjectToJson(spotList),"success", HttpStatus.OK);
+        return makeResponse("200",spotList,"success", HttpStatus.OK);
     }
 }

@@ -28,7 +28,7 @@ public class MusicService {
     @Transactional(readOnly = true)
     public Object getMusicList() {
         List<Music> musicList = musicRepository.findAll();
-        return makeResponse("200",convertObjectToJson(musicList),"success", HttpStatus.OK);
+        return makeResponse("200",musicList,"success", HttpStatus.OK);
     }
 
     public Object setMusic(SetMusicRequest setMusicRequest) {
@@ -39,7 +39,7 @@ public class MusicService {
         Storyboard newStoryBoard = storyboard.get();
         newStoryBoard.setMusic(music.get());
         Storyboard saveStoryboard = storyBoardRepository.save(newStoryBoard);
-        return  makeResponse("200",convertObjectToJson(saveStoryboard),"success", HttpStatus.OK);
+        return  makeResponse("200",saveStoryboard,"success", HttpStatus.OK);
 
     }
 }

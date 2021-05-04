@@ -3,7 +3,9 @@ package com.ssafy.wouldUmarryme.marry.story.controller;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.CreateStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.RetrieveStoryBoardDetailRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
 import com.ssafy.wouldUmarryme.marry.story.service.StoryboardService;
 import io.swagger.annotations.Api;
@@ -27,8 +29,8 @@ public class StoryboardController {
     //스토리보드 생성
     @PostMapping
     @ApiOperation(value = "Create new StoryBaord")
-    public Object createStorybaord(@Valid @ApiParam(value="StoryBoard Title",required = true) String storyBoardTitle, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.createNewStoryBoard(storyBoardTitle,account);
+    public Object createStorybaord(@Valid @ApiParam(value="StoryBoard Title",required = true) @RequestBody CreateStoryboardRequest createStoryboardRequest, @ApiIgnore @CurrentAccount Account account){
+        Object response = storyboardService.createNewStoryBoard(createStoryboardRequest,account);
         return response;
     }
 
@@ -43,22 +45,22 @@ public class StoryboardController {
     //스토리보드 상세 정보 가져오깃
     @GetMapping("/detailStoryboard")
     @ApiOperation(value = "Retrieve Storyboard Detail")
-    public Object retrieveStoryboardDetail(@Valid @ApiParam(value="StoryBoard Title",required = true) Long storyboardId,@ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.getStoryboardDetail(storyboardId);
+    public Object retrieveStoryboardDetail(@Valid @ApiParam(value="StoryBoard Title",required = true) @RequestBody RetrieveStoryBoardDetailRequest retrieveStoryBoardDetailRequest, @ApiIgnore @CurrentAccount Account account){
+        Object response = storyboardService.getStoryboardDetail(retrieveStoryBoardDetailRequest);
         return response;
     }
 
     //스토리보드 이름변경
     @PutMapping("/updateTitle")
     @ApiOperation(value = "updateTitle")
-    public Object updateTitle(@Valid @ApiParam(value="스토리보드 Id, 변경할 Title",required = true)UpdateStoryboardTitleRequest updateStoryboardTitleRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object updateTitle(@Valid @ApiParam(value="스토리보드 Id, 변경할 Title",required = true)@RequestBody UpdateStoryboardTitleRequest updateStoryboardTitleRequest, @ApiIgnore @CurrentAccount Account account){
         Object response = storyboardService.updateTitle(updateStoryboardTitleRequest);
         return response;
     }
     //스토리보드 삭제
     @DeleteMapping
     @ApiOperation(value = "deleteStoryboard")
-    public Object deleteTitle(@Valid @ApiParam(value="삭제할 스토리보드 Id,",required = true)DeleteStoryboardRequest deleteStoryboardRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object deleteTitle(@Valid @ApiParam(value="삭제할 스토리보드 Id,",required = true) @RequestBody DeleteStoryboardRequest deleteStoryboardRequest, @ApiIgnore @CurrentAccount Account account){
         Object response = storyboardService.deleteStoryboard(deleteStoryboardRequest);
         return response;
     }

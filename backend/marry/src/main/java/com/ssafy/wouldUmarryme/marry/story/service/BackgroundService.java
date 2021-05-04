@@ -34,12 +34,12 @@ public class BackgroundService {
         Storyboard newStoryBoard = storyboard.get();
         newStoryBoard.setBackground(background.get());
         Storyboard saveStoryboard = storyBoardRepository.save(newStoryBoard);
-        return makeResponse("200",convertObjectToJson(saveStoryboard),"success", HttpStatus.OK);
+        return makeResponse("200",saveStoryboard,"success", HttpStatus.OK);
 
     }
     @Transactional(readOnly = true)
     public Object getBackgroundList() {
         List<Background> backgroundList = backgroundRepository.findAll();
-        return makeResponse("200",convertObjectToJson(backgroundList),"success", HttpStatus.OK);
+        return makeResponse("200",backgroundList,"success", HttpStatus.OK);
     }
 }

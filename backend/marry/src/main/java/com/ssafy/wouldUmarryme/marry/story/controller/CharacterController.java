@@ -15,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.util.Objects;
 
-@Api(tags={"5.Character"})
+@Api(tags={"4.Character"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/character")
