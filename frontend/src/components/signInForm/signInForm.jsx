@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import styles from './signInForm.module.css';
+import api from '../../service/api';
 
 const SignInForm = () => {
+
+  const history = useHistory()
+
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const handlerUserName = (e) => {
+    const value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+    setUserName(value);
+    e.target.value = value;
+  }
+
+  const onSignIn = () => {
+    if ((userName !== '') && (password !== '')) {
+      api.post('/login', {
+        userName,
+        password
+      })
+        .then((res) => {
+          localStorage.setItem("jwt", res.headers.authorization);
+          // console.log(res.headers.authorization);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }
+
+  
   return (
     <div className={styles['sign-in']}>
       <p className={styles['sign-in-text']}>로그인</p>
@@ -15,8 +47,11 @@ const SignInForm = () => {
             <input 
               className={styles['input-field-style2']}
               id="sign-in-id" 
-              type="text" 
-              placeholder="Id" 
+              type="text"
+              minLength="2"
+              maxLength="7"
+              placeholder="Id"
+              onChange={handlerUserName} 
             />
           </div>
         </div>
@@ -28,13 +63,16 @@ const SignInForm = () => {
           <input 
             className={styles['input-field-style2']}
             id="sign-in-password" 
-            type="text" 
-            placeholder="Password" 
+            type="password"
+            placeholder="Password"
+            onChange={(e) => {setPassword(e.target.value);}} 
           />
         </div>
       </div>
       <div>
-        <button className={`${styles['button-common-styles']} ${styles['sign-in-button']}`}>
+        <button 
+          className={`${styles['button-common-styles']} ${styles['sign-in-button']}`}
+          onClick={onSignIn}>
           로그인
         </button>
         <div className={styles['buttons-container']}>

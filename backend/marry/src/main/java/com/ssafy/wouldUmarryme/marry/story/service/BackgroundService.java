@@ -38,7 +38,7 @@ public class BackgroundService {
 
     }
     @Transactional(readOnly = true)
-    public Object getBackgroundImg() {
+    public Object getBackgroundList() {
         List<Background> backgroundList = backgroundRepository.findAll();
         return makeResponse("200",convertObjectToJson(backgroundList),"success", HttpStatus.OK);
     }
