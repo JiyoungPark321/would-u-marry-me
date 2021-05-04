@@ -2,10 +2,12 @@ package com.ssafy.wouldUmarryme.marry.account.service;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.account.domain.UserRole;
+import com.ssafy.wouldUmarryme.marry.account.dto.reponse.SearchAccountResponse;
 import com.ssafy.wouldUmarryme.marry.account.dto.request.*;
 import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
 import com.ssafy.wouldUmarryme.marry.common.exception.ErrorCode;
 import com.ssafy.wouldUmarryme.marry.common.exception.NotFoundException;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import net.nurigo.java_sdk.api.Message;
@@ -16,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Random;
@@ -142,6 +143,20 @@ public class AccountService {
         curVer.get().setVerificationCodeNumber(null); //redis 이용하기 !!!
 
         return  makeResponse("200",convertObjectToJson(search),"success",HttpStatus.OK);
+    }
+    public Object searchAccount(IdRequest idRequest){
+        Optional<Account> curAccount=accountRepository.findByUserName(idRequest.getUserName());
+        if (!curAccount.isPresent()){
+            return makeResponse("400",null,"User Not Found",HttpStatus.NOT_FOUND);
+        }
+
+//        SearchAccountResponse searchAccountResponse= SearchAccountResponse.builder()
+//                .id(curAccount.get().getId())
+//                .userName(curAccount.get().getUserName())
+//                .nickName(curAccount.get().getNickName())
+//                .phoneNumber(curAccount.get().getPhoneNumber()).build();
+
+        return makeResponse("200",convertObjectToJson(SearchAccountResponse.toSearchAccountResponse(curAccount.get())),"success",HttpStatus.OK);
     }
 
     public void verificationCodePhoneNumber(PhoneNumberRequest verificationCode,String cerNum){

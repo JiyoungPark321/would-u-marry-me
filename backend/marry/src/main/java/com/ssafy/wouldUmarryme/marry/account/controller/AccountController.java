@@ -87,6 +87,12 @@ public class AccountController {
         Object response=accountService.searchPassword(searchPasswordRequest);
         return response;
     }
+    @PostMapping("/search/account")
+    @ApiOperation(value = "회원 정보 조회")
+    public Object search(@Valid @ApiParam(value = "회원정보를 조회 합니다.(ID값, 아이디, 닉네임, 전화번호 ", required = true) @RequestBody IdRequest idRequest){
+        Object response=accountService.searchAccount(idRequest);
+        return response;
+    }
 
     @PostMapping("/sms")
     @ApiOperation(value = "문자 인증")
