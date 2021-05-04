@@ -153,14 +153,7 @@ public class AccountService {
         if (!curAccount.isPresent()){
             return makeResponse("400",null,"User Not Found",HttpStatus.NOT_FOUND);
         }
-
-//        SearchAccountResponse searchAccountResponse= SearchAccountResponse.builder()
-//                .id(curAccount.get().getId())
-//                .userName(curAccount.get().getUserName())
-//                .nickName(curAccount.get().getNickName())
-//                .phoneNumber(curAccount.get().getPhoneNumber()).build();
-
-        return makeResponse("200",convertObjectToJson(SearchAccountResponse.toSearchAccountResponse(curAccount.get())),"success",HttpStatus.OK);
+        return makeResponse("200",convertObjectToJson(curAccount.get()),"success",HttpStatus.OK);
     }
 
     public void verificationCodePhoneNumber(PhoneNumberRequest verificationCode,String cerNum){
