@@ -61,12 +61,12 @@ public class StoryService {
             newStory.setSpot(spot.get());
             storyRepository.save(newStory);
         }
-        return makeResponse("200",convertObjectToJson(newStory),"success", HttpStatus.OK);
+        return makeResponse("200",newStory,"success", HttpStatus.OK);
     }
 
     public Object retrieveStoryTemplate() {
         List<StoryTemplate> storyTemplateList = storyTemplateRepository.findAll();
-        return makeResponse("200",convertObjectToJson(storyTemplateList),"success",HttpStatus.OK);
+        return makeResponse("200",storyTemplateList,"success",HttpStatus.OK);
     }
 
 
@@ -121,7 +121,7 @@ public class StoryService {
                 .story(story.get())
                 .build();
         storyCommentRepository.save(storyComment2);
-        return makeResponse("200",convertObjectToJson(story),"success", HttpStatus.OK);
+        return makeResponse("200",story,"success", HttpStatus.OK);
     }
 
     public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
@@ -152,7 +152,7 @@ public class StoryService {
                 .story(story.get())
                 .build();
         storyCommentRepository.save(storyComment1);
-        return makeResponse("200",convertObjectToJson(story),"success", HttpStatus.OK);
+        return makeResponse("200",story,"success", HttpStatus.OK);
     }
 
     public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
@@ -217,6 +217,6 @@ public class StoryService {
                 .story(story.get())
                 .build();
         storyCommentRepository.save(storyComment1);
-        return makeResponse("200",convertObjectToJson(story),"success", HttpStatus.OK);
+        return makeResponse("200",story,"success", HttpStatus.OK);
     }
 }

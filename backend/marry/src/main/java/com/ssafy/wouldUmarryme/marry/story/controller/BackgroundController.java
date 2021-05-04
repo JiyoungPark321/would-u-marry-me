@@ -13,7 +13,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
-@Api(tags={"4.background"})
+@Api(tags={"3.background"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/background")

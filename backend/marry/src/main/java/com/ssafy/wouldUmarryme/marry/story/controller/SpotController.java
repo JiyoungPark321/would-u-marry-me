@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-@Api(tags={"6.background"})
+@Api(tags={"7.Spot"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/spot")

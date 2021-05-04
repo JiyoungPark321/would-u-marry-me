@@ -22,6 +22,6 @@ public class CharacterService {
     @Transactional(readOnly = true)
     public Object getCharacterList() {
         List<Character> characterList = characterRepository.findAll();
-        return makeResponse("200",convertObjectToJson(characterList),"success", HttpStatus.OK);
+        return makeResponse("200",characterList,"success", HttpStatus.OK);
     }
 }
