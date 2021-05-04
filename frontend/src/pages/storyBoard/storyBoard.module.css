@@ -72,10 +72,27 @@ button {
 }
 
 .logout-button {
+  /* background-color: white; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   height: 33px;
+  transition: all 400ms ease-in;
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 17, 255, 0.123);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .edit-member-info-button {
   border-top: solid 2px #615254;
   height: 33px;
+  transition: all 400ms ease-in;
+}
+
+.edit-member-info-button:hover {
+  background-color: rgba(0, 17, 255, 0.123);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

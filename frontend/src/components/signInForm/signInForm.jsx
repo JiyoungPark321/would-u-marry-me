@@ -25,12 +25,38 @@ const SignInForm = () => {
       })
         .then((res) => {
           localStorage.setItem("jwt", res.headers.authorization);
-          // console.log(res.headers.authorization);
+          const userNameData = JSON.parse(atob(res.headers.authorization.split('.')[1]));
+          return userNameData;
+        })
+        .then(({ sub }) => {
+          console.log(sub);
+          const Authorization = localStorage.getItem("jwt");
+          api.post('/account/search/account', {
+            userName: sub
+          },
+          {
+            headers: { Authorization }
+          })
+            .then((res) => {
+              console.log(res);
+              localStorage.setItem("userId", res.data.data.id);
+              localStorage.setItem("nickName", res.data.data.nickName);
+              localStorage.setItem("phoneNumber", res.data.data.phoneNumber);
+              localStorage.setItem("userName", res.data.data.userName);
+              history.push(`/${sub}/storyboard`);
+            })
+            .catch((err) => {
+              console.error(err);
+            })
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         })
     }
+  }
+
+  const goSignUp = () => {
+    history.push('/signup');
   }
 
   
@@ -76,7 +102,10 @@ const SignInForm = () => {
           로그인
         </button>
         <div className={styles['buttons-container']}>
-          <button className={`${styles['button-common-styles']} ${styles['sign-up-button']}`}>
+          <button 
+            className={`${styles['button-common-styles']} ${styles['sign-up-button']}`}
+            onClick={goSignUp}
+          >
             회원가입하기
           </button>
           <button className={`${styles['button-common-styles']} ${styles['find-password-button']}`}>
