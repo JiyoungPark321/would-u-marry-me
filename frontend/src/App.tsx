@@ -23,7 +23,8 @@ const App = () => {
         <Route path="/signin" component={SignIn} exact />
 
         {/* 아이디 수정 */}
-        <Route path="/id/storyboard" component={StoryBoard} exact />
+        <Route path="/:id/storyboard" component={StoryBoard} exact />
+        {/* <Route path="/:id/storyboard" component={localStorage.getItem('id') ? StoryBoard : SignIn} exact /> */}
 
       </Switch>
 
