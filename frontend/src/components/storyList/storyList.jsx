@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import api from '../../service/api';
 import styles from './storyList.module.css'
 import StoryListItem from './storyListItem';
 
@@ -36,6 +37,17 @@ const StoryListData = [
 ]
 
 const StoryList = () => {
+  useEffect(() => {
+    api.get('storyboard/getList', {
+      headers: {Authorization: localStorage.getItem("jwt"),}
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  },[])
   return (
     <div className={styles['story-list']}>
       <div className={styles['add-story-container']}>
