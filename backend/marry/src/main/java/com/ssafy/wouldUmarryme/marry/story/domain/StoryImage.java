@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,18 +11,18 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
-@Table(name = "storyimages")
+@Table(name = "story_images")
 public class StoryImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "storyimage_id")
+    @Column(name = "story_image_id")
     private Long id;
 
-    @Column(name = "storyimage_path")
-    private String imagePath;
+    @Column(name = "story_image_name")
+    private String imgName;
 
-    @Column(name = "storyimg_full_path")
+    @Column(name = "story_image_ul")
     private String imgUrl;
 
     @ManyToOne( fetch = FetchType.LAZY)
@@ -29,8 +30,24 @@ public class StoryImage {
     private Story story;
 
     //몇번째위치의 사진인지
-    @Column(name = "storyimage_index")
+    @Column(name = "story_image_index")
     private int index;
+
+    @Builder
+    public StoryImage(String imgName,String imgUrl,Story story,int index){
+        this.imgName = imgName;
+        this.imgUrl =imgUrl;
+        this.story = story;
+        this.index = index;
+    }
+
+    @Builder
+    public StoryImage(Story story,int index){
+        this.story = story;
+        this.index = index;
+    }
+
+
 
 
 }

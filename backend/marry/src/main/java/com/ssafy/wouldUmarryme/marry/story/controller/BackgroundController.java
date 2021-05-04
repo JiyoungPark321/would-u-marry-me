@@ -25,10 +25,9 @@ public class BackgroundController {
     @GetMapping
     @ApiOperation(value="retrieve BackgroundImg")
     public Object retrieveBackgrorund(@ApiIgnore @CurrentAccount Account account){
-        Object response = backgroundService.getBackgroundImg();
+        Object response = backgroundService.getBackgroundList();
         return response;
     }
-
 
     //배경 저장하기
     @PutMapping
