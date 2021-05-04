@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./storyTemplate3.module.css";
+// import TextEditor from "./textEditor";
+import styles from "./storyTemplate5.module.css";
 
-const StoryTemplate4 = () => {
+const StoryTemplate5 = () => {
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
@@ -24,16 +25,18 @@ const StoryTemplate4 = () => {
 
   return (
     <div className={styles["template-box"]}>
-      <div className={styles["text-box"]}>
-        <button className={styles["text-button"]}>
-          <div className={styles["text-icon"]}>
-            <i className="fas fa-pencil-alt"></i>
-          </div>
-        </button>
+      <div className={styles["header-box"]}>
+        <div className={styles["header"]}>
+          <button className={styles["text-button"]}>
+            <div className={styles["text-icon"]}>
+              <i className="fas fa-pencil-alt"></i>
+            </div>
+          </button>
+        </div>
       </div>
-      <div className={styles["images-container"]}>
+      <div className={styles["photos-container"]}>
         {/* 첫번째 photobox */}
-        <div className={styles["image-box1"]}>
+        <div className={styles["photo-box1"]}>
           <img src={Img1} className={styles["input-image"]} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
@@ -47,7 +50,7 @@ const StoryTemplate4 = () => {
           </label>
         </div>
         {/* 두번째 photobox */}
-        <div className={styles["image-box2"]}>
+        <div className={styles["photo-box2"]}>
           <img src={Img2} className={styles["input-image"]} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
@@ -61,7 +64,7 @@ const StoryTemplate4 = () => {
           </label>
         </div>
         {/* 세번째 photobox */}
-        <div className={styles["image-box3"]}>
+        <div className={styles["photo-box3"]}>
           <img src={Img3} className={styles["input-image"]} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
@@ -79,4 +82,4 @@ const StoryTemplate4 = () => {
   );
 };
 
-export default StoryTemplate4;
+export default StoryTemplate5;

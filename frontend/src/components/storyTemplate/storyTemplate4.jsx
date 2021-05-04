@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./storyTemplate3.module.css";
+import styles from "./storyTemplate4.module.css";
 
-const StoryTemplate4 = () => {
+const StoryTemplate3 = () => {
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
@@ -24,31 +24,30 @@ const StoryTemplate4 = () => {
 
   return (
     <div className={styles["template-box"]}>
-      <div className={styles["text-box"]}>
-        <button className={styles["text-button"]}>
-          <div className={styles["text-icon"]}>
-            <i className="fas fa-pencil-alt"></i>
-          </div>
-        </button>
-      </div>
-      <div className={styles["images-container"]}>
-        {/* 첫번째 photobox */}
+      <div className={styles["input-box"]}>
         <div className={styles["image-box1"]}>
-          <img src={Img1} className={styles["input-image"]} />
+          <img src={Img1} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
               <i className="fas fa-camera"></i>
-              <input
-                type="file"
-                className={styles["image-input"]}
-                onChange={onImageChange1}
-              />
             </div>
           </label>
+          <input
+            type="file"
+            className={styles["image-input"]}
+            onChange={onImageChange1}
+          />
         </div>
-        {/* 두번째 photobox */}
+        <div className={styles["text-box"]}>
+          <button className={styles["text-button"]}>
+            <div className={styles["text-icon"]}>
+              <i className="fas fa-pencil-alt"></i>
+            </div>
+          </button>
+        </div>
+
         <div className={styles["image-box2"]}>
-          <img src={Img2} className={styles["input-image"]} />
+          <img src={Img2} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
               <i className="fas fa-camera"></i>
@@ -60,9 +59,8 @@ const StoryTemplate4 = () => {
             </div>
           </label>
         </div>
-        {/* 세번째 photobox */}
         <div className={styles["image-box3"]}>
-          <img src={Img3} className={styles["input-image"]} />
+          <img src={Img3} />
           <label className={styles["image-button"]}>
             <div className={styles["image-icon"]}>
               <i className="fas fa-camera"></i>
@@ -79,4 +77,4 @@ const StoryTemplate4 = () => {
   );
 };
 
-export default StoryTemplate4;
+export default StoryTemplate3;
