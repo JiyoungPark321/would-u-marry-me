@@ -22,12 +22,10 @@ public class AwsS3Service {
     private final AwsConfiguration awsConfiguration;
     private final AwsS3Property awsS3Property;
     private AmazonS3 amazonS3;
-//    private final FileRepository fileRepository; // file 관련 디비
 
     public static final String CLOUD_FRONT_DOMAIN_NAME = "d3mf3wgh9v41yo.cloudfront.net";
 
-//    @Value("${file.upload-path}")
-//    private String tempPath;
+
 
 
     @Transactional
