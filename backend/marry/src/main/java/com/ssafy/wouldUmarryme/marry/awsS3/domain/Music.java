@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,6 +40,12 @@ public class Music {
 
     @Column(name="music_artist")
     private String artist;
+
+    @Builder
+    public Music(String musicName, String musicUrl){
+        this.musicName=musicName;
+        this.musicUrl=musicUrl;
+    }
 
 
 }

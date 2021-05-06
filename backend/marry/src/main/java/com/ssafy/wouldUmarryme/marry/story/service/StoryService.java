@@ -35,10 +35,9 @@ public class StoryService {
     private final StoryTemplateRepository storyTemplateRepository;
     private final StoryImageRepository storyImageRepository;
     private final StoryCommentRepository storyCommentRepository;
-    private final AwsConfiguration awsConfiguration;
     private final AwsS3Service awsS3Service;
 
-    private AmazonS3 amazonS3;
+
 
     public Object createStory(CreateStoryRequest createStoryRequest) {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(createStoryRequest.getStoryBoardId());
@@ -69,154 +68,88 @@ public class StoryService {
         return makeResponse("200",storyTemplateList,"success",HttpStatus.OK);
     }
 
-
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest)  throws IOException{
-        amazonS3 = awsConfiguration.setS3Client();
-        Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
+    public void setStoryImage(MultipartFile object,Story story, int index) throws IOException {
         String imgName="";
         String imgUrl="";
-        if(set1StoryTemplateRequest.getFirst()!=null){
-            imgName = awsS3Service.uploadProfileImage(set1StoryTemplateRequest.getFirst());
+        if(object!=null){
+            imgName = awsS3Service.uploadProfileImage(object);
             imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             StoryImage storyImage = StoryImage.builder()
                     .imgName(imgName)
                     .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(1)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(1)
+                    .story(story)
+                    .index(index)
                     .build();
             storyImageRepository.save(storyImage);
         }
-        if(set1StoryTemplateRequest.getThird()!=null){
-            imgName = awsS3Service.uploadProfileImage(set1StoryTemplateRequest.getThird());
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
+        else{
             StoryImage storyImage = StoryImage.builder()
-                    .imgName(imgName)
-                    .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(3)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(3)
+                    .story(story)
+                    .index(index)
                     .build();
             storyImageRepository.save(storyImage);
         }
-        StoryComment storyComment1 = StoryComment.builder()
-                .value(set1StoryTemplateRequest.getSecond())
-                .index(2)
-                .story(story.get())
+    }
+    public void setStroyComment(String value, Story story, int index){
+        StoryComment storyComment = StoryComment.builder()
+                .value(value)
+                .index(index)
+                .story(story)
                 .build();
-        storyCommentRepository.save(storyComment1);
-        StoryComment storyComment2 = StoryComment.builder()
-                .value(set1StoryTemplateRequest.getFourth())
-                .index(2)
-                .story(story.get())
-                .build();
-        storyCommentRepository.save(storyComment2);
+        storyCommentRepository.save(storyComment);
+    }
+
+
+    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest)  throws IOException{
+        Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
+
+
+        setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
+        setStroyComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
+        setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
+        setStroyComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
+
+
         return makeResponse("200",story,"success", HttpStatus.OK);
     }
 
     public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
-        amazonS3 = awsConfiguration.setS3Client();
+
         Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
-        String imgName="";
-        String imgUrl="";
-        if(set2StoryTemplateRequest.getFirst()!=null){
-            imgName = awsS3Service.uploadProfileImage(set2StoryTemplateRequest.getFirst());
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-            StoryImage storyImage = StoryImage.builder()
-                    .imgName(imgName)
-                    .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(1)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(1)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }
-        StoryComment storyComment1 = StoryComment.builder()
-                .value(set2StoryTemplateRequest.getSecond())
-                .index(2)
-                .story(story.get())
-                .build();
-        storyCommentRepository.save(storyComment1);
+
+        setStoryImage(set2StoryTemplateRequest.getFirst(), story.get(),1);
+        setStroyComment(set2StoryTemplateRequest.getSecond(), story.get(),2);
+
         return makeResponse("200",story,"success", HttpStatus.OK);
     }
 
     public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
-        amazonS3 = awsConfiguration.setS3Client();
+
         Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
-        String imgName="";
-        String imgUrl="";
-        if(set345StoryTemplateRequest.getSecond()!=null){
-            imgName = awsS3Service.uploadProfileImage(set345StoryTemplateRequest.getSecond());
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-            StoryImage storyImage = StoryImage.builder()
-                    .imgName(imgName)
-                    .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(2)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(2)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }
-        if(set345StoryTemplateRequest.getThird()!=null){
-            imgName = awsS3Service.uploadProfileImage(set345StoryTemplateRequest.getThird());
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-            StoryImage storyImage = StoryImage.builder()
-                    .imgName(imgName)
-                    .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(3)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(3)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }
-        if(set345StoryTemplateRequest.getFourth()!=null){
-            imgName = awsS3Service.uploadProfileImage(set345StoryTemplateRequest.getFourth());
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-            StoryImage storyImage = StoryImage.builder()
-                    .imgName(imgName)
-                    .imgUrl(imgUrl)
-                    .story(story.get())
-                    .index(4)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }else{
-            StoryImage storyImage = StoryImage.builder()
-                    .story(story.get())
-                    .index(4)
-                    .build();
-            storyImageRepository.save(storyImage);
-        }
-        StoryComment storyComment1 = StoryComment.builder()
-                .value(set345StoryTemplateRequest.getFirst())
-                .index(1)
-                .story(story.get())
-                .build();
-        storyCommentRepository.save(storyComment1);
+
+        setStroyComment(set345StoryTemplateRequest.getFirst(),story.get(),1);
+        setStoryImage(set345StoryTemplateRequest.getSecond(),story.get(),2);
+        setStoryImage(set345StoryTemplateRequest.getThird(),story.get(),3);
+        setStoryImage(set345StoryTemplateRequest.getFourth(),story.get(),4);
+
+//        if(set345StoryTemplateRequest.getFourth()!=null){
+//            imgName = awsS3Service.uploadProfileImage(set345StoryTemplateRequest.getFourth());
+//            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
+//            StoryImage storyImage = StoryImage.builder()
+//                    .imgName(imgName)
+//                    .imgUrl(imgUrl)
+//                    .story(story.get())
+//                    .index(4)
+//                    .build();
+//            storyImageRepository.save(storyImage);
+//        }else{
+//            StoryImage storyImage = StoryImage.builder()
+//                    .story(story.get())
+//                    .index(4)
+//                    .build();
+//            storyImageRepository.save(storyImage);
+//        }
+
         return makeResponse("200",story,"success", HttpStatus.OK);
     }
 }

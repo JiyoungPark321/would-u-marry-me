@@ -10,9 +10,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Api(tags={"5.Music"})
 @RestController
@@ -38,4 +40,13 @@ public class MusicController {
         Object response= musicService.setMusic(setMusicRequest);
         return response;
     }
+
+    //음악 추가하기
+    @PostMapping
+    @ApiOperation("음악 추가하기기")
+    public Object createMusic(@Valid @RequestBody @ApiParam(value = "노래파일" ,required = true)MultipartFile music) throws IOException {
+        Object response = musicService.createMusic(music);
+        return response;
+    }
 }
+
