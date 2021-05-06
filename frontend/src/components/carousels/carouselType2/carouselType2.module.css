@@ -1,0 +1,15 @@
+.carousel-type1 {
+  width: 500px;
+  height: 500px;
+}
+
+.swiper-container {
+  --swiper-navigation-size: 1.5rem;
+  --swiper-navigation-color: #fadada;
+  --swiper-pagination-color: #f5afaf;
+}
+
+.swiper-slider img {
+  display: flex;
+  justify-content: center;
+}
