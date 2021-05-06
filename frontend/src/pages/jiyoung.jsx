@@ -10,6 +10,7 @@ import PasswordAuthentication from '../components/passwordAuthentication/passwor
 import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
 import { NextButton, PrevButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
 import MusicInfo from '../components/musicInfo/musicInfo';
+import CarouselType2 from '../components/carousels/carouselType2/carouselType2';
 
 const Jiyoung = () => {
   
@@ -33,6 +34,9 @@ const Jiyoung = () => {
       <NextButton />
       <PrevButton />
       <MusicInfo />
+      <div styles="width: 300px">
+        <CarouselType2 />
+      </div>
       <br/>
     </div>
   );
