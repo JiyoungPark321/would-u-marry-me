@@ -33,16 +33,22 @@ public class WeddingCard {
     private String place;
 
     @Column(name="man_phone")
-    private String manphone;
+    private String manPhone;
 
     @Column(name="woman_phone")
-    private String womanphone;
+    private String womanPhone;
 
     @Column(name="man_account")
-    private String manaccountNumber;
+    private String manAccountNumber;
 
     @Column(name="woman_account")
-    private String womanaccountNumber;
+    private String womanAccountNumber;
+
+    @Column(name="first_comment")
+    private String firstComment;
+
+    @Column(name = "second_comment")
+    private String secondComment;
 
     @OneToOne( fetch = FetchType.LAZY)
     @JoinColumn(name="spot_id")
@@ -56,14 +62,15 @@ public class WeddingCard {
     @JoinColumn(name="card_template_id")
     private WeddingCardTemplate template;
 
-    @OneToOne(mappedBy = "weddingcard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private WeddingCardImage weddingCardImage;
 
-    @OneToMany(mappedBy = "weddingcard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<WeddingCardComment> weddingCardComments = new ArrayList<>();
+
+    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private WeddingCardMap weddingCardMap;
 
     @Builder
-    public WeddingCard (Storyboard storyboard,Spot spot){
+    public WeddingCard(Storyboard storyboard,Spot spot){
         this.storyboard=storyboard;
         this.spot=spot;
     }
