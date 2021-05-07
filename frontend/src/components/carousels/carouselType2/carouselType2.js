@@ -9,9 +9,9 @@ import "swiper/components/navigation/navigation.min.css"
 
 import styles from './carouselType2.module.css';
 
-import SwiperCore, { EffectCube, Pagination, Navigation, Scrollbar } from 'swiper/core';
+import SwiperCore, { EffectCube, Pagination, Navigation } from 'swiper/core';
 
-SwiperCore.use([EffectCube,Pagination,Navigation,Scrollbar]);
+SwiperCore.use([EffectCube, Pagination, Navigation]);
 
 
 const CarouselType2 = () => {
@@ -36,35 +36,38 @@ const CarouselType2 = () => {
 
 
   return (
-    <div className={styles['carousel-type1']}>
-      <Swiper 
-        effect={'cube'} 
-        grabCursor={true} 
-        cubeEffect={{
-          "shadow": true,
-          "slideShadows": true,
-          "shadowOffset": 100,
-          "shadowScale": 0.94,
-        }}        
-        pagination={{ "clickable": true }}
-        navigation={{ "clickable": true }}
-        className={styles['swiper-container']}>
-        <div className={styles['swiper-wrapper']}>
-        {
-          musicData.map((data) => {
-            return (
-              <SwiperSlide
-                className={styles['swiper-slide']}
-                key={data.id}
-              >
-                <img src={data.img} />
-              </SwiperSlide>
-            );
-          })
-        }
-        </div>
-      </Swiper>
-    </div>
+    <Swiper 
+      effect={'cube'} 
+      grabCursor={true} 
+      cubeEffect={{
+        "shadow": true,
+        "slideShadows": true,
+        "shadowOffset": 50,
+        "shadowScale": 0.94,
+      }}        
+      pagination={{ "clickable": true }}
+      navigation={{ "clickable": true }}
+      loop={true}
+      speed={3000}
+      className={styles['swiper-container']}>
+      <div className={styles['swiper-wrapper']}>
+      {
+        musicData.map((data) => {
+          return (
+            <SwiperSlide
+              className={styles['swiper-slide']}
+              key={data.id}
+            >
+              <img 
+                src={data.img} 
+                className={styles['album-img']}
+              />
+            </SwiperSlide>
+          );
+        })
+      }
+      </div>
+    </Swiper>
   );
 };
 
