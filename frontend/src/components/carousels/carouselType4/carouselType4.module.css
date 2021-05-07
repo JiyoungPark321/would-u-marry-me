@@ -1,0 +1,24 @@
+.swiper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1490px;
+  padding: 90px;
+  --swiper-navigation-size: 2rem;
+  --swiper-navigation-color: #ff0080;
+  --swiper-pagination-color: #f5afaf;
+}
+
+.swiper-slide {
+  width: 230px;
+  height: 300px;
+  background-color: white;
+  opacity: 38%;
+  border-radius: 30px;
+}
+
+.place-img {
+  width: 230px;
+  height: 300px;
+  border-radius: 30px;
+}
