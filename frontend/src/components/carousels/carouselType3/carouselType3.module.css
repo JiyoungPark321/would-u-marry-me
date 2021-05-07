@@ -1,0 +1,19 @@
+.swiper-container {
+  width: 700px;
+  padding: 100px;
+  --swiper-navigation-size: 1.5rem;
+  --swiper-navigation-color: #fadada;
+  --swiper-pagination-color: #f5afaf;
+}
+
+.swiper-slide {
+  width: 500px;
+  height: 500px;
+  border-radius: 30px;
+}
+
+.character-img {
+  width: 500px;
+  height: 500px;
+  border-radius: 30px;
+}
