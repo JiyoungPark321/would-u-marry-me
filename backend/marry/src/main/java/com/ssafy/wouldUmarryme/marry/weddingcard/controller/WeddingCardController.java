@@ -3,18 +3,19 @@ package com.ssafy.wouldUmarryme.marry.weddingcard.controller;
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
 import com.ssafy.wouldUmarryme.marry.weddingcard.dto.CreateWeddingCardRequest;
+import com.ssafy.wouldUmarryme.marry.weddingcard.dto.InputWeddingCardRequest;
+import com.ssafy.wouldUmarryme.marry.weddingcard.dto.RetrieveWeddingCardRequest;
+import com.ssafy.wouldUmarryme.marry.weddingcard.dto.TemplateNumberRequest;
 import com.ssafy.wouldUmarryme.marry.weddingcard.service.WeddingCardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Api(tags = {"8.WeddingCard"})
 @RestController
@@ -31,5 +32,31 @@ public class WeddingCardController {
         Object response=weddingCardService.createCard(createWeddingCardRequest);
         return response;
     }
-//
+
+    @PutMapping("/template")
+    @ApiOperation(value = "템플릿 설정")
+    public Object setTemplate(@Valid @ApiParam(value = "카드 아이디,템플릿 아이디",required = true) @RequestBody TemplateNumberRequest templateNumberRequest,
+                              @ApiIgnore @CurrentAccount Account account){
+        Object response = weddingCardService.setTemplate(templateNumberRequest);
+        return response;
+    }
+
+    @PutMapping("/value")
+    @ApiOperation(value = "청첩장 값 넣기")
+    public Object insert(@Valid @ApiParam(value="웨딩카드아이디 필요",required = true)
+                                 InputWeddingCardRequest inputWeddingCardRequest, @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard(inputWeddingCardRequest);
+        return response;
+    }
+
+    @GetMapping
+    @ApiOperation(value = "청첩장 조회")
+    public Object retrieve(@Valid @ApiParam(value = "스토리보드 아이디",required = true)
+                           RetrieveWeddingCardRequest retrieveWeddingCardRequest,@ApiIgnore @CurrentAccount Account account){
+        Object response = weddingCardService.retrieveCard(retrieveWeddingCardRequest);
+        return response;
+    }
+
+
+
 }

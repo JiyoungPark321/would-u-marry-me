@@ -10,19 +10,23 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name="card_Map")
-public class WeddingPlace {
+@Table(name="card_map")
+public class WeddingCardMap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="card_template_place_id")
+    @Column(name="card_map_id")
     private Long  id;
 
-    @Column(name = "card_template_place_name")
+    @Column(name = "card_map_name")
     private String placeName;
 
-    @Column(name="card_template_x")
+    @Column(name="card_map_x")
     private Double x;
 
-    @Column(name="card_template_y")
+    @Column(name="card_map_y")
     private Double y;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "card_id")
+    private WeddingCard weddingCard;
 }

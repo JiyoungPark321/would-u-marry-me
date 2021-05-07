@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,13 +19,19 @@ public class WeddingCardImage {
     private Long id;
 
     @Column(name = "card_image_name")
-    private String cardImageName;
+    private String imgName;
 
     @Column(name = "card_image_Url")
     private String imgUrl;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="card_id")
-    private WeddingCard weddingcard;
+    private WeddingCard weddingCard;
+
+    @Builder
+    public WeddingCardImage(String imgName,String imgUrl){
+        this.imgName=imgName;
+        this.imgUrl=imgUrl;
+    }
 
 }
