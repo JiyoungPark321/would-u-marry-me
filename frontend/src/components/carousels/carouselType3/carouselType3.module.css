@@ -9,9 +9,11 @@
 .swiper-slide {
   width: 500px;
   height: 500px;
+  border-radius: 30px;
 }
 
-.album-img {
+.character-img {
   width: 500px;
   height: 500px;
+  border-radius: 30px;
 }

@@ -2,20 +2,20 @@ import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import "swiper/swiper.min.css";
-import "swiper/components/effect-cube/effect-cube.min.css"
+import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
 
 
-import styles from './carouselType2.module.css';
+import styles from './carouselType1.module.css';
 
-import SwiperCore, { EffectCube, Pagination, Navigation } from 'swiper/core';
+import SwiperCore, { EffectCoverflow, Pagination, Navigation } from 'swiper/core';
 
-SwiperCore.use([EffectCube, Pagination, Navigation]);
+SwiperCore.use([EffectCoverflow, Pagination, Navigation]);
 
 
-const CarouselType2 = () => {
-  const musicData = [
+const CarouselType1 = () => {
+  const backgroundData = [
     {
       id: 1,
       img: "https://picsum.photos/500/500",
@@ -32,27 +32,34 @@ const CarouselType2 = () => {
       id: 4,
       img: "https://picsum.photos/500/503",
     },
+    {
+      id: 5,
+      img: "https://picsum.photos/500/504",
+    },
   ]
 
 
   return (
     <Swiper 
-      effect={'cube'} 
-      grabCursor={true} 
-      cubeEffect={{
-        "shadow": true,
-        "slideShadows": true,
-        "shadowOffset": 50,
-        "shadowScale": 0.94,
+      effect={'coverflow'} 
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView={'auto'}
+      coverflowEffect={{
+        "rotate": 50,
+        "stretch": 0,
+        "depth": 100,
+        "modifier": 1,
+        "slideShadows": true
       }}        
       pagination={{ "clickable": true }}
       navigation={{ "clickable": true }}
       loop={true}
-      speed={3000}
+      speed={1000}
       className={styles['swiper-container']}>
       <div className={styles['swiper-wrapper']}>
       {
-        musicData.map((data) => {
+        backgroundData.map((data) => {
           return (
             <SwiperSlide
               className={styles['swiper-slide']}
@@ -60,7 +67,7 @@ const CarouselType2 = () => {
             >
               <img 
                 src={data.img} 
-                className={styles['album-img']}
+                className={styles['background-img']}
               />
             </SwiperSlide>
           );
@@ -71,4 +78,4 @@ const CarouselType2 = () => {
   );
 };
 
-export default CarouselType2;
+export default CarouselType1;

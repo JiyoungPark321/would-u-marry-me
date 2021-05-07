@@ -2,20 +2,20 @@ import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import "swiper/swiper.min.css";
-import "swiper/components/effect-cube/effect-cube.min.css"
+import "swiper/components/effect-flip/effect-flip.min.css"
 import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
 
 
-import styles from './carouselType2.module.css';
+import styles from './carouselType3.module.css';
 
-import SwiperCore, { EffectCube, Pagination, Navigation } from 'swiper/core';
+import SwiperCore, { EffectFlip, Pagination, Navigation } from 'swiper/core';
 
-SwiperCore.use([EffectCube, Pagination, Navigation]);
+SwiperCore.use([EffectFlip, Pagination, Navigation]);
 
 
-const CarouselType2 = () => {
-  const musicData = [
+const CarouselType3 = () => {
+  const characterData = [
     {
       id: 1,
       img: "https://picsum.photos/500/500",
@@ -37,22 +37,19 @@ const CarouselType2 = () => {
 
   return (
     <Swiper 
-      effect={'cube'} 
+      effect={'flip'} 
       grabCursor={true} 
-      cubeEffect={{
-        "shadow": true,
+      flipEffect={{
         "slideShadows": true,
-        "shadowOffset": 50,
-        "shadowScale": 0.94,
       }}        
       pagination={{ "clickable": true }}
       navigation={{ "clickable": true }}
       loop={true}
-      speed={3000}
+      speed={2500}
       className={styles['swiper-container']}>
       <div className={styles['swiper-wrapper']}>
       {
-        musicData.map((data) => {
+        characterData.map((data) => {
           return (
             <SwiperSlide
               className={styles['swiper-slide']}
@@ -60,7 +57,7 @@ const CarouselType2 = () => {
             >
               <img 
                 src={data.img} 
-                className={styles['album-img']}
+                className={styles['character-img']}
               />
             </SwiperSlide>
           );
@@ -71,4 +68,4 @@ const CarouselType2 = () => {
   );
 };
 
-export default CarouselType2;
+export default CarouselType3;

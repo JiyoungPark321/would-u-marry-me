@@ -10,12 +10,17 @@ import PasswordAuthentication from '../components/passwordAuthentication/passwor
 import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
 import { NextButton, PrevButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
 import MusicInfo from '../components/musicInfo/musicInfo';
+import CarouselType1 from '../components/carousels/carouselType1/carouselType1';
 import CarouselType2 from '../components/carousels/carouselType2/carouselType2';
+import CarouselType3 from '../components/carousels/carouselType3/carouselType3';
+import CarouselType4 from '../components/carousels/carouselType4/carouselType4';
+import CarouselType5 from '../components/carousels/carouselType5/carouselType5';
 
 const Jiyoung = () => {
   
   
   return (
+    // <div style={{backgroundColor: "black"}}>
     <div>
       지영페이지
       <i className="fas fa-air-freshener"></i>
@@ -34,9 +39,47 @@ const Jiyoung = () => {
       <NextButton />
       <PrevButton />
       <MusicInfo />
-      <div styles="width: 300px">
-        <CarouselType2 />
-      </div>
+      <CarouselType1 />
+      <br/>
+      <br/>
+      <CarouselType2 />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <CarouselType3 />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <CarouselType4 />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <CarouselType5 />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <br/>
     </div>
   );
