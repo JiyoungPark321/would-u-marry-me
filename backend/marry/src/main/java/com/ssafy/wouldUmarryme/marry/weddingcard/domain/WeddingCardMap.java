@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class WeddingCardMap {
     @Column(name="card_map_y")
     private Double y;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "card_id")
     private WeddingCard weddingCard;

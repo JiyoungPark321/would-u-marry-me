@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class Music {
     @Column(name = "music_Url")
     private String musicUrl;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "music", fetch = FetchType.LAZY)
     private Storyboard storyboard;
 

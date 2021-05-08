@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.service;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
+import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
@@ -9,6 +10,8 @@ import com.ssafy.wouldUmarryme.marry.story.dto.request.CreateStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.RetrieveStoryBoardDetailRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
+import com.ssafy.wouldUmarryme.marry.story.dto.response.StoryboardResponse;
+import com.ssafy.wouldUmarryme.marry.story.dto.response.UpdateStoryboardTitleResponse;
 import com.ssafy.wouldUmarryme.marry.story.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,6 +31,7 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 public class StoryboardService {
 
     private final StoryBoardRepository storyBoardRepository;
+    private final AccountRepository accountRepository;
 
 
     public Object createNewStoryBoard(CreateStoryboardRequest createStoryboardRequest, Account account) {
@@ -35,14 +39,15 @@ public class StoryboardService {
                 .title(createStoryboardRequest.getStoryboardTitle())
                 .account(account)
                 .build();
-        Storyboard saveStoryboard = storyBoardRepository.save(storyboard);
-        return makeResponse("200",saveStoryboard,"success", HttpStatus.OK);
+        storyBoardRepository.save(storyboard);
+
+        return makeResponse("200",storyboard.getId(),"success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
     public Object getStoryboardList(Account account){
-        List<Storyboard> lists = storyBoardRepository.findAllByAccount(account);
-        return makeResponse("200",lists,"success", HttpStatus.OK);
+        List<Storyboard> lists = storyBoardRepository.findByAccount(account);
+        return makeResponse("200",StoryboardResponse.listOf(lists),"success",HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
@@ -62,10 +67,11 @@ public class StoryboardService {
             return makeResponse("400",null,"fail",HttpStatus.NOT_FOUND);
         }
         else{
-            Storyboard updateStoryboard = storyboard.get();
-            updateStoryboard.setTitle(updateStoryboardTitleRequest.getTitle());
-            Storyboard saveStoryboard = storyBoardRepository.save(updateStoryboard);
-            return makeResponse("200",saveStoryboard,"success",HttpStatus.OK);
+            Storyboard requestStoryboard = updateStoryboardTitleRequest.toStoryboard();
+            storyboard.get().update(requestStoryboard);
+            Storyboard save = storyBoardRepository.save(storyboard.get());
+            return makeResponse("200", UpdateStoryboardTitleResponse.of(save),"success",HttpStatus.OK);
+
         }
     }
 

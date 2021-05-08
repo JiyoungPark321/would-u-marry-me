@@ -7,15 +7,18 @@ import com.ssafy.wouldUmarryme.marry.story.dto.request.CreateStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.RetrieveStoryBoardDetailRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
+import com.ssafy.wouldUmarryme.marry.story.dto.response.StoryboardResponse;
 import com.ssafy.wouldUmarryme.marry.story.service.StoryboardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Api(tags={"2.Storyboard"})
 @RestController

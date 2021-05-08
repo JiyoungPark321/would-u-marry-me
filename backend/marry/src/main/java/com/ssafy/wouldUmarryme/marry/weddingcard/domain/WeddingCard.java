@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
@@ -50,23 +51,25 @@ public class WeddingCard {
     @Column(name = "second_comment")
     private String secondComment;
 
-    @OneToOne( fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToOne( fetch = FetchType.LAZY,orphanRemoval = true)
     @JoinColumn(name="spot_id")
     private Spot spot;
 
-    @OneToOne
-    @JoinColumn(name = "storyboard_id")
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,orphanRemoval = true)
     private Storyboard storyboard;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER,orphanRemoval = true)
     @JoinColumn(name="card_template_id")
     private WeddingCardTemplate template;
 
-    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
     private WeddingCardImage weddingCardImage;
 
 
-    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
     private WeddingCardMap weddingCardMap;
 
     @Builder

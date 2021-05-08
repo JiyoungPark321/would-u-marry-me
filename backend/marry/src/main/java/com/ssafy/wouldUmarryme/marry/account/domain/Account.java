@@ -33,7 +33,7 @@ public class Account {
 
     private String verificationCodeNumber;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Storyboard> storyboards;
 
     @Column(name = "role")

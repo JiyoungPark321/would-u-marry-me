@@ -19,6 +19,6 @@ public class InputWeddingCardRequest {
     private String cardWomanPhone;
     private String cardManAccountNumber;
     private String cardWomanAccountNumber;
-    private WeddingCardMap weddingCardMap;
+    //private WeddingCardMap weddingCardMap;
 
 }

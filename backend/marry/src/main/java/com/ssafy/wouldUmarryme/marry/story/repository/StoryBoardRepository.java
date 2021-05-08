@@ -11,4 +11,8 @@ import java.util.Optional;
 @Repository
 public interface StoryBoardRepository extends JpaRepository<Storyboard,Long> {
     List<Storyboard> findAllByAccount(Account account);
+
+    Storyboard findByAccountAndTitle(Account account, String storyboardTitle);
+
+    List<Storyboard> findByAccount(Account account);
 }

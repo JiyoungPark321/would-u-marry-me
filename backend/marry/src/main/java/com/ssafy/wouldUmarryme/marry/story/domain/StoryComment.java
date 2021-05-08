@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class StoryComment {
     @Column(name = "story_comment_value")
     private String value;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="story_id")
     private Story story;
