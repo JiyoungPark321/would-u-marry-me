@@ -94,7 +94,7 @@ public class WeddingCardService {
         save.setWomanPhone(inputWeddingCardRequest.getCardWomanPhone());
         save.setManAccountNumber(inputWeddingCardRequest.getCardManAccountNumber());
         save.setWomanAccountNumber(inputWeddingCardRequest.getCardWomanAccountNumber());
-        save.setWeddingCardMap(inputWeddingCardRequest.getWeddingCardMap());
+        //save.setWeddingCardMap(inputWeddingCardRequest.getWeddingCardMap());
         weddingCardRepository.save(save);
         return makeResponse("200",save,"success",HttpStatus.OK);
     }

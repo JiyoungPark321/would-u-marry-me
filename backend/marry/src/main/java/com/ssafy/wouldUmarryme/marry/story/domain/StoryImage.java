@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class StoryImage {
     @Column(name = "story_image_ul")
     private String imgUrl;
 
+    @JsonIgnore
     @ManyToOne( fetch = FetchType.LAZY)
     @JoinColumn(name = "story_id")
     private Story story;

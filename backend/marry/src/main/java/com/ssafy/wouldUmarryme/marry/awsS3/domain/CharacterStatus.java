@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,9 +28,11 @@ public class CharacterStatus {
     @Column(name="character_status_url")
     private String characterUrl;
 
+
     @Column(name = "character_status_status")
     private String status;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="character_id")
     private Character character;

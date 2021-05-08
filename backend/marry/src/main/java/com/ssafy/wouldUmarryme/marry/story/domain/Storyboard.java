@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
@@ -33,28 +34,30 @@ public class Storyboard {
     private String title;
 
     //배경이미지
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "background_id")
     private Background background;
 
     //캐릭터
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="character_id")
     private Character character;
 
     //배경음악
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "music_id")
     private Music music;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "storyboard", fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "storyboard", fetch = FetchType.EAGER , cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Story> stories = new ArrayList<>();
 
-    @OneToOne(mappedBy = "storyboard",cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "card_id")
     private WeddingCard weddingCard;
 
     @Builder
@@ -62,6 +65,16 @@ public class Storyboard {
         this.account = account;
         this.title=title;
     }
+
+    @Builder
+    public Storyboard(String title){
+        this.title=title;
+    }
+
+    public void update(Storyboard requestStoryboard){
+        this.title=requestStoryboard.title;
+    }
+
 
 
 }

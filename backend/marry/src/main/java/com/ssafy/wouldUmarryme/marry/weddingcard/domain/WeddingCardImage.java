@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class WeddingCardImage {
     @Column(name = "card_image_Url")
     private String imgUrl;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="card_id")
     private WeddingCard weddingCard;
