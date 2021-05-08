@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import StoryList from '../../components/storyList/storyList';
 import api from '../../service/api';
-import styles from './storyBoard.module.css';
+import styles from './myStoryBoard.module.css';
 
-const StoryBoard = () => {
+const MyStoryBoard = () => {
   const history = useHistory();
 
   const [modalState, setModalState] = useState(false);
@@ -64,4 +63,4 @@ const StoryBoard = () => {
   );
 };
 
-export default StoryBoard;
+export default MyStoryBoard;

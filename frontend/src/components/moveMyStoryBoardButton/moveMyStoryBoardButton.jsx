@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './moveStoryBoardButton.module.css';
+import styles from './moveMyStoryBoardButton.module.css';
 
-const MoveStoryBoardButton = ({ color }) => {
+const MoveMyStoryBoardButton = ({ color }) => {
 
   return (
     <div className={`${styles['move-story-board-button']} ${color === "white" && styles['color-white']}`}>
@@ -10,4 +10,4 @@ const MoveStoryBoardButton = ({ color }) => {
   );
 };
 
-export default MoveStoryBoardButton;
+export default MoveMyStoryBoardButton;

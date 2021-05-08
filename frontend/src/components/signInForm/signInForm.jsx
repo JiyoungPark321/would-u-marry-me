@@ -51,6 +51,7 @@ const SignInForm = () => {
         })
         .catch((err) => {
           console.error(err);
+          alert('id 와 password 를 확인해주세요')
         })
     }
   }

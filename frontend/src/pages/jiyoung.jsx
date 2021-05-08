@@ -7,7 +7,7 @@ import FindPasswordForm from '../components/findPasswordForm/findPasswordForm';
 import ChangePasswordForm from '../components/changePasswordForm/changePasswordForm';
 import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
-import MoveStoryBoardButton from '../components/moveStoryBoardButton/moveStoryBoardButton';
+import MoveMyStoryBoardButton from '../components/moveMyStoryBoardButton/moveMyStoryBoardButton';
 import { NextButton, PrevButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
 import MusicInfo from '../components/musicInfo/musicInfo';
 import CarouselType1 from '../components/carousels/carouselType1/carouselType1';
@@ -34,7 +34,7 @@ const Jiyoung = () => {
       <ChangePasswordForm />
       <EditMemberInfoForm />
       <PasswordAuthentication />
-      <MoveStoryBoardButton />
+      <MoveMyStoryBoardButton />
       <PrevNextButton />
       <NextButton />
       <PrevButton />

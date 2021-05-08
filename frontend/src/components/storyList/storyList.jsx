@@ -54,18 +54,18 @@ const StoryList = () => {
 
 
   const startNewStoryBoard = () => {
-    // api.post('storyboard', {
-    //   title: newTitle
-    // },
-    // {
-    //   headers: {Authorization: localStorage.getItem("jwt"),}
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
+    api.post('storyboard', {
+      storyboardTitle: newTitle
+    },
+    {
+      headers: {Authorization: localStorage.getItem("jwt"),}
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
 
@@ -76,7 +76,9 @@ const StoryList = () => {
           className={styles['add-button']}
           onClick={startNewStoryBoard}
         >
-          +
+          <p className={newTitle && styles['add-button-blink']}>
+            +
+          </p>
         </button>
         <input 
           className={styles['add-title']}
