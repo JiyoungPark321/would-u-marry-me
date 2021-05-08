@@ -1,7 +1,3 @@
-button {
-  border: none;
-}
-
 .story-board {
   background-color: #fff9fa;
   padding: 0em 6.25em 1em;
@@ -72,7 +68,6 @@ button {
 }
 
 .logout-button {
-  /* background-color: white; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 33px;
