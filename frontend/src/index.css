@@ -9,6 +9,10 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 input {
   margin: 0;
 }
