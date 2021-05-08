@@ -8,7 +8,7 @@ import Sungjoon from './pages/sungjoon';
 
 import SignUp from './pages/signUp/signUp';
 import SignIn from './pages/signIn/signIn';
-import StoryBoard from './pages/storyBoard/storyBoard';
+import myStoryBoard from './pages/myStoryBoard/myStoryBoard';
 
 
 const App = () => {
@@ -22,9 +22,7 @@ const App = () => {
         <Route path="/signup" component={SignUp} exact />
         <Route path="/signin" component={SignIn} exact />
 
-        {/* 아이디 수정 */}
-        <Route path="/:id/storyboard" component={StoryBoard} exact />
-        {/* <Route path="/:id/storyboard" component={localStorage.getItem('id') ? StoryBoard : SignIn} exact /> */}
+        <Route path="/:id/storyboard" component={localStorage.getItem('userId') ? myStoryBoard : SignIn} exact />
 
       </Switch>
 
