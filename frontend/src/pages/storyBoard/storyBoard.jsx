@@ -18,15 +18,45 @@ import { useParams } from 'react-router';
 const StoryBoard = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [saveCheck, setSaveCheck] = useState([false, false, false, false, false, false, false, false, false]);
+  const [backgroundUrl, setBackgroundUrl] = useState('');
+
   const { id } = useParams();
+  
 
   useEffect(() => {
-    api.get('/storyboard/detailStoryboard',
+    api.get(`/storyboard/${id}`,
     {
       headers: {Authorization: localStorage.getItem("jwt")},
-      params: {storyboardId: id}
     })
       .then((res) => {
+        const newSaveCheck = [...saveCheck];
+        if (res.data.data.weddingCard == null) {
+          setCurrentStep(8);
+        } else {
+          newSaveCheck[8] = true;
+        }
+        res.data.data.stories.reverse().forEach(story => {
+          setCurrentStep(story.index);
+          // index 0부터 온다고 가정하고 했음.
+          newSaveCheck[story.index + 3] = true;
+        })
+        if (res.data.data.character == null) {
+          setCurrentStep(2);
+        } else {
+          newSaveCheck[2] = true;
+        }
+        if (res.data.data.music == null) {
+          setCurrentStep(1);
+        } else {
+          newSaveCheck[2] = true;
+        }
+        if (res.data.data.background == null) {
+          setCurrentStep(0);
+        } else {
+          newSaveCheck[0] = true;
+        }
+
+
         console.log(res.data.data);
         console.log(id);
       })
@@ -48,7 +78,10 @@ const StoryBoard = () => {
 
 
   return (
-    <>
+    <div 
+      style={{ backgroundImage: `url(${backgroundUrl})` }} 
+      className={styles['story-board-container']}
+    >
       <StepProgressBar 
         currentStep={currentStep}
         
@@ -56,11 +89,11 @@ const StoryBoard = () => {
       <MoveMyStoryBoardButton />
       {
         (() => {
-          if (currentStep === 0) return <CarouselType1 />
-          if (currentStep === 1) return <CarouselType2 />
-          if (currentStep === 2) return <CarouselType3 />
-          if (currentStep === 3) return <CarouselType4 />
-          if (currentStep === 4) return <CarouselType5 />
+          if (currentStep === 0) return <CarouselType1 setBackgroundUrl={setBackgroundUrl} />
+          else if (currentStep === 1) return <CarouselType2 />
+          else if (currentStep === 2) return <CarouselType3 />
+          else if (currentStep === 3) return <CarouselType4 />
+          else if (currentStep === 4) return <CarouselType5 />
           
         })()
       }
@@ -68,7 +101,7 @@ const StoryBoard = () => {
       <NextButton 
         moveNextStep={moveNextStep}
       />
-    </>
+    </div>
   );
 };
 
