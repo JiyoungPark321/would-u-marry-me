@@ -5,7 +5,7 @@ import api from '../../service/api';
 
 const SignUpForm = () => {
 
-  const history = useHistory()
+  const history = useHistory();
 
   const [userName, setUserName] = useState('');
   const [idDuplicateCheck, setIdDuplicateCheck] = useState(false);
@@ -89,6 +89,7 @@ const SignUpForm = () => {
       })
         .then((res) => {
           console.log(res);
+          history.push('/signin')
         })
         .catch((err) => {
           console.log(err);
