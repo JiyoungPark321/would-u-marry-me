@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,5 +29,11 @@ public class StoryTemplate {
     @JsonIgnore
     @OneToOne(mappedBy = "template" , fetch = FetchType.LAZY,orphanRemoval = true)
     private Story story;
+
+    @Builder
+    public StoryTemplate(String imgName,String imgUrl){
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+    }
 
 }

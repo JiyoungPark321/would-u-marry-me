@@ -51,8 +51,9 @@ public class StoryboardService {
     }
 
     @Transactional(readOnly = true)
-    public Object getStoryboardDetail(RetrieveStoryBoardDetailRequest retrieveStoryBoardDetailRequest) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(retrieveStoryBoardDetailRequest.getStoryboardId());
+    public Object getStoryboardDetail(Long id) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(id);
+        System.out.println(storyboard.get().getTitle());
         if(storyboard.isEmpty()){
             return makeResponse("400",null,"fail",HttpStatus.NOT_FOUND);
         }
