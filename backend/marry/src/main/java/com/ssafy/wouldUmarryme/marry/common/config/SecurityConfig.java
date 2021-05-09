@@ -55,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/account/search").permitAll()
                 .antMatchers(HttpMethod.POST, "/account/sms").permitAll()
                 .antMatchers(HttpMethod.POST, "/music").permitAll()
-                        .antMatchers(HttpMethod.PUT, "/account/password").permitAll()
+                .antMatchers(HttpMethod.POST, "/background").permitAll()
+                .antMatchers(HttpMethod.PUT, "/account/password").permitAll()
                 .antMatchers(HttpMethod.POST, "/account").permitAll()
                 .antMatchers("/account/**").hasRole("USER")
                 .anyRequest().authenticated();

@@ -75,7 +75,7 @@ public class WeddingCardService {
         String imgUrl="";
 
         if(object!=null){
-            imgName = awsS3Service.uploadProfileImage(object);
+            imgName = awsS3Service.uploadProfileImage(object,"card");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             WeddingCardImage weddingCardImage= WeddingCardImage.builder()
                     .imgName(imgName)

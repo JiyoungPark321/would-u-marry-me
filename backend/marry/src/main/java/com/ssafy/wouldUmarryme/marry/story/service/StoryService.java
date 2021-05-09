@@ -72,7 +72,7 @@ public class StoryService {
         String imgName="";
         String imgUrl="";
         if(object!=null){
-            imgName = awsS3Service.uploadProfileImage(object);
+            imgName = awsS3Service.uploadProfileImage(object,"story");
             imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             StoryImage storyImage = StoryImage.builder()
                     .imgName(imgName)

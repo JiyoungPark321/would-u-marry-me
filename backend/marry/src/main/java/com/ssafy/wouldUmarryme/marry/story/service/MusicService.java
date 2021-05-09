@@ -29,9 +29,9 @@ public class MusicService {
 
     private final MusicRepository musicRepository;
     private final StoryBoardRepository storyBoardRepository;
-    private final AwsConfiguration awsConfiguration;
+
     private final AwsS3Service awsS3Service;
-    private AmazonS3 amazonS3;
+
 
     @Transactional(readOnly = true)
     public Object getMusicList() {
@@ -52,8 +52,7 @@ public class MusicService {
     }
 
     public Object createMusic(MultipartFile multipartFile) throws IOException {
-        amazonS3 = awsConfiguration.setS3Client();
-        String musicName = awsS3Service.uploadProfileImage(multipartFile);
+        String musicName = awsS3Service.uploadProfileImage(multipartFile,"music");
         String musicUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +musicName;
         Music music = Music.builder()
                 .musicName(musicName)

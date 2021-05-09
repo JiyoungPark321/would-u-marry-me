@@ -9,9 +9,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Api(tags={"3.background"})
 @RestController
@@ -35,6 +37,14 @@ public class BackgroundController {
     public Object setBackground(@Valid @RequestBody @ApiParam(value = "배경 이미지, 스토리보드 Id" ,required = true) SetBackgroundRequest setBackgroundRequest, @ApiIgnore @CurrentAccount Account account){
 
         Object response= backgroundService.setBackground(setBackgroundRequest);
+        return response;
+    }
+
+    //배경 추가하기
+    @PostMapping
+    @ApiOperation(value = "배경 추가하기")
+    public Object createBackground(@Valid @RequestBody @ApiParam(value = "배경 사진",required = true)MultipartFile image) throws IOException{
+        Object response = backgroundService.createBackground(image);
         return response;
     }
 

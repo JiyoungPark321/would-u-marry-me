@@ -71,9 +71,15 @@ public class Storyboard {
         this.title=title;
     }
 
-    public void update(Storyboard requestStoryboard){
+    @Builder
+    public Storyboard(Character character){
+        this.character=character;
+    }
+
+    public void updateTitle(Storyboard requestStoryboard){
         this.title=requestStoryboard.title;
     }
+    public void updateCharacter(Character requestCharacter){this.character=requestCharacter;}
 
 
 

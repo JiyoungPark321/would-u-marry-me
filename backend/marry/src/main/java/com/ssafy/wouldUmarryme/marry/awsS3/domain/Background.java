@@ -3,6 +3,7 @@ package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,4 +31,10 @@ public class Background {
     @JsonIgnore
     @OneToOne(mappedBy = "background", fetch = FetchType.LAZY)
     private Storyboard storyboard;
+
+    @Builder
+    public Background(String backgroundImgName,String backgroundImgUrl){
+        this.backgroundImgName=backgroundImgName;
+        this.backgroundImgUrl=backgroundImgUrl;
+    }
 }

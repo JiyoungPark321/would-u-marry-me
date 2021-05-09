@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,4 +37,12 @@ public class CharacterStatus {
     @ManyToOne
     @JoinColumn(name="character_id")
     private Character character;
+
+    @Builder
+    public CharacterStatus(String characterName,String characterUrl,String status,Character character){
+        this.characterName=characterName;
+        this.characterUrl=characterUrl;
+        this.status=status;
+        this.character=character;
+    }
 }

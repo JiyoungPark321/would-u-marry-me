@@ -68,7 +68,7 @@ public class StoryboardService {
         }
         else{
             Storyboard requestStoryboard = updateStoryboardTitleRequest.toStoryboard();
-            storyboard.get().update(requestStoryboard);
+            storyboard.get().updateTitle(requestStoryboard);
             Storyboard save = storyBoardRepository.save(storyboard.get());
             return makeResponse("200", UpdateStoryboardTitleResponse.of(save),"success",HttpStatus.OK);
 
