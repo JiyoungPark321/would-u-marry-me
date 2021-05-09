@@ -77,6 +77,7 @@ const CarouselType5 = () => {
             <SwiperSlide
               className={styles['swiper-slide']}
               key={data.id}
+              // onClick={}
             >
               <div className={styles['img-container']}>
                 <img 
