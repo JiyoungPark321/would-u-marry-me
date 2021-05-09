@@ -12,6 +12,7 @@ const StoryListItem = ({ data }) => {
 
   const goEditMode = () => {
     setTitleEditMode(!titleEditMode);
+    setNewTitle(data.title);
   }
 
 
@@ -26,6 +27,7 @@ const StoryListItem = ({ data }) => {
           type="text"
           minLength="1"
           maxLength="25"
+          value={newTitle}
           onChange={(e) => {setNewTitle(e.target.value);}}
         />
         <div className={styles['button-container']}>
