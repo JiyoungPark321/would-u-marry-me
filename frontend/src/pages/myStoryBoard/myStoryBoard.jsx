@@ -13,6 +13,7 @@ const MyStoryBoard = () => {
 
   useEffect(() => {
     setNickName(localStorage.getItem("nickName"));
+    console.log(localStorage.getItem("jwt"))
   },[])
 
   const changeModalState = () => {
