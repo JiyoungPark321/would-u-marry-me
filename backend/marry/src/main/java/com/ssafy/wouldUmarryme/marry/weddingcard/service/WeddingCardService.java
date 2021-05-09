@@ -30,7 +30,6 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-
 public class WeddingCardService {
 
     private final WeddingCardRepository weddingCardRepository;
@@ -73,11 +72,11 @@ public class WeddingCardService {
         MultipartFile object = inputWeddingCardRequest.getCardImg();
         String imgName="";
         String imgUrl="";
-
+        WeddingCardImage weddingCardImage =null;
         if(object!=null){
             imgName = awsS3Service.uploadProfileImage(object,"card");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-            WeddingCardImage weddingCardImage= WeddingCardImage.builder()
+            weddingCardImage= WeddingCardImage.builder()
                     .imgName(imgName)
                     .imgUrl(imgUrl)
                     .build();
@@ -85,15 +84,8 @@ public class WeddingCardService {
             save.setWeddingCardImage(weddingCardImage);
         }
 
-        save.setDate(inputWeddingCardRequest.getCardDate());
-        save.setPlace(inputWeddingCardRequest.getCardPlace());
-        save.setFirstComment(inputWeddingCardRequest.getCardFirstComment());
-        save.setSecondComment(inputWeddingCardRequest.getCardSecondComment());
-        save.setTime(inputWeddingCardRequest.getCardTime());
-        save.setManPhone(inputWeddingCardRequest.getCardManPhone());
-        save.setWomanPhone(inputWeddingCardRequest.getCardWomanPhone());
-        save.setManAccountNumber(inputWeddingCardRequest.getCardManAccountNumber());
-        save.setWomanAccountNumber(inputWeddingCardRequest.getCardWomanAccountNumber());
+        WeddingCard requestWeddingCard = inputWeddingCardRequest.toWeddingCard();
+        save.updateValue(requestWeddingCard,weddingCardImage);
         //save.setWeddingCardMap(inputWeddingCardRequest.getWeddingCardMap());
         weddingCardRepository.save(save);
         return makeResponse("200",save,"success",HttpStatus.OK);
