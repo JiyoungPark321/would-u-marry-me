@@ -1,6 +1,6 @@
 .story-board {
   background-color: #fff9fa;
-  padding: 0em 6.25em 1em;
+  padding: 0em 0em 1em 6.5em;
 }
 
 .header-container {
@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   height: 20vh;
+  padding-right: 6.5em;
   margin-bottom: 2.3em;
 }
 
@@ -90,4 +91,8 @@
   background-color: rgba(0, 17, 255, 0.123);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.main-container {
+  height: 80vh;
 }

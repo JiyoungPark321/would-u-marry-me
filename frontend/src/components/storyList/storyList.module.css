@@ -1,18 +1,17 @@
 .story-list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .add-story-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 31.25rem;
   height: 300px;
+  margin: 0 6.5em 3.75em 0;
   border: solid 8px #ddc9cb;
   border-radius: 20px;
-  background-color: #d4d4d4;
+  background-color: rgb(218, 218, 218);
 }
 
 .add-button {

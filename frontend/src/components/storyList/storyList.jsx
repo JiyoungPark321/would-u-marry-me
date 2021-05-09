@@ -12,6 +12,7 @@ const StoryList = () => {
   const [newTitle, setNewTitle] = useState('');
   const [storyListData, setStoryListData] = useState([]);
 
+
   useEffect(() => {
     api.get('/storyboard/getList', {
       headers: {Authorization: localStorage.getItem("jwt"),}
@@ -31,7 +32,7 @@ const StoryList = () => {
       storyboardTitle: newTitle
     },
     {
-      headers: {Authorization: localStorage.getItem("jwt"),}
+      headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
         const userName = localStorage.getItem("userName");
