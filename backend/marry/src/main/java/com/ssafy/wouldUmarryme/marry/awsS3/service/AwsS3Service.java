@@ -39,23 +39,7 @@ public class AwsS3Service {
         return imageName;
     }
 
-//    @Transactional
-////    public String upload(List<MultipartFile> files) throws IOException {
-//    public List<String> upload(List<MultipartFile> files) throws IOException {
-//        amazonS3 = awsConfiguration.setS3Client();
-//        List<String> fileNames = new ArrayList<>();
-//        String fileName = "filename";
-//
-//        for (MultipartFile file : files) {
-//            fileName = file.getOriginalFilename();
-//            fileNames.add(new String(fileName));
-//
-//            amazonS3.putObject(new PutObjectRequest(awsS3Property.getBucket(), fileName, file.getInputStream(), null)
-//                    .withCannedAcl(CannedAccessControlList.PublicRead));
-//        }
-////        return fileName;
-//        return fileNames;
-//    }
+
 
 
 }

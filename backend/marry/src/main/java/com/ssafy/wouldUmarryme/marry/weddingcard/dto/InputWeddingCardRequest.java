@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.dto;
 
+import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCardMap;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +22,18 @@ public class InputWeddingCardRequest {
     private String cardWomanAccountNumber;
     //private WeddingCardMap weddingCardMap;
 
+
+    public WeddingCard toWeddingCard(){
+        return WeddingCard.builder()
+                .firstComment(cardFirstComment)
+                .secondComment(cardSecondComment)
+                .date(cardDate)
+                .place(cardPlace)
+                .time(cardTime)
+                .manPhone(cardManPhone)
+                .womanPhone(cardWomanPhone)
+                .manAccountNumber(cardManAccountNumber)
+                .womanAccountNumber(cardWomanAccountNumber)
+                .build();
+    }
 }
