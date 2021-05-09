@@ -17,9 +17,24 @@
   border-radius: 50px;
 }
 
-.active {
-  color: white;
-  background-color: #b59d4b;
+.current-step {
+  border-color: #fffbd8;
+  -webkit-animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    border-color: #fffce3;
+    color: #fbea4f;
+  }
+  50% {
+    border-color: #fbea4f;
+    color: #fff280;
+  }
+  100% {
+    border-color: #fff280;
+    color: #ffffff;
+  }
 }
 
 .step-line {

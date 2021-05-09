@@ -9,6 +9,7 @@ import Sungjoon from './pages/sungjoon';
 import SignUp from './pages/signUp/signUp';
 import SignIn from './pages/signIn/signIn';
 import myStoryBoard from './pages/myStoryBoard/myStoryBoard';
+import StoryBoard from './pages/storyBoard/storyBoard';
 
 
 const App = () => {
@@ -22,7 +23,11 @@ const App = () => {
         <Route path="/signup" component={SignUp} exact />
         <Route path="/signin" component={SignIn} exact />
 
-        <Route path="/:id/storyboard" component={localStorage.getItem('userId') ? myStoryBoard : SignIn} exact />
+        {/* 다른 사람 페이지에 못들아가게 처리하는 방법? 추가해야함 */}
+        <Route path="/:userName/storyboard" component={localStorage.getItem('userId') ? myStoryBoard : SignIn} exact />
+        
+        <Route path="/:userName/storyboard/:id" component={localStorage.getItem('userId') ? StoryBoard : SignIn} exact />
+
 
       </Switch>
 

@@ -121,6 +121,7 @@ const CarouselType4 = () => {
               <img 
                 src={data.img} 
                 className={styles['place-img']}
+                // onClick={}
               />
             </SwiperSlide>
           );

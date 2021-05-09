@@ -1,50 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import api from '../../service/api';
 import styles from './storyList.module.css'
 import StoryListItem from './storyListItem';
 
-const StoryListData = [
-  {
-    id: 1,
-    img: "https://picsum.photos/486/228",
-    title: "일재혁 💘 이재혁 ㅎ하하하하하하하하하하하하하"
-  },
-  {
-    id: 2,
-    img: "https://picsum.photos/486/229",
-    title: "오재혁 💢 삼재혁"
-  },
-  {
-    id: 3,
-    img: "https://picsum.photos/486/230",
-    title: "일재혁 💘 이재혁"
-  },
-  {
-    id: 4,
-    img: "https://picsum.photos/486/231",
-    title: "오재혁 💢 삼재혁"
-  },
-  {
-    id: 5,
-    img: "https://picsum.photos/486/232",
-    title: "일재혁 💘 이재혁"
-  },
-  // {
-  //   id: 6,
-  //   img: "https://picsum.photos/486/233",
-  //   title: "오재혁 💢 삼재혁"
-  // },
-]
 
 const StoryList = () => {
 
+  const history = useHistory();
+
   const [newTitle, setNewTitle] = useState('');
+  const [storyListData, setStoryListData] = useState([]);
 
   useEffect(() => {
-    api.get('storyboard/getList', {
+    api.get('/storyboard/getList', {
       headers: {Authorization: localStorage.getItem("jwt"),}
     })
       .then((res) => {
+        setStoryListData(res.data.data);
         console.log(res);
       })
       .catch((err) => {
@@ -54,14 +27,16 @@ const StoryList = () => {
 
 
   const startNewStoryBoard = () => {
-    api.post('storyboard', {
+    api.post('/storyboard', {
       storyboardTitle: newTitle
     },
     {
       headers: {Authorization: localStorage.getItem("jwt"),}
     })
       .then((res) => {
-        console.log(res);
+        const userName = localStorage.getItem("userName");
+        const storyboardId = res.data.data;
+        history.push(`/${userName}/storyboard/${storyboardId}`)
       })
       .catch((err) => {
         console.log(err);
@@ -88,7 +63,7 @@ const StoryList = () => {
         />
       </div>
       {
-        StoryListData.map((data) => {
+        storyListData.map((data) => {
           return (
             <StoryListItem 
               data={data} 

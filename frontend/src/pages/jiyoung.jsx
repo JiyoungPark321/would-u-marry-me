@@ -8,7 +8,7 @@ import ChangePasswordForm from '../components/changePasswordForm/changePasswordF
 import EditMemberInfoForm from '../components/editMemberInfoForm/editMemberInfoForm';
 import PasswordAuthentication from '../components/passwordAuthentication/passwordAuthentication';
 import MoveMyStoryBoardButton from '../components/moveMyStoryBoardButton/moveMyStoryBoardButton';
-import { NextButton, PrevButton, PrevNextButton } from '../components/prevNextButton/prevNextButton';
+import { NextButton, PrevButton } from '../components/prevNextButton/prevNextButton';
 import MusicInfo from '../components/musicInfo/musicInfo';
 import CarouselType1 from '../components/carousels/carouselType1/carouselType1';
 import CarouselType2 from '../components/carousels/carouselType2/carouselType2';
@@ -35,7 +35,6 @@ const Jiyoung = () => {
       <EditMemberInfoForm />
       <PasswordAuthentication />
       <MoveMyStoryBoardButton />
-      <PrevNextButton />
       <NextButton />
       <PrevButton />
       <MusicInfo />
