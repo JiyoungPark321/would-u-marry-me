@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Api(tags={"2.Storyboard"})
@@ -46,10 +47,11 @@ public class StoryboardController {
     }
 
     //스토리보드 상세 정보 가져오깃
-    @GetMapping("/detailStoryboard")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Retrieve Storyboard Detail")
-    public Object retrieveStoryboardDetail(@Valid @ApiParam(value="StoryBoard Title",required = true) @RequestBody RetrieveStoryBoardDetailRequest retrieveStoryBoardDetailRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.getStoryboardDetail(retrieveStoryBoardDetailRequest);
+    public Object retrieveStoryboardDetail(@PathVariable @NotNull Long id, @ApiIgnore @CurrentAccount Account account){
+
+        Object response = storyboardService.getStoryboardDetail(id);
         return response;
     }
 

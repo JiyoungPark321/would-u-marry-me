@@ -33,15 +33,6 @@ public class StoryController {
         return response;
     }
 
-    //스토리 템플릿 불러오기
-    @GetMapping("/template")
-    @ApiOperation(value = "스토리 템플릿 불러오기")
-    public Object retrieveStoryTemplate(@ApiIgnore @CurrentAccount Account account){
-        Object response = storyService.retrieveStoryTemplate();
-        return response;
-    }
-
-
     //스토리 첫 번째 템플릿
     @PutMapping("/first")
     @ApiOperation(value = "스토리에 첫 번째 템플릿 값 넣기")

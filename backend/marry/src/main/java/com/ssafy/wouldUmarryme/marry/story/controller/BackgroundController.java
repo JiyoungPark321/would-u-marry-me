@@ -34,7 +34,7 @@ public class BackgroundController {
     //배경 저장하기
     @PutMapping
     @ApiOperation(value = "set BackgroundImg")
-    public Object setBackground(@Valid @RequestBody @ApiParam(value = "배경 이미지, 스토리보드 Id" ,required = true) SetBackgroundRequest setBackgroundRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object setBackground(@Valid @RequestBody @ApiParam(value = "배경 id, 스토리보드 Id" ,required = true) SetBackgroundRequest setBackgroundRequest, @ApiIgnore @CurrentAccount Account account){
 
         Object response= backgroundService.setBackground(setBackgroundRequest);
         return response;

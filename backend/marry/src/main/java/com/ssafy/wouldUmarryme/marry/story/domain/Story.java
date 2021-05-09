@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.sql.Template;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -57,4 +58,8 @@ public class Story {
         this.spot=spot;
         this.storyboard=storyboard;
     }
+
+    public void updateTemplate(StoryTemplate requestTemplate){this.template=requestTemplate;}
+
+
 }

@@ -32,7 +32,7 @@ public class StoryService {
     private final StoryRepository storyRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final SpotRepository spotRepository;
-    private final StoryTemplateRepository storyTemplateRepository;
+
     private final StoryImageRepository storyImageRepository;
     private final StoryCommentRepository storyCommentRepository;
     private final AwsS3Service awsS3Service;
@@ -63,10 +63,6 @@ public class StoryService {
         return makeResponse("200",newStory,"success", HttpStatus.OK);
     }
 
-    public Object retrieveStoryTemplate() {
-        List<StoryTemplate> storyTemplateList = storyTemplateRepository.findAll();
-        return makeResponse("200",storyTemplateList,"success",HttpStatus.OK);
-    }
 
     public void setStoryImage(MultipartFile object,Story story, int index) throws IOException {
         String imgName="";

@@ -3,6 +3,7 @@ package com.ssafy.wouldUmarryme.marry.story.service;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
+import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.SetBackgroundRequest;
 import com.ssafy.wouldUmarryme.marry.story.repository.BackgroundRepository;
@@ -29,16 +30,15 @@ public class BackgroundService {
     private final StoryBoardRepository storyBoardRepository;
     private final AwsS3Service awsS3Service;
 
-    //이미지 경로 확인해보깃!
+
     public Object setBackground(SetBackgroundRequest setBackgroundRequest) {
-        String name = setBackgroundRequest.getBackgroundImg().getOriginalFilename();
-        Optional<Background> background = backgroundRepository.findByBackgroundImgName(name);
+        Optional<Background> background = backgroundRepository.findById(setBackgroundRequest.getBackgroundId());
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setBackgroundRequest.getStoryBoardId());
 
-        Storyboard newStoryBoard = storyboard.get();
-        newStoryBoard.setBackground(background.get());
-        Storyboard saveStoryboard = storyBoardRepository.save(newStoryBoard);
-        return makeResponse("200",saveStoryboard,"success", HttpStatus.OK);
+        storyboard.get().updateBackground(background.get());
+        storyBoardRepository.save(storyboard.get());
+        return makeResponse("200",background.get(),"success",HttpStatus.OK);
+
 
     }
     @Transactional(readOnly = true)
