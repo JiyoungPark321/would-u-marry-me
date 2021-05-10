@@ -14,26 +14,27 @@ import SwiperCore, { EffectCoverflow, Pagination, Navigation } from 'swiper/core
 SwiperCore.use([EffectCoverflow, Pagination, Navigation]);
 
 
-const CarouselType1 = ({ setBackgroundUrl }) => {
+const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
 
   const [backgroundData, setBackgroundData] = useState([]);
 
   useEffect(() => {
     api.get('/background', {
-      headers: {Authorization: localStorage.getItem("jwt"),}
+      headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
         setBackgroundData(res.data.data);
         console.log(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       })
   },[]);
 
 
-  const choiceImg = (backgroundImgUrl) => {
+  const choiceImg = (backgroundImgUrl, backgroundImgId) => {
     setBackgroundUrl(backgroundImgUrl);
+    setBackgroundId(backgroundImgId);
   }
 
 
@@ -72,7 +73,7 @@ const CarouselType1 = ({ setBackgroundUrl }) => {
                     <img 
                       src={data.backgroundImgUrl} 
                       className={styles['background-img']}
-                      onClick={() => {choiceImg(data.backgroundImgUrl);}}
+                      onClick={() => {choiceImg(data.backgroundImgUrl, data.id);}}
                     />
                   </SwiperSlide>
                 );
