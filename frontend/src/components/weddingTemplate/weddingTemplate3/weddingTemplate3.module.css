@@ -150,6 +150,9 @@
 .info-man-text::placeholder {
   color: #9BD2CF;
 }
+/* .info-man-text:focus {
+  outline: none;
+} */
 .info-woman {
   display: flex;
   flex-direction: column;
@@ -184,11 +187,20 @@
 .info-woman-text::placeholder {
   color: #E7A1E4;
 }
+/* .info-woman-text:focus {
+  outline: none;
+} */
 .map-box {
   position: relative;
   width: 612px;
   height: 165px;
   background-color: #EFEBFC;
+  border-radius: 30px;
+}
+.map-serached {
+  position: relative;
+  width: 612px;
+  height: 165px;
   border-radius: 30px;
 }
 .map-icon {
@@ -205,3 +217,23 @@
   margin-right: -306px;
   z-index: 2;
 }
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9D9595;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+}
+.date-input:hover::placeholder {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+.date-input:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  color: #af9d9f; 
+  margin-left: -5px;
+ }

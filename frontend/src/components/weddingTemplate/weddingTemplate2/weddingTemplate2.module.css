@@ -136,3 +136,23 @@
   height: 215px;
   border-radius: 30px;
 }
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9D9595;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+}
+.date-input:hover::placeholder {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+.date-input:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  color: #af9d9f; 
+  margin-left: -5px;
+ }

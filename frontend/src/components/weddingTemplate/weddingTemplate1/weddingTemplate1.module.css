@@ -73,6 +73,11 @@
   background-color: #af9d9f;
   border: none;
 }
+.date-button:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+  border: none;
+}
 .text-box1 {
   position: relative;
   width: 612px;
@@ -109,7 +114,7 @@
   background-color: #EFEBFC;
   border-radius: 30px;
 }
-.searched-map {
+.map-serached {
   position: relative;
   width: 612px;
   height: 179px;
@@ -129,13 +134,24 @@
   margin-right: -306px;
   z-index: 2;
 }
-.map-box-searched {
-  position: relative;
-  width: 612px;
-  height: 179px;
-  /* background-color: #EFEBFC; */
-  border-radius: 30px;
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9D9595;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+}
+.date-input:hover::placeholder {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+.date-input:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
 }
 input[type="date"]::-webkit-calendar-picker-indicator { 
-  color: #9D9595; 
- } 
+  color: #af9d9f; 
+  margin-left: -5px;
+ }
+

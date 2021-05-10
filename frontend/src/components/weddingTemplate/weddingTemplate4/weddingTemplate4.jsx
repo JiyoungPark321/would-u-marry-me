@@ -3,11 +3,22 @@ import styles from './weddingTemplate4.module.css'
 const WeddingTemplate4 = () => {
   const [img, setImg] = useState();
   const [imgFile, setImgFile] = useState();
-  const onImageChange = function (e) {
-    console.log('hi')
+  var dateTime = ""
+  var place = ""
 
+  const onImageChange = function (e) {
     setImgFile(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
+  };
+  const onDateTimeChange = function (e) {
+    console.log(e.target.value)
+    dateTime = e.target.value
+    console.log(dateTime)
+  };
+  const onPlaceChange = function (e) {
+    console.log(e.target.value)
+    place = e.target.value
+    console.log(place)
   };
   return (
     <div className={styles['template-box']}>
@@ -69,10 +80,19 @@ const WeddingTemplate4 = () => {
             </label>
         </div>
         <div className={styles['date-button']}>
-        dd/mm/yy 00 : 00 PM 
+            <input
+              className={styles['date-input']}
+              type="datetime-local"
+              onChange={onDateTimeChange}
+            />
         </div>
         <div className={styles['date-button']}>
-          place 
+            <input
+              className={styles['date-input']}
+              type="text"
+              placeholder="Place"
+              onChange={onPlaceChange}
+            /> 
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './weddingTemplate3.module.css'
-import SearchPlace from './searchPlace'
-import KakaoMap from "./kakaoMap";
+import SearchPlace from '../kakaoMap/searchPlace'
+import KakaoMap from "../kakaoMap/kakaoMap";
 
 const WeddingTemplate3 = () => {
   const [img, setImg] = useState();
@@ -9,6 +9,9 @@ const WeddingTemplate3 = () => {
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
+  var date = ""
+  var time = ""
+  var place = ""
 
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
@@ -26,6 +29,21 @@ const WeddingTemplate3 = () => {
 
     setImgFile(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
+  };
+  const onDateChange = function (e) {
+    console.log(e.target.value)
+    date = e.target.value
+    console.log(date)
+  };
+  const onTimeChange = function (e) {
+    console.log(e.target.value)
+    time = e.target.value
+    console.log(time)
+  };
+  const onPlaceChange = function (e) {
+    console.log(e.target.value)
+    place = e.target.value
+    console.log(place)
   };
   
   return (
@@ -52,13 +70,26 @@ const WeddingTemplate3 = () => {
             </label>
         </div>
         <div className={styles['date-button']}>
-            dd/mm/yy
+            <input
+              className={styles['date-input']}
+              type="date"
+              onChange={onDateChange}
+            />
         </div>
         <div className={styles['date-button']}>
-          00 : 00 PM 
+            <input
+              className={styles['date-input']}
+              type="time"
+              onChange={onTimeChange}
+            />
         </div>
         <div className={styles['date-button']}>
-          place 
+            <input
+              className={styles['date-input']}
+              type="text"
+              placeholder="Place"
+              onChange={onPlaceChange}
+            />
         </div>
       </div>
       <div className={styles['input-area2']}>

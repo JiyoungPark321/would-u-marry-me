@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import styles from './weddingTemplate2.module.css'
-import SearchPlace from './searchPlace'
-import KakaoMap from "./kakaoMap";
+import SearchPlace from '../kakaoMap/searchPlace'
+import KakaoMap from "../kakaoMap/kakaoMap";
 
 
 const WeddingTemplate2 = () => {
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
+  var date = ""
+  var time = ""
+  var place = ""
 
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
@@ -20,6 +23,21 @@ const WeddingTemplate2 = () => {
   const closeMapModal = () => {
     setMapOpen(false);
   }
+  const onDateChange = function (e) {
+    console.log(e.target.value)
+    date = e.target.value
+    console.log(date)
+  };
+  const onTimeChange = function (e) {
+    console.log(e.target.value)
+    time = e.target.value
+    console.log(time)
+  };
+  const onPlaceChange = function (e) {
+    console.log(e.target.value)
+    place = e.target.value
+    console.log(place)
+  };
   return (
     <div className={styles['template-box']}>
       <div className={styles['input-area1']}>
@@ -39,13 +57,26 @@ const WeddingTemplate2 = () => {
               </button>
             </div>
             <div className={styles['date-button']}>
-              dd/mm/yy
+              <input
+                className={styles['date-input']}
+                type="date"
+                onChange={onDateChange}
+              />
             </div>
             <div className={styles['date-button']}>
-              00 : 00 PM 
+              <input
+                className={styles['date-input']}
+                type="time"
+                onChange={onTimeChange}
+              />
             </div>
             <div className={styles['date-button']}>
-              place 
+              <input
+                className={styles['date-input']}
+                type="text"
+                placeholder="Place"
+                onChange={onPlaceChange}
+              />
             </div>
           </div>
         </div>
