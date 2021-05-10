@@ -15,7 +15,7 @@ const StoryList = () => {
 
   useEffect(() => {
     api.get('/storyboard/getList', {
-      headers: {Authorization: localStorage.getItem("jwt"),}
+      headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
         setStoryListData(res.data.data);
@@ -37,13 +37,24 @@ const StoryList = () => {
       .then((res) => {
         const userName = localStorage.getItem("userName");
         const storyboardId = res.data.data;
-        history.push(`/${userName}/storyboard/${storyboardId}`)
+        history.push(`/${userName}/storyboard/${storyboardId}`);
       })
       .catch((err) => {
         console.log(err);
       })
   };
 
+  const handleSaveTitle = (data) => {
+    const newStoryListData = storyListData.map((story) => {
+      if (story.id === data.id) {
+        return data;
+      }
+      return story;
+    });
+    setStoryListData(newStoryListData);
+  };
+
+  // handleDeleteStoryBoard 스토리보드 삭제 후 렌더 처리 
 
   return (
     <div className={styles['story-list']}>
@@ -69,6 +80,7 @@ const StoryList = () => {
             <StoryListItem 
               data={data} 
               key={data.id}
+              handleSaveTitle={handleSaveTitle}
             />
           )
         })

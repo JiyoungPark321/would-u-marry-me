@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import "swiper/swiper.min.css";
@@ -10,11 +10,25 @@ import "swiper/components/navigation/navigation.min.css"
 import styles from './carouselType2.module.css';
 
 import SwiperCore, { EffectCube, Pagination, Navigation } from 'swiper/core';
+import api from '../../../service/api';
 
 SwiperCore.use([EffectCube, Pagination, Navigation]);
 
 
 const CarouselType2 = () => {
+
+  useEffect(() => {
+    api.get('/music', {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  },[]);
+
   const musicData = [
     {
       id: 1,

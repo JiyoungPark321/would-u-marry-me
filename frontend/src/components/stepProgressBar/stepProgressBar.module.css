@@ -18,23 +18,29 @@
 }
 
 .current-step {
-  border-color: #fffbd8;
+  background-color: #fffbd8;
+  color: #b59d4b;
   -webkit-animation: blink 2s linear infinite;
 }
 
 @keyframes blink {
   0% {
-    border-color: #fffce3;
-    color: #fbea4f;
+    background-color: #b59d4b;
+    color: white;
   }
   50% {
-    border-color: #fbea4f;
-    color: #fff280;
+    background-color: white;
+    color: #b59d4b;
   }
   100% {
-    border-color: #fff280;
-    color: #ffffff;
+    background-color: #b59d4b;
+    color: white;
   }
+}
+
+.save-step {
+  background-color: #b59d4b;
+  color: white;
 }
 
 .step-line {

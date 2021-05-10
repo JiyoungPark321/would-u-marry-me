@@ -3,7 +3,7 @@ import styles from './storyBoard.module.css';
 
 import StepProgressBar from '../../components/stepProgressBar/stepProgressBar';
 import MoveMyStoryBoardButton from '../../components/moveMyStoryBoardButton/moveMyStoryBoardButton';
-import { NextButton } from '../../components/prevNextButton/prevNextButton';
+import { NextButton, PrevButton } from '../../components/prevNextButton/prevNextButton';
 
 import CarouselType1 from '../../components/carousels/carouselType1/carouselType1';
 import CarouselType2 from '../../components/carousels/carouselType2/carouselType2';
@@ -16,11 +16,15 @@ import { useParams } from 'react-router';
 
 
 const StoryBoard = () => {
+  const { id } = useParams();
+
   const [currentStep, setCurrentStep] = useState(0);
   const [saveCheck, setSaveCheck] = useState([false, false, false, false, false, false, false, false, false]);
   const [backgroundUrl, setBackgroundUrl] = useState('');
 
-  const { id } = useParams();
+  const [backgroundId, setBackgroundId] = useState(null);
+  
+
   
 
   useEffect(() => {
@@ -55,6 +59,7 @@ const StoryBoard = () => {
         } else {
           newSaveCheck[0] = true;
         }
+        setSaveCheck(newSaveCheck);
 
 
         console.log(res.data.data);
@@ -67,13 +72,34 @@ const StoryBoard = () => {
 
 
   const moveNextStep = () => {
+    if (currentStep === 0 && backgroundId !== null) {
+      api.put('/background',{
+        backgroundId,
+        storyBoardId: id
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    }
     currentStep < 9 
     ? setCurrentStep(currentStep + 1)
     : setCurrentStep(0);
     console.log(currentStep);
     // const newSaveCheck = [...saveCheck];
     // newSaveCheck[currentStep] = true;
+    
   };
+
+  const movePrevStep = () => {
+    currentStep > -1
+    ? setCurrentStep(currentStep - 1)
+    : setCurrentStep(0)
+  }
   
 
 
@@ -84,12 +110,19 @@ const StoryBoard = () => {
     >
       <StepProgressBar 
         currentStep={currentStep}
-        
+        saveCheck={saveCheck}
       />
       <MoveMyStoryBoardButton />
       {
         (() => {
-          if (currentStep === 0) return <CarouselType1 setBackgroundUrl={setBackgroundUrl} />
+          if (currentStep === 0) {
+            return (
+              <CarouselType1 
+                setBackgroundUrl={setBackgroundUrl} 
+                setBackgroundId={setBackgroundId}
+              />
+            );   
+          }
           else if (currentStep === 1) return <CarouselType2 />
           else if (currentStep === 2) return <CarouselType3 />
           else if (currentStep === 3) return <CarouselType4 />
@@ -97,7 +130,9 @@ const StoryBoard = () => {
           
         })()
       }
-    
+      <PrevButton 
+        movePrevStep={movePrevStep}
+      />
       <NextButton 
         moveNextStep={moveNextStep}
       />
