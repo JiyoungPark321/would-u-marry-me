@@ -12,8 +12,6 @@
 .swiper-slide {
   width: 230px;
   height: 300px;
-  background-color: white;
-  opacity: 38%;
   border-radius: 30px;
 }
 
@@ -21,4 +19,6 @@
   width: 230px;
   height: 300px;
   border-radius: 30px;
+  background-color: white;
+  opacity: 38%;
 }
