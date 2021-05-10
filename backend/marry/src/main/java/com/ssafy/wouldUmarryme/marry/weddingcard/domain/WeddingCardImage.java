@@ -12,22 +12,22 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "card_image")
+@Table(name = "wedding_card_image")
 public class WeddingCardImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_image_id")
+    @Column(name = "wedding_card_image_id")
     private Long id;
 
-    @Column(name = "card_image_name")
+    @Column(name = "wedding_card_image_name")
     private String imgName;
 
-    @Column(name = "card_image_Url")
+    @Column(name = "wedding_card_image_Url")
     private String imgUrl;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="card_id")
+    @JoinColumn(name="wedding_card_id")
     private WeddingCard weddingCard;
 
     @Builder

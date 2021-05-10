@@ -11,18 +11,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "card_template")
+@Table(name = "wedding_card_template")
 public class WeddingCardTemplate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_template_id")
+    @Column(name = "wedding_card_template_id")
     private Long id; //1, 2, 3, 4
 
-    @Column(name = "card_template_img_name")
+    @Column(name = "wedding_card_template_img_name")
     private String imageName;
 
-    @Column(name = "card_template_img_url")
+    @Column(name = "wedding_card_template_img_url")
     private String imgUrl;
 
     @JsonIgnore

@@ -17,20 +17,20 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "card")
+@Table(name = "wedding_card")
 public class WeddingCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_id")
+    @Column(name = "wedding_card_id")
     private Long id;
 
-    @Column(name = "card_time")
+    @Column(name = "wedding_card_time")
     private String time;
 
-    @Column(name="card_date")
+    @Column(name="wedding_card_date")
     private String date;
 
-    @Column(name="card_place")
+    @Column(name="wedding_card_place")
     private String place;
 
     @Column(name="man_phone")
@@ -62,7 +62,7 @@ public class WeddingCard {
     private Storyboard storyboard;
 
     @OneToOne(fetch = FetchType.EAGER,orphanRemoval = true)
-    @JoinColumn(name="card_template_id")
+    @JoinColumn(name="wedding_card_template_id")
     private WeddingCardTemplate template;
 
     @OneToOne(mappedBy = "weddingCard",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
