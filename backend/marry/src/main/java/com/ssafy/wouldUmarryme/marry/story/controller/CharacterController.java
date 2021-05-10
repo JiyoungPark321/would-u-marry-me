@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
@@ -45,7 +46,7 @@ public class CharacterController {
     //캐릭터 추가하기
     @PostMapping
     @ApiOperation("캐릭터 추가하기")
-    public Object createCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 id, 이미지, 상태",required = true)CreateCharacterRequest createCharacterRequest) throws IOException{
+    public Object createCharacter(@Valid @RequestParam @ApiParam(value = "캐릭터 id, 이미지, 상태",required = true) CreateCharacterRequest createCharacterRequest,@ApiIgnore @CurrentAccount Account account) throws IOException{
         Object response = characterService.createCharacter(createCharacterRequest);
         return response;
     }
