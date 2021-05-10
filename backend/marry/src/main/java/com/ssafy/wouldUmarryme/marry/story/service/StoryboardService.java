@@ -2,13 +2,8 @@ package com.ssafy.wouldUmarryme.marry.story.service;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.account.repository.AccountRepository;
-import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
-import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
-import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.CreateStoryboardRequest;
-import com.ssafy.wouldUmarryme.marry.story.dto.request.DeleteStoryboardRequest;
-import com.ssafy.wouldUmarryme.marry.story.dto.request.RetrieveStoryBoardDetailRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateStoryboardTitleRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.response.StoryboardResponse;
 import com.ssafy.wouldUmarryme.marry.story.dto.response.UpdateStoryboardTitleResponse;
@@ -21,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.convertObjectToJson;
 import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 
 
@@ -76,8 +70,8 @@ public class StoryboardService {
         }
     }
 
-    public Object deleteStoryboard(DeleteStoryboardRequest deleteStoryboardRequest) {
-        storyBoardRepository.deleteById(deleteStoryboardRequest.getStoryboardId());
+    public Object deleteStoryboard(Long id) {
+        storyBoardRepository.deleteById(id);
         return makeResponse("200","","success",HttpStatus.OK);
     }
 }
