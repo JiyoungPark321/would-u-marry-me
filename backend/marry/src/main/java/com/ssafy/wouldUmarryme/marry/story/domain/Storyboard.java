@@ -72,8 +72,6 @@ public class Storyboard {
     }
 
 
-
-
     public void updateTitle(Storyboard requestStoryboard){
         this.title=requestStoryboard.title;
     }
