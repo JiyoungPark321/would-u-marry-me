@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import api from '../../service/api';
 import styles from './storyListItem.module.css'
 
-const StoryListItem = ({ data }) => {
+const StoryListItem = ({ data, handleSaveTitle }) => {
   const [titleEditMode, setTitleEditMode] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
+  const history = useHistory();
+
+
+  const moveStoryBoard = () => {
+    const userName = localStorage.getItem("userName");
+    history.push(`/${userName}/storyboard/${data.id}`);
+  };
 
   const saveTitle = () => {
     api.put('/storyboard/updateTitle', {
@@ -17,6 +25,10 @@ const StoryListItem = ({ data }) => {
     })
       .then((res) => {
         setTitleEditMode(!titleEditMode);
+        handleSaveTitle({
+          ...data, 
+          title: newTitle
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -33,24 +45,29 @@ const StoryListItem = ({ data }) => {
   }
 
   const deleteStory = () => {
-    // api.delete(`/storyboard/${data.id}`,
-    // {
-    //   headers: {Authorization: localStorage.getItem("jwt")}
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   })
+    api.delete(`/storyboard/${data.id}`,
+    {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
 
   return (
     <div className={styles['story-list-item']}>
-      <div className={styles['img-container']}>
-        <img className={styles['img']} src={data.img} />
-      </div>
+      <div 
+        className={styles['img-container']}
+        onClick={moveStoryBoard}
+      > 
+        {
+          data.img && <img className={styles['img']} src={data.img} />
+        }
+        </div>
       <div className={`${styles['story-item-info']} ${!titleEditMode && styles['edit-mode-state']}`}>
         <input
           className={styles['title-edit-input']}
