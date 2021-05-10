@@ -44,9 +44,11 @@ public class Music {
     private String artist;
 
     @Builder
-    public Music(String musicName, String musicUrl){
+    public Music(String musicName, String musicUrl,String title,String artist){
         this.musicName=musicName;
         this.musicUrl=musicUrl;
+        this.artist=artist;
+        this.title=title;
     }
 
 

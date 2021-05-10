@@ -6,6 +6,7 @@ import com.ssafy.wouldUmarryme.marry.awsS3.config.AwsConfiguration;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.AddMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.SetMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.repository.MusicRepository;
 import com.ssafy.wouldUmarryme.marry.story.repository.StoryBoardRepository;
@@ -40,8 +41,7 @@ public class MusicService {
     }
 
     public Object setMusic(SetMusicRequest setMusicRequest) {
-        String name = setMusicRequest.getMusic().getOriginalFilename();
-        Optional<Music> music = musicRepository.findByMusicName(name);
+        Optional<Music> music = musicRepository.findById(setMusicRequest.getMusicId());
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setMusicRequest.getStoryBoardId());
 
         Storyboard newStoryBoard = storyboard.get();
@@ -51,12 +51,15 @@ public class MusicService {
 
     }
 
-    public Object createMusic(MultipartFile multipartFile) throws IOException {
-        String musicName = awsS3Service.uploadProfileImage(multipartFile,"music");
+    public Object createMusic(MultipartFile file) throws IOException {
+
+        String musicName = awsS3Service.uploadProfileImage(file,"music");
         String musicUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +musicName;
         Music music = Music.builder()
                 .musicName(musicName)
                 .musicUrl(musicUrl)
+//                .artist(addMusicRequest.getArtist())
+//                .title(addMusicRequest.getTitle())
                 .build();
         Music save = musicRepository.save(music);
         return makeResponse("200",save,"success",HttpStatus.OK);

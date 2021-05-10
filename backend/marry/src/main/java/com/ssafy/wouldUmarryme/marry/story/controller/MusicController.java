@@ -3,6 +3,7 @@ package com.ssafy.wouldUmarryme.marry.story.controller;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.AddMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.SetMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.service.MusicService;
 import io.swagger.annotations.Api;
@@ -35,7 +36,7 @@ public class MusicController {
     //음악 저장하기
     @PutMapping
     @ApiOperation(value = "음악 저장하기")
-    public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래파일, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래Id, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
 
         Object response= musicService.setMusic(setMusicRequest);
         return response;
@@ -44,7 +45,8 @@ public class MusicController {
     //음악 추가하기
     @PostMapping
     @ApiOperation("음악 추가하기기")
-    public Object createMusic(@Valid @RequestBody @ApiParam(value = "노래파일" ,required = true)MultipartFile music) throws IOException {
+    public Object createMusic(@Valid  @ApiParam(value = "노래파일" ,required = true)MultipartFile music) throws IOException {
+
         Object response = musicService.createMusic(music);
         return response;
     }
