@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.account.domain;
 
 
+import com.ssafy.wouldUmarryme.marry.common.time.TimeEntity;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account {
+public class Account extends TimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

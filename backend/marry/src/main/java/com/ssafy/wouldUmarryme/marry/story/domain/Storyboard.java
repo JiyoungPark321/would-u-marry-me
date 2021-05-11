@@ -6,6 +6,7 @@ import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Character;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
+import com.ssafy.wouldUmarryme.marry.common.time.TimeEntity;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +23,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Table(name = "storyboard")
-public class Storyboard {
+public class Storyboard extends TimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,12 +66,6 @@ public class Storyboard {
         this.account = account;
         this.title=title;
     }
-
-    @Builder
-    public Storyboard(String title){
-        this.title=title;
-    }
-
 
     public void updateTitle(Storyboard requestStoryboard){
         this.title=requestStoryboard.title;
