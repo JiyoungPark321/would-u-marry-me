@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Objects;
 
-@Api(tags={"4.Character"})
+@Api(tags={"04. Character"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/character")

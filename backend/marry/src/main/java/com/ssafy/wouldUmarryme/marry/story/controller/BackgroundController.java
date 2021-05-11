@@ -15,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.io.IOException;
 
-@Api(tags={"3.background"})
+@Api(tags={"03. background"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/background")

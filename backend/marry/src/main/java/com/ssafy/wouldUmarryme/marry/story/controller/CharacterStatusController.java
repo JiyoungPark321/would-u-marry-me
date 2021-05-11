@@ -15,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.IOException;
 
-@Api(tags={"10.CharacterStatus"})
+@Api(tags={"05. CharacterStatus"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/status")

@@ -16,7 +16,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.io.IOException;
 
-@Api(tags={"9.StoryTemplate"})
+@Api(tags={"09. StoryTemplate"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/storytemplate")
@@ -33,14 +33,14 @@ public class StoryTemplateController {
 
     @PostMapping
     @ApiOperation(value = "스토리템플릿 추가하기")
-    public Object createTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 사진",required = true) MultipartFile image) throws IOException{
+    public Object createTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 사진", required = true) MultipartFile image) throws IOException{
         Object response = storyTemplateService.createTemplate(image);
         return response;
     }
 
     @PutMapping
     @ApiOperation(value = "스토리템플릿 저장하기")
-    public Object setTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 id, 스토리 id",required = true)SetStoryTemplateRequest setStoryTemplateRequest){
+    public Object setTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 id, 스토리 id",required = true) SetStoryTemplateRequest setStoryTemplateRequest){
         Object response = storyTemplateService.setTemplate(setStoryTemplateRequest);
         return response;
     }

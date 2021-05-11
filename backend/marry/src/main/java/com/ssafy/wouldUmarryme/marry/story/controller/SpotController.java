@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
-@Api(tags={"7.Spot"})
+@Api(tags={"08. Spot"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/spot")

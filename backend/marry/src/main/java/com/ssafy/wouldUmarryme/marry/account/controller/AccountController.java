@@ -21,7 +21,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
-@Api(tags = {"1.Account"})
+@Api(tags = {"01. Account"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/account")

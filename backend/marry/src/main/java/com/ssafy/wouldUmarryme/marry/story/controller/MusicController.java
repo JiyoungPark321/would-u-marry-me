@@ -17,7 +17,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.io.IOException;
 
-@Api(tags={"5.Music"})
+@Api(tags={"06. Music"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/music")

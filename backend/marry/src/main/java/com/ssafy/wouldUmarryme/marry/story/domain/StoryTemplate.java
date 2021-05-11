@@ -31,7 +31,7 @@ public class StoryTemplate {
     private Story story;
 
     @Builder
-    public StoryTemplate(String imgName,String imgUrl){
+    public StoryTemplate(String imgName, String imgUrl){
         this.imgName = imgName;
         this.imgUrl = imgUrl;
     }
