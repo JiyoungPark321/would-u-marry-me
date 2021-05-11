@@ -49,7 +49,7 @@
   justify-content: space-evenly;
 }
 
-.photo-box1 {
+.image-box1 {
   background-color: rgba(232, 247, 232, 1);
   border-radius: 30px;
   height: 100%;
@@ -60,7 +60,7 @@
   align-items: center;
 }
 
-.photo-box2 {
+.image-box2 {
   background-color: rgba(243, 232, 232, 1);
   border-radius: 30px;
   height: 100%;
@@ -71,7 +71,7 @@
   align-items: center;
 }
 
-.photo-box3 {
+.image-box3 {
   background-color: rgba(221, 238, 236, 1);
   border-radius: 30px;
   height: 100%;
@@ -86,6 +86,34 @@
   height: 100%;
   width: 100%;
   border-radius: 30px;
+}
+
+.input-image-box {
+  background-color: black;
+  border-radius: 32px;
+  height: 100%;
+  width: 405px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputed-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.inputed-image:hover {
+  opacity: 0.8;
+}
+
+.input-image-done {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
 }
 
 .image-button {

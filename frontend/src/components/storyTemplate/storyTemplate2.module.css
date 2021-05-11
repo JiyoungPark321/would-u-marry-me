@@ -34,6 +34,32 @@
   border-radius: 30px;
 }
 
+.input-image-box {
+  position: relative;
+  width: 1400px;
+  height: 800px;
+  border-color: #e2d0d2;
+  border-radius: 33px;
+  background-color: black;
+}
+
+.input-image-done {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+}
+
+.inputed-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.inputed-image:hover {
+  opacity: 0.8;
+}
+
 .text-box {
   position: absolute;
   top: 50%;
