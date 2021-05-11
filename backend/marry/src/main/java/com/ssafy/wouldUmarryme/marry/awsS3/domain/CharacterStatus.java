@@ -21,9 +21,9 @@ public class CharacterStatus {
     @Column(name="character_status_id")
     private Long id;
 
-    //사진이름
-    @Column(name = "character_status_name")
-    private String characterName;
+    @Column(name = "character_gender")
+    private String gender;
+
 
     //풀경로
     @Column(name="character_status_url")
@@ -39,8 +39,8 @@ public class CharacterStatus {
     private Character character;
 
     @Builder
-    public CharacterStatus(String characterName,String characterUrl,String status,Character character){
-        this.characterName=characterName;
+    public CharacterStatus(String gender,String characterUrl,String status,Character character){
+        this.gender=gender;
         this.characterUrl=characterUrl;
         this.status=status;
         this.character=character;
