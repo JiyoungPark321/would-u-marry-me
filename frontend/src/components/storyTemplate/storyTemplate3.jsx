@@ -6,20 +6,32 @@ const StoryTemplate4 = () => {
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
+  const [imgInput1, setImgInput1] = useState(false);
+  const [imgInput2, setImgInput2] = useState(false);
+  const [imgInput3, setImgInput3] = useState(false);
   const [imgFile1, setImgFile1] = useState();
   const [imgFile2, setImgFile2] = useState();
   const [imgFile3, setImgFile3] = useState();
   const onImageChange1 = function (e) {
     setImgFile1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
+    if (!imgInput1) {
+      setImgInput1(!imgInput1);
+    }
   };
   const onImageChange2 = function (e) {
     setImgFile2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
+    if (!imgInput2) {
+      setImgInput2(!imgInput2);
+    }
   };
   const onImageChange3 = function (e) {
     setImgFile3(e.target.files[0]);
     setImg3(URL.createObjectURL(e.target.files[0]));
+    if (!imgInput3) {
+      setImgInput3(!imgInput3);
+    }
   };
 
   return (
@@ -33,47 +45,86 @@ const StoryTemplate4 = () => {
       </div>
       <div className={styles["images-container"]}>
         {/* 첫번째 photobox */}
-        <div className={styles["image-box1"]}>
-          <img src={Img1} className={styles["input-image"]} />
-          <label className={styles["image-button"]}>
-            <div className={styles["image-icon"]}>
-              <i className="fas fa-camera"></i>
+        {imgInput1 === false ? (
+          <div className={styles["image-box1"]}>
+            <img src={Img1} className={styles["input-image"]} />
+            <label className={styles["image-button"]}>
+              <div className={styles["image-icon"]}>
+                <i className="fas fa-camera"></i>
+                <input
+                  type="file"
+                  className={styles["image-input"]}
+                  onChange={onImageChange1}
+                />
+              </div>
+            </label>
+          </div>
+        ) : (
+          <div className={styles["input-image-box1"]}>
+            <label className={styles["input-image-done"]}>
+              <img src={Img1} className={styles["inputed-image"]} />
               <input
                 type="file"
                 className={styles["image-input"]}
                 onChange={onImageChange1}
               />
-            </div>
-          </label>
-        </div>
+            </label>
+          </div>
+        )}
         {/* 두번째 photobox */}
-        <div className={styles["image-box2"]}>
-          <img src={Img2} className={styles["input-image"]} />
-          <label className={styles["image-button"]}>
-            <div className={styles["image-icon"]}>
-              <i className="fas fa-camera"></i>
+        {imgInput2 === false ? (
+          <div className={styles["image-box2"]}>
+            <img src={Img2} className={styles["input-image"]} />
+            <label className={styles["image-button"]}>
+              <div className={styles["image-icon"]}>
+                <i className="fas fa-camera"></i>
+                <input
+                  type="file"
+                  className={styles["image-input"]}
+                  onChange={onImageChange2}
+                />
+              </div>
+            </label>
+          </div>
+        ) : (
+          <div className={styles["input-image-box2"]}>
+            <label className={styles["input-image-done"]}>
+              <img src={Img2} className={styles["inputed-image"]} />
               <input
                 type="file"
                 className={styles["image-input"]}
                 onChange={onImageChange2}
               />
-            </div>
-          </label>
-        </div>
+            </label>
+          </div>
+        )}
         {/* 세번째 photobox */}
-        <div className={styles["image-box3"]}>
-          <img src={Img3} className={styles["input-image"]} />
-          <label className={styles["image-button"]}>
-            <div className={styles["image-icon"]}>
-              <i className="fas fa-camera"></i>
+        {imgInput3 === false ? (
+          <div className={styles["image-box3"]}>
+            <img src={Img3} className={styles["input-image"]} />
+            <label className={styles["image-button"]}>
+              <div className={styles["image-icon"]}>
+                <i className="fas fa-camera"></i>
+                <input
+                  type="file"
+                  className={styles["image-input"]}
+                  onChange={onImageChange3}
+                />
+              </div>
+            </label>
+          </div>
+        ) : (
+          <div className={styles["input-image-box3"]}>
+            <label className={styles["input-image-done"]}>
+              <img src={Img3} className={styles["inputed-image"]} />
               <input
                 type="file"
                 className={styles["image-input"]}
                 onChange={onImageChange3}
               />
-            </div>
-          </label>
-        </div>
+            </label>
+          </div>
+        )}
       </div>
     </div>
   );

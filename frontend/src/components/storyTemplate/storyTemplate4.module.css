@@ -101,6 +101,12 @@
   border: 0px;
 }
 
+.input-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
 .image-button {
   cursor: pointer;
   position: absolute;
@@ -124,4 +130,54 @@
   height: 100%;
   font-size: 30px;
   color: #285181;
+}
+
+.input-image-box1 {
+  position: absolute;
+  left: 65px;
+  top: 239px;
+  width: 300px;
+  height: 300px;
+  border: none;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.input-image-box2 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: 297px;
+  bottom: 36px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.input-image-box3 {
+  position: absolute;
+  top: 58px;
+  right: 72px;
+  width: 750px;
+  height: 700px;
+  top: 58px;
+  right: 72px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.inputed-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.inputed-image:hover {
+  opacity: 0.8;
+}
+
+.input-image-done {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
 }

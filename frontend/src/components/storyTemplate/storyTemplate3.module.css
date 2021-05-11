@@ -118,3 +118,62 @@
   max-width: 100%;
   border-radius: 30px;
 }
+
+.input-image-box1 {
+  background-color: black;
+  width: 370px;
+  height: 437px;
+  border-radius: 30px;
+  position: absolute;
+  left: 90px;
+  top: 41px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-image-box2 {
+  background-color: black;
+  width: 344px;
+  height: 318px;
+  border-radius: 30px;
+  position: absolute;
+  left: 246px;
+  bottom: 0px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-image-box3 {
+  background-color: black;
+  width: 850px;
+  height: 646px;
+  border-radius: 30px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-image-done {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+}
+
+.inputed-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.inputed-image:hover {
+  opacity: 0.8;
+}
