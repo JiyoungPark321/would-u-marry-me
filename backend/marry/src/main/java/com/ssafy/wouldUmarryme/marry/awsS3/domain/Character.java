@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +23,11 @@ public class Character {
     @Column(name = "character_id")
     private Long id;
 
-    @Column(name="character_name")
-    private String name;
+    @Column(name="character_couple_name")
+    private String coupleName;
+
+    @Column(name = "character_couple_url")
+    private String coupleUrl;
 
     @OneToMany(mappedBy = "character",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<CharacterStatus> statuses = new ArrayList<>();
@@ -31,4 +35,10 @@ public class Character {
     @JsonIgnore
     @OneToOne(mappedBy = "character", fetch = FetchType.LAZY)
     private Storyboard storyboard;
+
+    @Builder
+    public Character(String coupleName,String coupleUrl){
+        this.coupleName=coupleName;
+        this.coupleUrl=coupleUrl;
+    }
 }

@@ -28,7 +28,6 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 public class CharacterService {
 
     private final CharacterRepository characterRepository;
-    private final CharacterStatusRepository characterStatusRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final AwsS3Service awsS3Service;
 
@@ -38,18 +37,16 @@ public class CharacterService {
         return makeResponse("200",characterList,"success", HttpStatus.OK);
     }
 
-    public Object createCharacter(CreateCharacterRequest createCharacterRequest)throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(createCharacterRequest.getCharacter(),"character");
+    public Object createCharacter(String name,MultipartFile image)throws IOException {
+        String imgName = awsS3Service.uploadProfileImage(image,"character");
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
-        Optional<Character> character = characterRepository.findById(createCharacterRequest.getCharacterId());
-        CharacterStatus characterStatus = CharacterStatus.builder()
-                .characterName(imgName)
-                .characterUrl(imgUrl)
-                .status(createCharacterRequest.getStatus())
-                .character(character.get())
+
+        Character character = Character.builder()
+                .coupleName(name)
+                .coupleUrl(imgUrl)
                 .build();
-        CharacterStatus save = characterStatusRepository.save(characterStatus);
-        return makeResponse("200",save,"success",HttpStatus.OK);
+        characterRepository.save(character);
+        return makeResponse("200",character,"success",HttpStatus.OK);
 
     }
 
