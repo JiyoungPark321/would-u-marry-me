@@ -1,4 +1,5 @@
 import React from "react";
+import api from '../../service/api';
 import { useState } from "react";
 import TextEditor from "./textEditor";
 import styles from "./storyTemplate2.module.css";
@@ -18,6 +19,21 @@ const StoryTemplate2 = () => {
   const onTextInput = function () {
     setOnTextEditor(!onTextEditor);
   };
+  const sendStory2 = () => {  //axios
+    let data = new FormData();
+    data.append("firt", imgFile);
+    // data.append("second", )
+    data.append("storyId", 2)
+    api.put('/story/second',data, {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+    .then((res) => {
+      // story template 컴포넌트 끄는 bind함수? 
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     <>
       {/* image box */}

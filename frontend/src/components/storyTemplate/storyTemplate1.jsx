@@ -1,3 +1,4 @@
+import api from '../../service/api';
 import React from "react";
 import { useState } from "react";
 import styles from "./storyTemplate1.module.css";
@@ -28,8 +29,27 @@ const StoryTemplate1 = () => {
   const onTextInput = function () {
     setOnTextEditor(!onTextEditor);
   };
+  const sendStory1 = () => {  //axios
+    let data = new FormData();
+    data.append("firt", imgFile1);
+    console.log(imgFile1)
+    // data.append("second", )
+    data.append("third", imgFile2);
+    // data.append("fourth",)
+    data.append("storyId", 1);
+    api.put('/story/first',data, {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+    .then((res) => {
+      // story template 컴포넌트 끄는 bind함수? 
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     <>
+      {/* <button onClick={sendStory1}>test</button> */}
       <div className={styles["template-box"]}>
         <div className={styles["input-box"]}>
           {/* 첫번째 image box */}

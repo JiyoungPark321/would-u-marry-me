@@ -1,4 +1,5 @@
 import React from "react";
+import api from '../../service/api';
 import { useState } from "react";
 // import TextEditor from "./textEditor";
 import styles from "./storyTemplate5.module.css";
@@ -35,6 +36,23 @@ const StoryTemplate5 = () => {
       setImgInput3(!imgInput3);
     }
   };
+  const sendStory5 = () => {  //axios
+    let data = new FormData();
+    // data.append("firt", );
+    data.append("second", imgFile1)
+    data.append("third", imgFile2)
+    data.append("fourth", imgFile3)
+    data.append("storyId", 5)
+    api.put('/story/third',data, {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+    .then((res) => {
+      // story template 컴포넌트 끄는 bind함수? 
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   return (
     <div className={styles["template-box"]}>
