@@ -43,13 +43,4 @@ public class StoryImage {
         this.index = index;
     }
 
-    @Builder
-    public StoryImage(Story story,int index){
-        this.story = story;
-        this.index = index;
-    }
-
-
-
-
 }
