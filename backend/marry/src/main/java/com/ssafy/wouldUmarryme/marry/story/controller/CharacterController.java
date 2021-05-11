@@ -46,8 +46,8 @@ public class CharacterController {
     //캐릭터 추가하기
     @PostMapping
     @ApiOperation("캐릭터 추가하기")
-    public Object createCharacter(@Valid @RequestParam @ApiParam(value = "캐릭터 id, 이미지, 상태",required = true) CreateCharacterRequest createCharacterRequest,@ApiIgnore @CurrentAccount Account account) throws IOException{
-        Object response = characterService.createCharacter(createCharacterRequest);
+    public Object createCharacter(@RequestParam(value = "name")String name,@RequestParam(value = "image") MultipartFile image,@ApiIgnore @CurrentAccount Account account) throws IOException{
+        Object response = characterService.createCharacter(name,image);
         return response;
     }
 
