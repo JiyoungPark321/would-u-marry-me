@@ -16,7 +16,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Api(tags={"2.Storyboard"})
+@Api(tags={"02. Storyboard"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/storyboard")

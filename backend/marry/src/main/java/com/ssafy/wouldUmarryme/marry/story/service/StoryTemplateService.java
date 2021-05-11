@@ -35,13 +35,13 @@ public class StoryTemplateService {
 
     public Object createTemplate(MultipartFile image) throws IOException {
         String imgName = awsS3Service.uploadProfileImage(image,"storytemplate");
-        String imgUrl  = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
+        String imgUrl  = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         StoryTemplate storyTemplate = StoryTemplate.builder()
                 .imgName(imgName)
                 .imgUrl(imgUrl)
                 .build();
         StoryTemplate save =  storyTemplateRepository.save(storyTemplate);
-        return makeResponse("200",save,"success",HttpStatus.OK);
+        return makeResponse("200",save,"success", HttpStatus.OK);
     }
 
     public Object setTemplate(SetStoryTemplateRequest setStoryTemplateRequest) {
