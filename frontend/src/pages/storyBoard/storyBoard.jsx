@@ -27,7 +27,9 @@ const StoryBoard = () => {
 
   const [backgroundId, setBackgroundId] = useState(null);
   const [musicId, setMusicId] = useState(null);
+  const [characterId, setCharacterId] = useState(null);
   
+
 
   useEffect(() => {
     api.get(`/storyboard/${id}`,
@@ -110,11 +112,21 @@ const StoryBoard = () => {
         .catch((err) => {
           console.error(err);
         })
-    } 
-      // currentStep 2 해야함 캐릭터 처리 안함
-    //   else if (currentStep === 3 && characterId !== null) {
-    
-    // }
+    } else if (currentStep === 2 && characterId !== null) {
+      api.put('/character', {
+        characterId,
+        storyBoardId: id
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          console.log(res);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    }
     _moveNextStep();
   };
 
@@ -128,7 +140,7 @@ const StoryBoard = () => {
 
   return (
     <div 
-      style={{ backgroundImage: `url(${backgroundUrl})` }} 
+      style={{ backgroundImage: `url(${backgroundUrl})` }}  
       className={styles['story-board-container']}
     >
       <StepProgressBar 
@@ -156,7 +168,9 @@ const StoryBoard = () => {
           }
           else if (currentStep === 2) {
             return (
-              <CarouselType3 />
+              <CarouselType3 
+                setCharacterId={setCharacterId}
+              />
             )
           }
           else if (currentStep === 3) {
