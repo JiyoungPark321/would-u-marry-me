@@ -81,8 +81,22 @@
   cursor: pointer;
 }
 
-.inputed-image:hover {
+.inputed-image-on {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
   opacity: 0.8;
+}
+
+.image-icon-done {
+  font-size: 30px;
+  color: #285181;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 100;
+  cursor: pointer;
 }
 
 .text-box {
@@ -110,31 +124,3 @@
   font-size: 30px;
   color: #e79b09;
 }
-
-/* .text_box2 {
-  display: inline-block;
-  position: relative;
-  width: 700px;
-  height: 300px;
-  border: 3px;
-  border-radius: 30px;
-  background-color: #F6F6E3;
-}
-
-.text_button2 {
-  cursor: pointer;
-  position: absolute;
-  width: 32px;
-  height: 28px;
-  margin-top: -14px;
-  margin-right: -16px;
-  top: 50%;
-  right: 50%;
-  background-color: transparent;
-  border: none;
-}
-
-.text_icon2 {
-  font-size: xx-large;
-  color: #E79B09;
-} */
