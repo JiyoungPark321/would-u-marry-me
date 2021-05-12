@@ -19,8 +19,7 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SpotSerivce {
-
+public class SpotService {
 
     private final SpotRepository spotRepository;
     private final AwsS3Service awsS3Service;
@@ -28,19 +27,17 @@ public class SpotSerivce {
     @Transactional(readOnly = true)
     public Object getSpotList() {
         List<Spot> spotList = spotRepository.findAll();
-        return makeResponse("200",spotList,"success", HttpStatus.OK);
+        return makeResponse("200", spotList, "success", HttpStatus.OK);
     }
 
     public Object createSpot(MultipartFile image) throws IOException {
-
-            String imgName = awsS3Service.uploadProfileImage(image,"spot");
-            String imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
-            Spot spot = Spot.builder()
-                    .spotName(imgName)
-                    .imgUrl(imgUrl)
-                    .build();
-            spotRepository.save(spot);
-
-        return makeResponse("200",spot,"success",HttpStatus.OK);
+        String imgName = awsS3Service.uploadProfileImage(image,"spot");
+        String imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
+        Spot spot = Spot.builder()
+                .spotName(imgName)
+                .imgUrl(imgUrl)
+                .build();
+        spotRepository.save(spot);
+        return makeResponse("200", spot, "success", HttpStatus.OK);
     }
 }

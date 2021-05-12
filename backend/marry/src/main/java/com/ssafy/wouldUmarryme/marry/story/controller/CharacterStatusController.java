@@ -15,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.IOException;
 
-@Api(tags={"10.CharacterStatus"})
+@Api(tags={"05. CharacterStatus"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/status")
@@ -25,8 +25,8 @@ public class CharacterStatusController {
     //캐릭터 상태 추가하기
     //캐릭터 추가하기
     @PostMapping
-    @ApiOperation("캐릭터 상태 추가하기")
-    public Object createCharacter(@RequestParam(value = "status")String status,@RequestParam(value = "gender")String gender,@RequestParam(value = "characterId") Long characterId, @RequestParam(value = "image") MultipartFile image, @ApiIgnore @CurrentAccount Account account) throws IOException {
+    @ApiOperation("캐릭터 상태 추가")
+    public Object createCharacter(@RequestParam(value = "status")String status, @RequestParam(value = "gender")String gender,@RequestParam(value = "characterId") Long characterId, @RequestParam(value = "image") MultipartFile image, @ApiIgnore @CurrentAccount Account account) throws IOException {
         Object response = characterStatusService.createCharacter(status,gender,characterId,image);
         return response;
     }

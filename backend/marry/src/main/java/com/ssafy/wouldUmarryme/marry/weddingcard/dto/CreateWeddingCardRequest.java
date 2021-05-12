@@ -10,8 +10,6 @@ import lombok.Setter;
 @Setter
 
 public class CreateWeddingCardRequest {
-
     private Long storyBoardId;
     private Long spotId;
-
 }

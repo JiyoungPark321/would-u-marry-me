@@ -17,7 +17,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.io.IOException;
 
-@Api(tags={"5.Music"})
+@Api(tags={"06. Music"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/music")
@@ -25,7 +25,6 @@ public class MusicController {
 
     private final MusicService musicService;
 
-    //음악 불러오기
     @GetMapping
     @ApiOperation(value = "음악 선택지 불러오기")
     public Object retrieveMusic(@ApiIgnore @CurrentAccount Account account){
@@ -33,20 +32,16 @@ public class MusicController {
         return response;
     }
 
-    //음악 저장하기
     @PutMapping
-    @ApiOperation(value = "음악 저장하기")
-    public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래Id, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
-
-        Object response= musicService.setMusic(setMusicRequest);
+    @ApiOperation(value = "음악 저장")
+    public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래 Id, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
+        Object response = musicService.setMusic(setMusicRequest);
         return response;
     }
 
-    //음악 추가하기
     @PostMapping
-    @ApiOperation("음악 추가하기기")
-    public Object createMusic(@Valid  @ApiParam(value = "노래파일" ,required = true)MultipartFile music) throws IOException {
-
+    @ApiOperation("음악 추가")
+    public Object createMusic(@Valid  @ApiParam(value = "음악 파일" ,required = true)MultipartFile music) throws IOException {
         Object response = musicService.createMusic(music);
         return response;
     }

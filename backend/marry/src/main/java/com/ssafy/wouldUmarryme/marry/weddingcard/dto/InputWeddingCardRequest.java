@@ -20,8 +20,6 @@ public class InputWeddingCardRequest {
     private String cardWomanPhone;
     private String cardManAccountNumber;
     private String cardWomanAccountNumber;
-    //private WeddingCardMap weddingCardMap;
-
 
     public WeddingCard toWeddingCard(){
         return WeddingCard.builder()

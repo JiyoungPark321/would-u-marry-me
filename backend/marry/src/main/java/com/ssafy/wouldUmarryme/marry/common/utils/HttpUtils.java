@@ -11,8 +11,7 @@ public class HttpUtils {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static ResponseEntity<BasicResponse> makeResponse(String status, Object data, String message, HttpStatus httpStatus){
-
-        BasicResponse result= BasicResponse.builder().status(status).message(message).data(data).build();
+        BasicResponse result = BasicResponse.builder().status(status).message(message).data(data).build();
         return new ResponseEntity<>(result,httpStatus);
     }
 

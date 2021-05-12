@@ -17,7 +17,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.io.IOException;
 
-@Api(tags={"6.Story"})
+@Api(tags={"07. Story"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/story")

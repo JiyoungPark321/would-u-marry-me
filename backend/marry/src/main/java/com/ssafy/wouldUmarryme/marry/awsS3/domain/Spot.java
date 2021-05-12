@@ -38,7 +38,7 @@ public class Spot {
 
     @Builder
     public Spot(String spotName,String imgUrl){
-        this.spotName=spotName;
-        this.imgUrl=imgUrl;
+        this.spotName = spotName;
+        this.imgUrl = imgUrl;
     }
 }
