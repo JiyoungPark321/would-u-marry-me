@@ -32,12 +32,9 @@ public class StoryService {
     private final StoryRepository storyRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final SpotRepository spotRepository;
-
     private final StoryImageRepository storyImageRepository;
     private final StoryCommentRepository storyCommentRepository;
     private final AwsS3Service awsS3Service;
-
-
 
     public Object createStory(CreateStoryRequest createStoryRequest) {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(createStoryRequest.getStoryBoardId());
@@ -49,7 +46,7 @@ public class StoryService {
         //없다면
         Story newStory;
         if(story.isEmpty()){
-            newStory= Story.builder()
+            newStory = Story.builder()
                     .index(createStoryRequest.getIndex())
                     .spot(spot.get())
                     .storyboard(storyboard.get())
@@ -60,16 +57,15 @@ public class StoryService {
             newStory.setSpot(spot.get());
             storyRepository.save(newStory);
         }
-        return makeResponse("200",newStory,"success", HttpStatus.OK);
+        return makeResponse("200", newStory, "success", HttpStatus.OK);
     }
 
-
     public void setStoryImage(MultipartFile object,Story story, int index) throws IOException {
-        String imgName="";
-        String imgUrl="";
+        String imgName = "";
+        String imgUrl = "";
         if(object!=null){
             imgName = awsS3Service.uploadProfileImage(object,"story");
-            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
+            imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             StoryImage storyImage = StoryImage.builder()
                     .imgName(imgName)
                     .imgUrl(imgUrl)
@@ -86,7 +82,8 @@ public class StoryService {
             storyImageRepository.save(storyImage);
         }
     }
-    public void setStroyComment(String value, Story story, int index){
+
+    public void setStoryComment(String value, Story story, int index){
         StoryComment storyComment = StoryComment.builder()
                 .value(value)
                 .index(index)
@@ -95,35 +92,30 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest)  throws IOException{
+    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
 
-
         setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
-        setStroyComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
+        setStoryComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
         setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
-        setStroyComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
+        setStoryComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
 
-
-        return makeResponse("200",story,"success", HttpStatus.OK);
+        return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
     public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
-
         Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
 
         setStoryImage(set2StoryTemplateRequest.getFirst(), story.get(),1);
-        setStroyComment(set2StoryTemplateRequest.getSecond(), story.get(),2);
+        setStoryComment(set2StoryTemplateRequest.getSecond(), story.get(),2);
 
-        return makeResponse("200",story,"success", HttpStatus.OK);
+        return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
     public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
-
         Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
 
-        setStroyComment(set345StoryTemplateRequest.getFirst(),story.get(),1);
+        setStoryComment(set345StoryTemplateRequest.getFirst(),story.get(),1);
         setStoryImage(set345StoryTemplateRequest.getSecond(),story.get(),2);
         setStoryImage(set345StoryTemplateRequest.getThird(),story.get(),3);
         setStoryImage(set345StoryTemplateRequest.getFourth(),story.get(),4);
@@ -145,7 +137,6 @@ public class StoryService {
 //                    .build();
 //            storyImageRepository.save(storyImage);
 //        }
-
-        return makeResponse("200",story,"success", HttpStatus.OK);
+        return makeResponse("200", story, "success", HttpStatus.OK);
     }
 }

@@ -23,8 +23,8 @@ public class WeddingCardTemplateController {
     private final WeddingCardTemplateService weddingCardTemplateService;
 
     @PutMapping
-    @ApiOperation(value = "웨딩카드템플릿 설정하기")
-    public Object setTemplate(@Valid @ApiParam(value = "카드 아이디,템플릿 아이디",required = true) @RequestBody TemplateNumberRequest templateNumberRequest,
+    @ApiOperation(value = "웨딩카드템플릿 설정")
+    public Object setTemplate(@Valid @ApiParam(value = "카드 Id, 템플릿 Id",required = true) @RequestBody TemplateNumberRequest templateNumberRequest,
                               @ApiIgnore @CurrentAccount Account account){
         Object response = weddingCardTemplateService.setTemplate(templateNumberRequest);
         return response;
@@ -38,7 +38,7 @@ public class WeddingCardTemplateController {
     }
 
     @PostMapping
-    @ApiOperation(value = "웨딩카드템플릿 추가하기")
+    @ApiOperation(value = "웨딩카드템플릿 추가")
     public Object createTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 사진", required = true) MultipartFile image) throws IOException {
         Object response = weddingCardTemplateService.createWeddingCardTemplate(image);
         return response;

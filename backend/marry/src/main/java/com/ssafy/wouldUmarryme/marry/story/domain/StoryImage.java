@@ -38,7 +38,7 @@ public class StoryImage {
     @Builder
     public StoryImage(String imgName,String imgUrl,Story story,int index){
         this.imgName = imgName;
-        this.imgUrl =imgUrl;
+        this.imgUrl = imgUrl;
         this.story = story;
         this.index = index;
     }

@@ -30,21 +30,18 @@ public class BackgroundService {
     private final StoryBoardRepository storyBoardRepository;
     private final AwsS3Service awsS3Service;
 
-
     public Object setBackground(SetBackgroundRequest setBackgroundRequest) {
         Optional<Background> background = backgroundRepository.findById(setBackgroundRequest.getBackgroundId());
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setBackgroundRequest.getStoryBoardId());
-
         storyboard.get().updateBackground(background.get());
         storyBoardRepository.save(storyboard.get());
-        return makeResponse("200",background.get(),"success",HttpStatus.OK);
-
-
+        return makeResponse("200", background.get(), "success", HttpStatus.OK);
     }
+
     @Transactional(readOnly = true)
     public Object getBackgroundList() {
         List<Background> backgroundList = backgroundRepository.findAll();
-        return makeResponse("200",backgroundList,"success", HttpStatus.OK);
+        return makeResponse("200", backgroundList, "success", HttpStatus.OK);
     }
 
     public Object createBackground(MultipartFile image) throws IOException {
@@ -55,6 +52,6 @@ public class BackgroundService {
                 .backgroundImgUrl(imgUrl)
                 .build();
         Background save = backgroundRepository.save(background);
-        return makeResponse("200",save,"success",HttpStatus.OK);
+        return makeResponse("200", save, "success", HttpStatus.OK);
     }
 }

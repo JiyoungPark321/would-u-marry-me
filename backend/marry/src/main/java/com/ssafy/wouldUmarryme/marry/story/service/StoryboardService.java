@@ -27,21 +27,19 @@ public class StoryboardService {
     private final StoryBoardRepository storyBoardRepository;
     private final AccountRepository accountRepository;
 
-
     public Object createNewStoryBoard(CreateStoryboardRequest createStoryboardRequest, Account account) {
         Storyboard storyboard = Storyboard.builder()
                 .title(createStoryboardRequest.getStoryboardTitle())
                 .account(account)
                 .build();
         storyBoardRepository.save(storyboard);
-
-        return makeResponse("200",storyboard.getId(),"success", HttpStatus.OK);
+        return makeResponse("200", storyboard.getId(),"success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
     public Object getStoryboardList(Account account){
         List<Storyboard> lists = storyBoardRepository.findByAccount(account);
-        return makeResponse("200",StoryboardResponse.listOf(lists),"success",HttpStatus.OK);
+        return makeResponse("200", StoryboardResponse.listOf(lists), "success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
@@ -49,29 +47,28 @@ public class StoryboardService {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(id);
         System.out.println(storyboard.get().getTitle());
         if(storyboard.isEmpty()){
-            return makeResponse("400",null,"fail",HttpStatus.NOT_FOUND);
+            return makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
         }
         else{
-            return makeResponse("200",storyboard.get(),"success",HttpStatus.OK);
+            return makeResponse("200", storyboard.get(), "success", HttpStatus.OK);
         }
     }
 
     public Object updateTitle(UpdateStoryboardTitleRequest updateStoryboardTitleRequest) {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(updateStoryboardTitleRequest.getStoryboardId());
         if(storyboard.isEmpty()){
-            return makeResponse("400",null,"fail",HttpStatus.NOT_FOUND);
+            return makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
         }
         else{
             Storyboard requestStoryboard = updateStoryboardTitleRequest.toStoryboard();
             storyboard.get().updateTitle(requestStoryboard);
             Storyboard save = storyBoardRepository.save(storyboard.get());
-            return makeResponse("200", UpdateStoryboardTitleResponse.of(save),"success",HttpStatus.OK);
-
+            return makeResponse("200", UpdateStoryboardTitleResponse.of(save),"success", HttpStatus.OK);
         }
     }
 
     public Object deleteStoryboard(Long id) {
         storyBoardRepository.deleteById(id);
-        return makeResponse("200","","success",HttpStatus.OK);
+        return makeResponse("200",null,"success",HttpStatus.OK);
     }
 }

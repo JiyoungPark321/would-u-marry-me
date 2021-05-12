@@ -36,6 +36,6 @@ public class CharacterStatusService {
                 .character(character.get())
                 .build();
         characterStatusRepository.save(characterStatus);
-        return makeResponse("200",characterStatus,"success", HttpStatus.OK);
+        return makeResponse("200", characterStatus, "success", HttpStatus.OK);
     }
 }

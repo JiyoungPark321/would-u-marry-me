@@ -27,7 +27,7 @@ public class StoryTemplate {
     private String imgUrl;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "template" , fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToOne(mappedBy = "template" , fetch = FetchType.LAZY, orphanRemoval = true)
     private Story story;
 
     @Builder
