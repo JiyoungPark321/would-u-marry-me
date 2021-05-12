@@ -50,10 +50,9 @@ public class AccountController {
     }
 
     @PutMapping
-    @ApiOperation(value="회원 수정")
+    @ApiOperation(value="회원 수정") // Account account ->  jwt토큰 확인
     public Object update(@Valid @RequestBody @ApiParam(value="회원 정보 수정 (비밀번호(영문자 ,숫자 포함 10자 ~ 20자 이하), 닉네임(한글,영문자 숫자 포함 2 ~ 7자 이하), 전화번호)",required = true) UpdateAccountRequest updateAccountRequest,
-                         @ApiIgnore @CurrentAccount Account account //-> jwt토큰 확인
-    ){
+                         @ApiIgnore @CurrentAccount Account account){
         Object response = accountService.updateAccount(account,updateAccountRequest);
         return response;
     }
@@ -97,10 +96,8 @@ public class AccountController {
 
     @PostMapping("/sms")
     @ApiOperation(value = "문자 인증")
-    public Object SMS(@Valid@ApiParam(value = "문자인증을 합니다.",required = true)  @RequestBody PhoneNumberRequest phoneNumberRequest
-                     ){
+    public Object SMS(@Valid@ApiParam(value = "문자인증을 합니다.",required = true)  @RequestBody PhoneNumberRequest phoneNumberRequest){
         Object response = accountService.sendSMS(phoneNumberRequest);
         return response;
     }
-
 }
