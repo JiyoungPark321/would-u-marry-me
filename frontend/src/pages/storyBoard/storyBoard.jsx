@@ -20,11 +20,13 @@ const StoryBoard = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [saveCheck, setSaveCheck] = useState([false, false, false, false, false, false, false, false, false]);
+
+  const [storyBoardData, setStoryBoardData] = useState([]);
+
   const [backgroundUrl, setBackgroundUrl] = useState('');
 
   const [backgroundId, setBackgroundId] = useState(null);
-  
-
+  const [musicId, setMusicId] = useState(null);
   
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const StoryBoard = () => {
       headers: {Authorization: localStorage.getItem("jwt")},
     })
       .then((res) => {
+        setStoryBoardData(res.data.data);
         const newSaveCheck = [...saveCheck];
         if (res.data.data.weddingCard == null) {
           setCurrentStep(8);
@@ -52,17 +55,16 @@ const StoryBoard = () => {
         if (res.data.data.music == null) {
           setCurrentStep(1);
         } else {
-          newSaveCheck[2] = true;
+          newSaveCheck[1] = true;
         }
         if (res.data.data.background == null) {
           setCurrentStep(0);
         } else {
+          setBackgroundUrl(res.data.data.background.backgroundImgUrl)
           newSaveCheck[0] = true;
         }
         setSaveCheck(newSaveCheck);
 
-
-        console.log(res.data.data);
         console.log(id);
       })
       .catch((err) => {
@@ -70,6 +72,14 @@ const StoryBoard = () => {
       })
   },[]);
 
+  const _moveNextStep = () => {
+    const newSaveCheck = [...saveCheck];
+    newSaveCheck[currentStep] = true;
+    currentStep < 9 
+    ? setCurrentStep(currentStep + 1)
+    : setCurrentStep(0);
+    console.log(currentStep);
+  }
 
   const moveNextStep = () => {
     if (currentStep === 0 && backgroundId !== null) {
@@ -81,18 +91,31 @@ const StoryBoard = () => {
       })
         .then((res) => {
           console.log(res);
+          _moveNextStep();
         })
         .catch((err) => {
           console.error(err);
         })
-    }
-    currentStep < 9 
-    ? setCurrentStep(currentStep + 1)
-    : setCurrentStep(0);
-    console.log(currentStep);
-    // const newSaveCheck = [...saveCheck];
-    // newSaveCheck[currentStep] = true;
+    } else if (currentStep === 1 && musicId !== null) {
+      api.put('/music', {
+        musicId,
+        storyBoardId: id
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          console.log(res);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    } 
+      // currentStep 2 해야함 캐릭터 처리 안함
+    //   else if (currentStep === 3 && characterId !== null) {
     
+    // }
+    _moveNextStep();
   };
 
   const movePrevStep = () => {
@@ -110,6 +133,7 @@ const StoryBoard = () => {
     >
       <StepProgressBar 
         currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
         saveCheck={saveCheck}
       />
       <MoveMyStoryBoardButton />
@@ -123,11 +147,28 @@ const StoryBoard = () => {
               />
             );   
           }
-          else if (currentStep === 1) return <CarouselType2 />
-          else if (currentStep === 2) return <CarouselType3 />
-          else if (currentStep === 3) return <CarouselType4 />
-          else if (currentStep === 4) return <CarouselType5 />
-          
+          else if (currentStep === 1) {
+            return (
+              <CarouselType2 
+                setMusicId={setMusicId}
+              />
+            )
+          }
+          else if (currentStep === 2) {
+            return (
+              <CarouselType3 />
+            )
+          }
+          else if (currentStep === 3) {
+            return (
+              <CarouselType4 />
+            )
+          }
+          else if (currentStep === 4) {
+            return (
+              <CarouselType5 />
+            )
+          }
         })()
       }
       <PrevButton 
