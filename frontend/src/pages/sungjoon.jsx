@@ -18,8 +18,8 @@ const Sungjoon = () => {
       {/* <div className={styles["menu-btn-box"]}>
         <i class="fas fa-th"></i>
       </div> */}
-      {/* <StoryTemplate1></StoryTemplate1> */}
-      <StoryTemplate2></StoryTemplate2>
+      <StoryTemplate1></StoryTemplate1>
+      {/* <StoryTemplate2></StoryTemplate2> */}
       {/* <StoryTemplate3></StoryTemplate3> */}
       {/* <StoryTemplate4></StoryTemplate4> */}
       {/* <StoryTemplate5></StoryTemplate5> */}
