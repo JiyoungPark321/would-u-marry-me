@@ -24,6 +24,7 @@ const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
     })
       .then((res) => {
         setBackgroundData(res.data.data);
+        console.log(res.data.data);
       })
       .catch((err) => {
         console.error(err);
@@ -69,11 +70,13 @@ const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
                     className={styles['swiper-slide']}
                     key={data.id}
                   >
-                    <img 
-                      src={data.backgroundImgUrl} 
-                      className={styles['background-img']}
-                      onClick={() => {choiceBackground(data.backgroundImgUrl, data.id);}}
-                    />
+                    <div className={styles['img-container']}>
+                      <img 
+                        src={data.backgroundImgUrl} 
+                        className={styles['background-img']}
+                        onClick={() => {choiceBackground(data.backgroundImgUrl, data.id);}}
+                      />
+                    </div>
                   </SwiperSlide>
                 );
               })
