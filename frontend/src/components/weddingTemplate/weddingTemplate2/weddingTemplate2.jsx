@@ -7,13 +7,16 @@ const WeddingTemplate2 = () => {
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
+  const [searchExist, setSearchExist] = useState(0);
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck2, setMouseCheck2] = useState(false);
   const [mouseCheck3, setMouseCheck3] = useState(false);
   var date = "";
   var time = "";
   var place = "";
-
+  console.log(searchExist)
+  console.log('mapExist='+mapExist)
+  console.log('open='+mapOpen)
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -26,7 +29,8 @@ const WeddingTemplate2 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
-    setMapExist(!mapExist);
+    setMapExist(true);
+    setSearchExist(searchExist+1)
   };
   const openMapModal = () => {
     setMapOpen(true);
@@ -150,7 +154,7 @@ const WeddingTemplate2 = () => {
           <div className={styles["title-icon"]}>
             <i className="fas fa-heart"></i>
           </div>
-          {mapExist === false ? (
+          {searchExist  === 0 ?
             <div className={styles["map-box"]}>
               <button className={styles["text-button"]} onClick={openMapModal}>
                 <div className={styles["map-icon"]}>
@@ -158,13 +162,21 @@ const WeddingTemplate2 = () => {
                 </div>
               </button>
             </div>
-          ) : (
+           : 
             <>
               <div className={styles["map-serached"]}>
-                <KakaoMap mapInfo={mapInfo} mapExist={mapExist}></KakaoMap>
+                <KakaoMap mapInfo={mapInfo} mapExist={mapExist} searchExist={searchExist}></KakaoMap>
+                <button
+                  className={styles['text-button']}
+                  onClick={openMapModal}
+                >
+                  <div className={styles['map-icon']}>
+                    <i className="fas fa-map-marked-alt"></i>
+                  </div>
+                </button>
               </div>
             </>
-          )}
+          }
         </div>
         <div className={styles["input-area2-area1"]}>
           <div className={styles["title-text"]}>ACCESS</div>
@@ -180,17 +192,20 @@ const WeddingTemplate2 = () => {
           </div>
         </div>
       </div>
-      {mapOpen === false ? (
+      {mapOpen === false ? 
         ""
-      ) : (
+       : 
         <div className={styles["map-component"]}>
           <SearchPlace
-            open={mapOpen}
-            close={closeMapModal}
-            getMapInfo={getMapInfo}
+            mapInfo = {mapInfo}
+            open = { mapOpen }
+            mapExist={mapExist}
+            searchExist={searchExist}
+            close = { closeMapModal }
+            getMapInfo = {getMapInfo}
           ></SearchPlace>
         </div>
-      )}
+      }
     </div>
   );
 };

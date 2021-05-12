@@ -3,16 +3,13 @@ import KakaoMap from "./kakaoMap";
 import styles from './searchPlace.module.css'
 
 const SearchPlace = (props) => {
-  const { open, close } = props; // 장소 input 컴포넌트 팝업
+  const { open, close, mapExist } = props; // 장소 input 컴포넌트 팝업
+  const {searchExist} = props
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState("");
-  // const [infoY, setInfoY] = useState("");
-  // const [infoX, setInfoX] = useState("");
-  // const [infoPlace, setInfoPlace] = useState("");
   const [mapInfo, setMapInfo] = useState({});
 
   const clickCheck = () => {
-    console.log(Object.keys(mapInfo).length)
     if(Object.keys(mapInfo).length === 0) {
       alert("장소를 선택해주세요.")
     }
@@ -77,6 +74,10 @@ const SearchPlace = (props) => {
           </div>
           <div className={styles['map-area']}>
             <KakaoMap
+              searchExist={searchExist}
+              mapInfo={mapInfo}
+              open={open}
+              mapExist={mapExist}  
               searchPlace={place} 
               getSearchInfo={getSearchInfo}
             />
