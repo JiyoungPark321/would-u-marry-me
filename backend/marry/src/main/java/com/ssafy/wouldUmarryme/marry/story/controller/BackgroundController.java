@@ -40,7 +40,7 @@ public class BackgroundController {
 
     @PostMapping
     @ApiOperation(value = "배경 추가")
-    public Object createBackground(@Valid @RequestBody @ApiParam(value = "배경 사진",required = true)MultipartFile image) throws IOException{
+    public Object createBackground(@Valid @RequestParam @ApiParam(value = "배경 사진",required = true)MultipartFile image) throws IOException{
         Object response = backgroundService.createBackground(image);
         return response;
     }
