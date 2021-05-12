@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import "swiper/swiper.min.css";
@@ -10,29 +10,27 @@ import "swiper/components/navigation/navigation.min.css"
 import styles from './carouselType3.module.css';
 
 import SwiperCore, { EffectFlip, Pagination, Navigation } from 'swiper/core';
+import api from '../../../service/api';
 
 SwiperCore.use([EffectFlip, Pagination, Navigation]);
 
 
 const CarouselType3 = () => {
-  const characterData = [
-    {
-      id: 1,
-      img: "https://picsum.photos/500/500",
-    },
-    {
-      id: 2,
-      img: "https://picsum.photos/500/501",
-    },
-    {
-      id: 3,
-      img: "https://picsum.photos/500/502",
-    },
-    {
-      id: 4,
-      img: "https://picsum.photos/500/503",
-    },
-  ]
+
+  const [characterData, setCharacterData] = useState([]);
+
+  useEffect(() => {
+    api.get('character', {
+      headers: {Authorization: localStorage.getItem("jwt")}
+    })
+      .then((res) => {
+        setCharacterData(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  },[]);
 
 
   return (
