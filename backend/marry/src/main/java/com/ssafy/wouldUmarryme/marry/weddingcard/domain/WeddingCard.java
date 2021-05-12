@@ -8,10 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -27,49 +24,47 @@ public class WeddingCard {
     @Column(name = "wedding_card_time")
     private String time;
 
-    @Column(name="wedding_card_date")
+    @Column(name = "wedding_card_date")
     private String date;
 
-    @Column(name="wedding_card_place")
+    @Column(name = "wedding_card_place")
     private String place;
 
-    @Column(name="man_phone")
+    @Column(name = "man_phone")
     private String manPhone;
 
-    @Column(name="woman_phone")
+    @Column(name = "woman_phone")
     private String womanPhone;
 
-    @Column(name="man_account")
+    @Column(name = "man_account")
     private String manAccountNumber;
 
-    @Column(name="woman_account")
+    @Column(name = "woman_account")
     private String womanAccountNumber;
 
-    @Column(name="first_comment")
+    @Column(name = "first_comment")
     private String firstComment;
 
     @Column(name = "second_comment")
     private String secondComment;
 
     @JsonIgnore
-    @OneToOne( fetch = FetchType.LAZY,orphanRemoval = true)
-    @JoinColumn(name="spot_id")
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "spot_id")
     private Spot spot;
 
-
     @JsonIgnore
-    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToOne(mappedBy = "weddingCard", fetch = FetchType.LAZY, orphanRemoval = true)
     private Storyboard storyboard;
 
-    @OneToOne(fetch = FetchType.EAGER,orphanRemoval = true)
-    @JoinColumn(name="wedding_card_template_id")
+    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "wedding_card_template_id")
     private WeddingCardTemplate template;
 
-    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(mappedBy = "weddingCard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private WeddingCardImage weddingCardImage;
 
-
-    @OneToOne(mappedBy = "weddingCard",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(mappedBy = "weddingCard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private WeddingCardMap weddingCardMap;
 
     @Builder
@@ -87,23 +82,20 @@ public class WeddingCard {
         this.firstComment = firstComment;
         this.secondComment = secondComment;
         this.weddingCardImage = weddingCardImage;
-        this.storyboard=storyboard;
-        this.spot=spot;
+        this.storyboard = storyboard;
+        this.spot = spot;
     }
 
-    public void updateValue(WeddingCard requestWeddingCard,WeddingCardImage requestWeddingCardImage){
-        this.time=requestWeddingCard.time;
-        this.date=requestWeddingCard.date;
-        this.place=requestWeddingCard.place;
-        this.manPhone=requestWeddingCard.manPhone;
-        this.womanPhone=requestWeddingCard.womanPhone;
-        this.manAccountNumber=requestWeddingCard.manAccountNumber;
-        this.womanAccountNumber=requestWeddingCard.womanAccountNumber;
-        this.firstComment=requestWeddingCard.firstComment;
-        this.secondComment=requestWeddingCard.secondComment;
-        this.weddingCardImage=requestWeddingCardImage;
-
+    public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage){
+        this.time = requestWeddingCard.time;
+        this.date = requestWeddingCard.date;
+        this.place = requestWeddingCard.place;
+        this.manPhone = requestWeddingCard.manPhone;
+        this.womanPhone = requestWeddingCard.womanPhone;
+        this.manAccountNumber = requestWeddingCard.manAccountNumber;
+        this.womanAccountNumber = requestWeddingCard.womanAccountNumber;
+        this.firstComment = requestWeddingCard.firstComment;
+        this.secondComment = requestWeddingCard.secondComment;
+        this.weddingCardImage = requestWeddingCardImage;
     }
-
-
 }

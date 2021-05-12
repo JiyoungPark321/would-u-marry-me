@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,29 +28,24 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 public class CharacterService {
 
     private final CharacterRepository characterRepository;
-    private final CharacterStatusRepository characterStatusRepository;
     private final StoryBoardRepository storyBoardRepository;
     private final AwsS3Service awsS3Service;
 
     @Transactional(readOnly = true)
     public Object getCharacterList() {
         List<Character> characterList = characterRepository.findAll();
-        return makeResponse("200",characterList,"success", HttpStatus.OK);
+        return makeResponse("200", characterList, "success", HttpStatus.OK);
     }
 
-    public Object createCharacter(CreateCharacterRequest createCharacterRequest)throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(createCharacterRequest.getCharacter(),"character");
+    public Object createCharacter(String name,MultipartFile image)throws IOException {
+        String imgName = awsS3Service.uploadProfileImage(image,"character");
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
-        Optional<Character> character = characterRepository.findById(createCharacterRequest.getCharacterId());
-        CharacterStatus characterStatus = CharacterStatus.builder()
-                .characterName(imgName)
-                .characterUrl(imgUrl)
-                .status(createCharacterRequest.getStatus())
-                .character(character.get())
+        Character character = Character.builder()
+                .coupleName(name)
+                .coupleUrl(imgUrl)
                 .build();
-        CharacterStatus save = characterStatusRepository.save(characterStatus);
-        return makeResponse("200",save,"success",HttpStatus.OK);
-
+        characterRepository.save(character);
+        return makeResponse("200", character, "success", HttpStatus.OK);
     }
 
     public Object setCharacter(SetCharacterRequest setCharacterRequest) {
@@ -57,7 +53,6 @@ public class CharacterService {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(setCharacterRequest.getStoryboardId());
         storyboard.get().updateCharacter(character.get());
         Storyboard save = storyBoardRepository.save(storyboard.get());
-        return makeResponse("200",character.get(),"success",HttpStatus.OK);
-
+        return makeResponse("200", character.get(), "success", HttpStatus.OK);
     }
 }

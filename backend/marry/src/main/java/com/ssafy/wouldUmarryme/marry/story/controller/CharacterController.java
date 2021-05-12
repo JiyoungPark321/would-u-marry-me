@@ -12,13 +12,14 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Objects;
 
-@Api(tags={"4.Character"})
+@Api(tags={"04. Character"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/character")
@@ -36,17 +37,17 @@ public class CharacterController {
 
     //캐릭터 저장하기
     @PutMapping
-    @ApiOperation(value = "캐릭터 저장하기")
-    public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response= characterService.setCharacter(setCharacterRequest);
+    @ApiOperation(value = "캐릭터 저장")
+    public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 Id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
+        Object response = characterService.setCharacter(setCharacterRequest);
         return response;
     }
 
     //캐릭터 추가하기
     @PostMapping
-    @ApiOperation("캐릭터 추가하기")
-    public Object createCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 id, 이미지, 상태",required = true)CreateCharacterRequest createCharacterRequest) throws IOException{
-        Object response = characterService.createCharacter(createCharacterRequest);
+    @ApiOperation("캐릭터 추가")
+    public Object createCharacter(@RequestParam(value = "name")String name,@RequestParam(value = "image") MultipartFile image,@ApiIgnore @CurrentAccount Account account) throws IOException{
+        Object response = characterService.createCharacter(name,image);
         return response;
     }
 

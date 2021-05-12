@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.account.domain;
 
 
+import com.ssafy.wouldUmarryme.marry.common.time.TimeEntity;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.*;
 
@@ -12,18 +13,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account {
-
+public class Account extends TimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="account_id")
+    @Column(name = "account_id")
     private Long id;
 
     //유저 아이디
     @Column(unique=true)
     private String userName;
-
-
 
     private String password;
 
@@ -33,7 +31,7 @@ public class Account {
 
     private String verificationCodeNumber;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Storyboard> storyboards;
 
     @Column(name = "role")
@@ -43,11 +41,9 @@ public class Account {
     @Builder
     public Account(@NotNull String userName, @NotNull String password, @NotNull String nickName, @NotNull String phoneNumber, @NotNull UserRole role){
         this.userName = userName;
-        this.password=password;
+        this.password = password;
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
-        this.role=role;
+        this.role = role;
     }
-
-
 }

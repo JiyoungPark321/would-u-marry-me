@@ -26,12 +26,12 @@ public class Story {
     private Long id;
 
     //몇번째 story인지
-    @Column(name="story_index")
+    @Column(name = "story_index")
     private int index;
 
     //몇번째 템플릿인지
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="story_template_id")
+    @JoinColumn(name ="story_template_id")
     private StoryTemplate template;
 
     @JsonIgnore
@@ -41,25 +41,25 @@ public class Story {
 
 
     @OneToOne( fetch = FetchType.EAGER)
-    @JoinColumn(name="spot_id")
+    @JoinColumn(name = "spot_id")
     private Spot spot;
 
     //이미지 저장
-    @OneToMany(mappedBy = "story",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "story", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StoryImage> images = new ArrayList<>();
 
     //글 저장
-    @OneToMany(mappedBy="story",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "story", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StoryComment> comments = new ArrayList<>();
 
     @Builder
     public Story(int index, Spot spot, Storyboard storyboard){
-        this.index= index;
-        this.spot=spot;
-        this.storyboard=storyboard;
+        this.index = index;
+        this.spot = spot;
+        this.storyboard = storyboard;
     }
 
-    public void updateTemplate(StoryTemplate requestTemplate){this.template=requestTemplate;}
+    public void updateTemplate(StoryTemplate requestTemplate){this.template = requestTemplate;}
 
 
 }

@@ -31,22 +31,24 @@ public class Music {
     @OneToOne(mappedBy = "music", fetch = FetchType.LAZY)
     private Storyboard storyboard;
 
-    @Column(name="music_img_name")
+    @Column(name = "music_img_name")
     private String albumImg;
 
     @Column(name = "music_img_url")
     private String albumImgUrl;
 
-    @Column(name="music_title")
+    @Column(name = "music_title")
     private String title;
 
-    @Column(name="music_artist")
+    @Column(name = "music_artist")
     private String artist;
 
     @Builder
-    public Music(String musicName, String musicUrl){
-        this.musicName=musicName;
-        this.musicUrl=musicUrl;
+    public Music(String musicName, String musicUrl,String title,String artist){
+        this.musicName = musicName;
+        this.musicUrl = musicUrl;
+        this.artist = artist;
+        this.title = title;
     }
 
 

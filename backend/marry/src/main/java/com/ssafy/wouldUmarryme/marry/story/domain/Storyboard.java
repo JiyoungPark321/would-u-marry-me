@@ -6,6 +6,7 @@ import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Character;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
+import com.ssafy.wouldUmarryme.marry.common.time.TimeEntity;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +23,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Table(name = "storyboard")
-public class Storyboard {
+public class Storyboard extends TimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +31,7 @@ public class Storyboard {
     private Long id;
 
     //타이틀
-    @Column(name="storyboard_title")
+    @Column(name = "storyboard_title")
     private String title;
 
     //배경이미지
@@ -40,7 +41,7 @@ public class Storyboard {
 
     //캐릭터
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="character_id")
+    @JoinColumn(name ="character_id")
     private Character character;
 
     //배경음악
@@ -50,33 +51,27 @@ public class Storyboard {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="account_id")
+    @JoinColumn(name ="account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "storyboard", fetch = FetchType.EAGER , cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "storyboard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Story> stories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "card_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "wedding_card_id")
     private WeddingCard weddingCard;
 
     @Builder
-    public Storyboard(@NotNull String title,@NotNull Account account){
+    public Storyboard(@NotNull String title, @NotNull Account account){
         this.account = account;
-        this.title=title;
+        this.title = title;
     }
-
-    @Builder
-    public Storyboard(String title){
-        this.title=title;
-    }
-
 
     public void updateTitle(Storyboard requestStoryboard){
-        this.title=requestStoryboard.title;
+        this.title = requestStoryboard.title;
     }
-    public void updateCharacter(Character requestCharacter){this.character=requestCharacter;}
-    public void updateBackground(Background requestStoryboard){this.background=requestStoryboard;}
+    public void updateCharacter(Character requestCharacter){this.character = requestCharacter;}
+    public void updateBackground(Background requestStoryboard){this.background = requestStoryboard;}
 
 
 

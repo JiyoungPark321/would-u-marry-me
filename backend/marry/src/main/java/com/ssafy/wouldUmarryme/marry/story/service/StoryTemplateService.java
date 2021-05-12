@@ -30,26 +30,25 @@ public class StoryTemplateService {
     @Transactional(readOnly = true)
     public Object retrieveStoryTemplate() {
         List<StoryTemplate> storyTemplateList = storyTemplateRepository.findAll();
-        return makeResponse("200",storyTemplateList,"success", HttpStatus.OK);
+        return makeResponse("200", storyTemplateList, "success", HttpStatus.OK);
     }
 
     public Object createTemplate(MultipartFile image) throws IOException {
         String imgName = awsS3Service.uploadProfileImage(image,"storytemplate");
-        String imgUrl  = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
+        String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         StoryTemplate storyTemplate = StoryTemplate.builder()
                 .imgName(imgName)
                 .imgUrl(imgUrl)
                 .build();
-        StoryTemplate save =  storyTemplateRepository.save(storyTemplate);
-        return makeResponse("200",save,"success",HttpStatus.OK);
+        StoryTemplate save = storyTemplateRepository.save(storyTemplate);
+        return makeResponse("200", save, "success", HttpStatus.OK);
     }
 
     public Object setTemplate(SetStoryTemplateRequest setStoryTemplateRequest) {
         Optional<StoryTemplate> storyTemplate = storyTemplateRepository.findById(setStoryTemplateRequest.getStoryTemplateId());
-        Optional<Story> story  = storyRepository.findById(setStoryTemplateRequest.getStoryId());
+        Optional<Story> story = storyRepository.findById(setStoryTemplateRequest.getStoryId());
         story.get().updateTemplate(storyTemplate.get());
         Story save = storyRepository.save(story.get());
-        return makeResponse("200",storyTemplate.get(),"success",HttpStatus.OK);
-
+        return makeResponse("200",save,"success",HttpStatus.OK);
     }
 }

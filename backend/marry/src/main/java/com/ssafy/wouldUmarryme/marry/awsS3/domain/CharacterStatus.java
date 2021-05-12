@@ -18,15 +18,15 @@ public class CharacterStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="character_status_id")
+    @Column(name ="character_status_id")
     private Long id;
 
-    //사진이름
-    @Column(name = "character_status_name")
-    private String characterName;
+    @Column(name = "character_gender")
+    private String gender;
+
 
     //풀경로
-    @Column(name="character_status_url")
+    @Column(name ="character_status_url")
     private String characterUrl;
 
 
@@ -35,14 +35,14 @@ public class CharacterStatus {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="character_id")
+    @JoinColumn(name = "character_id")
     private Character character;
 
     @Builder
-    public CharacterStatus(String characterName,String characterUrl,String status,Character character){
-        this.characterName=characterName;
-        this.characterUrl=characterUrl;
-        this.status=status;
-        this.character=character;
+    public CharacterStatus(String gender,String characterUrl,String status,Character character){
+        this.gender = gender;
+        this.characterUrl = characterUrl;
+        this.status = status;
+        this.character = character;
     }
 }

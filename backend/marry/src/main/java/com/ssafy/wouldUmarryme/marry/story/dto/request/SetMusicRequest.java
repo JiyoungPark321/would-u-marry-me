@@ -8,6 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 public class SetMusicRequest {
-    private MultipartFile music;
+    private Long musicId;
     private Long storyBoardId;
 }
