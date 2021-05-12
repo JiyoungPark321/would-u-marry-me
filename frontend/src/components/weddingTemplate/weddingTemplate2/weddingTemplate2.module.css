@@ -1,0 +1,158 @@
+.template-box {
+  display: flex;
+}
+.input-area1 {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: 7px solid #DAA744;
+  width: 700px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.input-area1-area1 {
+  height: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.input-area1-area2 {
+  height: 700px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+.text-box1 {
+  position: relative;
+  width: 612px;
+  height: 416px;
+  background-color: #F6F6E3;
+  border-radius: 30px;
+}
+.text-box2 {
+  position: relative;
+  width: 612px;
+  height: 238px;
+  background-color: #F6F6E3;
+  border-radius: 30px;
+}
+.text-button {
+  cursor: pointer;
+  position: absolute;
+  width: 32px;
+  height: 28px;
+  right: 15px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+}
+.text-icon {
+  font-size: 30px;
+  color: #E79B09;
+}
+.date-button {
+  width: 612px;
+  height: 41px;
+  background-color: #FFFFFF;
+  border: 3px solid #9D9595;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 9px 0;
+  color: #AF9D9F;
+}
+.date-button:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+  border: none;
+}
+.title-text {
+  font-size: 16px;
+  color: #4D2D2D;
+  font-weight: bold;
+}
+.title-icon {
+  font-size:  10px;
+  color: #4D2D2D;
+}
+.input-area2 {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 7px solid #DAA744;
+  border-left: transparent;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+  width: 700px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.input-area2-area1 {
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.map-box {
+  position: relative;
+  width: 612px;
+  height: 215px;
+  background-color: #EFEBFC;
+  border-radius: 30px;
+}
+.map-icon {
+  font-size: 30px;
+  color: #A22BB6;
+}
+.map-component {
+  position: fixed;
+  width: 612px;
+  height: 500px;
+  top: 50%;
+  right: 50%;
+  margin-top: -250px;
+  margin-right: -306px;
+  z-index: 2;
+}
+.map-serached {
+  position: relative;
+  display: flex;
+  background-color: #EFEBFC;
+  width: 612px;
+  height: 215px;
+  border-radius: 30px;
+}
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9D9595;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+}
+.date-input:hover::placeholder {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+.date-input:hover {
+  color: #FFFFFF;
+  background-color: #af9d9f;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  color: #af9d9f; 
+  margin-left: -5px;
+ }

@@ -1,0 +1,98 @@
+.story-board {
+  background-color: #fff9fa;
+  padding: 0em 0em 1em 6.5em;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+  padding-right: 6.5em;
+  margin-bottom: 2.3em;
+}
+
+.header-title {
+  color: #b89498;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.header-deco-line {
+  flex-grow: 2;
+  height: 5px;
+  margin: 0.5em 2em 0 2em;
+  background-color: #b89498;
+}
+
+.header-greetings-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.header-button-container {
+  display: flex;
+  padding-top: 9vh;
+}
+
+.header-greetings {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #615254;
+  margin-bottom: 1.2vh;
+}
+
+.header-button {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  line-height: 1.25rem;
+}
+
+.header-modal {
+  display: none;
+  flex-direction: column;
+  width: 13.625rem;
+  height: 72px;
+  border: solid 2px #615254;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.button-rotation {
+  transform: rotate(180deg);
+}
+
+.visible-modal {
+  display: flex;
+}
+
+.logout-button {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 33px;
+  transition: all 400ms ease-in;
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 17, 255, 0.123);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.edit-member-info-button {
+  border-top: solid 2px #615254;
+  height: 33px;
+  transition: all 400ms ease-in;
+}
+
+.edit-member-info-button:hover {
+  background-color: rgba(0, 17, 255, 0.123);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.main-container {
+  height: 80vh;
+}

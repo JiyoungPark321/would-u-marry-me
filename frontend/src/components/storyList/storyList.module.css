@@ -1,0 +1,59 @@
+.story-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-story-container {
+  display: flex;
+  flex-direction: column;
+  width: 31.25rem;
+  height: 300px;
+  margin: 0 6.5em 3.75em 0;
+  border: solid 8px #ddc9cb;
+  border-radius: 20px;
+  background-color: rgb(218, 218, 218);
+}
+
+.add-button {
+  width: 100%;
+  height: 80%;
+  font-size: 5.625rem;
+  color: white;
+}
+
+.add-button-blink {
+  color: #944f57;
+  -webkit-animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    color: #f8d4d8;
+  }
+  50% {
+    color: #a03642;
+  }
+  100% {
+    color: #f8d4d8;
+  }
+}
+
+.add-title {
+  width: 100%;
+  height: 20%;
+  border: none;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  padding: 10px 20px;
+}
+
+.add-title:focus {
+  outline: none;
+  border: 2px solid #944f57;
+}
+
+.add-title::placeholder {
+  color: #615254;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
