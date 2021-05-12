@@ -14,6 +14,7 @@ const WeddingTemplate1 = () => {
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
+  const [searchExist, setSearchExist] = useState(0);
   var date = "";
   var time = "";
   var place = "";
@@ -36,7 +37,8 @@ const WeddingTemplate1 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
-    setMapExist(!mapExist);
+    setMapExist(true);
+    setSearchExist(searchExist+1)
   };
   const openMapModal = () => {
     setMapOpen(true);
@@ -208,7 +210,7 @@ const WeddingTemplate1 = () => {
           )}
         </div>
         {/* 지도 입력 */}
-        {mapExist === false ? (
+        { searchExist  === 0 ? (
           <div className={styles["map-box"]}>
             <button className={styles["text-button"]} onClick={openMapModal}>
               <div className={styles["map-icon"]}>
@@ -221,7 +223,7 @@ const WeddingTemplate1 = () => {
             <KakaoMap
               mapInfo={mapInfo}
               mapExist={mapExist}
-              className="map"
+              searchExist={searchExist}
             ></KakaoMap>
             <button className={styles["text-button"]} onClick={openMapModal}>
               <div className={styles["map-icon"]}>
@@ -243,9 +245,12 @@ const WeddingTemplate1 = () => {
       ) : (
         <div className={styles["map-component"]}>
           <SearchPlace
-            open={mapOpen}
-            close={closeMapModal}
-            getMapInfo={getMapInfo}
+            mapInfo = {mapInfo}
+            open = { mapOpen }
+            mapExist={mapExist}
+            searchExist={searchExist}
+            close = { closeMapModal }
+            getMapInfo = {getMapInfo}
           ></SearchPlace>
         </div>
       )}

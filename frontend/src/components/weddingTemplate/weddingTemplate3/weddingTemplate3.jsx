@@ -14,6 +14,7 @@ const WeddingTemplate3 = () => {
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
+  const [searchExist, setSearchExist] = useState(0);
   var date = "";
   var time = "";
   var place = "";
@@ -35,8 +36,9 @@ const WeddingTemplate3 = () => {
   };
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
-    setMapInfo(mapInfo);
-    setMapExist(!mapExist);
+    setMapInfo(mapInfo)
+    setMapExist(true)
+    setSearchExist(searchExist+1)
   };
   const openMapModal = () => {
     setMapOpen(true);
@@ -239,7 +241,7 @@ const WeddingTemplate3 = () => {
             />
           </div>
         </div>
-        {mapExist === false ? (
+        {searchExist  === 0 ? (
           <div className={styles["map-box"]}>
             <button className={styles["text-button2"]} onClick={openMapModal}>
               <div className={styles["map-icon"]}>
@@ -250,7 +252,12 @@ const WeddingTemplate3 = () => {
         ) : (
           <>
             <div className={styles["map-serached"]}>
-              <KakaoMap mapInfo={mapInfo} mapExist={mapExist}></KakaoMap>
+              <KakaoMap mapInfo={mapInfo} mapExist={mapExist} searchExist={searchExist}></KakaoMap>
+              <button className={styles["text-button2"]} onClick={openMapModal}>
+                <div className={styles["map-icon"]}>
+                  <i className="fas fa-map-marked-alt"></i>
+                </div>
+              </button>
             </div>
           </>
         )}
@@ -260,9 +267,12 @@ const WeddingTemplate3 = () => {
       ) : (
         <div className={styles["map-component"]}>
           <SearchPlace
-            open={mapOpen}
-            close={closeMapModal}
-            getMapInfo={getMapInfo}
+           mapInfo = {mapInfo}
+           open = { mapOpen }
+           mapExist={mapExist}
+           searchExist={searchExist}
+           close = { closeMapModal }
+           getMapInfo = {getMapInfo}
           ></SearchPlace>
         </div>
       )}

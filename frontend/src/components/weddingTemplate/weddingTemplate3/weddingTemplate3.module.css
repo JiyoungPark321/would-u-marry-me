@@ -264,6 +264,7 @@
   top: 10px;
   background-color: transparent;
   border: none;
+  z-index: 1;
 }
 
 .text-icon2 {
