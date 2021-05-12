@@ -27,7 +27,7 @@ public class WeddingCardImage {
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="wedding_card_id")
+    @JoinColumn(name = "wedding_card_id")
     private WeddingCard weddingCard;
 
     @Builder

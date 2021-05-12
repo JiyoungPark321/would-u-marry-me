@@ -34,18 +34,15 @@ public class WeddingCardService {
     private final WeddingCardImageRepository weddingCardImageRepository;
     private final AwsS3Service awsS3Service;
 
-
     public Object createCard(CreateWeddingCardRequest createWeddingCardRequest) {
         Optional<Storyboard> storyboard = storyBoardRepository.findById(createWeddingCardRequest.getStoryBoardId());
         Optional<Spot> spot = spotRepository.findById(createWeddingCardRequest.getSpotId());
-
         WeddingCard weddingCard = WeddingCard.builder()
                 .spot(spot.get())
                 .storyboard(storyboard.get())
                 .build();
         WeddingCard save = weddingCardRepository.save(weddingCard);
         return makeResponse("200", save,  "success", HttpStatus.OK);
-
     }
 
     public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest) throws IOException {
@@ -57,6 +54,7 @@ public class WeddingCardService {
         String imgName = "";
         String imgUrl = "";
         WeddingCardImage weddingCardImage = null;
+
         if(object != null){
             imgName = awsS3Service.uploadProfileImage(object,"card");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
@@ -67,7 +65,6 @@ public class WeddingCardService {
             weddingCardImageRepository.save(weddingCardImage);
             save.setWeddingCardImage(weddingCardImage);
         }
-
         WeddingCard requestWeddingCard = inputWeddingCardRequest.toWeddingCard();
         save.updateValue(requestWeddingCard,weddingCardImage);
         //save.setWeddingCardMap(inputWeddingCardRequest.getWeddingCardMap());

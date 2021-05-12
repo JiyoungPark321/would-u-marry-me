@@ -26,11 +26,11 @@ public class StoryComment {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="story_id")
+    @JoinColumn(name = "story_id")
     private Story story;
 
     //몇번째위치의 멘트인지
-    @Column(name="story_comment_index")
+    @Column(name = "story_comment_index")
     private int index;
 
     @Builder

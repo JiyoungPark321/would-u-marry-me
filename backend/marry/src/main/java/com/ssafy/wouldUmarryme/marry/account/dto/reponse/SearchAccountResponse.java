@@ -14,13 +14,11 @@ import javax.validation.constraints.NotNull;
 @Builder
 @ToString
 public class SearchAccountResponse {
-
     @Id
     private Long id;
     private String userName;
     private String nickName;
     private String phoneNumber;
-
 
     // static 이면 객체를 안만들고 따른 클래스에서 호출이 가능
     public static SearchAccountResponse toSearchAccountResponse(Account account){
@@ -31,5 +29,4 @@ public class SearchAccountResponse {
                 .phoneNumber(account.getPhoneNumber())
                 .build();
     }
-
 }

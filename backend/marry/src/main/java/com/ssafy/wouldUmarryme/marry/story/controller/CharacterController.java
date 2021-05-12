@@ -37,15 +37,15 @@ public class CharacterController {
 
     //캐릭터 저장하기
     @PutMapping
-    @ApiOperation(value = "캐릭터 저장하기")
-    public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response= characterService.setCharacter(setCharacterRequest);
+    @ApiOperation(value = "캐릭터 저장")
+    public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 Id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
+        Object response = characterService.setCharacter(setCharacterRequest);
         return response;
     }
 
     //캐릭터 추가하기
     @PostMapping
-    @ApiOperation("캐릭터 추가하기")
+    @ApiOperation("캐릭터 추가")
     public Object createCharacter(@RequestParam(value = "name")String name,@RequestParam(value = "image") MultipartFile image,@ApiIgnore @CurrentAccount Account account) throws IOException{
         Object response = characterService.createCharacter(name,image);
         return response;

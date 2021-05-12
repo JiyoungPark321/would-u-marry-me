@@ -26,8 +26,8 @@ public class WeddingCardController {
     private final WeddingCardService weddingCardService;
 
     @PostMapping
-    @ApiOperation(value = "청첩장생성")
-    public Object create(@Valid @ApiParam(value = "장소아이디, 스토리보드 아이디 필요",required = true) @RequestBody
+    @ApiOperation(value = "청첩장 생성")
+    public Object create(@Valid @ApiParam(value = "장소 Id, 스토리보드 Id 필요",required = true) @RequestBody
                                      CreateWeddingCardRequest createWeddingCardRequest, @ApiIgnore @CurrentAccount Account account){
         Object response = weddingCardService.createCard(createWeddingCardRequest);
         return response;
@@ -35,7 +35,7 @@ public class WeddingCardController {
 
     @PutMapping
     @ApiOperation(value = "청첩장 값 넣기")
-    public Object insert(@Valid @ApiParam(value="웨딩카드아이디 필요",required = true)
+    public Object insert(@Valid @ApiParam(value="웨딩카드 Id 필요",required = true)
                                  InputWeddingCardRequest inputWeddingCardRequest, @ApiIgnore @CurrentAccount Account account) throws IOException {
         Object response = weddingCardService.inputCard(inputWeddingCardRequest);
         return response;
@@ -43,7 +43,7 @@ public class WeddingCardController {
 
     @GetMapping
     @ApiOperation(value = "청첩장 조회")
-    public Object retrieve(@Valid @ApiParam(value = "스토리보드 아이디",required = true)
+    public Object retrieve(@Valid @ApiParam(value = "스토리보드 Id",required = true)
                            RetrieveWeddingCardRequest retrieveWeddingCardRequest,@ApiIgnore @CurrentAccount Account account){
         Object response = weddingCardService.retrieveCard(retrieveWeddingCardRequest);
         return response;

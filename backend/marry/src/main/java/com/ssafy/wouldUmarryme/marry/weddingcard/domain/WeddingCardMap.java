@@ -11,20 +11,20 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name="wedding_card_map")
+@Table(name = "wedding_card_map")
 public class WeddingCardMap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="wedding_card_map_id")
+    @Column(name = "wedding_card_map_id")
     private Long  id;
 
     @Column(name = "wedding_card_map_name")
     private String placeName;
 
-    @Column(name="wedding_card_map_x")
+    @Column(name = "wedding_card_map_x")
     private Double x;
 
-    @Column(name="wedding_card_map_y")
+    @Column(name = "wedding_card_map_y")
     private Double y;
 
     @JsonIgnore
