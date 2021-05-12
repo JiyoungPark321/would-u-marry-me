@@ -20,6 +20,8 @@ const App = () => {
         <Route path="/jaehyuk" component={Jaehyuk} exact />
         <Route path="/sungjoon" component={Sungjoon} exact />
         
+        <Route path="/" component={SignIn} exact />
+        
         <Route path="/signup" component={SignUp} exact />
         <Route path="/signin" component={SignIn} exact />
 

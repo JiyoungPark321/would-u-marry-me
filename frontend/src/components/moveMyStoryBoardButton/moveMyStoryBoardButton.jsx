@@ -12,12 +12,12 @@ const MoveMyStoryBoardButton = ({ color }) => {
   }
 
   return (
-    <div 
+    <button 
       className={`${styles['move-story-board-button']} ${color === "white" && styles['color-white']}`}
       onClick={MoveMyStoryBoard}  
     >
       <i className="fas fa-th"></i>
-    </div>
+    </button>
   );
 };
 
