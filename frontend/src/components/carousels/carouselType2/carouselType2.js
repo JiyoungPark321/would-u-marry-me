@@ -67,11 +67,23 @@ const CarouselType2 = ({ setMusicId }) => {
                   key={data.id}
                 >
                   <img 
-                    src={data.albumImgUrl} 
                     className={styles['album-img']}
+                    src={data.albumImgUrl} 
                     onClick={() => {choiceMusic(data.id)}}
                   />
-                  <audio src={data.musicUrl} controls></audio>
+                  <div className={styles['about-music-container']}>
+                    <div className={styles['info-container']}>
+                      <p className={styles['title']}>{data.title}</p>
+                      <span className={styles['divider']}>ㅡ</span>
+                      <p>{data.artist}</p>
+                    </div>
+                    <audio
+                      className={styles['audio-controller']}
+                      src={data.musicUrl} 
+                      controls
+                      controlsList="nodownload"
+                    ></audio>
+                  </div>
                 </SwiperSlide>
               );
             })
