@@ -11,7 +11,7 @@ import WeddingTemplate4 from "../components/weddingTemplate/weddingTemplate4/wed
 import styles from "./sungjoon.module.css";
 
 const Sungjoon = () => {
-  const [pageIndex, moveRight] = useState(0);
+  // const [pageIndex, moveRight] = useState(0);
   // console.log(pageIndex);
   return (
     <div className={styles["backgournd-color"]}>
