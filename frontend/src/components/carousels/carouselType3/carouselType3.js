@@ -15,7 +15,7 @@ import api from '../../../service/api';
 SwiperCore.use([EffectFlip, Pagination, Navigation]);
 
 
-const CarouselType3 = () => {
+const CarouselType3 = ({ setCharacterId }) => {
 
   const [characterData, setCharacterData] = useState([]);
 
@@ -32,37 +32,54 @@ const CarouselType3 = () => {
       })
   },[]);
 
+  const choiceCharacter = (characterId) => {
+    setCharacterId(characterId);
+  };
+
 
   return (
-    <Swiper 
-      effect={'flip'} 
-      grabCursor={true} 
-      flipEffect={{
-        "slideShadows": true,
-      }}        
-      pagination={{ "clickable": true }}
-      navigation={{ "clickable": true }}
-      loop={true}
-      speed={2500}
-      className={styles['swiper-container']}>
-      <div className={styles['swiper-wrapper']}>
+    <>
       {
-        characterData.map((data) => {
-          return (
-            <SwiperSlide
-              className={styles['swiper-slide']}
-              key={data.id}
-            >
-              <img 
-                src={data.img} 
-                className={styles['character-img']}
-              />
-            </SwiperSlide>
-          );
-        })
+        characterData.length > 0
+        ?
+        <Swiper 
+          effect={'flip'} 
+          grabCursor={true} 
+          flipEffect={{
+            "slideShadows": true,
+          }}        
+          pagination={{ "clickable": true }}
+          navigation={{ "clickable": true }}
+          loop={true}
+          speed={2500}
+          className={styles['swiper-container']}>
+          <div className={styles['swiper-wrapper']}>
+          {
+            characterData.map((data) => {
+              return (
+                <SwiperSlide
+                  className={styles['swiper-slide']}
+                  key={data.id}
+                > 
+                  <div 
+                    className={styles['img-container']}
+                    onClick={() => {choiceCharacter(data.id)}}
+                  >
+                    <img 
+                      src={data.coupleUrl} 
+                      className={styles['character-img']}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })
+          }
+          </div>
+        </Swiper>
+        :
+        <p>목록이 비어있습니다.</p>
       }
-      </div>
-    </Swiper>
+    </>
   );
 };
 
