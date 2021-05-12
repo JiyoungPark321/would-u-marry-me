@@ -58,7 +58,7 @@ public class Storyboard extends TimeEntity {
     private List<Story> stories = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "card_id")
+    @JoinColumn(name = "wedding_card_id")
     private WeddingCard weddingCard;
 
     @Builder
