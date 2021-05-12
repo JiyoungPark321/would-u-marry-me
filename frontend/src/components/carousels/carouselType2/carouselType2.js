@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import "swiper/swiper.min.css";
@@ -15,73 +15,73 @@ import api from '../../../service/api';
 SwiperCore.use([EffectCube, Pagination, Navigation]);
 
 
-const CarouselType2 = () => {
+const CarouselType2 = ({ setMusicId }) => {
+
+  const [musicData, setMusicData] = useState([]);
 
   useEffect(() => {
     api.get('/music', {
       headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
-        console.log(res);
+        setMusicData(res.data.data);
+        console.log(res.data.data);
       })
       .catch((err) => {
         console.error(err);
       })
   },[]);
 
-  const musicData = [
-    {
-      id: 1,
-      img: "https://picsum.photos/500/500",
-    },
-    {
-      id: 2,
-      img: "https://picsum.photos/500/501",
-    },
-    {
-      id: 3,
-      img: "https://picsum.photos/500/502",
-    },
-    {
-      id: 4,
-      img: "https://picsum.photos/500/503",
-    },
-  ]
+
+  const choiceMusic = (musicId) => {
+    setMusicId(musicId);
+  };
+
 
 
   return (
-    <Swiper 
-      effect={'cube'} 
-      grabCursor={true} 
-      cubeEffect={{
-        "shadow": true,
-        "slideShadows": true,
-        "shadowOffset": 50,
-        "shadowScale": 0.94,
-      }}        
-      pagination={{ "clickable": true }}
-      navigation={{ "clickable": true }}
-      loop={true}
-      speed={3000}
-      className={styles['swiper-container']}>
-      <div className={styles['swiper-wrapper']}>
+    <>
       {
-        musicData.map((data) => {
-          return (
-            <SwiperSlide
-              className={styles['swiper-slide']}
-              key={data.id}
-            >
-              <img 
-                src={data.img} 
-                className={styles['album-img']}
-              />
-            </SwiperSlide>
-          );
-        })
+        musicData.length > 0
+        ?
+        <Swiper 
+          effect={'cube'} 
+          grabCursor={true} 
+          cubeEffect={{
+            "shadow": true,
+            "slideShadows": true,
+            "shadowOffset": 50,
+            "shadowScale": 0.94,
+          }}        
+          pagination={{ "clickable": true }}
+          navigation={{ "clickable": true }}
+          loop={true}
+          speed={3000}
+          className={styles['swiper-container']}>
+          <div className={styles['swiper-wrapper']}>
+          {
+            musicData.map((data) => {
+              return (
+                <SwiperSlide
+                  className={styles['swiper-slide']}
+                  key={data.id}
+                >
+                  <img 
+                    src={data.albumImgUrl} 
+                    className={styles['album-img']}
+                    onClick={() => {choiceMusic(data.id)}}
+                  />
+                  <audio src={data.musicUrl} controls></audio>
+                </SwiperSlide>
+              );
+            })
+          }
+          </div>
+        </Swiper>
+        :
+        <p>목록이 비어있습니다.</p>
       }
-      </div>
-    </Swiper>
+    </>
   );
 };
 
