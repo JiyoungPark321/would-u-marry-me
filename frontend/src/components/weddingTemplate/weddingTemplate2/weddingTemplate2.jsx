@@ -12,12 +12,13 @@ const WeddingTemplate2 = () => {
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck2, setMouseCheck2] = useState(false);
   const [mouseCheck3, setMouseCheck3] = useState(false);
+  const [mapPlace ,setMapPlace] = useState();
+  const [mapX ,setMapX] = useState();
+  const [mapY ,setMapY] = useState();
   var date = "";
   var time = "";
   var place = "";
-  console.log(searchExist)
-  console.log('mapExist='+mapExist)
-  console.log('open='+mapOpen)
+  
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -30,6 +31,9 @@ const WeddingTemplate2 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
+    setMapPlace(mapInfo.name);
+    setMapX(mapInfo.x);
+    setMapY(mapInfo.y);
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
@@ -57,13 +61,9 @@ const WeddingTemplate2 = () => {
     data.append("cardSecondComment", null)
     data.append("cardTime", time)
     data.append("cardPlace", place)
-    data.append("cardMap", mapInfo)
-    // mapInfo 객체입니다
-    // {
-    //   name:,
-    //   x:,
-    //   y:
-    // }
+    data.append("placeName", mapPlace)
+    data.append("x", mapX)
+    data.append("y", mapY)
     data.append("cardManPhone", null)
     data.append("cardManAccountNumber", null)
     data.append("cardWomanPhone", null)
