@@ -68,7 +68,7 @@ const CarouselType2 = ({ setMusicId }) => {
                 >
                   <img 
                     className={styles['album-img']}
-                    src={data.albumImgUrl} 
+                    src={data.musicImgUrl} 
                     onClick={() => {choiceMusic(data.id)}}
                   />
                   <div className={styles['about-music-container']}>

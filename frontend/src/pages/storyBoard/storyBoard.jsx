@@ -19,7 +19,10 @@ const StoryBoard = () => {
   const { id } = useParams();
 
   const [currentStep, setCurrentStep] = useState(0);
-  const [saveCheck, setSaveCheck] = useState([false, false, false, false, false, false, false, false, false]);
+  const [saveCheck, setSaveCheck] = useState([
+    false, false, false, false, false, false, false, false, false, false, false, 
+    false, false, false, false, false, false, false, false, false, false
+  ]);
 
   const [storyBoardData, setStoryBoardData] = useState([]);
 
@@ -29,6 +32,10 @@ const StoryBoard = () => {
   const [musicId, setMusicId] = useState(null);
   const [characterId, setCharacterId] = useState(null);
   
+  const [spotId, setSpotId] = useState(null);
+  const [storyId, setStoryId] = useState(null);
+  const [storyTemplateId, setStoryTemplateId] = useState(null);
+
 
 
   useEffect(() => {
@@ -37,6 +44,7 @@ const StoryBoard = () => {
       headers: {Authorization: localStorage.getItem("jwt")},
     })
       .then((res) => {
+        console.log(res);
         setStoryBoardData(res.data.data);
         const newSaveCheck = [...saveCheck];
         if (res.data.data.weddingCard == null) {
@@ -45,7 +53,7 @@ const StoryBoard = () => {
           newSaveCheck[8] = true;
         }
         res.data.data.stories.reverse().forEach(story => {
-          setCurrentStep(story.index);
+          setCurrentStep(3);
           // index 0부터 온다고 가정하고 했음.
           newSaveCheck[story.index + 3] = true;
         })
@@ -66,8 +74,6 @@ const StoryBoard = () => {
           newSaveCheck[0] = true;
         }
         setSaveCheck(newSaveCheck);
-
-        console.log(id);
       })
       .catch((err) => {
         console.log(err);
@@ -77,22 +83,20 @@ const StoryBoard = () => {
   const _moveNextStep = () => {
     const newSaveCheck = [...saveCheck];
     newSaveCheck[currentStep] = true;
-    currentStep < 9 
+    currentStep < 21 
     ? setCurrentStep(currentStep + 1)
     : setCurrentStep(0);
-    console.log(currentStep);
   }
 
   const moveNextStep = () => {
     if (currentStep === 0 && backgroundId !== null) {
-      api.put('/background',{
+      api.put('/background', {
         backgroundId,
         storyBoardId: id
       }, {
         headers: {Authorization: localStorage.getItem("jwt")}
       })
         .then((res) => {
-          console.log(res);
           _moveNextStep();
         })
         .catch((err) => {
@@ -106,7 +110,6 @@ const StoryBoard = () => {
         headers: {Authorization: localStorage.getItem("jwt")}
       })
         .then((res) => {
-          console.log(res);
           _moveNextStep();
         })
         .catch((err) => {
@@ -120,14 +123,43 @@ const StoryBoard = () => {
         headers: {Authorization: localStorage.getItem("jwt")}
       })
         .then((res) => {
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    } else if (currentStep === 3 && spotId !== null) {
+      api.post('story', {
+        index: 1,
+        spotId,
+        storyBoardId: id
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          setStoryId(res.data.data.id);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    } else if (currentStep === 4 && storyTemplateId !== null) {
+      api.put('storytemplate', {
+        storyId,
+        storyTemplateId
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
           console.log(res);
           _moveNextStep();
         })
         .catch((err) => {
           console.error(err);
         })
+      _moveNextStep();
     }
-    _moveNextStep();
+    // _moveNextStep();
   };
 
   const movePrevStep = () => {
@@ -144,9 +176,25 @@ const StoryBoard = () => {
       className={styles['story-board-container']}
     >
       <StepProgressBar 
-        currentStep={currentStep}
+        currentStep={
+          2 < currentStep && currentStep < 6 ? 3
+          : 5 < currentStep && currentStep < 9 ? 4
+          : 8 < currentStep && currentStep < 12 ? 5
+          : 11 < currentStep && currentStep < 15 ? 6
+          : 14 < currentStep && currentStep < 18 ? 7
+          : 17 < currentStep && currentStep < 21 ? 8
+          : currentStep
+        }
         setCurrentStep={setCurrentStep}
-        saveCheck={saveCheck}
+        saveCheck={[
+          saveCheck[0], saveCheck[1], saveCheck[2], 
+          saveCheck[3] && saveCheck[4] && saveCheck[5],
+          saveCheck[6] && saveCheck[7] && saveCheck[8],
+          saveCheck[9] && saveCheck[10] && saveCheck[11],
+          saveCheck[12] && saveCheck[13] && saveCheck[14],
+          saveCheck[15] && saveCheck[16] && saveCheck[17],
+          saveCheck[18] && saveCheck[19] && saveCheck[20],
+        ]}
       />
       <MoveMyStoryBoardButton />
       {
@@ -175,12 +223,16 @@ const StoryBoard = () => {
           }
           else if (currentStep === 3) {
             return (
-              <CarouselType4 />
+              <CarouselType4 
+                setSpotId={setSpotId}
+              />
             )
           }
           else if (currentStep === 4) {
             return (
-              <CarouselType5 />
+              <CarouselType5
+                setStoryTemplateId={setStoryTemplateId}
+              />
             )
           }
         })()
