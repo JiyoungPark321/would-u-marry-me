@@ -14,7 +14,7 @@ import api from '../../../service/api';
 SwiperCore.use([Pagination, Navigation]);
 
 
-const CarouselType4 = () => {
+const CarouselType4 = ({ setSpotId }) => {
 
   const [placeData, setPlaceData] = useState([]);
 
@@ -31,6 +31,10 @@ const CarouselType4 = () => {
       })
   },[]);
 
+  const choiceSpot = (spotId) => {
+    setSpotId(spotId);
+  };
+  
 
   return (
     <>
@@ -62,7 +66,7 @@ const CarouselType4 = () => {
                   <img 
                     src={data.imgUrl} 
                     className={styles['place-img']}
-                    // onClick={}
+                    onClick={() => {choiceSpot(data.id)}}
                   />
                   </div>
                 </SwiperSlide>
