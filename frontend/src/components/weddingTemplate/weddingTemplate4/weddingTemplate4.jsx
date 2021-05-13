@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate4.module.css";
 const WeddingTemplate4 = () => {
@@ -9,6 +10,10 @@ const WeddingTemplate4 = () => {
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
   var dateTime = "";
   var place = "";
+  var manPhoneNumber = "";
+  var manAccountNumber = "";
+  var womanPhoneNumber = "";
+  var womanAccountNumber = "";
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
@@ -30,15 +35,48 @@ const WeddingTemplate4 = () => {
     }
   };
   const onDateTimeChange = function (e) {
-    console.log(e.target.value);
     dateTime = e.target.value;
-    console.log(dateTime);
   };
   const onPlaceChange = function (e) {
-    console.log(e.target.value);
     place = e.target.value;
-    console.log(place);
   };
+  const getManPhoneNumber = function (e) {
+    manPhoneNumber = e.target.value
+  }
+  const getManAccountNumber = function (e) {
+    manAccountNumber = e.target.value
+  }
+  const getWomanPhoneNumber = function (e) {
+    womanPhoneNumber = e.target.value
+  }
+  const getWomanAccountNumber = function (e) {
+    womanAccountNumber = e.target.value
+  }
+  const sendWedding4 = () => {
+    let data = new FormData();
+    data.append("cardId", 4)
+    data.append("cardImg", imgFile)
+    data.append("cardDate", dateTime)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", null)
+    data.append("cardPlace", place)
+    // data.append("cardMap", ?)
+    data.append("cardManPhone", manPhoneNumber)
+    data.append("cardManAccountNumber", manAccountNumber)
+    data.append("cardWomanPhone", womanPhoneNumber)
+    data.append("cardWomanAccountNumber", womanAccountNumber)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
   return (
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
@@ -57,11 +95,13 @@ const WeddingTemplate4 = () => {
               type="text"
               className={styles["info-man-text"]}
               placeholder="PhoneNumber"
+              onChange={getManPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-man-text"]}
               placeholder="AccountNumber"
+              onChange={getManAccountNumber}
             />
           </div>
         </div>
@@ -72,11 +112,13 @@ const WeddingTemplate4 = () => {
               type="text"
               className={styles["info-woman-text"]}
               placeholder="PhoneNumber"
+              onChange={getWomanPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-woman-text"]}
               placeholder="AccountNumber"
+              onChange={getWomanAccountNumber}
             />
           </div>
         </div>

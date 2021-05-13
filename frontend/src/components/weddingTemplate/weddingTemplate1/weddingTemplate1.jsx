@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate1.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
@@ -54,22 +55,42 @@ const WeddingTemplate1 = () => {
     }
   };
   const onDateChange = function (e) {
-    console.log(e.target.value);
     date = e.target.value;
-    console.log(date);
   };
   const onTimeChange = function (e) {
-    console.log(e.target.value);
     time = e.target.value;
-    console.log(time);
   };
   const onPlaceChange = function (e) {
-    console.log(e.target.value);
     place = e.target.value;
-    console.log(place);
   };
-
+  const sendWedding1 = () => {
+    let data = new FormData();
+    data.append("cardId", 1)
+    data.append("cardImg", imgFile)
+    data.append("cardDate", date)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", time)
+    data.append("cardPlace", place)
+    // data.append("cardMap", ?)
+    data.append("cardManPhone", null)
+    data.append("cardManAccountNumber", null)
+    data.append("cardWomanPhone", null)
+    data.append("cardWomanAccountNumber", null)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
   return (
+    <>
+    {/* <div onClick={sendWedding1}>test</div> */}
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         {/* image box */}
@@ -255,6 +276,7 @@ const WeddingTemplate1 = () => {
         </div>
       )}
     </div>
+  </>
   );
 };
 

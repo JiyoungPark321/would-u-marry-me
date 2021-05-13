@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate3.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
@@ -18,7 +19,10 @@ const WeddingTemplate3 = () => {
   var date = "";
   var time = "";
   var place = "";
-
+  var manPhoneNumber = "";
+  var manAccountNumber = "";
+  var womanPhoneNumber = "";
+  var womanAccountNumber = "";
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -54,20 +58,51 @@ const WeddingTemplate3 = () => {
     }
   };
   const onDateChange = function (e) {
-    console.log(e.target.value);
     date = e.target.value;
-    console.log(date);
   };
   const onTimeChange = function (e) {
-    console.log(e.target.value);
     time = e.target.value;
-    console.log(time);
   };
   const onPlaceChange = function (e) {
-    console.log(e.target.value);
     place = e.target.value;
-    console.log(place);
   };
+  const getManPhoneNumber = function (e) {
+    manPhoneNumber = e.target.value
+  }
+  const getManAccountNumber = function (e) {
+    manAccountNumber = e.target.value
+  }
+  const getWomanPhoneNumber = function (e) {
+    womanPhoneNumber = e.target.value
+  }
+  const getWomanAccountNumber = function (e) {
+    womanAccountNumber = e.target.value
+  }
+  const sendWedding3 = () => {
+    let data = new FormData();
+    data.append("cardId", 3)
+    data.append("cardImg", imgFile)
+    data.append("cardDate", date)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", time)
+    data.append("cardPlace", place)
+    // data.append("cardMap", ?)
+    data.append("cardManPhone", manPhoneNumber)
+    data.append("cardManAccountNumber", manAccountNumber)
+    data.append("cardWomanPhone", womanPhoneNumber)
+    data.append("cardWomanAccountNumber", womanAccountNumber)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   return (
     <div className={styles["template-box"]}>
@@ -218,11 +253,13 @@ const WeddingTemplate3 = () => {
               type="text"
               className={styles["info-man-text"]}
               placeholder="PhoneNumber"
+              onChange={getManPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-man-text"]}
               placeholder="AccountNumber"
+              onChange={getManAccountNumber}
             />
           </div>
         </div>
@@ -233,11 +270,13 @@ const WeddingTemplate3 = () => {
               type="text"
               className={styles["info-woman-text"]}
               placeholder="PhoneNumber"
+              onChange={getWomanPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-woman-text"]}
               placeholder="AccountNumber"
+              onChange={getWomanAccountNumber}
             />
           </div>
         </div>
