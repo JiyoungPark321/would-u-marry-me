@@ -31,9 +31,10 @@ public class WeddingCardImage {
     private WeddingCard weddingCard;
 
     @Builder
-    public WeddingCardImage(String imgName,String imgUrl){
-        this.imgName=imgName;
-        this.imgUrl=imgUrl;
+    public WeddingCardImage(String imgName,String imgUrl,WeddingCard weddingCard){
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+        this.weddingCard = weddingCard;
     }
 
 }

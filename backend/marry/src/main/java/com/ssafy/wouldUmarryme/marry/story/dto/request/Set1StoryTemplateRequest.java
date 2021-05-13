@@ -11,8 +11,6 @@ import java.util.List;
 @Setter
 public class Set1StoryTemplateRequest {
     private Long storyId;
-    private MultipartFile first;
     private String second;
-    private MultipartFile third;
     private String fourth;
 }

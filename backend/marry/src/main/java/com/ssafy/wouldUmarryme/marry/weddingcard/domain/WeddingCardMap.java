@@ -34,9 +34,10 @@ public class WeddingCardMap {
     private WeddingCard weddingCard;
 
     @Builder
-    public WeddingCardMap(String placeName, Double x, Double y){
+    public WeddingCardMap(String placeName, Double x, Double y, WeddingCard weddingCard){
         this.placeName = placeName;
         this.x = x;
         this.y = y;
+        this.weddingCard = weddingCard;
     }
 }
