@@ -8,6 +8,7 @@ import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.AddMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.SetMusicRequest;
+import com.ssafy.wouldUmarryme.marry.story.dto.request.UpdateMusicRequest;
 import com.ssafy.wouldUmarryme.marry.story.repository.MusicRepository;
 import com.ssafy.wouldUmarryme.marry.story.repository.StoryBoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -61,7 +62,16 @@ public class MusicService {
         return makeResponse("200", save, "success", HttpStatus.OK);
     }
 
-//    public Object updateImageMusic(MultipartFile file) throws IOException {
-//        String
-//    }
+    public Object updateImageMusic(MultipartFile image, UpdateMusicRequest updateMusicRequest) throws IOException {
+        Optional<Music> curMusic = musicRepository.findById(updateMusicRequest.getMusicId());
+        String imgName = awsS3Service.uploadProfileImage(image, "alb");
+        String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
+        if(curMusic.isPresent()) {
+            curMusic.get().setMusicImgName(imgName);
+            curMusic.get().setMusicImgUrl(imgUrl);
+
+            return makeResponse("200", curMusic.get(), "success", HttpStatus.OK);
+        }
+        return  makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
+    }
 }
