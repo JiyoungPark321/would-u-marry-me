@@ -23,7 +23,6 @@ public class InputWeddingCardRequest {
     private String cardWomanPhone;
     private String cardManAccountNumber;
     private String cardWomanAccountNumber;
-    private MapInfo mapInfo;
     private String placeName;
     private Double x;
     private Double y;
