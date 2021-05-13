@@ -38,7 +38,7 @@ public class CharacterController {
     //캐릭터 저장하기
     @PutMapping
     @ApiOperation(value = "캐릭터 저장")
-    public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 Id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object setCharacter(@Valid @ApiParam(value = "캐릭터 Id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
         Object response = characterService.setCharacter(setCharacterRequest);
         return response;
     }

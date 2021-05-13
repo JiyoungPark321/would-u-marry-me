@@ -34,16 +34,23 @@ public class MusicController {
 
     @PutMapping
     @ApiOperation(value = "음악 저장")
-    public Object setMusic(@Valid @RequestParam @ApiParam(value = "노래 Id, 스토리보드 Id" ,required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
+    public Object setMusic(@Valid @ApiParam(value = "노래 Id, 스토리보드 Id" , required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
         Object response = musicService.setMusic(setMusicRequest);
         return response;
     }
 
     @PostMapping
-    @ApiOperation("음악 추가")
-    public Object createMusic(@Valid  @ApiParam(value = "음악 파일" ,required = true)MultipartFile music) throws IOException {
+    @ApiOperation(value = "음악 추가")
+    public Object createMusic(@Valid @ApiParam(value = "음악 파일", required = true) MultipartFile music) throws IOException {
         Object response = musicService.createMusic(music);
         return response;
     }
+
+//    @PutMapping("/image")
+//    @ApiOperation(value = "앨범 사진 추가")
+//    public Object updateImageMusic(@Valid @ApiParam(value = "앨범 파일", required = true) MultipartFile image) throws IOException {
+//        Object response = musicService.updateImageMusic(image);
+//        return response;
+//    }
 }
 
