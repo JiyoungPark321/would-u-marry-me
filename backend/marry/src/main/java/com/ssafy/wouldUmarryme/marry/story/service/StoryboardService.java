@@ -29,7 +29,7 @@ public class StoryboardService {
 
     public Object createNewStoryBoard(CreateStoryboardRequest createStoryboardRequest, Account account) {
         Storyboard storyboard = Storyboard.builder()
-                .title(createStoryboardRequest.getStoryboardTitle())
+                .title(createStoryboardRequest.getStoryBoardTitle())
                 .account(account)
                 .build();
         storyBoardRepository.save(storyboard);
@@ -55,7 +55,7 @@ public class StoryboardService {
     }
 
     public Object updateTitle(UpdateStoryboardTitleRequest updateStoryboardTitleRequest) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(updateStoryboardTitleRequest.getStoryboardId());
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(updateStoryboardTitleRequest.getStoryBoardId());
         if(storyboard.isEmpty()){
             return makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
         }

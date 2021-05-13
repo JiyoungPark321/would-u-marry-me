@@ -13,5 +13,4 @@ public class Set345StoryTemplateRequest {
     private MultipartFile second;
     private MultipartFile third;
     private MultipartFile fourth;
-
 }
