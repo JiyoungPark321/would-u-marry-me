@@ -49,7 +49,6 @@ public class MusicService {
     }
 
     public Object createMusic(MultipartFile file) throws IOException {
-
         String musicName = awsS3Service.uploadProfileImage(file,"music");
         String musicUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +musicName;
         Music music = Music.builder()
@@ -61,4 +60,8 @@ public class MusicService {
         Music save = musicRepository.save(music);
         return makeResponse("200", save, "success", HttpStatus.OK);
     }
+
+//    public Object updateImageMusic(MultipartFile file) throws IOException {
+//        String
+//    }
 }
