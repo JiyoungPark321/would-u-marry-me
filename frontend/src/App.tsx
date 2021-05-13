@@ -4,6 +4,7 @@ import styles from './App.module.css';
 
 import Jaehyuk from './pages/jaehyuk';
 import Jiyoung from './pages/jiyoung';
+import Jiyoung2 from './pages/jiyoung2';
 import Sungjoon from './pages/sungjoon';
 
 import SignUp from './pages/signUp/signUp';
@@ -17,6 +18,7 @@ const App = () => {
     <div className={styles.container}>
       <Switch>
         <Route path="/jiyoung" component={Jiyoung} exact />
+        <Route path="/jiyoung2" component={Jiyoung2} exact />
         <Route path="/jaehyuk" component={Jaehyuk} exact />
         <Route path="/sungjoon" component={Sungjoon} exact />
         
