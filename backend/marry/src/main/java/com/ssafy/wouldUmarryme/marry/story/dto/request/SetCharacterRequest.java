@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class SetCharacterRequest {
     private Long characterId;
-    private Long storyboardId;
+    private Long storyBoardId;
 }

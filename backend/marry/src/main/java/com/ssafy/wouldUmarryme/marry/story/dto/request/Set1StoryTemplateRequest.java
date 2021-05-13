@@ -15,5 +15,4 @@ public class Set1StoryTemplateRequest {
     private String second;
     private MultipartFile third;
     private String fourth;
-
 }
