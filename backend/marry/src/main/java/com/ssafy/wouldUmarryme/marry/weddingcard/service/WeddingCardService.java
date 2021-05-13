@@ -47,7 +47,13 @@ public class WeddingCardService {
 
     public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest) throws IOException {
         Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getCardId());
+
+        if(!card.isPresent()){
+           return makeResponse("404", null, "fail", HttpStatus.NOT_FOUND);
+        }
+
         WeddingCard save = card.get();
+
 
         //이미지 저장하기
         MultipartFile object = inputWeddingCardRequest.getCardImg();
@@ -67,7 +73,6 @@ public class WeddingCardService {
         }
         WeddingCard requestWeddingCard = inputWeddingCardRequest.toWeddingCard();
         save.updateValue(requestWeddingCard,weddingCardImage);
-        //save.setWeddingCardMap(inputWeddingCardRequest.getWeddingCardMap());
         weddingCardRepository.save(save);
         return makeResponse("200", save, "success", HttpStatus.OK);
     }

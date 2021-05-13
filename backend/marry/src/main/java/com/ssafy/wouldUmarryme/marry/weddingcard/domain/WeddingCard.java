@@ -71,7 +71,7 @@ public class WeddingCard {
     public WeddingCard(String time, String date, String place, String manPhone, String womanPhone,
                        String manAccountNumber, String womanAccountNumber, String firstComment,
                        String secondComment, WeddingCardImage weddingCardImage,
-                       Storyboard storyboard,Spot spot) {
+                       Storyboard storyboard,Spot spot,WeddingCardMap weddingCardMap){
         this.time = time;
         this.date = date;
         this.place = place;
@@ -84,6 +84,7 @@ public class WeddingCard {
         this.weddingCardImage = weddingCardImage;
         this.storyboard = storyboard;
         this.spot = spot;
+        this.weddingCardMap = weddingCardMap;
     }
 
     public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage){
@@ -97,5 +98,6 @@ public class WeddingCard {
         this.firstComment = requestWeddingCard.firstComment;
         this.secondComment = requestWeddingCard.secondComment;
         this.weddingCardImage = requestWeddingCardImage;
+        this.weddingCardMap = requestWeddingCard.weddingCardMap;
     }
 }
