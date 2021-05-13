@@ -61,7 +61,7 @@ const WeddingTemplate4 = () => {
     data.append("cardSecondComment", null)
     data.append("cardTime", null)
     data.append("cardPlace", place)
-    // data.append("cardMap", ?)
+    data.append("cardMap", null)
     data.append("cardManPhone", manPhoneNumber)
     data.append("cardManAccountNumber", manAccountNumber)
     data.append("cardWomanPhone", womanPhoneNumber)

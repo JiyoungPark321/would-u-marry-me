@@ -87,7 +87,13 @@ const WeddingTemplate3 = () => {
     data.append("cardSecondComment", null)
     data.append("cardTime", time)
     data.append("cardPlace", place)
-    // data.append("cardMap", ?)
+    data.append("cardMap", mapInfo)
+    // mapInfo 객체입니다
+    // {
+    //   name:,
+    //   x:,
+    //   y:
+    // }
     data.append("cardManPhone", manPhoneNumber)
     data.append("cardManAccountNumber", manAccountNumber)
     data.append("cardWomanPhone", womanPhoneNumber)

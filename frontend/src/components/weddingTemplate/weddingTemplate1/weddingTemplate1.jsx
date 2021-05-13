@@ -72,7 +72,13 @@ const WeddingTemplate1 = () => {
     data.append("cardSecondComment", null)
     data.append("cardTime", time)
     data.append("cardPlace", place)
-    // data.append("cardMap", ?)
+    data.append("cardMap", mapInfo)
+    // mapInfo 객체입니다
+    // {
+    //   name:,
+    //   x:,
+    //   y:
+    // }
     data.append("cardManPhone", null)
     data.append("cardManAccountNumber", null)
     data.append("cardWomanPhone", null)
@@ -90,7 +96,7 @@ const WeddingTemplate1 = () => {
   }
   return (
     <>
-    {/* <div onClick={sendWedding1}>test</div> */}
+    <div onClick={sendWedding1}>test</div>
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         {/* image box */}
