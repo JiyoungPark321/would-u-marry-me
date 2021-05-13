@@ -13,7 +13,6 @@ import javax.persistence.Column;
 @Setter
 public class InputWeddingCardRequest {
     private Long cardId;
-    private MultipartFile cardImg;
     private String cardDate;
     private String cardPlace;
     private String cardFirstComment;
@@ -39,15 +38,7 @@ public class InputWeddingCardRequest {
                 .womanPhone(cardWomanPhone)
                 .manAccountNumber(cardManAccountNumber)
                 .womanAccountNumber(cardWomanAccountNumber)
-                .weddingCardMap(toWeddingCardMap())
                 .build();
     }
 
-    public WeddingCardMap toWeddingCardMap(){
-        return WeddingCardMap.builder()
-                .placeName(placeName)
-                .x(x)
-                .y(y)
-                .build();
-    }
 }

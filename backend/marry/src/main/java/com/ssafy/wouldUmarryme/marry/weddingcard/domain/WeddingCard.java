@@ -87,7 +87,7 @@ public class WeddingCard {
         this.weddingCardMap = weddingCardMap;
     }
 
-    public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage){
+    public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage, WeddingCardMap weddingCardMap){
         this.time = requestWeddingCard.time;
         this.date = requestWeddingCard.date;
         this.place = requestWeddingCard.place;
@@ -98,6 +98,6 @@ public class WeddingCard {
         this.firstComment = requestWeddingCard.firstComment;
         this.secondComment = requestWeddingCard.secondComment;
         this.weddingCardImage = requestWeddingCardImage;
-        this.weddingCardMap = requestWeddingCard.weddingCardMap;
+        this.weddingCardMap = weddingCardMap;
     }
 }
