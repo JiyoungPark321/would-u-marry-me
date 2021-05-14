@@ -7,8 +7,13 @@ import WeddingTemplate2 from "../components/weddingTemplate/weddingTemplate2/wed
 import WeddingTemplate3 from "../components/weddingTemplate/weddingTemplate3/weddingTemplate3";
 import WeddingTemplate4 from "../components/weddingTemplate/weddingTemplate4/weddingTemplate4";
 import CompleteForm from "../components/completeForm/completeForm";
+import CharacterActor from "../components/character/characterActor";
 import styles from "./jaehyuk.module.css";
 const Jaehyuk = () => {
+  const data = {
+    h: 100,
+    w: 100
+  }
   return (
     <>
       <div className={styles["backgournd-color"]}>
@@ -18,8 +23,10 @@ const Jaehyuk = () => {
         {/* <WeddingTemplate1></WeddingTemplate1> */}
         {/* <WeddingTemplate2></WeddingTemplate2> */}
         {/* <WeddingTemplate3></WeddingTemplate3> */}
-        <WeddingTemplate4></WeddingTemplate4>
+        {/* <WeddingTemplate4></WeddingTemplate4> */}
         {/* <CompleteForm></CompleteForm> */}
+        <CharacterActor sprite={`/images/c2_m_action12.png`} data={data}>
+        </CharacterActor>
       </div>
     </>
   );
