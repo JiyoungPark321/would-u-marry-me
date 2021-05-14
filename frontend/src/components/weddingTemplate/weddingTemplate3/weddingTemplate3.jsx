@@ -82,7 +82,9 @@ const WeddingTemplate3 = () => {
         {/* 사진 입력 */}
         {imgInput1 === false ? (
           <div className={styles["image-box"]}>
-            <img src={img} />
+            {
+              img && <img src={img} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -267,12 +269,12 @@ const WeddingTemplate3 = () => {
       ) : (
         <div className={styles["map-component"]}>
           <SearchPlace
-           mapInfo = {mapInfo}
-           open = { mapOpen }
-           mapExist={mapExist}
-           searchExist={searchExist}
-           close = { closeMapModal }
-           getMapInfo = {getMapInfo}
+            mapInfo = {mapInfo}
+            open = { mapOpen }
+            mapExist={mapExist}
+            searchExist={searchExist}
+            close = { closeMapModal }
+            getMapInfo = {getMapInfo}
           ></SearchPlace>
         </div>
       )}
