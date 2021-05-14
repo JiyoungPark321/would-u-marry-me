@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate2.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
@@ -11,14 +12,13 @@ const WeddingTemplate2 = () => {
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck2, setMouseCheck2] = useState(false);
   const [mouseCheck3, setMouseCheck3] = useState(false);
-  var date = "";
-  var time = "";
-  var place = "";
-
-  console.log(searchExist)
-  console.log('mapExist='+mapExist)
-  console.log('open='+mapOpen)
-
+  const [mapPlace ,setMapPlace] = useState();
+  const [mapX ,setMapX] = useState();
+  const [mapY ,setMapY] = useState();
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+  const [place, setPlace] = useState();
+  
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -34,6 +34,9 @@ const WeddingTemplate2 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
+    setMapPlace(mapInfo.name);
+    setMapX(mapInfo.x);
+    setMapY(mapInfo.y);
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
@@ -47,23 +50,43 @@ const WeddingTemplate2 = () => {
   };
 
   const onDateChange = function (e) {
-    console.log(e.target.value);
-    date = e.target.value;
-    console.log(date);
+    setDate(e.target.value);
   };
 
   const onTimeChange = function (e) {
-    console.log(e.target.value);
-    time = e.target.value;
-    console.log(time);
+    setTime(e.target.value);
   };
 
   const onPlaceChange = function (e) {
-    console.log(e.target.value);
-    place = e.target.value;
-    console.log(place);
+    setPlace(e.target.value);
   };
-
+  const sendWedding2 = () => {
+    let data = new FormData();
+    data.append("cardId", 2)
+    data.append("cardImg", null)
+    data.append("cardDate", date)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", time)
+    data.append("cardPlace", place)
+    data.append("placeName", mapPlace)
+    data.append("x", mapX)
+    data.append("y", mapY)
+    data.append("cardManPhone", null)
+    data.append("cardManAccountNumber", null)
+    data.append("cardWomanPhone", null)
+    data.append("cardWomanAccountNumber", null)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   return (
     <div className={styles["template-box"]}>

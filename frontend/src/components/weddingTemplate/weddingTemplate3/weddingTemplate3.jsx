@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate3.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
@@ -13,12 +14,18 @@ const WeddingTemplate3 = () => {
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
   const [mapInfo, setMapInfo] = useState({});
+  const [mapPlace ,setMapPlace] = useState();
+  const [mapX ,setMapX] = useState();
+  const [mapY ,setMapY] = useState();
   const [mapExist, setMapExist] = useState(false);
   const [searchExist, setSearchExist] = useState(0);
-  var date = "";
-  var time = "";
-  var place = "";
-
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+  const [place, setPlace] = useState();
+  const [manPhoneNumber, setManPhoneNumber] = useState();
+  const [manAccountNumber, setManAccountNumber] = useState();
+  const [womanPhoneNumber, setWomanPhoneNumber] = useState();
+  const [womanAccountNumber, setWomanAccountNumber] = useState();
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -37,6 +44,9 @@ const WeddingTemplate3 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo)
+    setMapPlace(mapInfo.name);
+    setMapX(mapInfo.x);
+    setMapY(mapInfo.y);
     setMapExist(true)
     setSearchExist(searchExist+1)
   };
@@ -54,22 +64,56 @@ const WeddingTemplate3 = () => {
     }
   };
   const onDateChange = function (e) {
-    console.log(e.target.value);
-    date = e.target.value;
-    console.log(date);
+    setDate(e.target.value);
   };
   const onTimeChange = function (e) {
-    console.log(e.target.value);
-    time = e.target.value;
-    console.log(time);
+    setTime(e.target.value);
   };
   const onPlaceChange = function (e) {
-    console.log(e.target.value);
-    place = e.target.value;
-    console.log(place);
+    setPlace(e.target.value);
   };
+  const getManPhoneNumber = function (e) {
+    setManPhoneNumber(e.target.value)
+  }
+  const getManAccountNumber = function (e) {
+    setManAccountNumber(e.target.value)
+  }
+  const getWomanPhoneNumber = function (e) {
+    setWomanPhoneNumber(e.target.value)
+  }
+  const getWomanAccountNumber = function (e) {
+    setWomanAccountNumber(e.target.value)
+  }
+  const sendWedding3 = () => {
+    let data = new FormData();
+    data.append("cardId", 3)
+    data.append("cardImg", imgFile)
+    data.append("cardDate", date)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", time)
+    data.append("cardPlace", place)
+    data.append("placeName", mapPlace)
+    data.append("x", mapX)
+    data.append("y", mapY)
+    data.append("cardManPhone", manPhoneNumber)
+    data.append("cardManAccountNumber", manAccountNumber)
+    data.append("cardWomanPhone", womanPhoneNumber)
+    data.append("cardWomanAccountNumber", womanAccountNumber)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   return (
+    <>
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         <div className={styles["text-box1"]}>
@@ -220,11 +264,13 @@ const WeddingTemplate3 = () => {
               type="text"
               className={styles["info-man-text"]}
               placeholder="PhoneNumber"
+              onChange={getManPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-man-text"]}
               placeholder="AccountNumber"
+              onChange={getManAccountNumber}
             />
           </div>
         </div>
@@ -235,11 +281,13 @@ const WeddingTemplate3 = () => {
               type="text"
               className={styles["info-woman-text"]}
               placeholder="PhoneNumber"
+              onChange={getWomanPhoneNumber}
             />
             <input
               type="text"
               className={styles["info-woman-text"]}
               placeholder="AccountNumber"
+              onChange={getWomanAccountNumber}
             />
           </div>
         </div>
@@ -279,6 +327,7 @@ const WeddingTemplate3 = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
