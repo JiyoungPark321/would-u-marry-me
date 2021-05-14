@@ -26,9 +26,6 @@ public class WeddingCardTemplate {
     @Column(name = "wedding_card_template_img_url")
     private String imgUrl;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "template", fetch = FetchType.LAZY, orphanRemoval = true)
-    private WeddingCard weddingCard;
 
     @Builder
     public WeddingCardTemplate(String imageName, String imgUrl){

@@ -57,9 +57,8 @@ public class WeddingCard {
     @OneToOne(mappedBy = "weddingCard", fetch = FetchType.LAZY, orphanRemoval = true)
     private Storyboard storyboard;
 
-    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "wedding_card_template_id")
-    private WeddingCardTemplate template;
+    @Column(name = "wedding_card_template")
+    private Long template;
 
     @OneToOne(mappedBy = "weddingCard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private WeddingCardImage weddingCardImage;
