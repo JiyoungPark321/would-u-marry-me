@@ -12,16 +12,17 @@
   height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  padding: 30px 0;
 }
 
 .text-box1 {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 344px;
   background-color: #f6f6e3;
   border-radius: 30px;
+  margin-bottom: 40px;
 }
 
 .text-button1 {
@@ -44,6 +45,7 @@
   font-size: 16px;
   color: #4d2d2d;
   font-weight: bold;
+  margin-bottom: 40px;
 }
 
 .info-man {
@@ -63,17 +65,18 @@
 }
 
 .info-man-text-area {
-  height: 65px;
+  height: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .info-man-text {
   position: relative;
   width: 287px;
-  height: 30px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #59b0ab;
   border-radius: 8px;
@@ -102,7 +105,7 @@
 }
 
 .info-woman-text-area {
-  height: 65px;
+  height: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +115,7 @@
 .info-woman-text {
   position: relative;
   width: 287px;
-  height: 30px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #c660c2;
   border-radius: 8px;
@@ -135,16 +138,17 @@
   height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  padding: 30px 0 0 0;
 }
 
 .text-box2 {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 50px;
   background-color: #e4f1f1;
   border-radius: 30px;
+  margin-bottom: 30px;
 }
 
 .text-button2 {
@@ -165,10 +169,11 @@
 
 .image-box {
   position: relative;
-  width: 612px;
-  height: 511px;
+  width: 640px;
+  height: 510px;
   border-radius: 30px;
   background-color: #efefef;
+  margin-bottom: 30px;
 }
 
 .image-box img {
@@ -198,7 +203,7 @@
 
 .input-image-box {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 511px;
   border-radius: 30px;
   background-color: black;
@@ -236,7 +241,7 @@
 }
 
 .date-button {
-  width: 612px;
+  width: 640px;
   height: 41px;
   background-color: #ffffff;
   border: 3px solid #9d9595;
@@ -245,6 +250,7 @@
   font-size: 1rem;
   text-align: center;
   color: #af9d9f;
+  margin-bottom: 20px;
 }
 
 .date-input-box {

@@ -14,45 +14,57 @@ const WeddingTemplate2 = () => {
   var date = "";
   var time = "";
   var place = "";
+
   console.log(searchExist)
   console.log('mapExist='+mapExist)
   console.log('open='+mapOpen)
+
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
+
   const mouseOn2 = () => {
     setMouseCheck2(!mouseCheck2);
   };
+
   const mouseOn3 = () => {
     setMouseCheck3(!mouseCheck3);
   };
+
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
+
   const openMapModal = () => {
     setMapOpen(true);
   };
+
   const closeMapModal = () => {
     setMapOpen(false);
   };
+
   const onDateChange = function (e) {
     console.log(e.target.value);
     date = e.target.value;
     console.log(date);
   };
+
   const onTimeChange = function (e) {
     console.log(e.target.value);
     time = e.target.value;
     console.log(time);
   };
+
   const onPlaceChange = function (e) {
     console.log(e.target.value);
     place = e.target.value;
     console.log(place);
   };
+
+
   return (
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
@@ -162,7 +174,7 @@ const WeddingTemplate2 = () => {
                 </div>
               </button>
             </div>
-           : 
+            : 
             <>
               <div className={styles["map-serached"]}>
                 <KakaoMap mapInfo={mapInfo} mapExist={mapExist} searchExist={searchExist}></KakaoMap>
@@ -194,7 +206,7 @@ const WeddingTemplate2 = () => {
       </div>
       {mapOpen === false ? 
         ""
-       : 
+        : 
         <div className={styles["map-component"]}>
           <SearchPlace
             mapInfo = {mapInfo}
