@@ -32,10 +32,10 @@ public class Music {
     private Storyboard storyboard;
 
     @Column(name = "music_img_name")
-    private String albumImg;
+    private String musicImgName;
 
     @Column(name = "music_img_url")
-    private String albumImgUrl;
+    private String musicImgUrl;
 
     @Column(name = "music_title")
     private String title;
@@ -44,10 +44,12 @@ public class Music {
     private String artist;
 
     @Builder
-    public Music(String musicName, String musicUrl,String title,String artist){
+    public Music(String musicName, String musicUrl, String title, String artist, String musicImgName, String musicImgUrl){
         this.musicName = musicName;
         this.musicUrl = musicUrl;
         this.artist = artist;
+        this.musicImgName = musicImgName;
+        this.musicImgUrl = musicImgUrl;
         this.title = title;
     }
 

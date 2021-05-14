@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateStoryboardRequest {
-    private String storyboardTitle;
+    private String storyBoardTitle;
 }

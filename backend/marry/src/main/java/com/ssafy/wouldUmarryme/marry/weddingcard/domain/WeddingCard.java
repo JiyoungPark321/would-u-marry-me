@@ -57,9 +57,8 @@ public class WeddingCard {
     @OneToOne(mappedBy = "weddingCard", fetch = FetchType.LAZY, orphanRemoval = true)
     private Storyboard storyboard;
 
-    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "wedding_card_template_id")
-    private WeddingCardTemplate template;
+    @Column(name = "wedding_card_template")
+    private Long template;
 
     @OneToOne(mappedBy = "weddingCard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private WeddingCardImage weddingCardImage;
@@ -71,7 +70,7 @@ public class WeddingCard {
     public WeddingCard(String time, String date, String place, String manPhone, String womanPhone,
                        String manAccountNumber, String womanAccountNumber, String firstComment,
                        String secondComment, WeddingCardImage weddingCardImage,
-                       Storyboard storyboard,Spot spot) {
+                       Storyboard storyboard,Spot spot,WeddingCardMap weddingCardMap){
         this.time = time;
         this.date = date;
         this.place = place;
@@ -84,9 +83,10 @@ public class WeddingCard {
         this.weddingCardImage = weddingCardImage;
         this.storyboard = storyboard;
         this.spot = spot;
+        this.weddingCardMap = weddingCardMap;
     }
 
-    public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage){
+    public void updateValue(WeddingCard requestWeddingCard, WeddingCardImage requestWeddingCardImage, WeddingCardMap weddingCardMap){
         this.time = requestWeddingCard.time;
         this.date = requestWeddingCard.date;
         this.place = requestWeddingCard.place;
@@ -97,5 +97,6 @@ public class WeddingCard {
         this.firstComment = requestWeddingCard.firstComment;
         this.secondComment = requestWeddingCard.secondComment;
         this.weddingCardImage = requestWeddingCardImage;
+        this.weddingCardMap = weddingCardMap;
     }
 }

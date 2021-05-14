@@ -2,9 +2,9 @@
   background-color: #ffffff;
   width: 1400px;
   height: 800px;
-  border: 5px solid rgba(226, 208, 210, 1);
+  border: 7px solid rgba(226, 208, 210, 1);
   display: flex;
-  border-radius: 30px;
+  border-radius: 20px;
   position: relative;
   padding: 31px;
 }

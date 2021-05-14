@@ -26,18 +26,23 @@ const WeddingTemplate1 = () => {
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
+
   const mouseOn2 = () => {
     setMouseCheck2(!mouseCheck2);
   };
+
   const mouseOn3 = () => {
     setMouseCheck3(!mouseCheck3);
   };
+
   const imageMouseOn = () => {
     setImageHoverCheck(true);
   };
+
   const imageMouseOut = () => {
     setImageHoverCheck(false);
   };
+  
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
@@ -47,12 +52,15 @@ const WeddingTemplate1 = () => {
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
+
   const openMapModal = () => {
     setMapOpen(true);
   };
+
   const closeMapModal = () => {
     setMapOpen(false);
   };
+
   const onImageChange = function (e) {
     setImgFile(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
@@ -60,12 +68,15 @@ const WeddingTemplate1 = () => {
       setImgInput1(!imgInput1);
     }
   };
+
   const onDateChange = function (e) {
     date = e.target.value;
   };
+
   const onTimeChange = function (e) {
     time = e.target.value;
   };
+
   const onPlaceChange = function (e) {
     place = e.target.value;
   };
@@ -85,6 +96,7 @@ const WeddingTemplate1 = () => {
     data.append("cardManAccountNumber", null)
     data.append("cardWomanPhone", null)
     data.append("cardWomanAccountNumber", null)
+    console.log(date)
     api
     .put("/weddingcard", data, {
       headers: { Authorization: localStorage.getItem("jwt") },
@@ -105,7 +117,9 @@ const WeddingTemplate1 = () => {
         {/* 아무것도 입력 없을 때, */}
         {imgInput1 === false ? (
           <div className={styles["image-box"]}>
-            <img src={img} />
+            {
+              img && <img src={img} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>

@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SetCharacterRequest {
-    private Long characterId;
-    private Long storyBoardId;
+public class UpdateMusicRequest {
+    private Long musicId;
 }

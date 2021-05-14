@@ -5,7 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 public class AddMusicRequest {
-
     private String artist;
     private String title;
 }

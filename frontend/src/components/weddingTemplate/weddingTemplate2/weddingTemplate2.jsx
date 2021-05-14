@@ -22,12 +22,15 @@ const WeddingTemplate2 = () => {
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
+
   const mouseOn2 = () => {
     setMouseCheck2(!mouseCheck2);
   };
+
   const mouseOn3 = () => {
     setMouseCheck3(!mouseCheck3);
   };
+
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
@@ -37,18 +40,23 @@ const WeddingTemplate2 = () => {
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
+
   const openMapModal = () => {
     setMapOpen(true);
   };
+
   const closeMapModal = () => {
     setMapOpen(false);
   };
+
   const onDateChange = function (e) {
     date = e.target.value;
   };
+
   const onTimeChange = function (e) {
     time = e.target.value;
   };
+
   const onPlaceChange = function (e) {
     place = e.target.value;
   };
@@ -189,7 +197,7 @@ const WeddingTemplate2 = () => {
                 </div>
               </button>
             </div>
-           : 
+            : 
             <>
               <div className={styles["map-serached"]}>
                 <KakaoMap mapInfo={mapInfo} mapExist={mapExist} searchExist={searchExist}></KakaoMap>
@@ -221,7 +229,7 @@ const WeddingTemplate2 = () => {
       </div>
       {mapOpen === false ? 
         ""
-       : 
+        : 
         <div className={styles["map-component"]}>
           <SearchPlace
             mapInfo = {mapInfo}

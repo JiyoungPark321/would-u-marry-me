@@ -29,7 +29,7 @@ const StoryList = () => {
 
   const startNewStoryBoard = () => {
     api.post('/storyboard', {
-      storyboardTitle: newTitle
+      storyBoardTitle: newTitle
     },
     {
       headers: {Authorization: localStorage.getItem("jwt")}

@@ -138,7 +138,9 @@ const WeddingTemplate4 = () => {
         {/* 아무것도 입력 없을 때, */}
         {imgInput1 === false ? (
           <div className={styles["image-box"]}>
-            <img src={img} />
+            {
+              img && <img src={img} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>

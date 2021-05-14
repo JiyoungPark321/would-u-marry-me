@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RetrieveStoryBoardDetailRequest {
-    private Long storyboardId;
+    private Long storyBoardId;
 }

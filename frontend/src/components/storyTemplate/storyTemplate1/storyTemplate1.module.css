@@ -4,11 +4,11 @@
   display: flex;
   width: 1400px;
   height: 800px;
-  padding: 75px;
+  padding: 70px;
   background-color: #ffffff;
-  border: 5px solid;
+  border: 7px solid;
   border-color: #e2d0d2;
-  border-radius: 0px;
+  border-radius: 20px;
   flex-direction: column;
   justify-content: space-between;
 }

@@ -45,9 +45,9 @@ public class StoryTemplateService {
     }
 
     public Object setTemplate(SetStoryTemplateRequest setStoryTemplateRequest) {
-        Optional<StoryTemplate> storyTemplate = storyTemplateRepository.findById(setStoryTemplateRequest.getStoryTemplateId());
+
         Optional<Story> story = storyRepository.findById(setStoryTemplateRequest.getStoryId());
-        story.get().updateTemplate(storyTemplate.get());
+        story.get().updateTemplate(setStoryTemplateRequest.getStoryTemplateId());
         Story save = storyRepository.save(story.get());
         return makeResponse("200",save,"success",HttpStatus.OK);
     }
