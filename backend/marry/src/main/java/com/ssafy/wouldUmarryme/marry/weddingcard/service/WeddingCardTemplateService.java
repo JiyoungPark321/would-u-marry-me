@@ -29,9 +29,9 @@ public class WeddingCardTemplateService {
 
     public Object setTemplate(TemplateNumberRequest templateNumberRequest) {
         Optional<WeddingCard> card = weddingCardRepository.findById(templateNumberRequest.getCardId());
-        Optional<WeddingCardTemplate> cardTemplate = weddingCardTemplateRepository.findById(templateNumberRequest.getCardTemplateId());
+
         WeddingCard save = card.get();
-        save.setTemplate(cardTemplate.get());
+        save.setTemplate(templateNumberRequest.getCardTemplateId());
         weddingCardRepository.save(save);
         return makeResponse("200", save,"success", HttpStatus.OK);
     }

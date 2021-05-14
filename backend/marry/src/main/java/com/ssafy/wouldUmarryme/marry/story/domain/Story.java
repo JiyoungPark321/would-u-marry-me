@@ -29,10 +29,8 @@ public class Story {
     @Column(name = "story_index")
     private int index;
 
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="story_template_id")
-    private StoryTemplate template;
+    @Column(name = "story_template")
+    private Long template;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -59,7 +57,7 @@ public class Story {
         this.storyboard = storyboard;
     }
 
-    public void updateTemplate(StoryTemplate requestTemplate){this.template = requestTemplate;}
+    public void updateTemplate(Long requestTemplate){this.template = requestTemplate;}
 
 
 }
