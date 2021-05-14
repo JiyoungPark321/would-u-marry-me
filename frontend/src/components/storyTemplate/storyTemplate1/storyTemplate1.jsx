@@ -4,10 +4,10 @@ import { useState } from "react";
 import styles from "./storyTemplate1.module.css";
 
 const StoryTemplate1 = () => {
-  const [Img1, setImg1] = useState();
-  const [Img2, setImg2] = useState();
-  const [imgFile1, setImgFile1] = useState();
-  const [imgFile2, setImgFile2] = useState();
+  const [Img1, setImg1] = useState(null);
+  const [Img2, setImg2] = useState(null);
+  const [imgFile1, setImgFile1] = useState(null);
+  const [imgFile2, setImgFile2] = useState(null);
   const [imgInput1, setImgInput1] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
@@ -17,15 +17,19 @@ const StoryTemplate1 = () => {
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
   };
+
   const imageMouseOut1 = () => {
     setImageHoverCheck1(false);
   };
+
   const imageMouseOn2 = () => {
     setImageHoverCheck2(true);
   };
+
   const imageMouseOut2 = () => {
     setImageHoverCheck2(false);
   };
+
   const sendStory1 = () => {
     //axios
     let data = new FormData();
@@ -46,23 +50,28 @@ const StoryTemplate1 = () => {
         console.log(err);
       });
   };
-  const onImageChange1 = function (e) {
+
+  const onImageChange1 = (e) => {
     setImgFile1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
     }
   };
-  const onImageChange2 = function (e) {
+
+  const onImageChange2 = (e) => {
     setImgFile2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
     if (!imgInput2) {
       setImgInput2(!imgInput2);
     }
   };
-  const onTextInput = function () {
+
+  const onTextInput = () => {
     setOnTextEditor(!onTextEditor);
   };
+
+
   return (
     <>
       {/* <button onClick={sendStory1}>test</button> */}
@@ -72,7 +81,9 @@ const StoryTemplate1 = () => {
           {/* 아무것도 입력 없을 때, */}
           {imgInput1 === false ? (
             <div className={styles["image-box"]}>
-              <img src={Img1} />
+              {
+                Img1 && <img src={Img1} />
+              }
               <label className={styles["image-button"]}>
                 <div className={styles["image-icon"]}>
                   <i className="fas fa-camera"></i>
@@ -140,7 +151,9 @@ const StoryTemplate1 = () => {
           {/* 아무것도 입력 없을 때, */}
           {imgInput2 === false ? (
             <div className={styles["image-box"]}>
-              <img src={Img2} />
+              {
+                Img2 && <img src={Img2} />
+              }
               <label className={styles["image-button"]}>
                 <div className={styles["image-icon"]}>
                   <i className="fas fa-camera"></i>
