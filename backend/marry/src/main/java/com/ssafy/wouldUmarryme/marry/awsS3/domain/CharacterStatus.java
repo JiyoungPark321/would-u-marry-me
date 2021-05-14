@@ -34,7 +34,7 @@ public class CharacterStatus {
     private String status;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "character_id")
     private Character character;
 
