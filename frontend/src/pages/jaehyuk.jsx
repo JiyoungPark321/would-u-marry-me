@@ -11,8 +11,10 @@ import CharacterActor from "../components/character/characterActor";
 import styles from "./jaehyuk.module.css";
 const Jaehyuk = () => {
   const data = {
-    h: 100,
-    w: 100
+    h: 400,
+    w: 400,
+    x: 100,
+    y: 100
   }
   return (
     <>
