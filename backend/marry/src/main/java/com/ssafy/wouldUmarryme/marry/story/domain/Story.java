@@ -29,7 +29,7 @@ public class Story {
     @Column(name = "story_index")
     private int index;
 
-    //몇번째 템플릿인지
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="story_template_id")
     private StoryTemplate template;
