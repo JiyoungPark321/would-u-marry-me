@@ -19,9 +19,9 @@ const WeddingTemplate1 = () => {
   const [mapPlace ,setMapPlace] = useState();
   const [mapX ,setMapX] = useState();
   const [mapY ,setMapY] = useState();
-  var date = "";
-  var time = "";
-  var place = "";
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+  const [place, setPlace] = useState();
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
@@ -70,15 +70,15 @@ const WeddingTemplate1 = () => {
   };
 
   const onDateChange = function (e) {
-    date = e.target.value;
+    setDate(e.target.value)
   };
 
   const onTimeChange = function (e) {
-    time = e.target.value;
+    setTime(e.target.value);
   };
 
   const onPlaceChange = function (e) {
-    place = e.target.value;
+    setPlace(e.target.value);
   };
   const sendWedding1 = () => {
     let data = new FormData();
@@ -96,7 +96,6 @@ const WeddingTemplate1 = () => {
     data.append("cardManAccountNumber", null)
     data.append("cardWomanPhone", null)
     data.append("cardWomanAccountNumber", null)
-    console.log(date)
     api
     .put("/weddingcard", data, {
       headers: { Authorization: localStorage.getItem("jwt") },

@@ -19,14 +19,13 @@ const WeddingTemplate3 = () => {
   const [mapY ,setMapY] = useState();
   const [mapExist, setMapExist] = useState(false);
   const [searchExist, setSearchExist] = useState(0);
-  
-  var date = "";
-  var time = "";
-  var place = "";
-  var manPhoneNumber = "";
-  var manAccountNumber = "";
-  var womanPhoneNumber = "";
-  var womanAccountNumber = "";
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+  const [place, setPlace] = useState();
+  const [manPhoneNumber, setManPhoneNumber] = useState();
+  const [manAccountNumber, setManAccountNumber] = useState();
+  const [womanPhoneNumber, setWomanPhoneNumber] = useState();
+  const [womanAccountNumber, setWomanAccountNumber] = useState();
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -65,25 +64,25 @@ const WeddingTemplate3 = () => {
     }
   };
   const onDateChange = function (e) {
-    date = e.target.value;
+    setDate(e.target.value);
   };
   const onTimeChange = function (e) {
-    time = e.target.value;
+    setTime(e.target.value);
   };
   const onPlaceChange = function (e) {
-    place = e.target.value;
+    setPlace(e.target.value);
   };
   const getManPhoneNumber = function (e) {
-    manPhoneNumber = e.target.value
+    setManPhoneNumber(e.target.value)
   }
   const getManAccountNumber = function (e) {
-    manAccountNumber = e.target.value
+    setManAccountNumber(e.target.value)
   }
   const getWomanPhoneNumber = function (e) {
-    womanPhoneNumber = e.target.value
+    setWomanPhoneNumber(e.target.value)
   }
   const getWomanAccountNumber = function (e) {
-    womanAccountNumber = e.target.value
+    setWomanAccountNumber(e.target.value)
   }
   const sendWedding3 = () => {
     let data = new FormData();
@@ -114,6 +113,7 @@ const WeddingTemplate3 = () => {
   }
 
   return (
+    <>
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         <div className={styles["text-box1"]}>
@@ -327,6 +327,7 @@ const WeddingTemplate3 = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

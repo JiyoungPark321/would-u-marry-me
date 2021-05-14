@@ -8,12 +8,12 @@ const WeddingTemplate4 = () => {
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck3, setMouseCheck3] = useState(false);
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
-  var dateTime = "";
-  var place = "";
-  var manPhoneNumber = "";
-  var manAccountNumber = "";
-  var womanPhoneNumber = "";
-  var womanAccountNumber = "";
+  const [dateTime, setDateTime] = useState();
+  const [place, setPlace] = useState();
+  const [manPhoneNumber, setManPhoneNumber] = useState();
+  const [manAccountNumber, setManAccountNumber] = useState();
+  const [womanPhoneNumber, setWomanPhoneNumber] = useState();
+  const [womanAccountNumber, setWomanAccountNumber] = useState();
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
@@ -35,22 +35,22 @@ const WeddingTemplate4 = () => {
     }
   };
   const onDateTimeChange = function (e) {
-    dateTime = e.target.value;
+    setDateTime(e.target.value);
   };
   const onPlaceChange = function (e) {
-    place = e.target.value;
+    setPlace(e.target.value);
   };
   const getManPhoneNumber = function (e) {
-    manPhoneNumber = e.target.value
+    setManPhoneNumber(e.target.value)
   }
   const getManAccountNumber = function (e) {
-    manAccountNumber = e.target.value
+    setManAccountNumber(e.target.value)
   }
   const getWomanPhoneNumber = function (e) {
-    womanPhoneNumber = e.target.value
+    setWomanPhoneNumber(e.target.value)
   }
   const getWomanAccountNumber = function (e) {
-    womanAccountNumber = e.target.value
+    setWomanAccountNumber(e.target.value)
   }
   const sendWedding4 = () => {
     let data = new FormData();
