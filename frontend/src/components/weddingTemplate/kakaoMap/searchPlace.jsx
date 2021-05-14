@@ -49,7 +49,7 @@ const SearchPlace = (props) => {
                 className={styles['button']}
                 onClick={handleSubmit}
               >
-                <div className={styles['icon']}>
+                <div className={`${styles['icon']} ${styles.search}`}>
                   <i className="fas fa-search" ></i>
                 </div>
               </button>
@@ -58,7 +58,7 @@ const SearchPlace = (props) => {
                 className={styles['button']}
                 onClick={clickCheck}
               >
-                <div className={styles['icon']}>
+                <div className={`${styles['icon']} ${styles.check}`}>
                 <i className="fas fa-check"></i>
                 </div>
               </button>
@@ -67,8 +67,8 @@ const SearchPlace = (props) => {
                 className={styles['button']}
                 onClick={close}
               >
-                <div className={styles['icon']}>
-                <i className="fas fa-times"></i>
+                <div className={`${styles['icon']} ${styles.cancel}`}>
+                  <i className="fas fa-times"></i>
                 </div>
               </button>
           </div>
