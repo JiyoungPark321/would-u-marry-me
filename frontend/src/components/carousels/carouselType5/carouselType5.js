@@ -36,40 +36,48 @@ const CarouselType5 = ({ setStoryTemplateId }) => {
 
 
   return (
-    <div>
-    <Swiper 
-      slidesPerView={2}
-      slidesPerColumn={2}
-      slidesPerGroup={2}
-      spaceBetween={30}
-      grabCursor={true}
-      navigation={{ "clickable": true }}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      speed={1000}
-      className={styles['swiper-container']}>
-      <div className={styles['swiper-wrapper']}>
+    <>
       {
-        storyTemplateData.map((data) => {
-          return (
-            <SwiperSlide
-              className={styles['swiper-slide']}
-              key={data.id}
-              onClick={choiceStoryTemplate(data.id)}
-            >
-              <div className={styles['img-container']}>
-                <img 
-                  src={data.imgUrl} 
-                  className={styles['template-img']}
-                />
-              </div>
-            </SwiperSlide>
-          );
-        })
+        storyTemplateData.length > 0
+        ?
+        <div>
+        <Swiper 
+          slidesPerView={2}
+          slidesPerColumn={2}
+          slidesPerGroup={2}
+          spaceBetween={30}
+          grabCursor={true}
+          navigation={{ "clickable": true }}
+          loop={true}
+          loopFillGroupWithBlank={true}
+          speed={1000}
+          className={styles['swiper-container']}>
+          <div className={styles['swiper-wrapper']}>
+          {
+            storyTemplateData.map((data) => {
+              return (
+                <SwiperSlide
+                  className={styles['swiper-slide']}
+                  key={data.id}
+                  onClick={choiceStoryTemplate(data.id)}
+                >
+                  <div className={styles['img-container']}>
+                    <img 
+                      src={data.imgUrl} 
+                      className={styles['template-img']}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })
+          }
+          </div>
+        </Swiper>
+        </div>
+        :
+        <p>목록이 비어있습니다.</p>
       }
-      </div>
-    </Swiper>
-    </div>
+    </>
   );
 };
 
