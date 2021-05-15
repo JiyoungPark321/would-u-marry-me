@@ -9,5 +9,4 @@ import org.springframework.web.multipart.MultipartFile;
 public class SetStoryTemplateRequest {
     private Long storyTemplateId;
     private Long storyId;
-
 }

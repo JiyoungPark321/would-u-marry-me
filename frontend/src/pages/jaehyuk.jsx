@@ -20,7 +20,7 @@ const Jaehyuk = () => {
         {/* <StoryTemplate3></StoryTemplate3> */}
         {/* <WeddingTemplate1></WeddingTemplate1> */}
         {/* <WeddingTemplate2></WeddingTemplate2> */}
-        {/* <WeddingTemplate3></WeddingTemplate3> */}
+        <WeddingTemplate3></WeddingTemplate3>
         {/* <WeddingTemplate4></WeddingTemplate4> */}
         {/* <CompleteForm></CompleteForm> */}
         {/* <Charater2></Charater2> */}

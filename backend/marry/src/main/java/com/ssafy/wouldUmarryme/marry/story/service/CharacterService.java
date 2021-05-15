@@ -50,7 +50,7 @@ public class CharacterService {
 
     public Object setCharacter(SetCharacterRequest setCharacterRequest) {
         Optional<Character> character = characterRepository.findById(setCharacterRequest.getCharacterId());
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(setCharacterRequest.getStoryboardId());
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(setCharacterRequest.getStoryBoardId());
         storyboard.get().updateCharacter(character.get());
         Storyboard save = storyBoardRepository.save(storyboard.get());
         return makeResponse("200", character.get(), "success", HttpStatus.OK);

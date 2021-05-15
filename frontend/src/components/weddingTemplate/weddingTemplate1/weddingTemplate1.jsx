@@ -1,3 +1,4 @@
+import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate1.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
@@ -15,37 +16,51 @@ const WeddingTemplate1 = () => {
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
   const [searchExist, setSearchExist] = useState(0);
-  var date = "";
-  var time = "";
-  var place = "";
+  const [mapPlace ,setMapPlace] = useState();
+  const [mapX ,setMapX] = useState();
+  const [mapY ,setMapY] = useState();
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+  const [place, setPlace] = useState();
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
+
   const mouseOn2 = () => {
     setMouseCheck2(!mouseCheck2);
   };
+
   const mouseOn3 = () => {
     setMouseCheck3(!mouseCheck3);
   };
+
   const imageMouseOn = () => {
     setImageHoverCheck(true);
   };
+
   const imageMouseOut = () => {
     setImageHoverCheck(false);
   };
+  
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
+    setMapPlace(mapInfo.name);
+    setMapX(mapInfo.x);
+    setMapY(mapInfo.y);
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
+
   const openMapModal = () => {
     setMapOpen(true);
   };
+
   const closeMapModal = () => {
     setMapOpen(false);
   };
+
   const onImageChange = function (e) {
     setImgFile(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
@@ -53,30 +68,57 @@ const WeddingTemplate1 = () => {
       setImgInput1(!imgInput1);
     }
   };
+
   const onDateChange = function (e) {
-    console.log(e.target.value);
-    date = e.target.value;
-    console.log(date);
-  };
-  const onTimeChange = function (e) {
-    console.log(e.target.value);
-    time = e.target.value;
-    console.log(time);
-  };
-  const onPlaceChange = function (e) {
-    console.log(e.target.value);
-    place = e.target.value;
-    console.log(place);
+    setDate(e.target.value)
   };
 
+  const onTimeChange = function (e) {
+    setTime(e.target.value);
+  };
+
+  const onPlaceChange = function (e) {
+    setPlace(e.target.value);
+  };
+  const sendWedding1 = () => {
+    let data = new FormData();
+    data.append("cardId", 1)
+    data.append("cardImg", imgFile)
+    data.append("cardDate", date)
+    data.append("cardFirstComment", null)
+    data.append("cardSecondComment", null)
+    data.append("cardTime", time)
+    data.append("cardPlace", place)
+    data.append("placeName", mapPlace)
+    data.append("x", mapX)
+    data.append("y", mapY)
+    data.append("cardManPhone", null)
+    data.append("cardManAccountNumber", null)
+    data.append("cardWomanPhone", null)
+    data.append("cardWomanAccountNumber", null)
+    api
+    .put("/weddingcard", data, {
+      headers: { Authorization: localStorage.getItem("jwt") },
+    })
+    .then((res) => {
+      // wedding template 컴포넌트 끄는 bind함수?
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
   return (
+    <>
+    <div onClick={sendWedding1}>test</div>
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         {/* image box */}
         {/* 아무것도 입력 없을 때, */}
         {imgInput1 === false ? (
           <div className={styles["image-box"]}>
-            <img src={img} />
+            {
+              img && <img src={img} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -255,6 +297,7 @@ const WeddingTemplate1 = () => {
         </div>
       )}
     </div>
+  </>
   );
 };
 

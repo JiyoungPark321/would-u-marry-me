@@ -26,9 +26,7 @@ public class StoryTemplate {
     @Column(name = "story_template_Url")
     private String imgUrl;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "template" , fetch = FetchType.LAZY, orphanRemoval = true)
-    private Story story;
+
 
     @Builder
     public StoryTemplate(String imgName, String imgUrl){

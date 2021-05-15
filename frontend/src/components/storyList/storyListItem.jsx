@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import api from '../../service/api';
 import styles from './storyListItem.module.css'
 
-const StoryListItem = ({ data, handleSaveTitle }) => {
+const StoryListItem = ({ data, handleSaveTitle, handleDeleteStoryBoard }) => {
   const [titleEditMode, setTitleEditMode] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
@@ -17,7 +17,7 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
 
   const saveTitle = () => {
     api.put('/storyboard/updateTitle', {
-      storyboardId: data.id,
+      storyBoardId: data.id,
       title: newTitle
     },
     {
@@ -44,13 +44,16 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
     setNewTitle(data.title);
   }
 
-  const deleteStory = () => {
+  const deleteStoryBoard = () => {
     api.delete(`/storyboard/${data.id}`,
     {
       headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
         console.log(res);
+        handleDeleteStoryBoard({
+          ...data
+        })
       })
       .catch((err) => {
         console.error(err);
@@ -93,7 +96,6 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
         </div>
       </div>
       <div className={`${styles['story-item-info']} ${titleEditMode && styles['edit-mode-state']}`}>
-        {/* 바로 타이틀 변경이 안됨 */}
         <p className={styles['story-item-title']}>{data.title}</p>
         <div className={styles['button-container']}>
           <div 
@@ -108,7 +110,7 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
           </div>
           <div 
             className={styles['delete-button']}
-            onClick={deleteStory}
+            onClick={deleteStoryBoard}
           >
             <i className="fas fa-trash-alt"></i>
           </div>

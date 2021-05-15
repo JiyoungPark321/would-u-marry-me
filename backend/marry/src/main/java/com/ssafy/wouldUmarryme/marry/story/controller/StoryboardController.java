@@ -40,8 +40,8 @@ public class StoryboardController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "스토리보드 상세정보 가져오기")
-    public Object retrieveStoryboardDetail(@PathVariable @NotNull Long id, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.getStoryboardDetail(id);
+    public Object retrieveStoryboardDetail(@PathVariable @NotNull String id, @ApiIgnore @CurrentAccount Account account){
+        Object response = storyboardService.getStoryboardDetail(Long.parseLong(id));
         return response;
     }
 
@@ -54,8 +54,8 @@ public class StoryboardController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "스토리보드 삭제")
-    public Object deleteTitle(@PathVariable @NotNull Long id, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.deleteStoryboard(id);
+    public Object deleteTitle(@PathVariable @NotNull String id, @ApiIgnore @CurrentAccount Account account){
+        Object response = storyboardService.deleteStoryboard(Long.parseLong(id));
         return response;
     }
 

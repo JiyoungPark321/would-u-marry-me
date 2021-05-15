@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateStoryboardTitleRequest {
-    private Long storyboardId;
+    private Long storyBoardId;
     private String title;
 
     public Storyboard toStoryboard(){

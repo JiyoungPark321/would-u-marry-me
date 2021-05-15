@@ -72,6 +72,7 @@ public class Storyboard extends TimeEntity {
     }
     public void updateCharacter(Character requestCharacter){this.character = requestCharacter;}
     public void updateBackground(Background requestStoryboard){this.background = requestStoryboard;}
+    public void updateWeddingCard(WeddingCard requestWeddingCard){this.weddingCard = requestWeddingCard;}
 
 
 

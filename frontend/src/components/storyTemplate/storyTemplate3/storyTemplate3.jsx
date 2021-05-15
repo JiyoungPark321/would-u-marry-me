@@ -4,6 +4,9 @@ import { useState } from "react";
 import styles from "./storyTemplate3.module.css";
 
 const StoryTemplate3 = () => {
+
+  const [text1, setText1] = useState('');
+
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
@@ -17,45 +20,70 @@ const StoryTemplate3 = () => {
   const [imgFile2, setImgFile2] = useState();
   const [imgFile3, setImgFile3] = useState();
 
+
+  const handleText1 = (e) => {
+    // const value = e.target.value;
+    // let totalByte = 0;
+    // let maxByte = 4;
+    // for (let i = 0; i < value.length; i++) {
+    //   let currentByte = value.charCodeAt(i);
+    //   (currentByte > 128) ? totalByte += 2 : totalByte++
+    //   if (totalByte > maxByte) {
+    //     break;
+    //   }
+    //   const result = value.substring(0, i);
+    //   setText1(result);
+    // }
+  };
+
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
   };
+
   const imageMouseOut1 = () => {
     setImageHoverCheck1(false);
   };
+
   const imageMouseOn2 = () => {
     setImageHoverCheck2(true);
   };
+
   const imageMouseOut2 = () => {
     setImageHoverCheck2(false);
   };
+
   const imageMouseOn3 = () => {
     setImageHoverCheck3(true);
   };
+
   const imageMouseOut3 = () => {
     setImageHoverCheck3(false);
   };
-  const onImageChange1 = function (e) {
+
+  const onImageChange1 = (e) => {
     setImgFile1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
     }
   };
-  const onImageChange2 = function (e) {
+
+  const onImageChange2 = (e) => {
     setImgFile2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
     if (!imgInput2) {
       setImgInput2(!imgInput2);
     }
   };
-  const onImageChange3 = function (e) {
+
+  const onImageChange3 = (e) => {
     setImgFile3(e.target.files[0]);
     setImg3(URL.createObjectURL(e.target.files[0]));
     if (!imgInput3) {
       setImgInput3(!imgInput3);
     }
   };
+
   const sendStory3 = () => {
     //axios
     let data = new FormData();
@@ -76,20 +104,31 @@ const StoryTemplate3 = () => {
       });
   };
 
+
   return (
     <div className={styles["template-box"]}>
       <div className={styles["text-box"]}>
-        <button className={styles["text-button"]}>
-          <div className={styles["text-icon"]}>
-            <i className="fas fa-pencil-alt"></i>
-          </div>
-        </button>
+        <label 
+          className={styles["text-button"]}
+          htmlFor="text1-id"
+        >
+          <i className="fas fa-pencil-alt"></i>
+        </label>
+        <textarea
+          className={styles["text1"]}
+          id="text1-id"
+          cols="1"
+          rows="5"
+          onChange={handleText1}
+        />
       </div>
       <div className={styles["images-container"]}>
         {/* 첫번째 photobox */}
         {imgInput1 === false ? (
           <div className={styles["image-box1"]}>
-            <img src={Img1} className={styles["input-image"]} />
+            {
+              Img1 && <img src={Img1} className={styles["input-image"]} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -140,7 +179,9 @@ const StoryTemplate3 = () => {
         {/* 두번째 photobox */}
         {imgInput2 === false ? (
           <div className={styles["image-box2"]}>
-            <img src={Img2} className={styles["input-image"]} />
+            {
+              Img2 && <img src={Img2} className={styles["input-image"]} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -190,7 +231,9 @@ const StoryTemplate3 = () => {
         {/* 세번째 photobox */}
         {imgInput3 === false ? (
           <div className={styles["image-box3"]}>
-            <img src={Img3} className={styles["input-image"]} />
+            {
+              Img3 && <img src={Img3} className={styles["input-image"]} />
+            } 
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>

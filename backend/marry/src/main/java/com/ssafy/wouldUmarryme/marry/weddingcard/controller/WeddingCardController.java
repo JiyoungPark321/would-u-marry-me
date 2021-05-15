@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
@@ -36,16 +37,16 @@ public class WeddingCardController {
     @PutMapping
     @ApiOperation(value = "청첩장 값 넣기")
     public Object insert(@Valid @ApiParam(value="웨딩카드 Id 필요",required = true)
-                                 InputWeddingCardRequest inputWeddingCardRequest, @ApiIgnore @CurrentAccount Account account) throws IOException {
-        Object response = weddingCardService.inputCard(inputWeddingCardRequest);
+                                 InputWeddingCardRequest inputWeddingCardRequest, MultipartFile image , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard(inputWeddingCardRequest,image);
         return response;
     }
 
-    @GetMapping
+    @GetMapping("/{storyBoardId}")
     @ApiOperation(value = "청첩장 조회")
     public Object retrieve(@Valid @ApiParam(value = "스토리보드 Id",required = true)
-                           RetrieveWeddingCardRequest retrieveWeddingCardRequest,@ApiIgnore @CurrentAccount Account account){
-        Object response = weddingCardService.retrieveCard(retrieveWeddingCardRequest);
+                           @PathVariable String storyBoardId,@ApiIgnore @CurrentAccount Account account){
+        Object response = weddingCardService.retrieveCard(Long.parseLong(storyBoardId));
         return response;
     }
 

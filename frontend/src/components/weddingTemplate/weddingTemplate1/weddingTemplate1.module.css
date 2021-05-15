@@ -33,8 +33,8 @@
 
 .image-box {
   position: absolute;
-  width: 639px;
-  height: 728px;
+  width: 640px;
+  height: 750px;
   border-radius: 30px;
   background-color: #efefef;
 }
@@ -66,8 +66,8 @@
 
 .input-image-box {
   position: absolute;
-  width: 639px;
-  height: 728px;
+  width: 640px;
+  height: 750px;
   border-radius: 32px;
   background-color: black;
 }
@@ -104,8 +104,8 @@
 }
 
 .date-button {
-  width: 612px;
-  height: 41px;
+  width: 640px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #9d9595;
   border-radius: 100px;
@@ -220,7 +220,7 @@
 
 .text-box1 {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 130px;
   background-color: #f6f6e3;
   border-radius: 30px;
@@ -228,7 +228,7 @@
 
 .text-box2 {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 230px;
   background-color: #f6f6e3;
   border-radius: 30px;
@@ -253,7 +253,7 @@
 
 .map-box {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 179px;
   background-color: #efebfc;
   border-radius: 30px;
@@ -261,7 +261,7 @@
 
 .map-serached {
   position: relative;
-  width: 612px;
+  width: 640px;
   height: 179px;
   border-radius: 30px;
 }

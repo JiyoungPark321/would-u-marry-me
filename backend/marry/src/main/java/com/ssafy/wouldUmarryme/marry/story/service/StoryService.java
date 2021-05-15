@@ -51,6 +51,7 @@ public class StoryService {
                     .spot(spot.get())
                     .storyboard(storyboard.get())
                     .build();
+            storyRepository.save(newStory);
         }
         else{
             newStory = story.get();
@@ -63,6 +64,7 @@ public class StoryService {
     public void setStoryImage(MultipartFile object,Story story, int index) throws IOException {
         String imgName = "";
         String imgUrl = "";
+
         if(object!=null){
             imgName = awsS3Service.uploadProfileImage(object,"story");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
@@ -92,12 +94,12 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
+    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest, MultipartFile image1, MultipartFile image3) throws IOException{
         Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
 
-        setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
+        setStoryImage(image1, story.get(),1);
         setStoryComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
+        setStoryImage(image3,story.get(),3);
         setStoryComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
 
         return makeResponse("200", story, "success", HttpStatus.OK);
