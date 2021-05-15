@@ -4,6 +4,9 @@ import { useState } from "react";
 import styles from "./storyTemplate3.module.css";
 
 const StoryTemplate3 = () => {
+
+  const [text1, setText1] = useState('');
+
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
@@ -16,6 +19,22 @@ const StoryTemplate3 = () => {
   const [imgFile1, setImgFile1] = useState();
   const [imgFile2, setImgFile2] = useState();
   const [imgFile3, setImgFile3] = useState();
+
+
+  const handleText1 = (e) => {
+    // const value = e.target.value;
+    // let totalByte = 0;
+    // let maxByte = 4;
+    // for (let i = 0; i < value.length; i++) {
+    //   let currentByte = value.charCodeAt(i);
+    //   (currentByte > 128) ? totalByte += 2 : totalByte++
+    //   if (totalByte > maxByte) {
+    //     break;
+    //   }
+    //   const result = value.substring(0, i);
+    //   setText1(result);
+    // }
+  };
 
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
@@ -89,11 +108,19 @@ const StoryTemplate3 = () => {
   return (
     <div className={styles["template-box"]}>
       <div className={styles["text-box"]}>
-        <button className={styles["text-button"]}>
-          <div className={styles["text-icon"]}>
-            <i className="fas fa-pencil-alt"></i>
-          </div>
-        </button>
+        <label 
+          className={styles["text-button"]}
+          htmlFor="text1-id"
+        >
+          <i className="fas fa-pencil-alt"></i>
+        </label>
+        <textarea
+          className={styles["text1"]}
+          id="text1-id"
+          cols="1"
+          rows="5"
+          onChange={handleText1}
+        />
       </div>
       <div className={styles["images-container"]}>
         {/* 첫번째 photobox */}
