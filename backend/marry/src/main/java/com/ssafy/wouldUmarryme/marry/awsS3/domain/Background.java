@@ -28,9 +28,6 @@ public class Background {
     @Column(name = "background_img_url")
     private String backgroundImgUrl;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "background", fetch = FetchType.LAZY)
-    private Storyboard storyboard;
 
     @Builder
     public Background(String backgroundImgName,String backgroundImgUrl){

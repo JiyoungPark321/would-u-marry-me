@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.awsS3.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
@@ -27,14 +28,6 @@ public class Spot {
 
     @Column(name = "spot_img_Url")
     private String imgUrl;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "spot", fetch = FetchType.LAZY)
-    private Story story;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "spot", fetch = FetchType.LAZY)
-    private WeddingCard weddingcard;
 
     @Builder
     public Spot(String spotName,String imgUrl){

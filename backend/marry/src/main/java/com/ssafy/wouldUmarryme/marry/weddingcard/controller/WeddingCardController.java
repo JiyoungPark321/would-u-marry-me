@@ -44,7 +44,7 @@ public class WeddingCardController {
 
     @GetMapping("/{storyBoardId}")
     @ApiOperation(value = "청첩장 조회")
-    public Object retrieve(@Valid @ApiParam(value = "스토리보드 Id",required = true) @ApiIgnore
+    public Object retrieve(@Valid @ApiParam(value = "스토리보드 Id",required = true)
                            @PathVariable String storyBoardId,@ApiIgnore @CurrentAccount Account account){
         Object response = weddingCardService.retrieveCard(Long.parseLong(storyBoardId));
         return response;
