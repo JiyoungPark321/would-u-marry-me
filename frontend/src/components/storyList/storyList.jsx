@@ -55,6 +55,16 @@ const StoryList = () => {
   };
 
   // handleDeleteStoryBoard 스토리보드 삭제 후 렌더 처리 
+  const handleDeleteStoryBoard = (data) => {
+    // const newStoryListData = storyListData.map((story) => {
+    //   if (story.id === data.id) {
+    //     return;
+    //   }
+    //   return story;
+    // });
+    // setStoryListData(newStoryListData);
+  };
+  
 
   return (
     <div className={styles['story-list']}>
@@ -81,6 +91,7 @@ const StoryList = () => {
               data={data} 
               key={data.id}
               handleSaveTitle={handleSaveTitle}
+              handleDeleteStoryBoard={handleDeleteStoryBoard}
             />
           )
         })

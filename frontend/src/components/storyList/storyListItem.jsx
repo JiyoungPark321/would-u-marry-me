@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import api from '../../service/api';
 import styles from './storyListItem.module.css'
 
-const StoryListItem = ({ data, handleSaveTitle }) => {
+const StoryListItem = ({ data, handleSaveTitle, handleDeleteStoryBoard }) => {
   const [titleEditMode, setTitleEditMode] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
@@ -44,13 +44,16 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
     setNewTitle(data.title);
   }
 
-  const deleteStory = () => {
+  const deleteStoryBoard = () => {
     api.delete(`/storyboard/${data.id}`,
     {
       headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
         console.log(res);
+        handleDeleteStoryBoard({
+          ...data
+        })
       })
       .catch((err) => {
         console.error(err);
@@ -107,7 +110,7 @@ const StoryListItem = ({ data, handleSaveTitle }) => {
           </div>
           <div 
             className={styles['delete-button']}
-            onClick={deleteStory}
+            onClick={deleteStoryBoard}
           >
             <i className="fas fa-trash-alt"></i>
           </div>

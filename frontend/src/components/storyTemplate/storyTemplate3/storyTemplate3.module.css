@@ -13,25 +13,35 @@
   background-color: rgba(246, 246, 227, 1);
   width: 113px;
   height: 100%;
-  left: 0px;
-  top: 0px;
   border-radius: 30px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* padding: 20px; */
 }
 
 .text-button {
   cursor: pointer;
-  width: 32px;
-  height: 28px;
-  background-color: transparent;
-  border: none;
+  font-size: 25px;
+  color: #e79b09;
+  margin: 25px 0 15px 0;
 }
 
-.text-icon {
-  font-size: 30px;
-  color: #e79b09;
+.text1 {
+  justify-content: center;
+  width: 80px;
+  height: 85%;
+  border: solid 1px #dbab53;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 50px;
+  resize: none;
+  overflow: hidden;
+  color: #c97e0e;
+}
+
+.text1:focus {
+  border: 2px solid #ffa600;
 }
 
 .images-container {
