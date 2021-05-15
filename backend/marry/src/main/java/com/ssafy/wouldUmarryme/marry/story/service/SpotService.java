@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.story.service;
 
 
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
+import com.ssafy.wouldUmarryme.marry.awsS3.dto.response.SpotResponse;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.repository.SpotRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,11 @@ public class SpotService {
 
     @Transactional(readOnly = true)
     public Object getSpotList() {
+        System.out.println("spot 불러오기");
         List<Spot> spotList = spotRepository.findAll();
-        return makeResponse("200", spotList, "success", HttpStatus.OK);
+        System.out.println("spot 끝");
+        List<SpotResponse> spotResponses = SpotResponse.listOf(spotList);
+        return makeResponse("200", spotResponses, "success", HttpStatus.OK);
     }
 
     public Object createSpot(MultipartFile image) throws IOException {

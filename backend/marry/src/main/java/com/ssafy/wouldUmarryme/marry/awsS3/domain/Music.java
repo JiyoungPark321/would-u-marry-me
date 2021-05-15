@@ -27,9 +27,6 @@ public class Music {
     @Column(name = "music_Url")
     private String musicUrl;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "music", fetch = FetchType.LAZY)
-    private Storyboard storyboard;
 
     @Column(name = "music_img_name")
     private String musicImgName;
