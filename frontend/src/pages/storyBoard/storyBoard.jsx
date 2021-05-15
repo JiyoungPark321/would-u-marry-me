@@ -173,6 +173,7 @@ const StoryBoard = () => {
   return (
     <div 
       style={{ backgroundImage: `url(${backgroundUrl})` }}  
+        
       className={styles['story-board-container']}
     >
       <StepProgressBar 
@@ -235,6 +236,7 @@ const StoryBoard = () => {
               />
             )
           }
+          else if (currentStep === 5) {}
         })()
       }
       <PrevButton 
