@@ -1,0 +1,15 @@
+/* .character {
+  display: inline-block;
+}
+.character img {
+  width: 300px;
+  height: 300px;
+  left:0;
+  top:0;
+} */
+.character {
+  width: 300px;
+  height: 300px;
+  left:0;
+  top:0;
+}

@@ -7,15 +7,11 @@ import WeddingTemplate2 from "../components/weddingTemplate/weddingTemplate2/wed
 import WeddingTemplate3 from "../components/weddingTemplate/weddingTemplate3/weddingTemplate3";
 import WeddingTemplate4 from "../components/weddingTemplate/weddingTemplate4/weddingTemplate4";
 import CompleteForm from "../components/completeForm/completeForm";
-import CharacterActor from "../components/character/characterActor";
+// import Player from "../components/character/player";
+// import Charater2 from "../components/character2/character2";
+import Board from "../components/character2/character3";
 import styles from "./jaehyuk.module.css";
 const Jaehyuk = () => {
-  const data = {
-    h: 400,
-    w: 400,
-    x: 100,
-    y: 100
-  }
   return (
     <>
       <div className={styles["backgournd-color"]}>
@@ -27,8 +23,10 @@ const Jaehyuk = () => {
         {/* <WeddingTemplate3></WeddingTemplate3> */}
         {/* <WeddingTemplate4></WeddingTemplate4> */}
         {/* <CompleteForm></CompleteForm> */}
-        <CharacterActor sprite={`/images/c2_m_action12.png`} data={data}>
-        </CharacterActor>
+        {/* <Charater2></Charater2> */}
+        <Board></Board>
+        {/* <Player skin="c2_m_action12.png"></Player> */}
+
       </div>
     </>
   );
