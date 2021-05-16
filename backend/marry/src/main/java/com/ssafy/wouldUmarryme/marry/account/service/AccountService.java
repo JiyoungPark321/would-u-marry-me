@@ -111,10 +111,8 @@ public class AccountService {
     }
 
     public Object deleteAccount(Account account,PasswordRequest delete){
-
         String password = delete.getPassword();
-
-        if(!password.equals(account.getPassword())){
+        if(!passwordEncoder.matches(password,account.getPassword())){
             return makeResponse("400", null, "password is not match", HttpStatus.BAD_REQUEST);
         }
         accountRepository.delete(account);
@@ -131,8 +129,8 @@ public class AccountService {
     @Transactional(readOnly = true)
     public Object checkPassword(Account account,PasswordRequest check) {
         String password = check.getPassword();
-        if (!password.equals(account.getPassword())) {
-            makeResponse("400", null, "password is not match", HttpStatus.BAD_REQUEST);
+        if (!passwordEncoder.matches(password,account.getPassword())){
+          return makeResponse("400", null, "password is not match", HttpStatus.BAD_REQUEST);
         }
         return makeResponse("200", null, "success", HttpStatus.OK);
     }
