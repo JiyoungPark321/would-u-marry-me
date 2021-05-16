@@ -103,31 +103,87 @@ public class StoryService {
 
     public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
+        List<StoryImage> images = storyImageRepository.findByStory(story.get());
+        List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
-        setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
-        setStoryComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
-        setStoryComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
+        if(images.size()==0){
+            setStoryImage(set1StoryTemplateRequest.getImage1(), story.get(),1);
+            setStoryImage(set1StoryTemplateRequest.getImage2(),story.get(),3);
+        }
+        else{
+            for (StoryImage image : images){
+                storyImageRepository.deleteById(image.getId());
+            }
+        }
+
+        if(comments.size()==0){
+            setStoryComment(set1StoryTemplateRequest.getText1(),story.get(),2);
+            setStoryComment(set1StoryTemplateRequest.getText2(),story.get(),4);
+        }
+        else{
+            for (StoryComment comment : comments){
+                storyCommentRepository.deleteById(comment.getId());
+            }
+        }
+
+
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
     public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
         Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
+        List<StoryImage> images = storyImageRepository.findByStory(story.get());
+        List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
+        if(images.size()==0){
+            setStoryImage(set2StoryTemplateRequest.getImage1(), story.get(),1);
 
-        setStoryImage(set2StoryTemplateRequest.getFirst(), story.get(),1);
-        setStoryComment(set2StoryTemplateRequest.getSecond(), story.get(),2);
+        }
+        else{
+            for (StoryImage image : images){
+                storyImageRepository.deleteById(image.getId());
+            }
+        }
+
+        if(comments.size()==0){
+            setStoryComment(set2StoryTemplateRequest.getText1(),story.get(),2);
+        }
+        else{
+            for (StoryComment comment : comments){
+                storyCommentRepository.deleteById(comment.getId());
+            }
+        }
+
+
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
     public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
+        List<StoryImage> images = storyImageRepository.findByStory(story.get());
+        List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
-        setStoryComment(set345StoryTemplateRequest.getFirst(),story.get(),1);
-        setStoryImage(set345StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(set345StoryTemplateRequest.getThird(),story.get(),3);
-        setStoryImage(set345StoryTemplateRequest.getFourth(),story.get(),4);
+        if(images.size()==0){
+            setStoryImage(set345StoryTemplateRequest.getImage1(), story.get(),2);
+            setStoryImage(set345StoryTemplateRequest.getImage2(),story.get(),3);
+            setStoryImage(set345StoryTemplateRequest.getImage3(),story.get(),4);
+        }
+        else{
+            for (StoryImage image : images){
+                storyImageRepository.deleteById(image.getId());
+            }
+        }
+
+        if(comments.size()==0){
+            setStoryComment(set345StoryTemplateRequest.getText1(),story.get(),1);
+        }
+        else{
+            for (StoryComment comment : comments){
+                storyCommentRepository.deleteById(comment.getId());
+            }
+        }
+
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }

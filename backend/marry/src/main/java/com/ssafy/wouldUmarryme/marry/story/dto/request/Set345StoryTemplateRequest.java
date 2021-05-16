@@ -9,8 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class Set345StoryTemplateRequest {
     private Long storyId;
-    private String first;
-    private MultipartFile second;
-    private MultipartFile third;
-    private MultipartFile fourth;
+    private String text1;
+    private MultipartFile image1;
+    private MultipartFile image2;
+    private MultipartFile image3;
 }
