@@ -70,6 +70,10 @@ public class StoryboardService {
     }
 
     public Object deleteStoryboard(Long id,Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(id);
+        if(!storyboard.isPresent()){
+            return makeResponse("400", null, "Not found storyboard", HttpStatus.NOT_FOUND);
+        }
         storyBoardRepository.deleteByIdAndAccount(id,account);
         return makeResponse("200",null,"success",HttpStatus.OK);
     }
