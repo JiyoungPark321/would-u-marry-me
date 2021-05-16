@@ -43,6 +43,12 @@ const StoryBoard = () => {
   const [storyId, setStoryId] = useState(null);
   const [storyTemplateId, setStoryTemplateId] = useState(null);
 
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+  const [text1, setText1] = useState(null);
+  const [text2, setText2] = useState(null);
+  
 
 
   useEffect(() => {
@@ -59,10 +65,18 @@ const StoryBoard = () => {
         } else {
           newSaveCheck[8] = true;
         }
-        res.data.data.stories.reverse().forEach(story => {
-          setCurrentStep(3);
-          // index 0부터 온다고 가정하고 했음.
-          newSaveCheck[story.index + 3] = true;
+        if (res.data.data.stories) {
+          setCurrentStep(res.data.data.stories.length * 3 + 3);
+        }
+        res.data.data.stories.forEach(story => {
+          newSaveCheck[story.index * 3 + 0] = true;
+          newSaveCheck[story.index * 3 + 1] = true;
+          if (story.comments.length === 0 && story.images.length === 0) {
+            newSaveCheck[story.index * 3 + 2] = false;
+          } else {
+            newSaveCheck[story.index * 3 + 2] = true;
+          }
+            
         })
         if (res.data.data.character == null) {
           setCurrentStep(2);
@@ -135,9 +149,9 @@ const StoryBoard = () => {
         .catch((err) => {
           console.error(err);
         })
-    } else if (currentStep === 3 && spotId !== null) {
+    } else if ((currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15 || currentStep === 18) && spotId !== null) {
       api.post('story', {
-        index: 1,
+        index: parseInt(currentStep / 3),
         spotId,
         storyBoardId: id
       }, {
@@ -150,7 +164,7 @@ const StoryBoard = () => {
         .catch((err) => {
           console.error(err);
         })
-    } else if (currentStep === 4 && storyTemplateId !== null) {
+    } else if ((currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16) && storyTemplateId !== null) {
       api.put('storytemplate', {
         storyId,
         storyTemplateId
@@ -165,6 +179,34 @@ const StoryBoard = () => {
           console.error(err);
         })
       _moveNextStep();
+    } else if (currentStep === 5) {
+      if (storyTemplateId == 1) {
+
+      } else if (storyTemplateId === 2) {
+
+      } else if (storyTemplateId === 3 || storyTemplateId === 4 || storyTemplateId === 5) {
+        const data = new FormData();
+        data.append("storyId", storyId);
+        data.append("image1", image1);
+        data.append("image2", image2);
+        data.append("image3", image3);
+        data.append("text1", text1);
+
+        api.put('story/third', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+        _moveNextStep();
+      }
     }
     // _moveNextStep();
   };
@@ -229,40 +271,72 @@ const StoryBoard = () => {
               />
             )
           }
-          else if (currentStep === 3) {
+          else if (currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15 || currentStep ===18) {
             return (
               <CarouselType4 
                 setSpotId={setSpotId}
               />
             )
           }
-          else if (currentStep === 4) {
+          else if (currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16 || currentStep === 19) {
             return (
               <CarouselType5
                 setStoryTemplateId={setStoryTemplateId}
               />
             )
           }
-          else if (currentStep === 5) {
+          else if (currentStep === 5 || currentStep === 8 || currentStep === 11 || currentStep === 14 || currentStep === 17) {
+            // if (template == 1) {
+            
+            // }
             if (storyTemplateId === 1) {
               return (
-                <StoryTemplate1 />
+                <StoryTemplate1 
+                  setImage1={setImage1}
+                  setImage2={setImage2}
+                  setText1={setText1}
+                  setText2={setText2}
+                />
               )
             } else if (storyTemplateId === 2) {
               return(
-                <StoryTemplate2 />
+                <StoryTemplate2 
+                  setImage1={setImage1}
+                  setText1={setText1}
+                />
               )
             } else if (storyTemplateId === 3) {
               return(
-                <StoryTemplate3 />
+                <StoryTemplate3 
+                  image1={image1}
+                  setImage1={setImage1}
+                  image2={image2}
+                  setImage2={setImage2}
+                  image3={image3}
+                  setImage3={setImage3}
+                  text1={text1}
+                  setText1={setText1}
+                />
               )
             } else if (storyTemplateId === 4) {
               return(
-                <StoryTemplate4 />
+                <StoryTemplate4 
+                  setImage1={setImage1}
+                  setImage2={setImage2}
+                  setImage3={setImage3}
+                  text1={text1}
+                  setText1={setText1}
+                />
               )
             } else if (storyTemplateId === 5) {
               return(
-                <StoryTemplate5 />
+                <StoryTemplate5 
+                  setImage1={setImage1}
+                  setImage2={setImage2}
+                  setImage3={setImage3}
+                  text1={text1}
+                  setText1={setText1}
+                />
               )
             }
           }
