@@ -26,7 +26,7 @@ function Character({}) {
   const actionXMap = {
     ArrowLeft: decrement,
     ArrowRight: increment
- }
+  }
   function handleKeyPress(e){
     const actionX = actionXMap[e.key];
     actionX && setX(actionX);
