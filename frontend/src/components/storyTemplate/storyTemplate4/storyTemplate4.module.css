@@ -16,6 +16,7 @@
 }
 
 .text-box {
+  display: flex;
   position: absolute;
   left: 297px;
   top: 37px;
@@ -25,21 +26,34 @@
   background-color: #f6f6e3;
 }
 
-.text-button {
-  cursor: pointer;
-  position: absolute;
-  width: 32px;
-  height: 28px;
-  margin-top: -14px;
-  margin-right: -16px;
-  top: 50%;
-  right: 50%;
+.text1 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
   background-color: transparent;
   border: none;
+  resize: none;
+  overflow: hidden;
+  font-size: 40px;
+  padding: 55px 50px 20px 50px;
+  color: #7d7a7b;
+  font-weight: bold;
 }
 
-.text-icon {
-  font-size: 30px;
+.text1:focus {
+  border: 3px solid #ffa600;
+}
+
+.text-button {
+  position: absolute;
+  top: 20px;
+  left: 110px;
+  cursor: pointer;
+  width: 32px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
   color: #e79b09;
 }
 
