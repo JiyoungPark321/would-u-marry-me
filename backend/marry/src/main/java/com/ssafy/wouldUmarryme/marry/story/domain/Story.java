@@ -58,6 +58,7 @@ public class Story {
     }
 
     public void updateTemplate(Long requestTemplate){this.template = requestTemplate;}
+    public void updateSpot(Spot spot){this.spot=spot;}
 
 
 }

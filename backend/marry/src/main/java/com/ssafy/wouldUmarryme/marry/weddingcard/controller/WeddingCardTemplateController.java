@@ -39,7 +39,7 @@ public class WeddingCardTemplateController {
 
     @PostMapping
     @ApiOperation(value = "웨딩카드템플릿 추가")
-    public Object createTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 사진", required = true) MultipartFile image) throws IOException {
+    public Object createTemplate(@Valid @RequestBody @ApiParam(value = "템플릿 사진", required = true) MultipartFile image,@ApiIgnore @CurrentAccount Account account) throws IOException {
         Object response = weddingCardTemplateService.createWeddingCardTemplate(image);
         return response;
     }
