@@ -34,27 +34,27 @@ const StepProgressBar = ({ currentStep, setCurrentStep, saveCheck }) => {
       <div className={styles['step-line']}></div>
       <button 
         className={`${styles['step-circle']} ${currentStep === 4 && styles['current-step']} ${saveCheck[4] && styles['save-step']}`}
-        onClick={() => {moveStep(4)}}
+        onClick={() => {moveStep(6)}}
       >5</button>
       <div className={styles['step-line']}></div>
       <button 
         className={`${styles['step-circle']} ${currentStep === 5 && styles['current-step']} ${saveCheck[5] && styles['save-step']}`}
-        onClick={() => {moveStep(5)}}
+        onClick={() => {moveStep(9)}}
       >6</button>
       <div className={styles['step-line']}></div>
       <button 
         className={`${styles['step-circle']} ${currentStep === 6 && styles['current-step']} ${saveCheck[6] && styles['save-step']}`}
-        onClick={() => {moveStep(6)}}
+        onClick={() => {moveStep(12)}}
       >7</button>
       <div className={styles['step-line']}></div>
       <button 
         className={`${styles['step-circle']} ${currentStep === 7 && styles['current-step']} ${saveCheck[7] && styles['save-step']}`}
-        onClick={() => {moveStep(7)}}
+        onClick={() => {moveStep(15)}}
       >8</button>
       <div className={styles['step-line']}></div>
       <button 
         className={`${styles['step-circle']} ${currentStep === 8  && styles['current-step']} ${saveCheck[8] && styles['save-step']}`}
-        onClick={() => {moveStep(8)}}
+        onClick={() => {moveStep(18)}}
       >9</button>
     </div>
   );

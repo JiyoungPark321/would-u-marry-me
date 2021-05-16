@@ -18,9 +18,9 @@ const Jiyoung2 = () => {
       지영페이지2
       {/* <StoryTemplate1 /> */}
 
-      <StoryTemplate3 />
+      {/* <StoryTemplate3 /> */}
       {/* <StoryTemplate4 /> */}
-      {/* <StoryTemplate5 /> */}
+      <StoryTemplate5 />
       
       {/* <WeddingTemplate1 /> */}
       {/* <WeddingTemplate2 /> */}
