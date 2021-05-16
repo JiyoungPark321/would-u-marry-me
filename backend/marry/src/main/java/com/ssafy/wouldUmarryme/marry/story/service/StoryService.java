@@ -101,12 +101,12 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest, MultipartFile image1, MultipartFile image3) throws IOException{
+    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
 
-        setStoryImage(image1, story.get(),1);
+        setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
         setStoryComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(image3,story.get(),3);
+        setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
         setStoryComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
 
         return makeResponse("200", story, "success", HttpStatus.OK);
