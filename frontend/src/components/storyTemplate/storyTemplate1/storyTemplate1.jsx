@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./storyTemplate1.module.css";
 
-const StoryTemplate1 = () => {
+const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
   const [Img1, setImg1] = useState(null);
   const [Img2, setImg2] = useState(null);
   const [imgFile1, setImgFile1] = useState(null);
