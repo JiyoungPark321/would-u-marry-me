@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.service;
 
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
@@ -37,9 +38,16 @@ public class WeddingCardService {
     private final AwsS3Service awsS3Service;
     private final WeddingCardMapRepository weddingCardMapRepository;
 
-    public Object createCard(CreateWeddingCardRequest createWeddingCardRequest) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(createWeddingCardRequest.getStoryBoardId());
+    public Object createCard(CreateWeddingCardRequest createWeddingCardRequest,Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(createWeddingCardRequest.getStoryBoardId(),account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
+        }
         Optional<Spot> spot = spotRepository.findById(createWeddingCardRequest.getSpotId());
+        if(spot.isEmpty()){
+            return makeResponse("400", null, "fail : spot를 찾을 수 없음", HttpStatus.NOT_FOUND);
+        }
+
         WeddingCard weddingCard = WeddingCard.builder()
                 .spot(spot.get())
                 .storyboard(storyboard.get())
@@ -88,10 +96,15 @@ public class WeddingCardService {
         return makeResponse("200", save, "success", HttpStatus.OK);
     }
 
-    public Object retrieveCard(Long storyBoardId) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(storyBoardId);
+    public Object retrieveCard(Long storyBoardId, Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(storyBoardId,account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
+        }
         Optional<WeddingCard> retrieve = weddingCardRepository.findById(storyboard.get().getWeddingCard().getId());
-        //System.out.println(storyboard.get().getWeddingCard().getId());
+        if(retrieve.isEmpty()){
+            makeResponse("200",null, "success : 현재 웨딩카드 없음.", HttpStatus.OK);
+        }
 
         return makeResponse("200",retrieve.get(), "success", HttpStatus.OK);
     }

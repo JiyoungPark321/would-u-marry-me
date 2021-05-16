@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.service;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.config.AwsConfiguration;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Spot;
 import com.ssafy.wouldUmarryme.marry.awsS3.property.AwsS3Property;
@@ -36,9 +37,15 @@ public class StoryService {
     private final StoryCommentRepository storyCommentRepository;
     private final AwsS3Service awsS3Service;
 
-    public Object createStory(CreateStoryRequest createStoryRequest) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(createStoryRequest.getStoryBoardId());
+    public Object createStory(CreateStoryRequest createStoryRequest, Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(createStoryRequest.getStoryBoardId(),account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400",null,"fail : storyboard를 찾을 수 없음.",HttpStatus.NOT_FOUND);
+        }
         Optional<Spot> spot = spotRepository.findById(createStoryRequest.getSpotId());
+        if(spot.isEmpty()){
+            return makeResponse("400",null,"fail : spot를 찾을 수 없음.",HttpStatus.NOT_FOUND);
+        }
 
         //해당 Story를 전에 만든 적이 있는지 체크
         Optional<Story> story = storyRepository.findByStoryboardAndIndex(storyboard.get(),createStoryRequest.getIndex());
@@ -55,7 +62,7 @@ public class StoryService {
         }
         else{
             newStory = story.get();
-            newStory.setSpot(spot.get());
+            newStory.updateSpot(spot.get());
             storyRepository.save(newStory);
         }
         return makeResponse("200", newStory, "success", HttpStatus.OK);
@@ -122,23 +129,6 @@ public class StoryService {
         setStoryImage(set345StoryTemplateRequest.getThird(),story.get(),3);
         setStoryImage(set345StoryTemplateRequest.getFourth(),story.get(),4);
 
-//        if(set345StoryTemplateRequest.getFourth()!=null){
-//            imgName = awsS3Service.uploadProfileImage(set345StoryTemplateRequest.getFourth());
-//            imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
-//            StoryImage storyImage = StoryImage.builder()
-//                    .imgName(imgName)
-//                    .imgUrl(imgUrl)
-//                    .story(story.get())
-//                    .index(4)
-//                    .build();
-//            storyImageRepository.save(storyImage);
-//        }else{
-//            StoryImage storyImage = StoryImage.builder()
-//                    .story(story.get())
-//                    .index(4)
-//                    .build();
-//            storyImageRepository.save(storyImage);
-//        }
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 }

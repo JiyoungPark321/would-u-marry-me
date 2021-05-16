@@ -27,9 +27,7 @@ public class SpotService {
 
     @Transactional(readOnly = true)
     public Object getSpotList() {
-        System.out.println("spot 불러오기");
         List<Spot> spotList = spotRepository.findAll();
-        System.out.println("spot 끝");
         List<SpotResponse> spotResponses = SpotResponse.listOf(spotList);
         return makeResponse("200", spotResponses, "success", HttpStatus.OK);
     }

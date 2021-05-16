@@ -41,21 +41,21 @@ public class StoryboardController {
     @GetMapping("/{id}")
     @ApiOperation(value = "스토리보드 상세정보 가져오기")
     public Object retrieveStoryboardDetail(@PathVariable @NotNull String id, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.getStoryboardDetail(Long.parseLong(id));
+        Object response = storyboardService.getStoryboardDetail(Long.parseLong(id),account);
         return response;
     }
 
     @PutMapping("/updateTitle")
     @ApiOperation(value = "스토리보드 이름 변경")
     public Object updateTitle(@Valid @ApiParam(value="스토리보드 Id, 변경할 Title",required = true)@RequestBody UpdateStoryboardTitleRequest updateStoryboardTitleRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.updateTitle(updateStoryboardTitleRequest);
+        Object response = storyboardService.updateTitle(updateStoryboardTitleRequest,account);
         return response;
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "스토리보드 삭제")
     public Object deleteTitle(@PathVariable @NotNull String id, @ApiIgnore @CurrentAccount Account account){
-        Object response = storyboardService.deleteStoryboard(Long.parseLong(id));
+        Object response = storyboardService.deleteStoryboard(Long.parseLong(id),account);
         return response;
     }
 

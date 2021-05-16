@@ -39,7 +39,7 @@ public class CharacterController {
     @PutMapping
     @ApiOperation(value = "캐릭터 저장")
     public Object setCharacter(@Valid @RequestBody @ApiParam(value = "캐릭터 Id, 스토리보드 Id" ,required = true) SetCharacterRequest setCharacterRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response = characterService.setCharacter(setCharacterRequest);
+        Object response = characterService.setCharacter(setCharacterRequest,account);
         return response;
     }
 

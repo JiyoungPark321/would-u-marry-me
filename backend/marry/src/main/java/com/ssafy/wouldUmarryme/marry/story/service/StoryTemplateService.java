@@ -2,8 +2,12 @@ package com.ssafy.wouldUmarryme.marry.story.service;
 
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
+import com.ssafy.wouldUmarryme.marry.story.domain.StoryComment;
+import com.ssafy.wouldUmarryme.marry.story.domain.StoryImage;
 import com.ssafy.wouldUmarryme.marry.story.domain.StoryTemplate;
 import com.ssafy.wouldUmarryme.marry.story.dto.request.SetStoryTemplateRequest;
+import com.ssafy.wouldUmarryme.marry.story.repository.StoryCommentRepository;
+import com.ssafy.wouldUmarryme.marry.story.repository.StoryImageRepository;
 import com.ssafy.wouldUmarryme.marry.story.repository.StoryRepository;
 import com.ssafy.wouldUmarryme.marry.story.repository.StoryTemplateRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +30,8 @@ public class StoryTemplateService {
     private final AwsS3Service awsS3Service;
     private final StoryTemplateRepository storyTemplateRepository;
     private final StoryRepository storyRepository;
+    private final StoryImageRepository storyImageRepository;
+    private final StoryCommentRepository storyCommentRepository;
 
     @Transactional(readOnly = true)
     public Object retrieveStoryTemplate() {
@@ -45,10 +51,34 @@ public class StoryTemplateService {
     }
 
     public Object setTemplate(SetStoryTemplateRequest setStoryTemplateRequest) {
-
         Optional<Story> story = storyRepository.findById(setStoryTemplateRequest.getStoryId());
-        story.get().updateTemplate(setStoryTemplateRequest.getStoryTemplateId());
-        Story save = storyRepository.save(story.get());
-        return makeResponse("200",save,"success",HttpStatus.OK);
+        if(story.isEmpty()){
+            return makeResponse("400",null,"fail : story를 찾을 수 없음.",HttpStatus.NOT_FOUND);
+        }
+
+        //기존 테플릿과 다르다면
+        //기존 이미지와 코멘트 삭제
+        //인덱스 값이 다르기 때문에..!
+        if(story.get().getTemplate()!= setStoryTemplateRequest.getStoryTemplateId()){
+            List<StoryImage> storyImages = storyImageRepository.findByStory(story.get());
+            for (StoryImage image : storyImages){
+                storyImageRepository.deleteById(image.getId());
+            }
+            List<StoryComment> storyComments = storyCommentRepository.findByStory(story.get());
+            for (StoryComment comment : storyComments){
+                storyCommentRepository.deleteById(comment.getId());
+            }
+            story.get().updateTemplate(setStoryTemplateRequest.getStoryTemplateId());
+            Story save = storyRepository.save(story.get());
+            return makeResponse("200",save,"success",HttpStatus.OK);
+        }
+        //같다면
+        //아무것도 할 필요가 없음.
+        else{
+            return makeResponse("200",story.get(),"success",HttpStatus.OK);
+        }
+
+
+
     }
 }

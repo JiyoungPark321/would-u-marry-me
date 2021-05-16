@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.story.service;
 
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.config.AwsConfiguration;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Music;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
@@ -39,9 +40,16 @@ public class MusicService {
         return makeResponse("200", musicList, "success", HttpStatus.OK);
     }
 
-    public Object setMusic(SetMusicRequest setMusicRequest) {
+    public Object setMusic(SetMusicRequest setMusicRequest, Account account) {
         Optional<Music> music = musicRepository.findById(setMusicRequest.getMusicId());
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(setMusicRequest.getStoryBoardId());
+
+        if(music.isEmpty()){
+            return makeResponse("400",null,"fail : music를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(setMusicRequest.getStoryBoardId(),account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400",null,"fail : storyboard를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
 
         Storyboard newStoryBoard = storyboard.get();
         newStoryBoard.setMusic(music.get());
