@@ -107,6 +107,8 @@ public class StoryService {
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
+
+
         if(images.size()!=0){
             for (StoryImage image : images){
                 storyImageRepository.deleteById(image.getId());

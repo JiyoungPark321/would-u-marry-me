@@ -26,6 +26,12 @@ public class StoryController {
 
     private final StoryService storyService;
 
+    @PatchMapping
+    @ApiOperation(value = "테스트")
+    public Object test(){
+        return null;
+    }
+
     //스토리 생성
     @PostMapping
     @ApiOperation(value = "스토리 생성")
