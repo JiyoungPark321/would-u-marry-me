@@ -35,8 +35,9 @@
   height: 100%;
   border: none;
   border-radius: 10px;
-  padding: 55px 10px 15px 10px;
-  font-size: 50px;
+  padding: 55px 30px 15px 30px;
+  font-size: 47px;
+  font-weight: bold;
   resize: none;
   overflow: hidden;
   color: #c97e0e;

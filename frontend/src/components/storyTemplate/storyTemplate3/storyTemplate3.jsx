@@ -3,9 +3,9 @@ import api from "../../../service/api";
 import { useState } from "react";
 import styles from "./storyTemplate3.module.css";
 
-const StoryTemplate3 = () => {
+const StoryTemplate3 = ({ image1, setImage1, image2, setImage2, image3, setImage3, text1, setText1 }) => {
 
-  const [text1, setText1] = useState('');
+  // const [text1, setText1] = useState('');
 
   const [Img1, setImg1] = useState(null);
   const [Img2, setImg2] = useState(null);
@@ -16,15 +16,12 @@ const StoryTemplate3 = () => {
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
   const [imageHoverCheck3, setImageHoverCheck3] = useState(false);
-  const [imgFile1, setImgFile1] = useState(null);
-  const [imgFile2, setImgFile2] = useState(null);
-  const [imgFile3, setImgFile3] = useState(null);
 
 
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 8;
+    let maxByte = 20;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
@@ -63,7 +60,7 @@ const StoryTemplate3 = () => {
   };
 
   const onImageChange1 = (e) => {
-    setImgFile1(e.target.files[0]);
+    setImage1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
@@ -71,7 +68,7 @@ const StoryTemplate3 = () => {
   };
 
   const onImageChange2 = (e) => {
-    setImgFile2(e.target.files[0]);
+    setImage2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
     if (!imgInput2) {
       setImgInput2(!imgInput2);
@@ -79,32 +76,32 @@ const StoryTemplate3 = () => {
   };
 
   const onImageChange3 = (e) => {
-    setImgFile3(e.target.files[0]);
+    setImage3(e.target.files[0]);
     setImg3(URL.createObjectURL(e.target.files[0]));
     if (!imgInput3) {
       setImgInput3(!imgInput3);
     }
   };
 
-  const sendStory3 = () => {
-    //axios
-    let data = new FormData();
-    // data.append("firt", );
-    data.append("second", imgFile1);
-    data.append("third", imgFile2);
-    data.append("fourth", imgFile3);
-    data.append("storyId", 3);
-    api
-      .put("/story/third", data, {
-        headers: { Authorization: localStorage.getItem("jwt") },
-      })
-      .then((res) => {
-        // story template 컴포넌트 끄는 bind함수?
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const sendStory3 = () => {
+  //   //axios
+  //   let data = new FormData();
+  //   // data.append("firt", );
+  //   data.append("second", imgFile1);
+  //   data.append("third", imgFile2);
+  //   data.append("fourth", imgFile3);
+  //   data.append("storyId", 3);
+  //   api
+  //     .put("/story/third", data, {
+  //       headers: { Authorization: localStorage.getItem("jwt") },
+  //     })
+  //     .then((res) => {
+  //       // story template 컴포넌트 끄는 bind함수?
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
 
   return (
