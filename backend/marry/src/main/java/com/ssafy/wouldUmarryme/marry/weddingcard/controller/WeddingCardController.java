@@ -30,7 +30,7 @@ public class WeddingCardController {
     @ApiOperation(value = "청첩장 생성")
     public Object create(@Valid @ApiParam(value = "장소 Id, 스토리보드 Id 필요",required = true) @RequestBody
                                      CreateWeddingCardRequest createWeddingCardRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response = weddingCardService.createCard(createWeddingCardRequest);
+        Object response = weddingCardService.createCard(createWeddingCardRequest,account);
         return response;
     }
 
@@ -46,7 +46,7 @@ public class WeddingCardController {
     @ApiOperation(value = "청첩장 조회")
     public Object retrieve(@Valid @ApiParam(value = "스토리보드 Id",required = true)
                            @PathVariable String storyBoardId,@ApiIgnore @CurrentAccount Account account){
-        Object response = weddingCardService.retrieveCard(Long.parseLong(storyBoardId));
+        Object response = weddingCardService.retrieveCard(Long.parseLong(storyBoardId),account);
         return response;
     }
 

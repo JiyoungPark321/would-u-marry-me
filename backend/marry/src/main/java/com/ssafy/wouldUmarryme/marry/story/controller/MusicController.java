@@ -36,7 +36,7 @@ public class MusicController {
     @PutMapping
     @ApiOperation(value = "음악 저장")
     public Object setMusic(@Valid @RequestBody @ApiParam(value = "노래 Id, 스토리보드 Id" , required = true) SetMusicRequest setMusicRequest, @ApiIgnore @CurrentAccount Account account){
-        Object response = musicService.setMusic(setMusicRequest);
+        Object response = musicService.setMusic(setMusicRequest,account);
         return response;
     }
 

@@ -30,7 +30,7 @@ public class StoryController {
     @PostMapping
     @ApiOperation(value = "스토리 생성")
     public Object createStory(@ApiIgnore @CurrentAccount Account account,@Valid @ApiParam(value="SpotId, StoryboardId, Index",required = true) @RequestBody  CreateStoryRequest createStoryRequest){
-        Object response = storyService.createStory(createStoryRequest);
+        Object response = storyService.createStory(createStoryRequest,account);
         return response;
     }
 

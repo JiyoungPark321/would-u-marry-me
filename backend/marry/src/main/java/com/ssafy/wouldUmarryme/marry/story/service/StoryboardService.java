@@ -25,7 +25,7 @@ import static com.ssafy.wouldUmarryme.marry.common.utils.HttpUtils.makeResponse;
 public class StoryboardService {
 
     private final StoryBoardRepository storyBoardRepository;
-    private final AccountRepository accountRepository;
+
 
     public Object createNewStoryBoard(CreateStoryboardRequest createStoryboardRequest, Account account) {
         Storyboard storyboard = Storyboard.builder()
@@ -39,25 +39,27 @@ public class StoryboardService {
     @Transactional(readOnly = true)
     public Object getStoryboardList(Account account){
         List<Storyboard> lists = storyBoardRepository.findByAccount(account);
+        if(lists.size()==0){
+            return  makeResponse("200",null,"success : 현재 storyboard가 없음",HttpStatus.OK);
+        }
         return makeResponse("200", StoryboardResponse.listOf(lists), "success", HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
-    public Object getStoryboardDetail(Long id) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(id);
-        System.out.println(storyboard.get().getTitle());
+    public Object getStoryboardDetail(Long id,Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(id,account);
         if(storyboard.isEmpty()){
-            return makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
+            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
         else{
             return makeResponse("200", storyboard.get(), "success", HttpStatus.OK);
         }
     }
 
-    public Object updateTitle(UpdateStoryboardTitleRequest updateStoryboardTitleRequest) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(updateStoryboardTitleRequest.getStoryBoardId());
+    public Object updateTitle(UpdateStoryboardTitleRequest updateStoryboardTitleRequest,Account account) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(updateStoryboardTitleRequest.getStoryBoardId(),account);
         if(storyboard.isEmpty()){
-            return makeResponse("400", null, "fail", HttpStatus.NOT_FOUND);
+            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
         else{
             Storyboard requestStoryboard = updateStoryboardTitleRequest.toStoryboard();
@@ -67,8 +69,8 @@ public class StoryboardService {
         }
     }
 
-    public Object deleteStoryboard(Long id) {
-        storyBoardRepository.deleteById(id);
+    public Object deleteStoryboard(Long id,Account account) {
+        storyBoardRepository.deleteByIdAndAccount(id,account);
         return makeResponse("200",null,"success",HttpStatus.OK);
     }
 }
