@@ -7,33 +7,35 @@ const StoryTemplate3 = () => {
 
   const [text1, setText1] = useState('');
 
-  const [Img1, setImg1] = useState();
-  const [Img2, setImg2] = useState();
-  const [Img3, setImg3] = useState();
+  const [Img1, setImg1] = useState(null);
+  const [Img2, setImg2] = useState(null);
+  const [Img3, setImg3] = useState(null);
   const [imgInput1, setImgInput1] = useState(false);
   const [imgInput2, setImgInput2] = useState(false);
   const [imgInput3, setImgInput3] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
   const [imageHoverCheck3, setImageHoverCheck3] = useState(false);
-  const [imgFile1, setImgFile1] = useState();
-  const [imgFile2, setImgFile2] = useState();
-  const [imgFile3, setImgFile3] = useState();
+  const [imgFile1, setImgFile1] = useState(null);
+  const [imgFile2, setImgFile2] = useState(null);
+  const [imgFile3, setImgFile3] = useState(null);
 
 
   const handleText1 = (e) => {
-    // const value = e.target.value;
-    // let totalByte = 0;
-    // let maxByte = 4;
-    // for (let i = 0; i < value.length; i++) {
-    //   let currentByte = value.charCodeAt(i);
-    //   (currentByte > 128) ? totalByte += 2 : totalByte++
-    //   if (totalByte > maxByte) {
-    //     break;
-    //   }
-    //   const result = value.substring(0, i);
-    //   setText1(result);
-    // }
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 8;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText1(result);
   };
 
   const imageMouseOn1 = () => {
@@ -108,19 +110,18 @@ const StoryTemplate3 = () => {
   return (
     <div className={styles["template-box"]}>
       <div className={styles["text-box"]}>
+        <textarea
+          className={styles.text1}
+          id="st3-text1-id"
+          onChange={handleText1}
+          value={text1}
+        />
         <label 
           className={styles["text-button"]}
-          htmlFor="text1-id"
+          htmlFor="st3-text1-id"
         >
           <i className="fas fa-pencil-alt"></i>
         </label>
-        <textarea
-          className={styles["text1"]}
-          id="text1-id"
-          cols="1"
-          rows="5"
-          onChange={handleText1}
-        />
       </div>
       <div className={styles["images-container"]}>
         {/* 첫번째 photobox */}
