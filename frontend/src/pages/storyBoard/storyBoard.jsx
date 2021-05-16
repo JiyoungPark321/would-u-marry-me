@@ -71,12 +71,15 @@ const StoryBoard = () => {
         res.data.data.stories.forEach(story => {
           newSaveCheck[story.index * 3 + 0] = true;
           newSaveCheck[story.index * 3 + 1] = true;
-          if (story.comments.length === 0 && story.images.length === 0) {
-            newSaveCheck[story.index * 3 + 2] = false;
-          } else {
+          if (story.template === 1 && story.comments.length === 2 && story.images.length === 2) {
             newSaveCheck[story.index * 3 + 2] = true;
+          } else if (story.template === 2 && story.comments.length === 1 && story.images.length === 1) {
+            newSaveCheck[story.index * 3 + 2] = true;
+          } else if ((story.template === 3 || story.template === 4 || story.template ===5) && story.comments.length === 1 && story.images.length === 3) {
+            newSaveCheck[story.index * 3 + 2] = true;
+          } else {
+            newSaveCheck[story.index * 3 + 2] = false;
           }
-            
         })
         if (res.data.data.character == null) {
           setCurrentStep(2);
@@ -107,6 +110,7 @@ const StoryBoard = () => {
     currentStep < 21 
     ? setCurrentStep(currentStep + 1)
     : setCurrentStep(0);
+    setSaveCheck(newSaveCheck);
   }
 
   const moveNextStep = () => {
@@ -179,7 +183,7 @@ const StoryBoard = () => {
           console.error(err);
         })
       _moveNextStep();
-    } else if (currentStep === 5) {
+    } else if (currentStep === 5 || currentStep === 8 || currentStep === 11 || currentStep === 14 || currentStep === 17 ) {
       if (storyTemplateId == 1) {
 
       } else if (storyTemplateId === 2) {
@@ -200,6 +204,7 @@ const StoryBoard = () => {
         })
           .then((res) => {
             console.log(res);
+            
             _moveNextStep();
           })
           .catch((err) => {
@@ -226,25 +231,9 @@ const StoryBoard = () => {
       className={styles['story-board-container']}
     >
       <StepProgressBar 
-        currentStep={
-          2 < currentStep && currentStep < 6 ? 3
-          : 5 < currentStep && currentStep < 9 ? 4
-          : 8 < currentStep && currentStep < 12 ? 5
-          : 11 < currentStep && currentStep < 15 ? 6
-          : 14 < currentStep && currentStep < 18 ? 7
-          : 17 < currentStep && currentStep < 21 ? 8
-          : currentStep
-        }
+        currentStep={currentStep}
         setCurrentStep={setCurrentStep}
-        saveCheck={[
-          saveCheck[0], saveCheck[1], saveCheck[2], 
-          saveCheck[3] && saveCheck[4] && saveCheck[5],
-          saveCheck[6] && saveCheck[7] && saveCheck[8],
-          saveCheck[9] && saveCheck[10] && saveCheck[11],
-          saveCheck[12] && saveCheck[13] && saveCheck[14],
-          saveCheck[15] && saveCheck[16] && saveCheck[17],
-          saveCheck[18] && saveCheck[19] && saveCheck[20],
-        ]}
+        saveCheck={saveCheck}
       />
       <MoveMyStoryBoardButton />
       {
