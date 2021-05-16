@@ -30,7 +30,7 @@ public class StoryController {
     @PostMapping
     @ApiOperation(value = "스토리 생성")
     public Object createStory(@ApiIgnore @CurrentAccount Account account,@Valid @ApiParam(value="SpotId, StoryboardId, Index",required = true) @RequestBody  CreateStoryRequest createStoryRequest){
-        Object response = storyService.createStory(createStoryRequest);
+        Object response = storyService.createStory(createStoryRequest,account);
         return response;
     }
 
@@ -38,9 +38,8 @@ public class StoryController {
     //스토리 첫 번째 템플릿
     @PutMapping("/first")
     @ApiOperation(value = "스토리에 첫 번째 템플릿 값 넣기")
-    public Object setFirstValue(@ApiIgnore @CurrentAccount Account account, @Valid @ApiParam(value="storyId,사진1,코멘트2,사진3,코멘트4",required = true)  Set1StoryTemplateRequest set1StoryTemplateRequest,@RequestParam MultipartFile
-                                image1,@RequestParam MultipartFile image3) throws IOException {
-        Object response = storyService.setFirstValue(set1StoryTemplateRequest,image1,image3);
+    public Object setFirstValue(@ApiIgnore @CurrentAccount Account account, @Valid @ApiParam(value="storyId,사진1,코멘트2,사진3,코멘트4",required = true)  Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException {
+        Object response = storyService.setFirstValue(set1StoryTemplateRequest);
         return response;
     }
 

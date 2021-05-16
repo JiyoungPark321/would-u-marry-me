@@ -7,6 +7,7 @@ import WeddingTemplate2 from "../components/weddingTemplate/weddingTemplate2/wed
 import WeddingTemplate3 from "../components/weddingTemplate/weddingTemplate3/weddingTemplate3";
 import WeddingTemplate4 from "../components/weddingTemplate/weddingTemplate4/weddingTemplate4";
 import CompleteForm from "../components/completeForm/completeForm";
+import Character from "../components/character/character";
 import styles from "./jaehyuk.module.css";
 const Jaehyuk = () => {
   return (
@@ -17,9 +18,13 @@ const Jaehyuk = () => {
         {/* <StoryTemplate3></StoryTemplate3> */}
         {/* <WeddingTemplate1></WeddingTemplate1> */}
         {/* <WeddingTemplate2></WeddingTemplate2> */}
-        <WeddingTemplate3></WeddingTemplate3>
+        {/* <WeddingTemplate3></WeddingTemplate3> */}
         {/* <WeddingTemplate4></WeddingTemplate4> */}
         {/* <CompleteForm></CompleteForm> */}
+        {/* <Charater2></Charater2> */}
+        <Character></Character>
+        {/* <Player skin="c2_m_action12.png"></Player> */}
+
       </div>
     </>
   );
