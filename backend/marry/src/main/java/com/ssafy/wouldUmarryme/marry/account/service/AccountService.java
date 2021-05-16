@@ -101,15 +101,13 @@ public class AccountService {
 
     public Object updateAccount(Account account,UpdateAccountRequest update){
         String nickname = update.getNickName().trim();
-        String password = update.getPassword().trim();
+        String password = passwordEncoder.encode(update.getPassword().trim());
         String phone = update.getPhoneNumber().trim();
+        account = getAccount(account.getUserName());
+        account.updateValue(password,nickname,phone);
+        accountRepository.save(account);
 
-        Account updateAccount = account;
-        updateAccount.setNickName(nickname);
-        updateAccount.setPassword(passwordEncoder.encode(password));
-        updateAccount.setPhoneNumber(phone);
-        accountRepository.save(updateAccount);
-        return makeResponse("200", convertObjectToJson(updateAccount), "success", HttpStatus.OK);
+        return makeResponse("200", SearchAccountResponse.toSearchAccountResponse(account), "success", HttpStatus.OK);
     }
 
     public Object deleteAccount(Account account,PasswordRequest delete){
