@@ -3,8 +3,7 @@ import api from "../../../service/api";
 import { useState } from "react";
 import styles from "./storyTemplate4.module.css";
 
-const StoryTemplate4 = () => {
-  const [text1, setText1] = useState('');
+const StoryTemplate4 = ({ setImage1, setImage2, setImage3, text1, setText1 }) => {
   const [Img1, setImg1] = useState(null);
   const [Img2, setImg2] = useState(null);
   const [Img3, setImg3] = useState(null);
