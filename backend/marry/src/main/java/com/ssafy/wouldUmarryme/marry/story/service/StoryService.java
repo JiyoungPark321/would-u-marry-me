@@ -104,10 +104,10 @@ public class StoryService {
     public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
 
-        setStoryImage(set1StoryTemplateRequest.getFirst(), story.get(),1);
-        setStoryComment(set1StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(set1StoryTemplateRequest.getThird(),story.get(),3);
-        setStoryComment(set1StoryTemplateRequest.getFourth(),story.get(),4);
+        setStoryImage(set1StoryTemplateRequest.getImage1(), story.get(),1);
+        setStoryComment(set1StoryTemplateRequest.getText1(),story.get(),2);
+        setStoryImage(set1StoryTemplateRequest.getImage2(),story.get(),3);
+        setStoryComment(set1StoryTemplateRequest.getText2(),story.get(),4);
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
@@ -115,8 +115,8 @@ public class StoryService {
     public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
         Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
 
-        setStoryImage(set2StoryTemplateRequest.getFirst(), story.get(),1);
-        setStoryComment(set2StoryTemplateRequest.getSecond(), story.get(),2);
+        setStoryImage(set2StoryTemplateRequest.getImage1(), story.get(),1);
+        setStoryComment(set2StoryTemplateRequest.getText1(), story.get(),2);
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
@@ -124,10 +124,10 @@ public class StoryService {
     public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
         Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
 
-        setStoryComment(set345StoryTemplateRequest.getFirst(),story.get(),1);
-        setStoryImage(set345StoryTemplateRequest.getSecond(),story.get(),2);
-        setStoryImage(set345StoryTemplateRequest.getThird(),story.get(),3);
-        setStoryImage(set345StoryTemplateRequest.getFourth(),story.get(),4);
+        setStoryComment(set345StoryTemplateRequest.getText1(),story.get(),1);
+        setStoryImage(set345StoryTemplateRequest.getImage1(),story.get(),2);
+        setStoryImage(set345StoryTemplateRequest.getImage2(),story.get(),3);
+        setStoryImage(set345StoryTemplateRequest.getImage3(),story.get(),4);
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }

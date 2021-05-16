@@ -9,6 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class Set2StoryTemplateRequest {
     private Long storyId;
-    private MultipartFile first;
-    private String second;
+    private MultipartFile image1;
+    private String text1;
 }
