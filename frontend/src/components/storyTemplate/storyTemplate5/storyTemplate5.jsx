@@ -5,6 +5,7 @@ import api from "../../../service/api";
 import styles from "./storyTemplate5.module.css";
 
 const StoryTemplate5 = () => {
+  const [text1, setText1] = useState('');
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
@@ -17,6 +18,24 @@ const StoryTemplate5 = () => {
   const [imgFile1, setImgFile1] = useState();
   const [imgFile2, setImgFile2] = useState();
   const [imgFile3, setImgFile3] = useState();
+
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 60;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText1(result);
+  };
 
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
@@ -90,13 +109,18 @@ const StoryTemplate5 = () => {
   return (
     <div className={styles["template-box"]}>
       <div className={styles["header-box"]}>
-        <div className={styles["header"]}>
-          <button className={styles["text-button"]}>
-            <div className={styles["text-icon"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
-        </div>
+        <textarea
+          className={styles.text1}
+          id="st5-text1-id"
+          onChange={handleText1}
+          value={text1}
+        />
+        <label
+          className={styles["text-button"]}
+          htmlFor="st5-text1-id"  
+        >
+          <i className="fas fa-pencil-alt"></i>
+        </label>
       </div>
       <div className={styles["photos-container"]}>
         {/* 첫번째 photobox */}
