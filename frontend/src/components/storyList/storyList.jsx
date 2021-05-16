@@ -54,15 +54,12 @@ const StoryList = () => {
     setStoryListData(newStoryListData);
   };
 
-  // handleDeleteStoryBoard 스토리보드 삭제 후 렌더 처리 
+  
   const handleDeleteStoryBoard = (data) => {
-    // const newStoryListData = storyListData.map((story) => {
-    //   if (story.id === data.id) {
-    //     return;
-    //   }
-    //   return story;
-    // });
-    // setStoryListData(newStoryListData);
+    const newStoryListData = storyListData.filter((story) => {
+      return story.id !== data.id;
+    });
+    setStoryListData(newStoryListData);
   };
   
 
