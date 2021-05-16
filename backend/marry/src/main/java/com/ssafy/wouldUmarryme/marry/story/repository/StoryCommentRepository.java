@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface StoryCommentRepository extends JpaRepository<StoryComment,Long> {
     List<StoryComment> findByStory(Story story);
+
+    void deleteByStory(Story story);
 }

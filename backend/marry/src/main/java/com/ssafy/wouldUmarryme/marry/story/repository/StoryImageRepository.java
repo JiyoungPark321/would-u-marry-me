@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface StoryImageRepository extends JpaRepository<StoryImage, Long> {
     List<StoryImage> findByStory(Story story);
+
+    void deleteByStory(Story story);
 }
