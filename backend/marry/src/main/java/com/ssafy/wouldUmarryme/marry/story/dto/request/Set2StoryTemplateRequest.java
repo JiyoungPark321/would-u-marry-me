@@ -11,5 +11,4 @@ public class Set2StoryTemplateRequest {
     private Long storyId;
     private MultipartFile first;
     private String second;
-
 }

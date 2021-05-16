@@ -1,5 +1,6 @@
 .story-board-container {
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: center/cover no-repeat;
   height: 100vh;
+  width: 100%;
+  background-color: #fff9fa;
 }

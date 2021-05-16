@@ -21,21 +21,27 @@ const StoryTemplate5 = () => {
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
   };
+
   const imageMouseOut1 = () => {
     setImageHoverCheck1(false);
   };
+
   const imageMouseOn2 = () => {
     setImageHoverCheck2(true);
   };
+
   const imageMouseOut2 = () => {
     setImageHoverCheck2(false);
   };
+
   const imageMouseOn3 = () => {
     setImageHoverCheck3(true);
   };
+
   const imageMouseOut3 = () => {
     setImageHoverCheck3(false);
   };
+
   const onImageChange1 = function (e) {
     setImgFile1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
@@ -43,6 +49,7 @@ const StoryTemplate5 = () => {
       setImgInput1(!imgInput1);
     }
   };
+
   const onImageChange2 = function (e) {
     setImgFile2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
@@ -50,6 +57,7 @@ const StoryTemplate5 = () => {
       setImgInput2(!imgInput2);
     }
   };
+
   const onImageChange3 = function (e) {
     setImgFile3(e.target.files[0]);
     setImg3(URL.createObjectURL(e.target.files[0]));
@@ -57,6 +65,7 @@ const StoryTemplate5 = () => {
       setImgInput3(!imgInput3);
     }
   };
+
   const sendStory5 = () => {
     //axios
     let data = new FormData();
@@ -77,6 +86,7 @@ const StoryTemplate5 = () => {
       });
   };
 
+
   return (
     <div className={styles["template-box"]}>
       <div className={styles["header-box"]}>
@@ -92,7 +102,9 @@ const StoryTemplate5 = () => {
         {/* 첫번째 photobox */}
         {imgInput1 === false ? (
           <div className={styles["image-box1"]}>
-            <img src={Img1} className={styles["input-image"]} />
+            { 
+              Img1 && <img src={Img1} className={styles["input-image"]} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -142,7 +154,9 @@ const StoryTemplate5 = () => {
         {/* 두번째 photobox */}
         {imgInput2 === false ? (
           <div className={styles["image-box2"]}>
-            <img src={Img2} className={styles["input-image"]} />
+            { 
+              Img2 && <img src={Img2} className={styles["input-image"]} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -192,7 +206,9 @@ const StoryTemplate5 = () => {
         {/* 세번째 photobox */}
         {imgInput3 === false ? (
           <div className={styles["image-box3"]}>
-            <img src={Img3} className={styles["input-image"]} />
+            { 
+              Img3 && <img src={Img3} className={styles["input-image"]} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>

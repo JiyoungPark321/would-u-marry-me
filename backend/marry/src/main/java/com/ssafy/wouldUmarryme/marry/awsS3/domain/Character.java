@@ -32,9 +32,6 @@ public class Character {
     @OneToMany(mappedBy = "character",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<CharacterStatus> statuses = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "character", fetch = FetchType.LAZY)
-    private Storyboard storyboard;
 
     @Builder
     public Character(String coupleName,String coupleUrl){

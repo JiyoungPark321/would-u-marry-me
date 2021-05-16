@@ -12,12 +12,10 @@
   height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  padding: 40px 0;
 }
 
 .input-area1-area1 {
-  height: 100px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,26 +24,25 @@
 }
 
 .input-area1-area2 {
-  height: 700px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 .text-box1 {
   position: relative;
-  width: 612px;
-  height: 416px;
+  width: 640px;
+  height: 420px;
   background-color: #f6f6e3;
   border-radius: 30px;
+  margin-bottom: 30px;
 }
 
 .text-box2 {
   position: relative;
-  width: 612px;
-  height: 238px;
+  width: 640px;
+  height: 240px;
   background-color: #f6f6e3;
   border-radius: 30px;
 }
@@ -68,8 +65,8 @@
 }
 
 .date-button {
-  width: 612px;
-  height: 41px;
+  width: 640px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #9d9595;
   border-radius: 100px;
@@ -77,6 +74,7 @@
   font-size: 1rem;
   text-align: center;
   color: #af9d9f;
+  margin: 10px;
 }
 
 .date-input-box {
@@ -188,11 +186,13 @@
   font-size: 16px;
   color: #4d2d2d;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .title-icon {
   font-size: 10px;
   color: #4d2d2d;
+  margin-bottom: 40px;
 }
 
 .input-area2 {
@@ -206,25 +206,24 @@
   height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  padding: 40px 0;
 }
 
 .input-area2-area1 {
-  height: 400px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
 }
 
 .map-box {
   position: relative;
-  width: 612px;
-  height: 215px;
-  background-color: #efebfc;
+  width: 640px;
+  height: 240px;
+  background-color: #eeecf3;
   border-radius: 30px;
+  margin-bottom: 60px;
 }
 
 .map-icon {
@@ -247,8 +246,8 @@
   position: relative;
   display: flex;
   background-color: #efebfc;
-  width: 612px;
-  height: 215px;
+  width: 640px;
+  height: 240px;
   border-radius: 30px;
 }
 

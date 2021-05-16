@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.account.domain;
 
 
+import com.ssafy.wouldUmarryme.marry.account.dto.request.UpdateAccountRequest;
 import com.ssafy.wouldUmarryme.marry.common.time.TimeEntity;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
 import lombok.*;
@@ -36,7 +37,7 @@ public class Account extends TimeEntity {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.ROLE_GUEST;
+    private UserRole role = UserRole.ROLE_USER;
 
     @Builder
     public Account(@NotNull String userName, @NotNull String password, @NotNull String nickName, @NotNull String phoneNumber, @NotNull UserRole role){
@@ -45,5 +46,11 @@ public class Account extends TimeEntity {
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
         this.role = role;
+    }
+
+    public void updateValue(String password, String nickName, String phoneNumber){
+        this.password = password;
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
     }
 }

@@ -1,6 +1,7 @@
 package com.ssafy.wouldUmarryme.marry.story.service;
 
 
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Background;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
 import com.ssafy.wouldUmarryme.marry.story.domain.Story;
@@ -30,9 +31,15 @@ public class BackgroundService {
     private final StoryBoardRepository storyBoardRepository;
     private final AwsS3Service awsS3Service;
 
-    public Object setBackground(SetBackgroundRequest setBackgroundRequest) {
+    public Object setBackground(SetBackgroundRequest setBackgroundRequest, Account account) {
         Optional<Background> background = backgroundRepository.findById(setBackgroundRequest.getBackgroundId());
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(setBackgroundRequest.getStoryBoardId());
+        if(background.isEmpty()){
+            return makeResponse("400",null,"fail : background를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(setBackgroundRequest.getStoryBoardId(),account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400",null,"fail : storyboard를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
         storyboard.get().updateBackground(background.get());
         storyBoardRepository.save(storyboard.get());
         return makeResponse("200", background.get(), "success", HttpStatus.OK);
@@ -46,7 +53,7 @@ public class BackgroundService {
 
     public Object createBackground(MultipartFile image) throws IOException {
         String imgName = awsS3Service.uploadProfileImage(image,"bck");
-        String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
+        String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         Background background = Background.builder()
                 .backgroundImgName(imgName)
                 .backgroundImgUrl(imgUrl)

@@ -34,7 +34,7 @@ public class BackgroundController {
     @ApiOperation(value = "배경 저장")
     public Object setBackground(@Valid @RequestBody @ApiParam(value = "배경 id, 스토리보드 Id" ,required = true) SetBackgroundRequest setBackgroundRequest, @ApiIgnore @CurrentAccount Account account){
 
-        Object response = backgroundService.setBackground(setBackgroundRequest);
+        Object response = backgroundService.setBackground(setBackgroundRequest,account);
         return response;
     }
 

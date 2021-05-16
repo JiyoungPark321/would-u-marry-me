@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @ToString
 public class SearchAccountResponse {
-    @Id
+
     private Long id;
     private String userName;
     private String nickName;

@@ -1,5 +1,6 @@
 package com.ssafy.wouldUmarryme.marry.story.service;
 
+import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.Character;
 import com.ssafy.wouldUmarryme.marry.awsS3.domain.CharacterStatus;
 import com.ssafy.wouldUmarryme.marry.awsS3.service.AwsS3Service;
@@ -48,9 +49,15 @@ public class CharacterService {
         return makeResponse("200", character, "success", HttpStatus.OK);
     }
 
-    public Object setCharacter(SetCharacterRequest setCharacterRequest) {
+    public Object setCharacter(SetCharacterRequest setCharacterRequest, Account account) {
         Optional<Character> character = characterRepository.findById(setCharacterRequest.getCharacterId());
-        Optional<Storyboard> storyboard = storyBoardRepository.findById(setCharacterRequest.getStoryboardId());
+        if(character.isEmpty()){
+            return makeResponse("400",null,"fail : character를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(setCharacterRequest.getStoryBoardId(),account);
+        if(storyboard.isEmpty()){
+            return makeResponse("400",null,"fail : storyboard를 찾을 수 없음",HttpStatus.NOT_FOUND);
+        }
         storyboard.get().updateCharacter(character.get());
         Storyboard save = storyBoardRepository.save(storyboard.get());
         return makeResponse("200", character.get(), "success", HttpStatus.OK);
