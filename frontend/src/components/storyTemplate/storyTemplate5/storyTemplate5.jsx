@@ -4,8 +4,8 @@ import api from "../../../service/api";
 // import TextEditor from "./textEditor";
 import styles from "./storyTemplate5.module.css";
 
-const StoryTemplate5 = () => {
-  const [text1, setText1] = useState('');
+const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) => {
+
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
   const [Img3, setImg3] = useState();
