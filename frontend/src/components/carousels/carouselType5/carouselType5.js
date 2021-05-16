@@ -32,6 +32,7 @@ const CarouselType5 = ({ setStoryTemplateId }) => {
   
   const choiceStoryTemplate = (storyTemplateId) => {
     setStoryTemplateId(storyTemplateId);
+    console.log(storyTemplateId);
   };
 
 
@@ -59,12 +60,12 @@ const CarouselType5 = ({ setStoryTemplateId }) => {
                 <SwiperSlide
                   className={styles['swiper-slide']}
                   key={data.id}
-                  onClick={choiceStoryTemplate(data.id)}
                 >
                   <div className={styles['img-container']}>
                     <img 
                       src={data.imgUrl} 
                       className={styles['template-img']}
+                      onClick={()=> {choiceStoryTemplate(data.id)}}
                     />
                   </div>
                 </SwiperSlide>
