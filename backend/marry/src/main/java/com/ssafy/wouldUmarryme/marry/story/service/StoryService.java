@@ -102,8 +102,8 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest,MultipartFile image1,MultipartFile image2) throws IOException{
-        Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
+    public Object setFirstValue(Long storyId, String text1, String text2,MultipartFile image1,MultipartFile image2) throws IOException{
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
@@ -122,16 +122,16 @@ public class StoryService {
             }
         }
 
-        setStoryComment(set1StoryTemplateRequest.getText1(),story.get(),2);
-        setStoryComment(set1StoryTemplateRequest.getText2(),story.get(),4);
+        setStoryComment(text1,story.get(),2);
+        setStoryComment(text2,story.get(),4);
 
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest,MultipartFile image1) throws IOException {
-        Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
+    public Object setSecondValue(Long storyId,String text1,MultipartFile image1) throws IOException {
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
         if(images.size()!=0){
@@ -148,15 +148,15 @@ public class StoryService {
             }
 
         }
-        setStoryComment(set2StoryTemplateRequest.getText1(),story.get(),2);
+        setStoryComment(text1,story.get(),2);
 
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest,MultipartFile image1,MultipartFile image2, MultipartFile image3) throws IOException{
-        Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
+    public Object setThirdValue(Long storyId,String text1,MultipartFile image1,MultipartFile image2, MultipartFile image3) throws IOException{
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
@@ -177,7 +177,7 @@ public class StoryService {
             }
 
         }
-        setStoryComment(set345StoryTemplateRequest.getText1(),story.get(),1);
+        setStoryComment(text1,story.get(),1);
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);
