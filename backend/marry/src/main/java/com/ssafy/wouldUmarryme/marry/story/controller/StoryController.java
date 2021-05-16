@@ -26,12 +26,6 @@ public class StoryController {
 
     private final StoryService storyService;
 
-    @PatchMapping
-    @ApiOperation(value = "테스트")
-    public Object test(){
-        return null;
-    }
-
     //스토리 생성
     @PostMapping
     @ApiOperation(value = "스토리 생성")
@@ -39,7 +33,6 @@ public class StoryController {
         Object response = storyService.createStory(createStoryRequest,account);
         return response;
     }
-
 
     //스토리 첫 번째 템플릿
     @PutMapping("/first")
@@ -63,7 +56,6 @@ public class StoryController {
     @ApiOperation(value = "스토리에 세 번째 템플릿 값 넣기")
     public Object setThirdValue(@ApiIgnore @CurrentAccount Account account, @Valid @RequestParam("storyId") Long storyId ,@RequestParam("text1") String text1,
                                 @RequestParam("image1") MultipartFile image1,@RequestParam("image2") MultipartFile image2,@RequestParam("image3") MultipartFile image3) throws IOException {
-
         Object response = storyService.setThirdValue(storyId,text1,image1,image2,image3);
         return response;
     }
