@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './storyBoard.module.css';
 
+import api from '../../service/api';
+import { useParams } from 'react-router';
+
 import StepProgressBar from '../../components/stepProgressBar/stepProgressBar';
 import MoveMyStoryBoardButton from '../../components/moveMyStoryBoardButton/moveMyStoryBoardButton';
 import { NextButton, PrevButton } from '../../components/prevNextButton/prevNextButton';
@@ -10,8 +13,12 @@ import CarouselType2 from '../../components/carousels/carouselType2/carouselType
 import CarouselType3 from '../../components/carousels/carouselType3/carouselType3';
 import CarouselType4 from '../../components/carousels/carouselType4/carouselType4';
 import CarouselType5 from '../../components/carousels/carouselType5/carouselType5';
-import api from '../../service/api';
-import { useParams } from 'react-router';
+
+import StoryTemplate1 from '../../components/storyTemplate/storyTemplate1/storyTemplate1';
+import StoryTemplate2 from '../../components/storyTemplate/storyTemplate2/storyTemplate2';
+import StoryTemplate3 from '../../components/storyTemplate/storyTemplate3/storyTemplate3';
+import StoryTemplate4 from '../../components/storyTemplate/storyTemplate4/storyTemplate4';
+import StoryTemplate5 from '../../components/storyTemplate/storyTemplate5/storyTemplate5';
 
 
 
@@ -236,7 +243,29 @@ const StoryBoard = () => {
               />
             )
           }
-          else if (currentStep === 5) {}
+          else if (currentStep === 5) {
+            if (storyTemplateId === 1) {
+              return (
+                <StoryTemplate1 />
+              )
+            } else if (storyTemplateId === 2) {
+              return(
+                <StoryTemplate2 />
+              )
+            } else if (storyTemplateId === 3) {
+              return(
+                <StoryTemplate3 />
+              )
+            } else if (storyTemplateId === 4) {
+              return(
+                <StoryTemplate4 />
+              )
+            } else if (storyTemplateId === 5) {
+              return(
+                <StoryTemplate5 />
+              )
+            }
+          }
         })()
       }
       <PrevButton 
