@@ -71,8 +71,8 @@ public class StoryService {
     public void setStoryImage(MultipartFile object,Story story, int index) throws IOException {
         String imgName = "";
         String imgUrl = "";
-
         if(object!=null){
+            System.out.println("들어옴");
             imgName = awsS3Service.uploadProfileImage(object,"story");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             StoryImage storyImage = StoryImage.builder()
@@ -84,6 +84,7 @@ public class StoryService {
             storyImageRepository.save(storyImage);
         }
         else{
+            System.out.println("안들어옴");
             StoryImage storyImage = StoryImage.builder()
                     .story(story)
                     .index(index)
@@ -101,88 +102,82 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-    public Object setFirstValue(Set1StoryTemplateRequest set1StoryTemplateRequest) throws IOException{
-        Optional<Story> story = storyRepository.findById(set1StoryTemplateRequest.getStoryId());
+    public Object setFirstValue(Long storyId, String text1, String text2,MultipartFile image1,MultipartFile image2) throws IOException{
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
-        if(images.size()==0){
-            setStoryImage(set1StoryTemplateRequest.getImage1(), story.get(),1);
-            setStoryImage(set1StoryTemplateRequest.getImage2(),story.get(),3);
-        }
-        else{
+        if(images.size()!=0){
             for (StoryImage image : images){
                 storyImageRepository.deleteById(image.getId());
             }
         }
+        setStoryImage(image1, story.get(),1);
+        setStoryImage(image2,story.get(),3);
 
-        if(comments.size()==0){
-            setStoryComment(set1StoryTemplateRequest.getText1(),story.get(),2);
-            setStoryComment(set1StoryTemplateRequest.getText2(),story.get(),4);
-        }
-        else{
+
+        if(comments.size()!=0){
             for (StoryComment comment : comments){
                 storyCommentRepository.deleteById(comment.getId());
             }
         }
+
+        setStoryComment(text1,story.get(),2);
+        setStoryComment(text2,story.get(),4);
 
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setSecondValue(Set2StoryTemplateRequest set2StoryTemplateRequest) throws IOException {
-        Optional<Story> story = storyRepository.findById(set2StoryTemplateRequest.getStoryId());
+    public Object setSecondValue(Long storyId,String text1,MultipartFile image1) throws IOException {
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
-        if(images.size()==0){
-            setStoryImage(set2StoryTemplateRequest.getImage1(), story.get(),1);
+        if(images.size()!=0){
 
-        }
-        else{
             for (StoryImage image : images){
                 storyImageRepository.deleteById(image.getId());
             }
         }
+        setStoryImage(image1, story.get(),1);
 
-        if(comments.size()==0){
-            setStoryComment(set2StoryTemplateRequest.getText1(),story.get(),2);
-        }
-        else{
+        if(comments.size()!=0){
             for (StoryComment comment : comments){
                 storyCommentRepository.deleteById(comment.getId());
             }
+
         }
+        setStoryComment(text1,story.get(),2);
 
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setThirdValue(Set345StoryTemplateRequest set345StoryTemplateRequest) throws IOException{
-        Optional<Story> story = storyRepository.findById(set345StoryTemplateRequest.getStoryId());
+    public Object setThirdValue(Long storyId,String text1,MultipartFile image1,MultipartFile image2, MultipartFile image3) throws IOException{
+        Optional<Story> story = storyRepository.findById(storyId);
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
-        if(images.size()==0){
-            setStoryImage(set345StoryTemplateRequest.getImage1(), story.get(),2);
-            setStoryImage(set345StoryTemplateRequest.getImage2(),story.get(),3);
-            setStoryImage(set345StoryTemplateRequest.getImage3(),story.get(),4);
-        }
-        else{
+        if(images.size()!=0){
             for (StoryImage image : images){
                 storyImageRepository.deleteById(image.getId());
             }
         }
 
-        if(comments.size()==0){
-            setStoryComment(set345StoryTemplateRequest.getText1(),story.get(),1);
-        }
-        else{
+        setStoryImage(image1, story.get(),2);
+        setStoryImage(image2,story.get(),3);
+        setStoryImage(image3,story.get(),4);
+
+
+        if(comments.size()!=0){
             for (StoryComment comment : comments){
                 storyCommentRepository.deleteById(comment.getId());
             }
+
         }
+        setStoryComment(text1,story.get(),1);
 
 
         return makeResponse("200", story, "success", HttpStatus.OK);

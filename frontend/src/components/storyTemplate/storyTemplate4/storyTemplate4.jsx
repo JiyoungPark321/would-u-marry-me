@@ -3,19 +3,36 @@ import api from "../../../service/api";
 import { useState } from "react";
 import styles from "./storyTemplate4.module.css";
 
-const StoryTemplate4 = () => {
-  const [Img1, setImg1] = useState();
-  const [Img2, setImg2] = useState();
-  const [Img3, setImg3] = useState();
+const StoryTemplate4 = ({ setImage1, setImage2, setImage3, text1, setText1 }) => {
+  const [Img1, setImg1] = useState(null);
+  const [Img2, setImg2] = useState(null);
+  const [Img3, setImg3] = useState(null);
   const [imgInput1, setImgInput1] = useState(false);
   const [imgInput2, setImgInput2] = useState(false);
   const [imgInput3, setImgInput3] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
   const [imageHoverCheck3, setImageHoverCheck3] = useState(false);
-  const [imgFile1, setImgFile1] = useState();
-  const [imgFile2, setImgFile2] = useState();
-  const [imgFile3, setImgFile3] = useState();
+  const [imgFile1, setImgFile1] = useState(null);
+  const [imgFile2, setImgFile2] = useState(null);
+  const [imgFile3, setImgFile3] = useState(null);
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 16;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText1(result);
+  };
 
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
@@ -90,11 +107,18 @@ const StoryTemplate4 = () => {
       <div className={styles["input-box"]}>
         {/* 텍스트 박스 */}
         <div className={styles["text-box"]}>
-          <button className={styles["text-button"]}>
-            <div className={styles["text-icon"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea 
+            className={styles.text1}
+            id="st4-text1-id"
+            onChange={handleText1}
+            value={text1}
+          />
+          <label 
+            className={styles["text-button"]}
+            htmlFor="st4-text1-id"
+          >  
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
         {/* 첫번째 image box */}
         {/* {imgInput1 === false ? (

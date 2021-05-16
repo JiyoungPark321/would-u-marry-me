@@ -4,9 +4,9 @@ import { useState } from "react";
 import TextEditor from "../textEditor";
 import styles from "./storyTemplate2.module.css";
 
-const StoryTemplate1 = () => {
-  const [Img, setImg] = useState();
-  const [imgFile, setImgFile] = useState();
+const StoryTemplate2 = () => {
+  const [Img, setImg] = useState(null);
+  const [imgFile, setImgFile] = useState(null);
   const [imgInput, setImgInput] = useState(false);
   const [onTextEditor, setOnTextEditor] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
@@ -125,4 +125,4 @@ const StoryTemplate1 = () => {
     </>
   );
 };
-export default StoryTemplate1;
+export default StoryTemplate2;
