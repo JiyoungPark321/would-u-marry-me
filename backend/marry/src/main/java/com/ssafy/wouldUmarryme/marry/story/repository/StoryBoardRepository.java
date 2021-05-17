@@ -2,6 +2,7 @@ package com.ssafy.wouldUmarryme.marry.story.repository;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.story.domain.Storyboard;
+import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,6 @@ public interface StoryBoardRepository extends JpaRepository<Storyboard,Long> {
     Optional<Storyboard> findByIdAndAccount(Long id, Account account);
 
     void deleteByIdAndAccount(Long id, Account account);
+
+    Optional<Storyboard> findByWeddingCardAndAccount(WeddingCard weddingCard, Account account);
 }
