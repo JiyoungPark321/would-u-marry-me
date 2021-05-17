@@ -23,6 +23,25 @@ const WeddingTemplate1 = () => {
   const [time, setTime] = useState();
   const [place, setPlace] = useState();
 
+
+
+  // const handleText1 = (e) => {
+  //   const value = e.target.value;
+  //   let totalByte = 0;
+  //   let maxByte = 20;
+  //   let lastIndex = 0
+  //   for (let i = 0; i < value.length; i++) {
+  //     lastIndex = i
+  //     let currentByte = value.charCodeAt(i);
+  //     (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+  //     if (totalByte > maxByte) {
+  //       break;
+  //     }
+  //   }
+  //   const result = value.substring(0, lastIndex+1);
+  //   setText1(result);
+  // };
+
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
@@ -195,6 +214,12 @@ const WeddingTemplate1 = () => {
         </div>
         {/* 첫번째 텍스트박스 */}
         <div className={styles["text-box1"]}>
+          {/* <textarea
+            className={styles.text1}
+            id="wt1-text1-id"
+            onChange={handleText1}
+            value={text1}
+          /> */}
           <button className={styles["text-button"]}>
             <div className={styles["text-icon"]}>
               <i className="fas fa-pencil-alt"></i>
