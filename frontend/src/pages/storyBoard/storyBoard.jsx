@@ -13,17 +13,18 @@ import CarouselType2 from '../../components/carousels/carouselType2/carouselType
 import CarouselType3 from '../../components/carousels/carouselType3/carouselType3';
 import CarouselType4 from '../../components/carousels/carouselType4/carouselType4';
 import CarouselType5 from '../../components/carousels/carouselType5/carouselType5';
+import CarouselType6 from '../../components/carousels/carouselType6/carouselType6';
 
 import StoryTemplate1 from '../../components/storyTemplate/storyTemplate1/storyTemplate1';
 import StoryTemplate2 from '../../components/storyTemplate/storyTemplate2/storyTemplate2';
 import StoryTemplate3 from '../../components/storyTemplate/storyTemplate3/storyTemplate3';
 import StoryTemplate4 from '../../components/storyTemplate/storyTemplate4/storyTemplate4';
 import StoryTemplate5 from '../../components/storyTemplate/storyTemplate5/storyTemplate5';
+
 import WeddingTemplate1 from '../../components/weddingTemplate/weddingTemplate1/weddingTemplate1';
 import WeddingTemplate2 from '../../components/weddingTemplate/weddingTemplate2/weddingTemplate2';
 import WeddingTemplate4 from '../../components/weddingTemplate/weddingTemplate4/weddingTemplate4';
 import WeddingTemplate3 from '../../components/weddingTemplate/weddingTemplate3/weddingTemplate3';
-import CarouselType6 from '../../components/carousels/carouselType6/carouselType6';
 
 
 
@@ -56,6 +57,21 @@ const StoryBoard = () => {
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
   
+  const [weddingImage1, setWeddingImage1] = useState(null);
+  const [weddingText1, setWeddingText1] = useState('');
+  const [weddingText2, setWeddingText2] = useState('');
+  const [weddingDate, setWeddingDate] = useState(null);
+  const [weddingTime, setWeddingTime] = useState(null);
+  const [weddingPlace, setWeddingPlace] = useState(null);
+  const [weddingMapPlace, setWeddingMapPlace] = useState(null);
+  const [weddingMapX, setWeddingMapX] = useState(null);
+  const [weddingMapY, setWeddingMapY] = useState(null);
+  const [weddingManPhoneNumber, setWeddingManPhoneNumber] = useState(null);
+  const [weddingWomanPhoneNumber, setWeddingWomanPhoneNumber] = useState(null);
+  const [weddingManAccountNumber, setWeddingManAccountNumber] = useState(null);
+  const [weddingWomanAccountNumber, setWeddingWomanAccountNumber] = useState(null);
+
+
 
 
   useEffect(() => {
@@ -290,6 +306,21 @@ const StoryBoard = () => {
         .catch((err) => {
           console.error(err);
         })
+    } else if (currentStep === 19) {
+      api.put('weddingcardtemplate', {
+        cardId: weddingId,
+        cardTemplateId: weddingTemplateId
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          console.log(res);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+      _moveNextStep();
     }
     // _moveNextStep();
   };
@@ -434,19 +465,103 @@ const StoryBoard = () => {
             console.log(currentStep);
             if (weddingTemplateId === 1) {
               return (
-                <WeddingTemplate1 />
+                <WeddingTemplate1
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={weddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY} 
+                  setWeddingMapY={setWeddingMapY} 
+                />
               )
             } else if (weddingTemplateId === 2) {
               return (
-                <WeddingTemplate2 />
+                <WeddingTemplate2
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={weddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY} 
+                  setWeddingMapY={setWeddingMapY}
+                />
               )
             } else if (weddingTemplateId === 3) {
               return (
-                <WeddingTemplate3 />
+                <WeddingTemplate3 
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={setWeddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY}
+                  setWeddingMapY={setWeddingMapY}
+                  weddingManPhoneNumber={weddingManPhoneNumber}
+                  setWeddingManPhoneNumber={setWeddingManPhoneNumber}
+                  weddingWomanPhoneNumber={weddingWomanPhoneNumber}
+                  setWeddingWomanPhoneNumber={setWeddingWomanPhoneNumber}
+                  weddingManAccountNumber={weddingManAccountNumber}
+                  setWeddingManAccountNumber={setWeddingManAccountNumber}
+                  weddingWomanAccountNumber={weddingWomanAccountNumber}
+                  setWeddingWomanAccountNumber={setWeddingWomanAccountNumber}
+                />
               )
             } else if (weddingTemplateId === 4) {
               return (
-                <WeddingTemplate4 />
+                <WeddingTemplate4 
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={setWeddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingManPhoneNumber={weddingManPhoneNumber}
+                  setWeddingManPhoneNumber={setWeddingManPhoneNumber}
+                  weddingWomanPhoneNumber={weddingWomanPhoneNumber}
+                  setWeddingWomanPhoneNumber={setWeddingWomanPhoneNumber}
+                  weddingManAccountNumber={weddingManAccountNumber}
+                  setWeddingManAccountNumber={setWeddingManAccountNumber}
+                  weddingWomanAccountNumber={weddingWomanAccountNumber}
+                  setWeddingWomanAccountNumber={setWeddingWomanAccountNumber}
+                />
               )
             }
           }
