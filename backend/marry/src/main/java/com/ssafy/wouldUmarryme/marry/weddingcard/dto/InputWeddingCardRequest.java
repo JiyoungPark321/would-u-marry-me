@@ -11,27 +11,27 @@ public class InputWeddingCardRequest {
     private Long weddingId;
     private String weddingDate;
     private String weddingPlace;
-    private String weddingFirstComment;
-    private String weddingSecondComment;
+    private String weddingText1;
+    private String weddingText2;
     private String weddingTime;
-    private String weddingManPhone;
-    private String weddingWomanPhone;
+    private String weddingManPhoneNumber;
+    private String weddingWomanPhoneNumber;
     private String weddingManAccountNumber;
     private String weddingWomanAccountNumber;
-    private String placeName;
-    private Double x;
-    private Double y;
+    private String weddingMapPlace;
+    private Double weddingMapX;
+    private Double weddingMapY;
 
     //request를 해당 객체로 변환
     public WeddingCard toWeddingCard(){
         return WeddingCard.builder()
-                .firstComment(weddingFirstComment)
-                .secondComment(weddingSecondComment)
+                .firstComment(weddingText1)
+                .secondComment(weddingText2)
                 .date(weddingDate)
                 .place(weddingPlace)
                 .time(weddingTime)
-                .manPhone(weddingManPhone)
-                .womanPhone(weddingWomanPhone)
+                .manPhone(weddingManPhoneNumber)
+                .womanPhone(weddingWomanPhoneNumber)
                 .manAccountNumber(weddingManAccountNumber)
                 .womanAccountNumber(weddingWomanAccountNumber)
                 .build();
