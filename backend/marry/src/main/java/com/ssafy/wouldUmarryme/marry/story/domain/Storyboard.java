@@ -57,7 +57,7 @@ public class Storyboard extends TimeEntity {
     @OneToMany(mappedBy = "storyboard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Story> stories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wedding_card_id")
     private WeddingCard weddingCard;
 
