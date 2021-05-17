@@ -28,12 +28,12 @@ public class WeddingCardTemplateService {
     private final WeddingCardTemplateRepository weddingCardTemplateRepository;
 
     public Object setTemplate(TemplateNumberRequest templateNumberRequest) {
-        Optional<WeddingCard> card = weddingCardRepository.findById(templateNumberRequest.getCardId());
+        Optional<WeddingCard> card = weddingCardRepository.findById(templateNumberRequest.getWeddingId());
         if(card.isEmpty()){
             return makeResponse("400", null, "fail : card를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
         WeddingCard save = card.get();
-        save.setTemplate(templateNumberRequest.getCardTemplateId());
+        save.setTemplate(templateNumberRequest.getWeddingTemplateId());
         weddingCardRepository.save(save);
         return makeResponse("200", save,"success", HttpStatus.OK);
     }
