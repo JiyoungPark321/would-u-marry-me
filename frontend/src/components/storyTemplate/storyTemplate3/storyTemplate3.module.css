@@ -41,11 +41,11 @@
   resize: none;
   overflow: hidden;
   color: #c97e0e;
-  background-color: #f6f6e3;
+  background-color: transparent;
 }
 
 .text1:focus {
-  border: 2px solid #ffa600;
+  border: 3px solid #ffa600;
 }
 
 .images-container {
