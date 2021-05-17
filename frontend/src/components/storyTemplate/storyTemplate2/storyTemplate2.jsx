@@ -1,71 +1,76 @@
 import React from "react";
 import api from "../../../service/api";
 import { useState } from "react";
-import TextEditor from "../textEditor";
 import styles from "./storyTemplate2.module.css";
 
-const StoryTemplate2 = () => {
+const StoryTemplate2 = ({ image1, setImage1, text1, setText1 }) => {
   const [Img, setImg] = useState(null);
-  const [imgFile, setImgFile] = useState(null);
   const [imgInput, setImgInput] = useState(false);
-  const [onTextEditor, setOnTextEditor] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
+
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText1(result);
+  };
 
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
   };
+
   const imageMouseOut1 = () => {
     setImageHoverCheck1(false);
   };
+
   const onImageChange = function (e) {
-    setImgFile(e.target.files[0]);
+    setImage1(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
     if (!imgInput) {
       setImgInput(!imgInput);
     }
   };
-  const onTextInput = function () {
-    setOnTextEditor(!onTextEditor);
-  };
-  const sendStory2 = () => {
-    //axios
-    let data = new FormData();
-    data.append("firt", imgFile);
-    // data.append("second", )
-    data.append("storyId", 2);
-    api
-      .put("/story/second", data, {
-        headers: { Authorization: localStorage.getItem("jwt") },
-      })
-      .then((res) => {
-        // story template 컴포넌트 끄는 bind함수?
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
+
+  // const sendStory2 = () => {
+  //   //axios
+  //   let data = new FormData();
+  //   data.append("firt", imgFile);
+  //   // data.append("second", )
+  //   data.append("storyId", 2);
+  //   api
+  //     .put("/story/second", data, {
+  //       headers: { Authorization: localStorage.getItem("jwt") },
+  //     })
+  //     .then((res) => {
+  //       // story template 컴포넌트 끄는 bind함수?
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <>
       <div className={styles["template-box"]}>
-        {/* <div className={styles["image-box"]}>
-          <img src={Img} />
-          <label className={styles["image-button"]}>
-            <div className={styles["image-icon"]}>
-              <i className="fas fa-camera"></i>
-              <input
-                type="file"
-                className={styles["image-input"]}
-                onChange={onImageChange}
-              />
-            </div>
-          </label>
-        </div> */}
         {/* 첫번째 image box */}
         {/* 아무것도 입력 없을 때, */}
         {imgInput === false ? (
           <div className={styles["image-box"]}>
-            <img src={Img} />
+            {
+              Img && <img src={Img} className={styles.image1} />
+            }
             <label className={styles["image-button"]}>
               <div className={styles["image-icon"]}>
                 <i className="fas fa-camera"></i>
@@ -112,15 +117,20 @@ const StoryTemplate2 = () => {
             )}
           </div>
         )}
-
         <div className={styles["text-box"]}>
-          <button className={styles["text-button"]} onClick={onTextInput}>
-            <div className={styles["text-icon"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea
+            className={styles.text1}
+            id="st2-text1-id"
+            onChange={handleText1}
+            value={text1}
+          />
+          <label 
+            className={styles["text-button"]} 
+            htmlFor="st2-text1-id"
+          >
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
-        {onTextEditor === false ? "" : <TextEditor></TextEditor>}
       </div>
     </>
   );
