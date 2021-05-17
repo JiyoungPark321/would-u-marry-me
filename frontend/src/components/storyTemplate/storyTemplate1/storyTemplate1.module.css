@@ -1,6 +1,4 @@
 .template-box {
-  /* display: table; */
-  /* position: relative; */
   display: flex;
   width: 1400px;
   height: 800px;
@@ -36,16 +34,8 @@
 }
 
 .image-button {
-  cursor: pointer;
-  position: absolute;
-  background-color: transparent;
-  border: none;
   width: 32px;
   height: 28px;
-  right: 50%;
-  top: 50%;
-  margin-right: -16px;
-  margin-top: -14px;
 }
 
 .image-input {
@@ -54,8 +44,10 @@
 }
 
 .image-icon {
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 30px;
   font-size: 30px;
   color: #285181;
 }
@@ -107,20 +99,32 @@
   position: relative;
 }
 
-.text-button {
-  cursor: pointer;
+.text-icon {
   position: absolute;
-  width: 32px;
-  height: 28px;
-  margin-top: -14px;
-  margin-right: -16px;
-  top: 50%;
-  right: 50%;
+  top: 20px;
+  right: 30px;
   background-color: transparent;
   border: none;
-}
-
-.text-icon {
   font-size: 30px;
   color: #e79b09;
+}
+
+.text1 {
+  /* text-align: center; */
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 30px 30px 30px 30px;
+  font-size: 47px;
+  font-weight: bold;
+  resize: none;
+  overflow: hidden;
+  /* color: #c97e0e; */
+  background-color: transparent;
+}
+
+.text1:focus {
+  border: 3px solid #ffa600;
 }

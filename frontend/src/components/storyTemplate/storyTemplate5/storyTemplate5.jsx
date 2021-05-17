@@ -4,7 +4,7 @@ import api from "../../../service/api";
 // import TextEditor from "./textEditor";
 import styles from "./storyTemplate5.module.css";
 
-const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) => {
+const StoryTemplate5 = ({ image1, setImage1, image2, setImage2, image3, setImage3, text1, setText1 }) => {
 
   const [Img1, setImg1] = useState();
   const [Img2, setImg2] = useState();
@@ -15,9 +15,9 @@ const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) =>
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
   const [imageHoverCheck3, setImageHoverCheck3] = useState(false);
-  const [imgFile1, setImgFile1] = useState();
-  const [imgFile2, setImgFile2] = useState();
-  const [imgFile3, setImgFile3] = useState();
+  // const [imgFile1, setImgFile1] = useState();
+  // const [imgFile2, setImgFile2] = useState();
+  // const [imgFile3, setImgFile3] = useState();
 
 
   const handleText1 = (e) => {
@@ -62,7 +62,7 @@ const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) =>
   };
 
   const onImageChange1 = function (e) {
-    setImgFile1(e.target.files[0]);
+    setImage1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
@@ -70,7 +70,7 @@ const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) =>
   };
 
   const onImageChange2 = function (e) {
-    setImgFile2(e.target.files[0]);
+    setImage2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
     if (!imgInput2) {
       setImgInput2(!imgInput2);
@@ -78,32 +78,32 @@ const StoryTemplate5 = ({ setImage1, setImage2, setImage3, text1, setText1 }) =>
   };
 
   const onImageChange3 = function (e) {
-    setImgFile3(e.target.files[0]);
+    setImage3(e.target.files[0]);
     setImg3(URL.createObjectURL(e.target.files[0]));
     if (!imgInput3) {
       setImgInput3(!imgInput3);
     }
   };
 
-  const sendStory5 = () => {
-    //axios
-    let data = new FormData();
-    // data.append("firt", );
-    data.append("second", imgFile1);
-    data.append("third", imgFile2);
-    data.append("fourth", imgFile3);
-    data.append("storyId", 5);
-    api
-      .put("/story/third", data, {
-        headers: { Authorization: localStorage.getItem("jwt") },
-      })
-      .then((res) => {
-        // story template 컴포넌트 끄는 bind함수?
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const sendStory5 = () => {
+  //   //axios
+  //   let data = new FormData();
+  //   // data.append("firt", );
+  //   data.append("second", imgFile1);
+  //   data.append("third", imgFile2);
+  //   data.append("fourth", imgFile3);
+  //   data.append("storyId", 5);
+  //   api
+  //     .put("/story/third", data, {
+  //       headers: { Authorization: localStorage.getItem("jwt") },
+  //     })
+  //     .then((res) => {
+  //       // story template 컴포넌트 끄는 bind함수?
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
 
   return (
