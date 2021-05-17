@@ -39,7 +39,7 @@ public class StoryController {
     @ApiOperation(value = "스토리에 첫 번째 템플릿 값 넣기")
     public Object setFirstValue(@ApiIgnore @CurrentAccount Account account, @RequestParam("storyId") Long storyId ,@RequestParam("text1") String text1,@RequestParam("text2") String text2,
                                 @RequestParam("image1") MultipartFile image1,@RequestParam("image2") MultipartFile image2) throws IOException {
-        Object response = storyService.setFirstValue(storyId,text1,text2,image1,image2);
+        Object response = storyService.setFirstValue(storyId,text1,text2,image1,image2,account);
         return response;
     }
 
@@ -47,7 +47,7 @@ public class StoryController {
     @PutMapping("/second")
     @ApiOperation(value = "스토리에 두 번째 템플릿 값 넣기")
     public Object setSecondValue(@ApiIgnore @CurrentAccount Account account, @Valid  @RequestParam("storyId") Long storyId ,@RequestParam("text1") String text1,@RequestParam("image1") MultipartFile image1) throws IOException {
-        Object response = storyService.setSecondValue(storyId,text1,image1);
+        Object response = storyService.setSecondValue(storyId,text1,image1,account);
         return response;
     }
 
@@ -56,7 +56,7 @@ public class StoryController {
     @ApiOperation(value = "스토리에 세 번째 템플릿 값 넣기")
     public Object setThirdValue(@ApiIgnore @CurrentAccount Account account, @Valid @RequestParam("storyId") Long storyId ,@RequestParam("text1") String text1,
                                 @RequestParam("image1") MultipartFile image1,@RequestParam("image2") MultipartFile image2,@RequestParam("image3") MultipartFile image3) throws IOException {
-        Object response = storyService.setThirdValue(storyId,text1,image1,image2,image3);
+        Object response = storyService.setThirdValue(storyId,text1,image1,image2,image3,account);
         return response;
     }
 

@@ -10,4 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface WeddingCardMapRepository extends JpaRepository<WeddingCardMap,Long> {
+    Optional<WeddingCardMap> findByWeddingCard(WeddingCard weddingCard);
 }

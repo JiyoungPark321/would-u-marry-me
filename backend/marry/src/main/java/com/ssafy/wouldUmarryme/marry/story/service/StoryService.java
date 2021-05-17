@@ -72,7 +72,7 @@ public class StoryService {
         String imgName = "";
         String imgUrl = "";
         if(object!=null){
-            System.out.println("들어옴");
+
             imgName = awsS3Service.uploadProfileImage(object,"story");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             StoryImage storyImage = StoryImage.builder()
@@ -84,7 +84,7 @@ public class StoryService {
             storyImageRepository.save(storyImage);
         }
         else{
-            System.out.println("안들어옴");
+
             StoryImage storyImage = StoryImage.builder()
                     .story(story)
                     .index(index)
@@ -102,8 +102,14 @@ public class StoryService {
         storyCommentRepository.save(storyComment);
     }
 
-    public Object setFirstValue(Long storyId, String text1, String text2,MultipartFile image1,MultipartFile image2) throws IOException{
+    public Object setFirstValue(Long storyId, String text1, String text2,MultipartFile image1,MultipartFile image2,Account account) throws IOException{
         Optional<Story> story = storyRepository.findById(storyId);
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(story.get().getStoryboard().getId(),account);
+        if(!storyboard.isPresent()){
+            return makeResponse("400",null,"fail : 해당 유저의 스토리가 없습니다.",HttpStatus.NOT_FOUND);
+        }
+
+
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 
@@ -132,8 +138,13 @@ public class StoryService {
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setSecondValue(Long storyId,String text1,MultipartFile image1) throws IOException {
+    public Object setSecondValue(Long storyId,String text1,MultipartFile image1,Account account) throws IOException {
         Optional<Story> story = storyRepository.findById(storyId);
+
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(story.get().getStoryboard().getId(),account);
+        if(!storyboard.isPresent()){
+            return makeResponse("400",null,"fail : 해당 유저의 스토리가 없습니다.",HttpStatus.NOT_FOUND);
+        }
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
         if(images.size()!=0){
@@ -157,8 +168,12 @@ public class StoryService {
         return makeResponse("200", story, "success", HttpStatus.OK);
     }
 
-    public Object setThirdValue(Long storyId,String text1,MultipartFile image1,MultipartFile image2, MultipartFile image3) throws IOException{
+    public Object setThirdValue(Long storyId,String text1,MultipartFile image1,MultipartFile image2, MultipartFile image3,Account account) throws IOException{
         Optional<Story> story = storyRepository.findById(storyId);
+        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(story.get().getStoryboard().getId(),account);
+        if(!storyboard.isPresent()){
+            return makeResponse("400",null,"fail : 해당 유저의 스토리가 없습니다.",HttpStatus.NOT_FOUND);
+        }
         List<StoryImage> images = storyImageRepository.findByStory(story.get());
         List<StoryComment> comments =storyCommentRepository.findByStory(story.get());
 

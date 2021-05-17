@@ -58,11 +58,14 @@ public class WeddingCardService {
         return makeResponse("200", save,  "success", HttpStatus.OK);
     }
 
-    public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest,MultipartFile image) throws IOException {
+    public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest,MultipartFile image,Account account) throws IOException {
         Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getCardId());
-
         if(!card.isPresent()){
-           return makeResponse("404", null, "fail", HttpStatus.NOT_FOUND);
+           return makeResponse("400", null, "fail : 해당 카드가 없습니다.", HttpStatus.NOT_FOUND);
+        }
+        Optional<Storyboard> storyboard = storyBoardRepository.findByWeddingCardAndAccount(card.get(),account);
+        if(!storyboard.isPresent()){
+            return makeResponse("400", null, "fail : 본인의 카드가 아닙니다.", HttpStatus.NOT_FOUND);
         }
 
         WeddingCard save = card.get();
@@ -72,6 +75,12 @@ public class WeddingCardService {
         String imgUrl = "";
         WeddingCardImage weddingCardImage = null;
 
+        //기존 weddingcardImage가 있는 지 체크 후
+        //있으면 삭제
+        Optional<WeddingCardImage> isWeddingCardImage = weddingCardImageRepository.findByWeddingCard(card.get());
+        if(isWeddingCardImage.isPresent()){
+            weddingCardImageRepository.delete(isWeddingCardImage.get());
+        }
         if(image != null){
             imgName = awsS3Service.uploadProfileImage(image,"card");
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
@@ -83,7 +92,14 @@ public class WeddingCardService {
             weddingCardImageRepository.save(weddingCardImage);
             save.setWeddingCardImage(weddingCardImage);
         }
-        WeddingCard requestWeddingCard = inputWeddingCardRequest.toWeddingCard();
+
+
+        //기존 weddingcardMap이 있는 지 체크 후
+        //있으면 삭제해
+       Optional<WeddingCardMap> weddingCardMap = weddingCardMapRepository.findByWeddingCard(card.get());
+        if(weddingCardMap.isPresent()){
+            weddingCardMapRepository.delete(weddingCardMap.get());
+        }
         WeddingCardMap builderWeddingCardMap = WeddingCardMap.builder()
                 .placeName(inputWeddingCardRequest.getPlaceName())
                 .x(inputWeddingCardRequest.getX())
@@ -91,6 +107,10 @@ public class WeddingCardService {
                 .weddingCard(card.get())
                 .build();
         WeddingCardMap saveMap = weddingCardMapRepository.save(builderWeddingCardMap);
+
+        //값 넣기
+        WeddingCard requestWeddingCard = inputWeddingCardRequest.toWeddingCard();
+
         save.updateValue(requestWeddingCard,weddingCardImage,saveMap);
         weddingCardRepository.save(save);
         return makeResponse("200", save, "success", HttpStatus.OK);
