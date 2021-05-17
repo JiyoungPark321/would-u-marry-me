@@ -101,9 +101,9 @@ public class WeddingCardService {
             weddingCardMapRepository.delete(weddingCardMap.get());
         }
         WeddingCardMap builderWeddingCardMap = WeddingCardMap.builder()
-                .placeName(inputWeddingCardRequest.getPlaceName())
-                .x(inputWeddingCardRequest.getX())
-                .y(inputWeddingCardRequest.getY())
+                .placeName(inputWeddingCardRequest.getWeddingMapPlace())
+                .x(inputWeddingCardRequest.getWeddingMapX())
+                .y(inputWeddingCardRequest.getWeddingMapY())
                 .weddingCard(card.get())
                 .build();
         WeddingCardMap saveMap = weddingCardMapRepository.save(builderWeddingCardMap);
