@@ -226,12 +226,46 @@
   border-radius: 30px;
 }
 
+.text1 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 30px 10px 30px;
+  font-size: 15px;
+  font-weight: bold;
+  resize: none;
+  overflow: hidden;
+  color: #745315;
+  background-color: transparent;
+}
+
 .text-box2 {
   position: relative;
   width: 640px;
   height: 230px;
   background-color: #f6f6e3;
   border-radius: 30px;
+}
+
+.text2 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 30px 10px 30px;
+  font-size: 12px;
+  resize: none;
+  overflow: hidden;
+  color: #534221;
+  background-color: transparent;
+}
+
+.text1:focus,
+.text2:focus {
+  border: 3px solid #ffa600;
 }
 
 .text-button {
@@ -244,9 +278,6 @@
   background-color: transparent;
   border: none;
   z-index: 1;
-}
-
-.text-icon {
   font-size: 25px;
   color: #e79b09;
 }
