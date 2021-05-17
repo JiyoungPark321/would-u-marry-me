@@ -32,8 +32,11 @@ public class WeddingCardTemplateService {
         if(card.isEmpty()){
             return makeResponse("400", null, "fail : card를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
-        card.get().updateTemplate(templateNumberRequest.getWeddingTemplateId());
-        weddingCardRepository.save(card.get());
+        if(card.get().getTemplate()!= templateNumberRequest.getWeddingTemplateId()){
+            card.get().updateTemplate(templateNumberRequest.getWeddingTemplateId());
+            weddingCardRepository.save(card.get());
+        }
+
         return makeResponse("200", card.get(),"success", HttpStatus.OK);
     }
 
