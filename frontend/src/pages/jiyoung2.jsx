@@ -23,10 +23,10 @@ const Jiyoung2 = () => {
       {/* <StoryTemplate4 /> */}
       {/* <StoryTemplate5 /> */}
       
-      <WeddingTemplate1 />
+      {/* <WeddingTemplate1 /> */}
       {/* <WeddingTemplate2 /> */}
       {/* <WeddingTemplate3 /> */}
-      {/* <WeddingTemplate4 /> */}
+      <WeddingTemplate4 />
 
     </div>
   );
