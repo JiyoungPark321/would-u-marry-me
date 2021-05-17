@@ -3,16 +3,49 @@ import React from "react";
 import { useState } from "react";
 import styles from "./storyTemplate1.module.css";
 
-const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
+const StoryTemplate1 = ({ image1, setImage1, image2, setImage2, text1, setText1, text2, setText2 }) => {
+  
   const [Img1, setImg1] = useState(null);
   const [Img2, setImg2] = useState(null);
-  const [imgFile1, setImgFile1] = useState(null);
-  const [imgFile2, setImgFile2] = useState(null);
   const [imgInput1, setImgInput1] = useState(false);
+  const [imgInput2, setImgInput2] = useState(false);
   const [imageHoverCheck1, setImageHoverCheck1] = useState(false);
   const [imageHoverCheck2, setImageHoverCheck2] = useState(false);
-  const [imgInput2, setImgInput2] = useState(false);
-  const [onTextEditor, setOnTextEditor] = useState(false);
+
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText1(result);
+  };
+
+  const handleText2 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setText2(result);
+  };
 
   const imageMouseOn1 = () => {
     setImageHoverCheck1(true);
@@ -30,29 +63,29 @@ const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
     setImageHoverCheck2(false);
   };
 
-  const sendStory1 = () => {
-    //axios
-    let data = new FormData();
-    data.append("firt", imgFile1);
-    console.log(imgFile1);
-    // data.append("second", )
-    data.append("third", imgFile2);
-    // data.append("fourth",)
-    data.append("storyId", 1);
-    api
-      .put("/story/first", data, {
-        headers: { Authorization: localStorage.getItem("jwt") },
-      })
-      .then((res) => {
-        // story template 컴포넌트 끄는 bind함수?
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const sendStory1 = () => {
+  //   //axios
+  //   let data = new FormData();
+  //   data.append("firt", imgFile1);
+  //   console.log(imgFile1);
+  //   // data.append("second", )
+  //   data.append("third", imgFile2);
+  //   // data.append("fourth",)
+  //   data.append("storyId", 1);
+  //   api
+  //     .put("/story/first", data, {
+  //       headers: { Authorization: localStorage.getItem("jwt") },
+  //     })
+  //     .then((res) => {
+  //       // story template 컴포넌트 끄는 bind함수?
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const onImageChange1 = (e) => {
-    setImgFile1(e.target.files[0]);
+    setImage1(e.target.files[0]);
     setImg1(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
@@ -60,15 +93,11 @@ const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
   };
 
   const onImageChange2 = (e) => {
-    setImgFile2(e.target.files[0]);
+    setImage2(e.target.files[0]);
     setImg2(URL.createObjectURL(e.target.files[0]));
     if (!imgInput2) {
       setImgInput2(!imgInput2);
     }
-  };
-
-  const onTextInput = () => {
-    setOnTextEditor(!onTextEditor);
   };
 
 
@@ -132,20 +161,34 @@ const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
           )}
           {/* 첫번째 텍스트 박스 */}
           <div className={styles["text-box"]}>
-            <button className={styles["text-button"]}>
-              <div className={styles["text-icon"]}>
-                <i className="fas fa-pencil-alt"></i>
-              </div>
-            </button>
+            <textarea
+              className={styles.text1}
+              id="st1-text1-id"
+              onChange={handleText1}
+              value={text1}
+            />
+            <label 
+              className={styles["text-icon"]}
+              htmlFor="st1-text1-id"
+            >
+              <i className="fas fa-pencil-alt"></i>
+            </label>
           </div>
         </div>
         <div className={styles["input-box"]}>
           <div className={styles["text-box"]}>
-            <button className={styles["text-button"]} onClick={onTextInput}>
-              <div className={styles["text-icon"]}>
-                <i className="fas fa-pencil-alt"></i>
-              </div>
-            </button>
+            <textarea
+              className={styles.text1}
+              id="st1-text2-id"
+              onChange={handleText2}
+              value={text2}
+            />
+            <label 
+              className={styles["text-icon"]}
+              htmlFor="st1-text2-id"
+            >
+              <i className="fas fa-pencil-alt"></i>
+            </label>
           </div>
           {/* 두번째 image box */}
           {/* 아무것도 입력 없을 때, */}
@@ -201,7 +244,6 @@ const StoryTemplate1 = ({ setImage1, setImage2, setText1, setText2 }) => {
             </div>
           )}
         </div>
-        {/* {onTextEditor === false ? "" : <TextEditor></TextEditor>} */}
       </div>
     </>
   );
