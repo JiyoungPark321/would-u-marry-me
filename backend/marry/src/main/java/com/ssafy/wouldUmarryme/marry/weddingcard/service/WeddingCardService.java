@@ -59,7 +59,7 @@ public class WeddingCardService {
     }
 
     public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest,MultipartFile image,Account account) throws IOException {
-        Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getCardId());
+        Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getWeddingId());
         if(!card.isPresent()){
            return makeResponse("400", null, "fail : 해당 카드가 없습니다.", HttpStatus.NOT_FOUND);
         }

@@ -38,6 +38,10 @@ public class StoryService {
     private final AwsS3Service awsS3Service;
 
     public Object createStory(CreateStoryRequest createStoryRequest, Account account) {
+        if(createStoryRequest.getIndex()>5){
+            return makeResponse("400",null,"fail : 스토리의 개수가 5개를 초과할 수 없습니다.",HttpStatus.NOT_FOUND);
+        }
+
         Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(createStoryRequest.getStoryBoardId(),account);
         if(storyboard.isEmpty()){
             return makeResponse("400",null,"fail : storyboard를 찾을 수 없음.",HttpStatus.NOT_FOUND);
@@ -46,6 +50,7 @@ public class StoryService {
         if(spot.isEmpty()){
             return makeResponse("400",null,"fail : spot를 찾을 수 없음.",HttpStatus.NOT_FOUND);
         }
+
 
         //해당 Story를 전에 만든 적이 있는지 체크
         Optional<Story> story = storyRepository.findByStoryboardAndIndex(storyboard.get(),createStoryRequest.getIndex());

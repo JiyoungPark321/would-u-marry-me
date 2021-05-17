@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TemplateNumberRequest {
-    private Long cardTemplateId;
-    private Long cardId;
+    private Long weddingTemplateId;
+    private Long weddingId;
 }
