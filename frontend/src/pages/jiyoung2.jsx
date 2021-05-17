@@ -1,5 +1,6 @@
 import React from 'react';
 import StoryTemplate1 from '../components/storyTemplate/storyTemplate1/storyTemplate1';
+import StoryTemplate2 from '../components/storyTemplate/storyTemplate2/storyTemplate2';
 import StoryTemplate3 from '../components/storyTemplate/storyTemplate3/storyTemplate3';
 import StoryTemplate4 from '../components/storyTemplate/storyTemplate4/storyTemplate4';
 import StoryTemplate5 from '../components/storyTemplate/storyTemplate5/storyTemplate5';
@@ -17,12 +18,12 @@ const Jiyoung2 = () => {
     <div>
       지영페이지2
       {/* <StoryTemplate1 /> */}
-
+      {/* <StoryTemplate2 /> */}
       {/* <StoryTemplate3 /> */}
       {/* <StoryTemplate4 /> */}
-      <StoryTemplate5 />
+      {/* <StoryTemplate5 /> */}
       
-      {/* <WeddingTemplate1 /> */}
+      <WeddingTemplate1 />
       {/* <WeddingTemplate2 /> */}
       {/* <WeddingTemplate3 /> */}
       {/* <WeddingTemplate4 /> */}
