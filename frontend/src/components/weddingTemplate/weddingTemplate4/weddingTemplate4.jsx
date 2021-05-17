@@ -1,93 +1,158 @@
 import api from "../../../service/api";
 import React, { useState } from "react";
 import styles from "./weddingTemplate4.module.css";
-const WeddingTemplate4 = () => {
+
+
+
+const WeddingTemplate4 = ({
+  weddingImage1, setWeddingImage1,
+  weddingText1, setWeddingText1,
+  weddingText2, setWeddingText2,
+  weddingDate, setWeddingDate,
+  weddingTime, setWeddingTime,
+  weddingPlace, setWeddingPlace,
+  weddingManPhoneNumber, setWeddingManPhoneNumber,
+  weddingWomanPhoneNumber, setWeddingWomanPhoneNumber,
+  weddingManAccountNumber, setWeddingManAccountNumber,
+  weddingWomanAccountNumber, setWeddingWomanAccountNumber
+}) => {
   const [img, setImg] = useState();
-  const [imgFile, setImgFile] = useState();
   const [imgInput1, setImgInput1] = useState(false);
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck3, setMouseCheck3] = useState(false);
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
+
   const [dateTime, setDateTime] = useState();
-  const [place, setPlace] = useState();
-  const [manPhoneNumber, setManPhoneNumber] = useState();
-  const [manAccountNumber, setManAccountNumber] = useState();
-  const [womanPhoneNumber, setWomanPhoneNumber] = useState();
-  const [womanAccountNumber, setWomanAccountNumber] = useState();
+
+
+  // const sendWedding4 = () => {
+  //   let data = new FormData();
+  //   data.append("cardId", 4)
+  //   data.append("cardImg", imgFile)
+  //   data.append("cardDate", dateTime)
+  //   data.append("cardFirstComment", null)
+  //   data.append("cardSecondComment", null)
+  //   data.append("cardTime", null)
+  //   data.append("cardPlace", place)
+  //   data.append("placeName", null)
+  //   data.append("x", null)
+  //   data.append("y", null)
+  //   data.append("cardManPhone", manPhoneNumber)
+  //   data.append("cardManAccountNumber", manAccountNumber)
+  //   data.append("cardWomanPhone", womanPhoneNumber)
+  //   data.append("cardWomanAccountNumber", womanAccountNumber)
+  //   api
+  //   .put("/weddingcard", data, {
+  //     headers: { Authorization: localStorage.getItem("jwt") },
+  //   })
+  //   .then((res) => {
+  //     // wedding template 컴포넌트 끄는 bind함수?
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // }
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setWeddingText1(result);
+  };
+
+  const handleText2 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setWeddingText2(result);
+  };
+
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
   };
+
   const mouseOn3 = () => {
     setMouseCheck3(!mouseCheck3);
   };
+
   const imageMouseOn = () => {
     setImageHoverCheck(true);
   };
+
   const imageMouseOut = () => {
     setImageHoverCheck(false);
   };
-  const onImageChange = function (e) {
-    setImgFile(e.target.files[0]);
+
+  const onImageChange = (e) => {
+    setWeddingImage1(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
     }
   };
-  const onDateTimeChange = function (e) {
+
+  const onDateTimeChange = (e) => {
     setDateTime(e.target.value);
   };
-  const onPlaceChange = function (e) {
-    setPlace(e.target.value);
+
+  const onPlaceChange = (e) => {
+    setWeddingPlace(e.target.value);
   };
-  const getManPhoneNumber = function (e) {
-    setManPhoneNumber(e.target.value)
-  }
-  const getManAccountNumber = function (e) {
-    setManAccountNumber(e.target.value)
-  }
-  const getWomanPhoneNumber = function (e) {
-    setWomanPhoneNumber(e.target.value)
-  }
-  const getWomanAccountNumber = function (e) {
-    setWomanAccountNumber(e.target.value)
-  }
-  const sendWedding4 = () => {
-    let data = new FormData();
-    data.append("cardId", 4)
-    data.append("cardImg", imgFile)
-    data.append("cardDate", dateTime)
-    data.append("cardFirstComment", null)
-    data.append("cardSecondComment", null)
-    data.append("cardTime", null)
-    data.append("cardPlace", place)
-    data.append("placeName", null)
-    data.append("x", null)
-    data.append("y", null)
-    data.append("cardManPhone", manPhoneNumber)
-    data.append("cardManAccountNumber", manAccountNumber)
-    data.append("cardWomanPhone", womanPhoneNumber)
-    data.append("cardWomanAccountNumber", womanAccountNumber)
-    api
-    .put("/weddingcard", data, {
-      headers: { Authorization: localStorage.getItem("jwt") },
-    })
-    .then((res) => {
-      // wedding template 컴포넌트 끄는 bind함수?
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+
+  const getManPhoneNumber = (e) => {
+    setWeddingManPhoneNumber(e.target.value)
+  };
+
+  const getManAccountNumber = (e) => {
+    setWeddingManAccountNumber(e.target.value)
+  };
+
+  const getWomanPhoneNumber = (e) => {
+    setWeddingWomanPhoneNumber(e.target.value)
+  };
+
+  const getWomanAccountNumber = (e) => {
+    setWeddingWomanAccountNumber(e.target.value)
+  };
+
+  
   return (
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         <div className={styles["text-box1"]}>
-          <button className={styles["text-button1"]}>
-            <div className={styles["text-icon1"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea
+            className={styles.text1}
+            id="wt4-text1-id"
+            onChange={handleText1}
+            value={weddingText1}
+          />
+          <label
+            className={styles["text-button1"]}
+            htmlFor="wt4-text1-id"
+          >
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
         <div className={styles["title-text"]}>감사합니다.</div>
         <div className={styles["info-man"]}>
@@ -127,11 +192,18 @@ const WeddingTemplate4 = () => {
       </div>
       <div className={styles["input-area2"]}>
         <div className={styles["text-box2"]}>
-          <button className={styles["text-button2"]}>
-            <div className={styles["text-icon2"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea
+            className={styles.text2}
+            id="wt4-text2-id"
+            onChange={handleText2}
+            value={weddingText2}
+          />
+          <label 
+            className={styles["text-button2"]}
+            htmlFor="wt4-text2-id"
+          >
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
         {/* 사진 입력 */}
         {/* image box */}

@@ -1,43 +1,39 @@
 package com.ssafy.wouldUmarryme.marry.weddingcard.dto;
 
 import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCard;
-import com.ssafy.wouldUmarryme.marry.weddingcard.domain.WeddingCardMap;
-import lombok.Builder;
+
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.Column;
 
 @Getter
 @Setter
 public class InputWeddingCardRequest {
-    private Long cardId;
-    private String cardDate;
-    private String cardPlace;
-    private String cardFirstComment;
-    private String cardSecondComment;
-    private String cardTime;
-    private String cardManPhone;
-    private String cardWomanPhone;
-    private String cardManAccountNumber;
-    private String cardWomanAccountNumber;
-    private String placeName;
-    private Double x;
-    private Double y;
+    private Long weddingId;
+    private String weddingDate;
+    private String weddingPlace;
+    private String weddingText1;
+    private String weddingText2;
+    private String weddingTime;
+    private String weddingManPhoneNumber;
+    private String weddingWomanPhoneNumber;
+    private String weddingManAccountNumber;
+    private String weddingWomanAccountNumber;
+    private String weddingMapPlace;
+    private Double weddingMapX;
+    private Double weddingMapY;
 
     //request를 해당 객체로 변환
     public WeddingCard toWeddingCard(){
         return WeddingCard.builder()
-                .firstComment(cardFirstComment)
-                .secondComment(cardSecondComment)
-                .date(cardDate)
-                .place(cardPlace)
-                .time(cardTime)
-                .manPhone(cardManPhone)
-                .womanPhone(cardWomanPhone)
-                .manAccountNumber(cardManAccountNumber)
-                .womanAccountNumber(cardWomanAccountNumber)
+                .firstComment(weddingText1)
+                .secondComment(weddingText2)
+                .date(weddingDate)
+                .place(weddingPlace)
+                .time(weddingTime)
+                .manPhone(weddingManPhoneNumber)
+                .womanPhone(weddingWomanPhoneNumber)
+                .manAccountNumber(weddingManAccountNumber)
+                .womanAccountNumber(weddingWomanAccountNumber)
                 .build();
     }
 

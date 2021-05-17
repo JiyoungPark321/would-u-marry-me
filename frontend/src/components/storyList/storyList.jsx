@@ -18,8 +18,9 @@ const StoryList = () => {
       headers: {Authorization: localStorage.getItem("jwt")}
     })
       .then((res) => {
-        setStoryListData(res.data.data);
-        console.log(res);
+        if (res.data.data) {
+          setStoryListData(res.data.data);
+        }
       })
       .catch((err) => {
         console.log(err);

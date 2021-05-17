@@ -25,6 +25,24 @@
   margin-bottom: 40px;
 }
 
+.text1 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 30px 30px 30px 30px;
+  font-size: 12px;
+  resize: none;
+  overflow: hidden;
+  color: #534221;
+  background-color: transparent;
+}
+
+.text1:focus {
+  border: 3px solid #ffa600;
+}
+
 .text-button1 {
   cursor: pointer;
   position: absolute;
@@ -34,9 +52,6 @@
   top: 10px;
   background-color: transparent;
   border: none;
-}
-
-.text-icon1 {
   font-size: 30px;
   color: #e79b09;
 }
@@ -151,18 +166,35 @@
   margin-bottom: 30px;
 }
 
+.text2 {
+  /* text-align: center; */
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 0px 40px 0px 40px;
+  font-size: 15px;
+  line-height: 40px;
+  font-weight: bold;
+  resize: none;
+  overflow: hidden;
+  color: #745315;
+  background-color: transparent;
+}
+
+.text2:focus {
+  border: 3px solid #5db6b6;
+}
+
 .text-button2 {
   cursor: pointer;
   position: absolute;
   width: 32px;
   height: 28px;
-  right: 25px;
-  top: 10px;
+  right: 20px;
+  top: 12px;
   background-color: transparent;
   border: none;
-}
-
-.text-icon2 {
   font-size: 20px;
   color: #5db6b6;
 }

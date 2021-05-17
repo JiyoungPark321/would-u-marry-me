@@ -4,9 +4,18 @@ import styles from "./weddingTemplate1.module.css";
 import SearchPlace from "../kakaoMap/searchPlace";
 import KakaoMap from "../kakaoMap/kakaoMap";
 
-const WeddingTemplate1 = () => {
+const WeddingTemplate1 = ({ 
+  weddingImage1, setWeddingImage1,
+  weddingText1, setWeddingText1,
+  weddingText2, setWeddingText2,
+  weddingDate, setWeddingDate,
+  weddingTime, setWeddingTime,
+  weddingPlace, setWeddingPlace,
+  weddingMapPlace, setWeddingMapPlace,
+  weddingMapX, setWeddingMapX,
+  weddingMapY, setWeddingMapY  
+}) => {
   const [img, setImg] = useState();
-  const [imgFile, setImgFile] = useState();
   const [imgInput1, setImgInput1] = useState(false);
   const [mouseCheck1, setMouseCheck1] = useState(false);
   const [mouseCheck2, setMouseCheck2] = useState(false);
@@ -16,12 +25,70 @@ const WeddingTemplate1 = () => {
   const [mapInfo, setMapInfo] = useState({});
   const [mapExist, setMapExist] = useState(false);
   const [searchExist, setSearchExist] = useState(0);
-  const [mapPlace ,setMapPlace] = useState();
-  const [mapX ,setMapX] = useState();
-  const [mapY ,setMapY] = useState();
-  const [date, setDate] = useState();
-  const [time, setTime] = useState();
-  const [place, setPlace] = useState();
+
+
+    // const sendWedding1 = () => {
+  //   let data = new FormData();
+  //   data.append("cardId", 1)
+  //   data.append("cardImg", imgFile)
+  //   data.append("cardDate", date)
+  //   data.append("cardFirstComment", null)
+  //   data.append("cardSecondComment", null)
+  //   data.append("cardTime", time)
+  //   data.append("cardPlace", place)
+  //   data.append("placeName", mapPlace)
+  //   data.append("x", mapX)
+  //   data.append("y", mapY)
+  //   data.append("cardManPhone", null)
+  //   data.append("cardManAccountNumber", null)
+  //   data.append("cardWomanPhone", null)
+  //   data.append("cardWomanAccountNumber", null)
+  //   api
+  //   .put("/weddingcard", data, {
+  //     headers: { Authorization: localStorage.getItem("jwt") },
+  //   })
+  //   .then((res) => {
+  //     // wedding template 컴포넌트 끄는 bind함수?
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // }
+
+
+  const handleText1 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setWeddingText1(result);
+  };
+
+  const handleText2 = (e) => {
+    const value = e.target.value;
+    let totalByte = 0;
+    let maxByte = 20;
+    let lastIndex = 0
+    for (let i = 0; i < value.length; i++) {
+      lastIndex = i
+      let currentByte = value.charCodeAt(i);
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      if (totalByte > maxByte) {
+        break;
+      }
+    }
+    const result = value.substring(0, lastIndex+1);
+    setWeddingText2(result);
+  };
 
   const mouseOn1 = () => {
     setMouseCheck1(!mouseCheck1);
@@ -46,9 +113,9 @@ const WeddingTemplate1 = () => {
   const getMapInfo = (mapInfo) => {
     setMapOpen(false);
     setMapInfo(mapInfo);
-    setMapPlace(mapInfo.name);
-    setMapX(mapInfo.x);
-    setMapY(mapInfo.y);
+    setWeddingMapPlace(mapInfo.name);
+    setWeddingMapX(mapInfo.x);
+    setWeddingMapY(mapInfo.y);
     setMapExist(true);
     setSearchExist(searchExist+1)
   };
@@ -62,7 +129,7 @@ const WeddingTemplate1 = () => {
   };
 
   const onImageChange = function (e) {
-    setImgFile(e.target.files[0]);
+    setWeddingImage1(e.target.files[0]);
     setImg(URL.createObjectURL(e.target.files[0]));
     if (!imgInput1) {
       setImgInput1(!imgInput1);
@@ -70,46 +137,20 @@ const WeddingTemplate1 = () => {
   };
 
   const onDateChange = function (e) {
-    setDate(e.target.value)
+    setWeddingDate(e.target.value)
   };
 
   const onTimeChange = function (e) {
-    setTime(e.target.value);
+    setWeddingTime(e.target.value);
   };
 
   const onPlaceChange = function (e) {
-    setPlace(e.target.value);
+    setWeddingPlace(e.target.value);
   };
-  const sendWedding1 = () => {
-    let data = new FormData();
-    data.append("cardId", 1)
-    data.append("cardImg", imgFile)
-    data.append("cardDate", date)
-    data.append("cardFirstComment", null)
-    data.append("cardSecondComment", null)
-    data.append("cardTime", time)
-    data.append("cardPlace", place)
-    data.append("placeName", mapPlace)
-    data.append("x", mapX)
-    data.append("y", mapY)
-    data.append("cardManPhone", null)
-    data.append("cardManAccountNumber", null)
-    data.append("cardWomanPhone", null)
-    data.append("cardWomanAccountNumber", null)
-    api
-    .put("/weddingcard", data, {
-      headers: { Authorization: localStorage.getItem("jwt") },
-    })
-    .then((res) => {
-      // wedding template 컴포넌트 끄는 bind함수?
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+
+
   return (
     <>
-    <div onClick={sendWedding1}>test</div>
     <div className={styles["template-box"]}>
       <div className={styles["input-area1"]}>
         {/* image box */}
@@ -195,11 +236,18 @@ const WeddingTemplate1 = () => {
         </div>
         {/* 첫번째 텍스트박스 */}
         <div className={styles["text-box1"]}>
-          <button className={styles["text-button"]}>
-            <div className={styles["text-icon"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea
+            className={styles.text1}
+            id="wt1-text1-id"
+            onChange={handleText1}
+            value={weddingText1}
+          />
+          <label 
+            className={styles["text-button"]}
+            htmlFor="wt1-text1-id"
+          >
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
         {/* 시각 입력 */}
         <div
@@ -275,11 +323,18 @@ const WeddingTemplate1 = () => {
           </div>
         )}
         <div className={styles["text-box2"]}>
-          <button className={styles["text-button"]}>
-            <div className={styles["text-icon"]}>
-              <i className="fas fa-pencil-alt"></i>
-            </div>
-          </button>
+          <textarea
+            className={styles.text2}
+            id="wt1-text2-id"
+            onChange={handleText2}
+            value={weddingText2}
+          />
+          <label 
+            className={styles["text-button"]}
+            htmlFor="wt1-text2-id"
+          >
+            <i className="fas fa-pencil-alt"></i>
+          </label>
         </div>
       </div>
       {mapOpen === false ? (

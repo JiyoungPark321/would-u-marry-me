@@ -13,12 +13,18 @@ import CarouselType2 from '../../components/carousels/carouselType2/carouselType
 import CarouselType3 from '../../components/carousels/carouselType3/carouselType3';
 import CarouselType4 from '../../components/carousels/carouselType4/carouselType4';
 import CarouselType5 from '../../components/carousels/carouselType5/carouselType5';
+import CarouselType6 from '../../components/carousels/carouselType6/carouselType6';
 
 import StoryTemplate1 from '../../components/storyTemplate/storyTemplate1/storyTemplate1';
 import StoryTemplate2 from '../../components/storyTemplate/storyTemplate2/storyTemplate2';
 import StoryTemplate3 from '../../components/storyTemplate/storyTemplate3/storyTemplate3';
 import StoryTemplate4 from '../../components/storyTemplate/storyTemplate4/storyTemplate4';
 import StoryTemplate5 from '../../components/storyTemplate/storyTemplate5/storyTemplate5';
+
+import WeddingTemplate1 from '../../components/weddingTemplate/weddingTemplate1/weddingTemplate1';
+import WeddingTemplate2 from '../../components/weddingTemplate/weddingTemplate2/weddingTemplate2';
+import WeddingTemplate4 from '../../components/weddingTemplate/weddingTemplate4/weddingTemplate4';
+import WeddingTemplate3 from '../../components/weddingTemplate/weddingTemplate3/weddingTemplate3';
 
 
 
@@ -41,14 +47,31 @@ const StoryBoard = () => {
   
   const [spotId, setSpotId] = useState(null);
   const [storyId, setStoryId] = useState(null);
+  const [weddingId, setWeddingId] = useState(null);
   const [storyTemplateId, setStoryTemplateId] = useState(null);
+  const [weddingTemplateId, setWeddingTemplateId] = useState(null);
 
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
-  const [text1, setText1] = useState(null);
-  const [text2, setText2] = useState(null);
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
   
+  const [weddingImage1, setWeddingImage1] = useState(null);
+  const [weddingText1, setWeddingText1] = useState('');
+  const [weddingText2, setWeddingText2] = useState('');
+  const [weddingDate, setWeddingDate] = useState(null);
+  const [weddingTime, setWeddingTime] = useState(null);
+  const [weddingPlace, setWeddingPlace] = useState(null);
+  const [weddingMapPlace, setWeddingMapPlace] = useState(null);
+  const [weddingMapX, setWeddingMapX] = useState(null);
+  const [weddingMapY, setWeddingMapY] = useState(null);
+  const [weddingManPhoneNumber, setWeddingManPhoneNumber] = useState(null);
+  const [weddingWomanPhoneNumber, setWeddingWomanPhoneNumber] = useState(null);
+  const [weddingManAccountNumber, setWeddingManAccountNumber] = useState(null);
+  const [weddingWomanAccountNumber, setWeddingWomanAccountNumber] = useState(null);
+
+
 
 
   useEffect(() => {
@@ -61,12 +84,15 @@ const StoryBoard = () => {
         setStoryBoardData(res.data.data);
         const newSaveCheck = [...saveCheck];
         if (res.data.data.weddingCard == null) {
-          setCurrentStep(8);
+          setCurrentStep(18);
         } else {
-          newSaveCheck[8] = true;
+          newSaveCheck[18] = true;
+          newSaveCheck[19] = true;
+          newSaveCheck[20] = true;
         }
         if (res.data.data.stories) {
           setCurrentStep(res.data.data.stories.length * 3 + 3);
+          console.log(res.data.data.stories.length * 3 + 3);
         }
         res.data.data.stories.forEach(story => {
           newSaveCheck[story.index * 3 + 0] = true;
@@ -98,11 +124,20 @@ const StoryBoard = () => {
           newSaveCheck[0] = true;
         }
         setSaveCheck(newSaveCheck);
+        console.log(currentStep);
       })
       .catch((err) => {
         console.log(err);
       })
   },[]);
+
+  const resetStoryInfo = () => {
+    setImage1(null);
+    setImage2(null);
+    setImage3(null);
+    setText1('');
+    setText2('');
+  };
 
   const _moveNextStep = () => {
     const newSaveCheck = [...saveCheck];
@@ -153,7 +188,7 @@ const StoryBoard = () => {
         .catch((err) => {
           console.error(err);
         })
-    } else if ((currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15 || currentStep === 18) && spotId !== null) {
+    } else if ((currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15) && spotId !== null) {
       api.post('story', {
         index: parseInt(currentStep / 3),
         spotId,
@@ -185,8 +220,52 @@ const StoryBoard = () => {
       _moveNextStep();
     } else if (currentStep === 5 || currentStep === 8 || currentStep === 11 || currentStep === 14 || currentStep === 17 ) {
       if (storyTemplateId == 1) {
+        const data = new FormData();
+        data.append("storyId", storyId);
+        data.append("image1", image1);
+        data.append("image2", image2);
+        data.append("text1", text1);
+        data.append("text2", text2);
+
+        api.put('story/first', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            resetStoryInfo();
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+            resetStoryInfo();
+          })
+        _moveNextStep();
 
       } else if (storyTemplateId === 2) {
+        const data = new FormData();
+        data.append("storyId", storyId);
+        data.append("image1", image1);
+        data.append("text1", text1);
+
+        api.put('story/second', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            resetStoryInfo();
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+            resetStoryInfo();
+          })
+        _moveNextStep();
 
       } else if (storyTemplateId === 3 || storyTemplateId === 4 || storyTemplateId === 5) {
         const data = new FormData();
@@ -204,14 +283,44 @@ const StoryBoard = () => {
         })
           .then((res) => {
             console.log(res);
-            
+            resetStoryInfo();
             _moveNextStep();
           })
           .catch((err) => {
             console.error(err);
+            resetStoryInfo();
           })
         _moveNextStep();
       }
+    } else if (currentStep === 18 && spotId !== null ) {
+      api.post('weddingcard', {
+        spotId,
+        storyBoardId: id
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          setWeddingId(res.data.data.id);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    } else if (currentStep === 19) {
+      api.put('weddingcardtemplate', {
+        cardId: weddingId,
+        cardTemplateId: weddingTemplateId
+      }, {
+        headers: {Authorization: localStorage.getItem("jwt")}
+      })
+        .then((res) => {
+          console.log(res);
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+      _moveNextStep();
     }
     // _moveNextStep();
   };
@@ -260,14 +369,14 @@ const StoryBoard = () => {
               />
             )
           }
-          else if (currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15 || currentStep ===18) {
+          else if (currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15) {
             return (
               <CarouselType4 
                 setSpotId={setSpotId}
               />
             )
           }
-          else if (currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16 || currentStep === 19) {
+          else if (currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16) {
             return (
               <CarouselType5
                 setStoryTemplateId={setStoryTemplateId}
@@ -280,22 +389,28 @@ const StoryBoard = () => {
             // }
             if (storyTemplateId === 1) {
               return (
-                <StoryTemplate1 
+                <StoryTemplate1
+                  image1={image1} 
                   setImage1={setImage1}
+                  image2={image2}
                   setImage2={setImage2}
+                  text1={text1}
                   setText1={setText1}
+                  text2={text2}
                   setText2={setText2}
                 />
               )
             } else if (storyTemplateId === 2) {
-              return(
-                <StoryTemplate2 
+              return (
+                <StoryTemplate2
+                  image1={image1}
                   setImage1={setImage1}
+                  text1={text1}
                   setText1={setText1}
                 />
               )
             } else if (storyTemplateId === 3) {
-              return(
+              return (
                 <StoryTemplate3 
                   image1={image1}
                   setImage1={setImage1}
@@ -308,23 +423,144 @@ const StoryBoard = () => {
                 />
               )
             } else if (storyTemplateId === 4) {
-              return(
-                <StoryTemplate4 
+              return (
+                <StoryTemplate4
+                  image1={image1}
                   setImage1={setImage1}
+                  image2={image2}
                   setImage2={setImage2}
+                  image3={image3}
                   setImage3={setImage3}
                   text1={text1}
                   setText1={setText1}
                 />
               )
             } else if (storyTemplateId === 5) {
-              return(
+              return (
                 <StoryTemplate5 
+                  image1={image1}
                   setImage1={setImage1}
+                  image2={image2}
                   setImage2={setImage2}
+                  image3={image3}
                   setImage3={setImage3}
                   text1={text1}
                   setText1={setText1}
+                />
+              )
+            } 
+          } else if (currentStep === 18) {
+            return (
+              <CarouselType4 
+                setSpotId={setSpotId}
+              />
+            )
+          } else if (currentStep === 19) {
+            return (
+              <CarouselType6 
+                setWeddingTemplateId={setWeddingTemplateId}
+              />
+            )
+          } else if (currentStep === 20) {
+            console.log(currentStep);
+            if (weddingTemplateId === 1) {
+              return (
+                <WeddingTemplate1
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={weddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY} 
+                  setWeddingMapY={setWeddingMapY} 
+                />
+              )
+            } else if (weddingTemplateId === 2) {
+              return (
+                <WeddingTemplate2
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={weddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY} 
+                  setWeddingMapY={setWeddingMapY}
+                />
+              )
+            } else if (weddingTemplateId === 3) {
+              return (
+                <WeddingTemplate3 
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={setWeddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingMapPlace={weddingMapPlace}
+                  setWeddingMapPlace={setWeddingMapPlace}
+                  weddingMapX={weddingMapX}
+                  setWeddingMapX={setWeddingMapX}
+                  weddingMapY={weddingMapY}
+                  setWeddingMapY={setWeddingMapY}
+                  weddingManPhoneNumber={weddingManPhoneNumber}
+                  setWeddingManPhoneNumber={setWeddingManPhoneNumber}
+                  weddingWomanPhoneNumber={weddingWomanPhoneNumber}
+                  setWeddingWomanPhoneNumber={setWeddingWomanPhoneNumber}
+                  weddingManAccountNumber={weddingManAccountNumber}
+                  setWeddingManAccountNumber={setWeddingManAccountNumber}
+                  weddingWomanAccountNumber={weddingWomanAccountNumber}
+                  setWeddingWomanAccountNumber={setWeddingWomanAccountNumber}
+                />
+              )
+            } else if (weddingTemplateId === 4) {
+              return (
+                <WeddingTemplate4 
+                  weddingImage1={weddingImage1}
+                  setWeddingImage1={setWeddingImage1}
+                  weddingText1={weddingText1}
+                  setWeddingText1={setWeddingText1}
+                  weddingText2={weddingText2}
+                  setWeddingText2={setWeddingText2}
+                  weddingDate={weddingDate}
+                  setWeddingDate={setWeddingDate}
+                  weddingTime={weddingTime}
+                  setWeddingTime={setWeddingTime}
+                  weddingPlace={setWeddingPlace}
+                  setWeddingPlace={setWeddingPlace}
+                  weddingManPhoneNumber={weddingManPhoneNumber}
+                  setWeddingManPhoneNumber={setWeddingManPhoneNumber}
+                  weddingWomanPhoneNumber={weddingWomanPhoneNumber}
+                  setWeddingWomanPhoneNumber={setWeddingWomanPhoneNumber}
+                  weddingManAccountNumber={weddingManAccountNumber}
+                  setWeddingManAccountNumber={setWeddingManAccountNumber}
+                  weddingWomanAccountNumber={weddingWomanAccountNumber}
+                  setWeddingWomanAccountNumber={setWeddingWomanAccountNumber}
                 />
               )
             }

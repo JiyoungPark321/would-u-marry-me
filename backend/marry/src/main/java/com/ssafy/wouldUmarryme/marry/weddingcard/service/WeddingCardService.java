@@ -59,7 +59,7 @@ public class WeddingCardService {
     }
 
     public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest,MultipartFile image,Account account) throws IOException {
-        Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getCardId());
+        Optional<WeddingCard> card = weddingCardRepository.findById(inputWeddingCardRequest.getWeddingId());
         if(!card.isPresent()){
            return makeResponse("400", null, "fail : 해당 카드가 없습니다.", HttpStatus.NOT_FOUND);
         }
@@ -101,9 +101,9 @@ public class WeddingCardService {
             weddingCardMapRepository.delete(weddingCardMap.get());
         }
         WeddingCardMap builderWeddingCardMap = WeddingCardMap.builder()
-                .placeName(inputWeddingCardRequest.getPlaceName())
-                .x(inputWeddingCardRequest.getX())
-                .y(inputWeddingCardRequest.getY())
+                .placeName(inputWeddingCardRequest.getWeddingMapPlace())
+                .x(inputWeddingCardRequest.getWeddingMapX())
+                .y(inputWeddingCardRequest.getWeddingMapY())
                 .weddingCard(card.get())
                 .build();
         WeddingCardMap saveMap = weddingCardMapRepository.save(builderWeddingCardMap);

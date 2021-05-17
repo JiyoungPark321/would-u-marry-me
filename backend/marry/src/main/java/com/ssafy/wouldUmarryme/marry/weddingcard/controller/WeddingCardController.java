@@ -37,8 +37,8 @@ public class WeddingCardController {
     @PutMapping
     @ApiOperation(value = "청첩장 값 넣기")
     public Object insert(@Valid @ApiParam(value="웨딩카드 Id 필요",required = true)
-                               @ModelAttribute InputWeddingCardRequest inputWeddingCardRequest,@RequestParam("image") MultipartFile image , @ApiIgnore @CurrentAccount Account account) throws IOException {
-        Object response = weddingCardService.inputCard(inputWeddingCardRequest,image,account);
+                               @ModelAttribute InputWeddingCardRequest inputWeddingCardRequest,@RequestParam("weddingImage1") MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard(inputWeddingCardRequest,weddingImage1,account);
         return response;
     }
 

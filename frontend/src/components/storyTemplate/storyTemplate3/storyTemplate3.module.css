@@ -2,7 +2,7 @@
   background-color: #ffffff;
   width: 1400px;
   height: 800px;
-  border: 7px solid rgba(226, 208, 210, 1);
+  border: 7px solid #e2d0d2;
   display: flex;
   border-radius: 20px;
   position: relative;
@@ -41,11 +41,11 @@
   resize: none;
   overflow: hidden;
   color: #c97e0e;
-  background-color: #f6f6e3;
+  background-color: transparent;
 }
 
 .text1:focus {
-  border: 2px solid #ffa600;
+  border: 3px solid #ffa600;
 }
 
 .images-container {
