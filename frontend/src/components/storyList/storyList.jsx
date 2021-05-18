@@ -20,6 +20,7 @@ const StoryList = () => {
       .then((res) => {
         if (res.data.data) {
           setStoryListData(res.data.data);
+          console.log('check', res.data.data);
         }
       })
       .catch((err) => {
