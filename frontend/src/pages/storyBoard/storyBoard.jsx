@@ -88,11 +88,17 @@ const StoryBoard = () => {
         if (res.data.data.weddingCard == null) {
           setCurrentStep(18);
         } else {
-          newSaveCheck[18] = true;
-          newSaveCheck[19] = true;
-          newSaveCheck[20] = true;
+          if (res.data.data.weddingCard.spot) {
+            newSaveCheck[18] = true;
+            setCurrentStep(19);
+          }
+          if (res.data.data.weddingCard.template) {
+            newSaveCheck[19] = true;
+            newSaveCheck[20] = true;
+            setCurrentStep(21);
+          }
         }
-        if (res.data.data.stories) {
+        if (res.data.data.weddingCard == null && res.data.data.stories) {
           setCurrentStep(res.data.data.stories.length * 3 + 3);
           console.log(res.data.data.stories.length * 3 + 3);
         }
@@ -160,7 +166,7 @@ const StoryBoard = () => {
   const _moveNextStep = () => {
     const newSaveCheck = [...saveCheck];
     newSaveCheck[currentStep] = true;
-    currentStep < 21 
+    currentStep < 22 
     ? setCurrentStep(currentStep + 1)
     : setCurrentStep(0);
     setSaveCheck(newSaveCheck);
@@ -207,7 +213,7 @@ const StoryBoard = () => {
           console.error(err);
         })
     } else if ((currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15) && spotId !== null) {
-      api.post('story', {
+      api.post('/story', {
         index: parseInt(currentStep / 3),
         spotId,
         storyBoardId: id
@@ -222,7 +228,7 @@ const StoryBoard = () => {
           console.error(err);
         })
     } else if ((currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16) && storyTemplateId !== null) {
-      api.put('storytemplate', {
+      api.put('/storytemplate', {
         storyId,
         storyTemplateId
       }, {
@@ -245,7 +251,7 @@ const StoryBoard = () => {
         data.append("text1", text1);
         data.append("text2", text2);
 
-        api.put('story/first', data, {
+        api.put('/story/first', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -268,7 +274,7 @@ const StoryBoard = () => {
         data.append("image1", image1);
         data.append("text1", text1);
 
-        api.put('story/second', data, {
+        api.put('/story/second', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -293,7 +299,7 @@ const StoryBoard = () => {
         data.append("image3", image3);
         data.append("text1", text1);
 
-        api.put('story/third', data, {
+        api.put('/story/third', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -311,7 +317,7 @@ const StoryBoard = () => {
         _moveNextStep();
       }
     } else if (currentStep === 18 && spotId !== null ) {
-      api.post('weddingcard', {
+      api.post('/weddingcard', {
         spotId,
         storyBoardId: id
       }, {
@@ -325,7 +331,7 @@ const StoryBoard = () => {
           console.error(err);
         })
     } else if (currentStep === 19) {
-      api.put('weddingcardtemplate', {
+      api.put('/weddingcardtemplate', {
         weddingId,
         weddingTemplateId
       }, {
@@ -353,7 +359,7 @@ const StoryBoard = () => {
         data.append("weddingMapX", weddingMapX);
         data.append("weddingMapY", weddingMapY);
 
-        api.put('weddingcard', data, {
+        api.put('/weddingcard', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -381,7 +387,7 @@ const StoryBoard = () => {
       data.append("weddingMapX", weddingMapX);
       data.append("weddingMapY", weddingMapY);
 
-      api.put('weddingcard', data, {
+      api.put('/weddingcard', data, {
         headers: {
           Authorization: localStorage.getItem("jwt"),
           "Content-Type": "multipart/form-data"
@@ -415,7 +421,7 @@ const StoryBoard = () => {
         data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
         
 
-        api.put('weddingcard', data, {
+        api.put('/weddingcard', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -445,7 +451,7 @@ const StoryBoard = () => {
         data.append("weddingManAccountNumber", weddingManAccountNumber);
         data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
 
-        api.put('weddingcard', data, {
+        api.put('/weddingcard', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -499,36 +505,31 @@ const StoryBoard = () => {
                 setBackgroundId={setBackgroundId}
               />
             );   
-          }
-          else if (currentStep === 1) {
+          } else if (currentStep === 1) {
             return (
               <CarouselType2 
                 setMusicId={setMusicId}
               />
             )
-          }
-          else if (currentStep === 2) {
+          } else if (currentStep === 2) {
             return (
               <CarouselType3 
                 setCharacterId={setCharacterId}
               />
             )
-          }
-          else if (currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15) {
+          } else if (currentStep === 3 || currentStep === 6 || currentStep === 9 || currentStep === 12 || currentStep === 15) {
             return (
               <CarouselType4 
                 setSpotId={setSpotId}
               />
             )
-          }
-          else if (currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16) {
+          } else if (currentStep === 4 || currentStep === 7 || currentStep === 10 || currentStep === 13 || currentStep === 16) {
             return (
               <CarouselType5
                 setStoryTemplateId={setStoryTemplateId}
               />
             )
-          }
-          else if (currentStep === 5 || currentStep === 8 || currentStep === 11 || currentStep === 14 || currentStep === 17) {
+          } else if (currentStep === 5 || currentStep === 8 || currentStep === 11 || currentStep === 14 || currentStep === 17) {
             // if (template == 1) {
             
             // }
@@ -708,21 +709,22 @@ const StoryBoard = () => {
                 />
               )
             }
+          } else if (currentStep === 21) {
+            return saveCheck.every(elem => elem) ? <CompleteForm storyBoardId={id} /> : <div>아직 작성되지 않은 단계가 있습니다.</div>
           }
         })()
       }
       </div>
 
-      {/* {
-        saveCheck.every(elem => elem === true) && <CompleteForm />
-      } */}
+      
+
       <div className={styles.bottom}>
-        <div className={`${styles['prev-button']} ${currentStep === 0 && styles.none}`}>
+        <div className={`${styles['prev-button']} ${(currentStep === 0 || currentStep === 21) && styles.none}`}>
           <PrevButton 
             movePrevStep={movePrevStep}
           />
         </div>
-        <div className={styles['next-button']}>
+        <div className={`${styles['next-button']} ${currentStep === 21 && styles.none}`}>
           <NextButton 
             moveNextStep={moveNextStep}
           />
