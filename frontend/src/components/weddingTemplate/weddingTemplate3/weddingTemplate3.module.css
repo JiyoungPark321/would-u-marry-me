@@ -9,7 +9,7 @@
   border-bottom-left-radius: 30px;
   border: 7px solid #daa744;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -59,7 +59,7 @@
 .image-box {
   position: relative;
   width: 640px;
-  height: 470px;
+  height: 420px;
   border-radius: 30px;
   background-color: #efefef;
 }
@@ -81,7 +81,7 @@
 }
 
 .image-icon {
-  font-size: 30px;
+  font-size: 25px;
   color: #285181;
 }
 
@@ -92,7 +92,7 @@
 .input-image-box {
   position: relative;
   width: 640px;
-  height: 470px;
+  height: 420px;
   border-radius: 32px;
   background-color: black;
 }
@@ -133,7 +133,7 @@
 
 .date-button {
   width: 612px;
-  height: 41px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #9d9595;
   border-radius: 100px;
@@ -256,7 +256,7 @@
   border-bottom-right-radius: 30px;
   position: relative;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,7 +266,7 @@
 .text-box2 {
   position: relative;
   width: 640px;
-  height: 228px;
+  height: 180px;
   background-color: #e4f1f1;
   border-radius: 30px;
   margin-bottom: 20px;
@@ -293,14 +293,12 @@
 .text-button2 {
   cursor: pointer;
   position: absolute;
-  width: 32px;
-  height: 28px;
-  right: 15px;
-  top: 10px;
+  right: 20px;
+  top: 15px;
   background-color: transparent;
   border: none;
   z-index: 1;
-  font-size: 30px;
+  font-size: 25px;
   color: #5db6b6;
 }
 
@@ -401,7 +399,7 @@
 }
 
 .map-icon {
-  font-size: 30px;
+  font-size: 25px;
   color: #a22bb6;
 }
 

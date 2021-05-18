@@ -141,10 +141,12 @@ const WeddingTemplate3 = ({
 
   const onDateChange = function (e) {
     setWeddingDate(e.target.value);
+    console.log(e.target.value);
   };
 
   const onTimeChange = function (e) {
     setWeddingTime(e.target.value);
+    console.log(e.target.value);
   };
 
   const onPlaceChange = function (e) {
