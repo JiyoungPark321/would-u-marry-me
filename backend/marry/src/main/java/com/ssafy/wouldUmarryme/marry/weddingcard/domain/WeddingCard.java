@@ -48,7 +48,6 @@ public class WeddingCard {
     @Column(name = "second_comment")
     private String secondComment;
 
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "spot_id")
     private Spot spot;

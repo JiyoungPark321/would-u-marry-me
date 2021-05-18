@@ -50,21 +50,26 @@ public class WeddingCardService {
 
         //웨딩카드가 처음 만드는 것이라면
         if(storyboard.get().getWeddingCard() == null){
+            System.out.println("안만들어져있음");
             WeddingCard weddingCard = WeddingCard.builder()
                     .spot(spot.get())
                     .storyboard(storyboard.get())
                     .build();
             WeddingCard save = weddingCardRepository.save(weddingCard);
+            storyboard.get().updateWeddingCard(save);
             storyBoardRepository.save(storyboard.get());
             return makeResponse("200", save,  "success", HttpStatus.OK);
         }
         //만들어져있다면
        else{
+            System.out.println("만들어져있음");
             storyboard.get().getWeddingCard().updateSpot(spot.get());
             WeddingCard save = weddingCardRepository.save(storyboard.get().getWeddingCard());
+            storyboard.get().updateWeddingCard(save);
             storyBoardRepository.save(storyboard.get());
             return makeResponse("200",save,"success",HttpStatus.OK);
         }
+
 
 
     }
