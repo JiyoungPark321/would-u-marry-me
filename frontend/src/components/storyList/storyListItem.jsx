@@ -68,7 +68,10 @@ const StoryListItem = ({ data, handleSaveTitle, handleDeleteStoryBoard }) => {
         onClick={moveStoryBoard}
       > 
         {
-          data.img && <img className={styles['img']} src={data.img} />
+          data.stories.length > 0
+          && data.stories[0].images.length > 0
+          && data.stories[0].images[0].imgUrl 
+          && <img className={styles['img']} src={data.stories[0].images[0].imgUrl} />
         }
         </div>
       <div className={`${styles['story-item-info']} ${!titleEditMode && styles['edit-mode-state']}`}>
