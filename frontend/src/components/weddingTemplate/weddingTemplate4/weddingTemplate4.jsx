@@ -22,8 +22,8 @@ const WeddingTemplate4 = ({
   const [mouseCheck3, setMouseCheck3] = useState(false);
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
 
-  const [dateTime, setDateTime] = useState();
-
+  
+  
 
   // const sendWedding4 = () => {
   //   let data = new FormData();
@@ -113,7 +113,9 @@ const WeddingTemplate4 = ({
   };
 
   const onDateTimeChange = (e) => {
-    setDateTime(e.target.value);
+    const [date, time] = e.target.value.split('T');
+    setWeddingDate(date);
+    setWeddingTime(time);
   };
 
   const onPlaceChange = (e) => {
