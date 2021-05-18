@@ -145,8 +145,8 @@
   position: absolute;
   left: 65px;
   top: 239px;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border: none;
   border-radius: 50%;
   background-color: black;
@@ -154,8 +154,8 @@
 
 .input-image-box2 {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 260px;
   left: 297px;
   bottom: 36px;
   border-radius: 50%;
@@ -166,8 +166,8 @@
   position: absolute;
   top: 58px;
   right: 72px;
-  width: 750px;
-  height: 700px;
+  width: 710px;
+  height: 650px;
   top: 58px;
   right: 72px;
   border-radius: 50%;

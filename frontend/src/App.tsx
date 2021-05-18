@@ -9,11 +9,13 @@ import Sungjoon from './pages/sungjoon';
 
 import SignUp from './pages/signUp/signUp';
 import SignIn from './pages/signIn/signIn';
-import myStoryBoard from './pages/myStoryBoard/myStoryBoard';
+import MyStoryBoard from './pages/myStoryBoard/myStoryBoard';
 import StoryBoard from './pages/storyBoard/storyBoard';
 import Character from './pages/characterPage'
+import Invitation from './pages/invitation/invitation';
 
 const App = () => {
+
   return (
     <div className={styles.container}>
       <Switch>
@@ -29,10 +31,12 @@ const App = () => {
         <Route path="/signin" component={SignIn} exact />
 
         {/* 다른 사람 페이지에 못들아가게 처리하는 방법? 추가해야함 */}
-        <Route path="/:userName/storyboard" component={localStorage.getItem('userId') ? myStoryBoard : SignIn} exact />
+        <Route path="/:userName/storyboard" component={localStorage.getItem('userId') ? MyStoryBoard : SignIn} exact />
         
         <Route path="/:userName/storyboard/:id" component={localStorage.getItem('userId') ? StoryBoard : SignIn} exact />
 
+        <Route path="/:useName/invitation/:id" component={Invitation} exact />
+        {/* <Route path="/:useName/invitation/:id" component={Invitation} exact /> */}
 
       </Switch>
 
