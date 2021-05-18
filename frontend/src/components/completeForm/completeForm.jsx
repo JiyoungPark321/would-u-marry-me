@@ -3,21 +3,23 @@ import { useHistory } from 'react-router';
 import styles from './completeForm.module.css'
 
 
-const CompleteForm = () => {
+const CompleteForm = ({ storyBoardId }) => {
 
   const history = useHistory()
 
+  const userName = localStorage.getItem("userName");
+
   const moveMyStoryBoard = () => {
-    const userName = localStorage.getItem("userName");
     history.push(`/${userName}/storyboard`);
   };
 
   const moveCompletedStoryBoard = () => {
-
+    history.push(`/${userName}/invitation/${storyBoardId}`)
   };
 
   const shareWithKakaoTalk = () => {
-
+    // 아래 주소로 공유하면 됨!
+    // `https://wouldumarryme.com/${userName}/invitation/${storyBoardId}`
   };
 
   
