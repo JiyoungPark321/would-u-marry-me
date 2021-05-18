@@ -48,14 +48,23 @@ public class WeddingCardService {
             return makeResponse("400", null, "fail : spot를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
 
-        WeddingCard weddingCard = WeddingCard.builder()
-                .spot(spot.get())
-                .storyboard(storyboard.get())
-                .build();
-        WeddingCard save = weddingCardRepository.save(weddingCard);
-        storyboard.get().updateWeddingCard(save);
-        storyBoardRepository.save(storyboard.get());
-        return makeResponse("200", save,  "success", HttpStatus.OK);
+        //웨딩카드가 처음 만드는 것이라면
+        if(storyboard.get().getWeddingCard() == null){
+            WeddingCard weddingCard = WeddingCard.builder()
+                    .spot(spot.get())
+                    .storyboard(storyboard.get())
+                    .build();
+            WeddingCard save = weddingCardRepository.save(weddingCard);
+            return makeResponse("200", save,  "success", HttpStatus.OK);
+        }
+        //만들어져있다면
+       else{
+            storyboard.get().getWeddingCard().updateSpot(spot.get());
+            WeddingCard save = weddingCardRepository.save(storyboard.get().getWeddingCard());
+            return makeResponse("200",save,"success",HttpStatus.OK);
+        }
+
+
     }
 
     public Object inputCard(InputWeddingCardRequest inputWeddingCardRequest,MultipartFile image,Account account) throws IOException {
