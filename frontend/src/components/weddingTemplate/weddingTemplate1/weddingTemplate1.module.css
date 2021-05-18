@@ -9,7 +9,7 @@
   border-bottom-left-radius: 30px;
   border: 7px solid #daa744;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,7 +24,7 @@
   border-bottom-right-radius: 30px;
   position: relative;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -34,7 +34,7 @@
 .image-box {
   position: absolute;
   width: 640px;
-  height: 750px;
+  height: 700px;
   border-radius: 30px;
   background-color: #efefef;
 }
@@ -67,7 +67,7 @@
 .input-image-box {
   position: absolute;
   width: 640px;
-  height: 750px;
+  height: 700px;
   border-radius: 32px;
   background-color: black;
 }
@@ -221,7 +221,7 @@
 .text-box1 {
   position: relative;
   width: 640px;
-  height: 130px;
+  height: 120px;
   background-color: #f6f6e3;
   border-radius: 30px;
 }
@@ -244,7 +244,7 @@
 .text-box2 {
   position: relative;
   width: 640px;
-  height: 230px;
+  height: 200px;
   background-color: #f6f6e3;
   border-radius: 30px;
 }
@@ -271,8 +271,6 @@
 .text-button {
   cursor: pointer;
   position: absolute;
-  width: 32px;
-  height: 28px;
   right: 20px;
   top: 15px;
   background-color: transparent;
@@ -285,7 +283,7 @@
 .map-box {
   position: relative;
   width: 640px;
-  height: 179px;
+  height: 170px;
   background-color: #efebfc;
   border-radius: 30px;
 }
@@ -293,7 +291,7 @@
 .map-serached {
   position: relative;
   width: 640px;
-  height: 179px;
+  height: 170px;
   border-radius: 30px;
 }
 

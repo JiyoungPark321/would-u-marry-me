@@ -2,7 +2,7 @@
   display: table;
   position: relative;
   width: 1400px;
-  height: 800px;
+  height: 750px;
   background-color: #ffffff;
   border: 7px solid #e2d0d2;
   border-radius: 20px;
@@ -19,15 +19,15 @@
   position: absolute;
   left: 297px;
   top: 37px;
-  width: 250px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background-color: #f6f6e3;
 }
 
 .text1 {
-  width: 250px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background-color: transparent;
   border: none;
@@ -59,9 +59,9 @@
 .image-box1 {
   position: absolute;
   left: 65px;
-  top: 239px;
-  width: 300px;
-  height: 300px;
+  top: 230px;
+  width: 280px;
+  height: 280px;
   border: none;
   border-radius: 50%;
   background-color: #e7d9d9;
@@ -74,8 +74,8 @@
 
 .image-box2 {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 260px;
   left: 297px;
   bottom: 36px;
   border-radius: 50%;
@@ -86,8 +86,8 @@
   position: absolute;
   top: calc((800px - 700px) / 2);
   right: 72px;
-  width: 750px;
-  height: 700px;
+  width: 710px;
+  height: 650px;
   border-radius: 50%;
   background-color: #d4eae7;
 }

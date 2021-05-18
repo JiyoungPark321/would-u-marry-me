@@ -1,8 +1,8 @@
 .template-box {
   display: flex;
   width: 1400px;
-  height: 800px;
-  padding: 70px;
+  height: 750px;
+  padding: 50px;
   background-color: #ffffff;
   border: 7px solid;
   border-color: #e2d0d2;
@@ -20,7 +20,7 @@
 
 .image-box {
   position: relative;
-  width: 500px;
+  width: 550px;
   height: 300px;
   border-radius: 30px;
   background-color: #efefef;

@@ -9,7 +9,7 @@
   border-bottom-left-radius: 30px;
   border: 7px solid #daa744;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   padding: 40px 0;
@@ -33,7 +33,7 @@
 .text-box1 {
   position: relative;
   width: 640px;
-  height: 420px;
+  height: 370px;
   background-color: #f6f6e3;
   border-radius: 30px;
   margin-bottom: 30px;
@@ -57,7 +57,7 @@
 .text-box2 {
   position: relative;
   width: 640px;
-  height: 240px;
+  height: 200px;
   background-color: #f6f6e3;
   border-radius: 30px;
 }
@@ -80,14 +80,12 @@
 .text-button {
   cursor: pointer;
   position: absolute;
-  width: 32px;
-  height: 28px;
-  right: 15px;
-  top: 10px;
+  right: 25px;
+  top: 20px;
   background-color: transparent;
   border: none;
   z-index: 1;
-  font-size: 30px;
+  font-size: 25px;
   color: #e79b09;
 }
 
@@ -235,7 +233,7 @@
   border-bottom-right-radius: 30px;
   position: relative;
   width: 700px;
-  height: 800px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   padding: 40px 0;
@@ -252,15 +250,15 @@
 .map-box {
   position: relative;
   width: 640px;
-  height: 240px;
-  background-color: #eeecf3;
+  height: 220px;
+  background-color: #dad4e9;
   border-radius: 30px;
   margin-bottom: 60px;
 }
 
 .map-icon {
-  font-size: 30px;
-  color: #a22bb6;
+  font-size: 25px;
+  color: #efebfc;
 }
 
 .map-component {
@@ -279,8 +277,9 @@
   display: flex;
   background-color: #efebfc;
   width: 640px;
-  height: 240px;
+  height: 220px;
   border-radius: 30px;
+  margin-bottom: 60px;
 }
 
 .date-input {

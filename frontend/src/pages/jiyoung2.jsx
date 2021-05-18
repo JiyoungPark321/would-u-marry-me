@@ -1,4 +1,5 @@
 import React from 'react';
+import CompleteForm from '../components/completeForm/completeForm';
 import StoryTemplate1 from '../components/storyTemplate/storyTemplate1/storyTemplate1';
 import StoryTemplate2 from '../components/storyTemplate/storyTemplate2/storyTemplate2';
 import StoryTemplate3 from '../components/storyTemplate/storyTemplate3/storyTemplate3';
@@ -26,8 +27,9 @@ const Jiyoung2 = () => {
       {/* <WeddingTemplate1 /> */}
       {/* <WeddingTemplate2 /> */}
       {/* <WeddingTemplate3 /> */}
-      <WeddingTemplate4 />
+      {/* <WeddingTemplate4 /> */}
 
+      <CompleteForm />
     </div>
   );
 }

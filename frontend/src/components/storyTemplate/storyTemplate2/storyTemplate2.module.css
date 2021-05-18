@@ -1,7 +1,7 @@
 .template-box {
   position: relative;
   width: 1400px;
-  height: 800px;
+  height: 750px;
   border: 7px solid #e2d0d2;
   border-radius: 20px;
   background-color: #efefef;
@@ -72,10 +72,10 @@
 
 .text-box {
   position: absolute;
-  top: calc((800px - 350px) / 2);
-  left: calc((1400px - 700px) / 2);
-  width: 700px;
-  height: 350px;
+  top: calc((750px - 320px) / 2);
+  left: calc((1400px - 650px) / 2);
+  width: 650px;
+  height: 320px;
   border-radius: 30px;
   background-color: #f6f6e3b2;
   z-index: 2;

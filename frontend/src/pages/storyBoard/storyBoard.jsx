@@ -26,6 +26,8 @@ import WeddingTemplate2 from '../../components/weddingTemplate/weddingTemplate2/
 import WeddingTemplate4 from '../../components/weddingTemplate/weddingTemplate4/weddingTemplate4';
 import WeddingTemplate3 from '../../components/weddingTemplate/weddingTemplate3/weddingTemplate3';
 
+import CompleteForm from '../../components/completeForm/completeForm';
+
 
 
 const StoryBoard = () => {
@@ -138,6 +140,22 @@ const StoryBoard = () => {
     setText1('');
     setText2('');
   };
+
+  const resetWeddingInfo = () => {
+    setWeddingImage1(null);
+    setWeddingText1('');
+    setWeddingText2('');
+    setWeddingDate(null);
+    setWeddingTime(null);
+    setWeddingPlace(null);
+    setWeddingMapPlace(null);
+    setWeddingMapX(null);
+    setWeddingMapY(null);
+    setWeddingManPhoneNumber(null);
+    setWeddingWomanPhoneNumber(null);
+    setWeddingManAccountNumber(null);
+    setWeddingWomanAccountNumber(null);
+  }
 
   const _moveNextStep = () => {
     const newSaveCheck = [...saveCheck];
@@ -308,8 +326,8 @@ const StoryBoard = () => {
         })
     } else if (currentStep === 19) {
       api.put('weddingcardtemplate', {
-        cardId: weddingId,
-        cardTemplateId: weddingTemplateId
+        weddingId,
+        weddingTemplateId
       }, {
         headers: {Authorization: localStorage.getItem("jwt")}
       })
@@ -321,6 +339,129 @@ const StoryBoard = () => {
           console.error(err);
         })
       _moveNextStep();
+    } else if (currentStep === 20) {
+      if (weddingTemplateId === 1) {
+        const data = new FormData();
+        data.append("weddingId", weddingId);
+        data.append("weddingImage1", weddingImage1);
+        data.append("weddingText1", weddingText1);
+        data.append("weddingText2", weddingText2);
+        data.append("weddingDate", weddingDate);
+        data.append("weddingTime", weddingTime);
+        data.append("weddingPlace", weddingPlace);
+        data.append("weddingMapPlace", weddingMapPlace);
+        data.append("weddingMapX", weddingMapX);
+        data.append("weddingMapY", weddingMapY);
+
+        api.put('weddingcard', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            resetWeddingInfo();
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+            resetWeddingInfo();
+          })
+        _moveNextStep();
+      } else if (weddingTemplateId === 2) {
+      const data = new FormData();
+      data.append("weddingId", weddingId);
+      data.append("weddingText1", weddingText1);
+      data.append("weddingText2", weddingText2);
+      data.append("weddingDate", weddingDate);
+      data.append("weddingTime", weddingTime);
+      data.append("weddingPlace", weddingPlace);
+      data.append("weddingMapPlace", weddingMapPlace);
+      data.append("weddingMapX", weddingMapX);
+      data.append("weddingMapY", weddingMapY);
+
+      api.put('weddingcard', data, {
+        headers: {
+          Authorization: localStorage.getItem("jwt"),
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then((res) => {
+          console.log(res);
+          resetWeddingInfo();
+          _moveNextStep();
+        })
+        .catch((err) => {
+          console.error(err);
+          resetWeddingInfo();
+        })
+      _moveNextStep();
+      } else if (weddingTemplateId === 3) {
+        const data = new FormData();
+        data.append("weddingId", weddingId);
+        data.append("weddingImage1", weddingImage1);
+        data.append("weddingText1", weddingText1);
+        data.append("weddingText2", weddingText2);
+        data.append("weddingDate", weddingDate);
+        data.append("weddingTime", weddingTime);
+        data.append("weddingPlace", weddingPlace);
+        data.append("weddingMapPlace", weddingMapPlace);
+        data.append("weddingMapX", weddingMapX);
+        data.append("weddingMapY", weddingMapY);
+        data.append("weddingManPhoneNumber", weddingManPhoneNumber);
+        data.append("weddingWomanPhoneNumber", weddingWomanPhoneNumber);
+        data.append("weddingManAccountNumber", weddingManAccountNumber);
+        data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
+        
+
+        api.put('weddingcard', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            resetWeddingInfo();
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+            resetWeddingInfo();
+          })
+        _moveNextStep();
+      } else if (weddingTemplateId === 4) {
+        const data = new FormData();
+        data.append("weddingId", weddingId);
+        data.append("weddingImage1", weddingImage1);
+        data.append("weddingText1", weddingText1);
+        data.append("weddingText2", weddingText2);
+        data.append("weddingDate", weddingDate);
+        data.append("weddingTime", weddingTime);
+        data.append("weddingPlace", weddingPlace);
+        data.append("weddingManPhoneNumber", weddingManPhoneNumber);
+        data.append("weddingWomanPhoneNumber", weddingWomanPhoneNumber);
+        data.append("weddingManAccountNumber", weddingManAccountNumber);
+        data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
+
+        api.put('weddingcard', data, {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            resetWeddingInfo();
+            _moveNextStep();
+          })
+          .catch((err) => {
+            console.error(err);
+            resetWeddingInfo();
+          })
+        _moveNextStep();
+      } 
     }
     // _moveNextStep();
   };
@@ -335,16 +476,20 @@ const StoryBoard = () => {
 
   return (
     <div 
-      style={{ backgroundImage: `url(${backgroundUrl})` }}  
-        
+      style={{ backgroundImage: `url(${backgroundUrl})` }}
       className={styles['story-board-container']}
-    >
-      <StepProgressBar 
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-        saveCheck={saveCheck}
-      />
-      <MoveMyStoryBoardButton />
+    > 
+      <div 
+        className={styles.top}
+      >
+        <StepProgressBar
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+          saveCheck={saveCheck}
+        />
+        <MoveMyStoryBoardButton />
+      </div>
+      <div className={styles.middle}>
       {
         (() => {
           if (currentStep === 0) {
@@ -462,7 +607,6 @@ const StoryBoard = () => {
               />
             )
           } else if (currentStep === 20) {
-            console.log(currentStep);
             if (weddingTemplateId === 1) {
               return (
                 <WeddingTemplate1
@@ -567,12 +711,23 @@ const StoryBoard = () => {
           }
         })()
       }
-      <PrevButton 
-        movePrevStep={movePrevStep}
-      />
-      <NextButton 
-        moveNextStep={moveNextStep}
-      />
+      </div>
+
+      {
+        saveCheck.every(elem => elem === true) && <CompleteForm />
+      }
+      <div className={styles.bottom}>
+        <div className={`${styles['prev-button']} ${currentStep === 0 && styles.none}`}>
+          <PrevButton 
+            movePrevStep={movePrevStep}
+          />
+        </div>
+        <div className={styles['next-button']}>
+          <NextButton 
+            moveNextStep={moveNextStep}
+          />
+        </div>
+      </div>
     </div>
   );
 };
