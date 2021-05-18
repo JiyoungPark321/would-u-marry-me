@@ -11,7 +11,7 @@ import SignUp from './pages/signUp/signUp';
 import SignIn from './pages/signIn/signIn';
 import myStoryBoard from './pages/myStoryBoard/myStoryBoard';
 import StoryBoard from './pages/storyBoard/storyBoard';
-
+import Character from './pages/characterPage'
 
 const App = () => {
   return (
@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/jiyoung" component={Jiyoung} exact />
         <Route path="/jiyoung2" component={Jiyoung2} exact />
         <Route path="/jaehyuk" component={Jaehyuk} exact />
+        <Route path="/characterPage" component={Character} exact />
         <Route path="/sungjoon" component={Sungjoon} exact />
         
         <Route path="/" component={SignIn} exact />
