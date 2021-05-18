@@ -32,6 +32,7 @@ public class WeddingCardTemplateService {
         if(card.isEmpty()){
             return makeResponse("400", null, "fail : card를 찾을 수 없음", HttpStatus.NOT_FOUND);
         }
+        //템플릿이 다르다면 수정
         if(card.get().getTemplate()!= templateNumberRequest.getWeddingTemplateId()){
             card.get().updateTemplate(templateNumberRequest.getWeddingTemplateId());
             weddingCardRepository.save(card.get());

@@ -48,7 +48,7 @@ public class WeddingCard {
     @Column(name = "second_comment")
     private String secondComment;
 
-    @JsonIgnore
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "spot_id")
     private Spot spot;
@@ -99,6 +99,6 @@ public class WeddingCard {
         this.weddingCardImage = requestWeddingCardImage;
         this.weddingCardMap = weddingCardMap;
     }
-
+    public void updateSpot(Spot spot){this.spot=spot;}
     public void updateTemplate(Long template){this.template=template;}
 }
