@@ -55,12 +55,14 @@ public class WeddingCardService {
                     .storyboard(storyboard.get())
                     .build();
             WeddingCard save = weddingCardRepository.save(weddingCard);
+            storyBoardRepository.save(storyboard.get());
             return makeResponse("200", save,  "success", HttpStatus.OK);
         }
         //만들어져있다면
        else{
             storyboard.get().getWeddingCard().updateSpot(spot.get());
             WeddingCard save = weddingCardRepository.save(storyboard.get().getWeddingCard());
+            storyBoardRepository.save(storyboard.get());
             return makeResponse("200",save,"success",HttpStatus.OK);
         }
 
