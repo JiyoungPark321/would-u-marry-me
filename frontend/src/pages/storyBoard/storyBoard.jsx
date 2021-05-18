@@ -713,9 +713,9 @@ const StoryBoard = () => {
       }
       </div>
 
-      {
+      {/* {
         saveCheck.every(elem => elem === true) && <CompleteForm />
-      }
+      } */}
       <div className={styles.bottom}>
         <div className={`${styles['prev-button']} ${currentStep === 0 && styles.none}`}>
           <PrevButton 

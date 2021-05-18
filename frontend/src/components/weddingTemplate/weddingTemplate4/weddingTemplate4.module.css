@@ -19,7 +19,7 @@
 .text-box1 {
   position: relative;
   width: 640px;
-  height: 290px;
+  height: 260px;
   background-color: #f6f6e3;
   border-radius: 30px;
   margin-bottom: 40px;
@@ -55,10 +55,10 @@
 }
 
 .title-text {
-  font-size: 16px;
+  font-size: 18px;
   color: #4d2d2d;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 .info-man {
@@ -187,20 +187,18 @@
 .text-button2 {
   cursor: pointer;
   position: absolute;
-  width: 32px;
-  height: 28px;
   right: 20px;
   top: 12px;
   background-color: transparent;
   border: none;
-  font-size: 20px;
+  font-size: 25px;
   color: #5db6b6;
 }
 
 .image-box {
   position: relative;
   width: 640px;
-  height: 510px;
+  height: 460px;
   border-radius: 30px;
   background-color: #efefef;
   margin-bottom: 30px;
@@ -223,7 +221,7 @@
 }
 
 .image-icon {
-  font-size: 30px;
+  font-size: 25px;
   color: #285181;
 }
 
@@ -234,9 +232,10 @@
 .input-image-box {
   position: relative;
   width: 640px;
-  height: 511px;
+  height: 460px;
   border-radius: 30px;
   background-color: black;
+  margin-bottom: 30px;
 }
 
 .input-image-done {
@@ -261,7 +260,7 @@
 }
 
 .image-icon-done {
-  font-size: 30px;
+  font-size: 25px;
   color: #285181;
   position: absolute;
   top: 20px;
@@ -272,7 +271,7 @@
 
 .date-button {
   width: 640px;
-  height: 41px;
+  height: 40px;
   background-color: #ffffff;
   border: 3px solid #9d9595;
   border-radius: 100px;
