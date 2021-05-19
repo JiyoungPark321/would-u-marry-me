@@ -1,0 +1,29 @@
+.invitation-story2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1400px;
+  height: 750px;
+  border: 7px solid #e2d0d2;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.938);
+}
+
+.cancel-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #444444;
+}
+
+.cancel-button:hover {
+  color: #c87575;
+}
+
+.text1-container {
+  width: 650px;
+  height: 320px;
+  background-color: #f6f6e3b2;
+  border-radius: 30px;
+}

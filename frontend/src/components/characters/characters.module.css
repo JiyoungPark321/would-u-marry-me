@@ -1,0 +1,35 @@
+.character-box {
+  position: absolute;
+  width: 360px;
+  height: 300px;
+  bottom: 0;
+}
+
+.character-man {
+  position: absolute;
+  width: 360px;
+  height: 300px;
+  left: 0px;
+}
+
+.character-woman {
+  position: absolute;
+  width: 360px;
+  height: 300px;
+  left: 100px;
+}
+
+.spots-container {
+  width: 100vw;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spots {
+  position: absolute;
+  background-color: red;
+  color: white;
+  width: 2000px;
+  height: 500px;
+}
