@@ -3,6 +3,8 @@ import { useHistory } from "react-router";
 import styles from "./completeForm.module.css";
 import KakaoLinkDefault from "./KakaoLinkDefault";
 
+//https://d3mf3wgh9v41yo.cloudfront.net/bck_kakaoShareImg.png
+//https://d3mf3wgh9v41yo.cloudfront.net/bck_kakao-thumbnail.png
 const CompleteForm = ({ storyBoardId }) => {
   const history = useHistory();
 
