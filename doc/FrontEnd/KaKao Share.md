@@ -35,20 +35,20 @@ KaKao Share
 
 6. 컴포넌트 만들기
 
-![image-20210519145503521](C:\Users\AgFe\AppData\Roaming\Typora\typora-user-images\image-20210519145503521.png)
+![image-20210519145503521](/uploads/b203ee7a7ebcbfdd597ed2af9109bdf0/image-20210519145503521.png)
 
 -> 건드릴 것 없음.!
 
 7. 카카오톡 공유를 사용할 컴포넌트에서
 
-![image-20210519145748620](C:\Users\AgFe\AppData\Roaming\Typora\typora-user-images\image-20210519145748620.png)
+![image-20210519145748620](/uploads/90caec0997abecae873b21daae44cebf/image-20210519145748620.png)
 
-![image-20210519145830829](C:\Users\AgFe\AppData\Roaming\Typora\typora-user-images\image-20210519145830829.png)
+![image-20210519145830829](/uploads/9735601f366ada55dee031c4b56ae909/image-20210519145830829.png)
 
 템플릿 구성해주기.(공유하기하였을때 어떤 모습으로 줄 것인지)
 
-->![image-20210519145927083](C:\Users\AgFe\AppData\Roaming\Typora\typora-user-images\image-20210519145927083.png)
+->![image-20210519145927083](/uploads/837318d86d77dc0e1eee62f586c807a0/image-20210519145927083.png)
 
 8. 버튼 구성하기
 
-![image-20210519150016772](C:\Users\AgFe\AppData\Roaming\Typora\typora-user-images\image-20210519150016772.png)
+![image-20210519150016772](/uploads/642e90900691a45b056f1ac7d69f3810/image-20210519150016772.png)
