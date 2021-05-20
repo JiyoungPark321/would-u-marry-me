@@ -44,3 +44,7 @@
 .divider {
   margin-right: 0.5em;
 }
+
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+}
