@@ -63,7 +63,7 @@ const Characters = ({ charactersData, x, setX }) => {
         setMoveLeft(0);
         break;
       default:
-        console.log(`Sorry, we are out of.`);
+        // console.log(`Sorry, we are out of.`);
     }
   }, []);
 
