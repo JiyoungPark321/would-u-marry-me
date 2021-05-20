@@ -1,5 +1,5 @@
 .spots-container {
-  border: 5px solid black;
+  /* border: 5px solid black; */
 
   position: relative;
   width: 100%;
@@ -8,7 +8,7 @@
 }
 
 .spots-slider {
-  border: 5px solid red;
+  /* border: 5px solid red; */
 
   position: absolute;
   top: 100px;
