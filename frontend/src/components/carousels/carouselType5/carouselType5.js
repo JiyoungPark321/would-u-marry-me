@@ -16,6 +16,8 @@ SwiperCore.use([Navigation]);
 const CarouselType5 = ({ setStoryTemplateId }) => {
 
   const [storyTemplateData, setStoryTemplateData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
 
   useEffect(() => {
     api.get('/storytemplate', {
@@ -55,7 +57,7 @@ const CarouselType5 = ({ setStoryTemplateId }) => {
           className={styles['swiper-container']}>
           <div className={styles['swiper-wrapper']}>
           {
-            storyTemplateData.map((data) => {
+            storyTemplateData.map((data, index) => {
               return (
                 <SwiperSlide
                   className={styles['swiper-slide']}
@@ -64,8 +66,10 @@ const CarouselType5 = ({ setStoryTemplateId }) => {
                   <div className={styles['img-container']}>
                     <img 
                       src={data.imgUrl} 
-                      className={styles['template-img']}
-                      onClick={()=> {choiceStoryTemplate(data.id)}}
+                      className={`${styles['template-img']} ${index === selectedIndex ? styles.selected : ''}`}
+                      onClick={()=> {choiceStoryTemplate(data.id)
+                        setSelectedIndex(index);
+                      }}
                     />
                   </div>
                 </SwiperSlide>
