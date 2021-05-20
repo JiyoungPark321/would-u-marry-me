@@ -132,16 +132,16 @@ public class WeddingCardService {
         return makeResponse("200", save, "success", HttpStatus.OK);
     }
 
-    public Object retrieveCard(Long storyBoardId, Account account) {
-        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(storyBoardId,account);
-        if(storyboard.isEmpty()){
-            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
-        }
-        Optional<WeddingCard> retrieve = weddingCardRepository.findById(storyboard.get().getWeddingCard().getId());
-        if(retrieve.isEmpty()){
-            makeResponse("200",null, "success : 현재 웨딩카드 없음.", HttpStatus.OK);
-        }
-
-        return makeResponse("200",retrieve.get(), "success", HttpStatus.OK);
-    }
+//    public Object retrieveCard(Long storyBoardId, Account account) {
+//        Optional<Storyboard> storyboard = storyBoardRepository.findByIdAndAccount(storyBoardId,account);
+//        if(storyboard.isEmpty()){
+//            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
+//        }
+//        Optional<WeddingCard> retrieve = weddingCardRepository.findById(storyboard.get().getWeddingCard().getId());
+//        if(retrieve.isEmpty()){
+//            makeResponse("200",null, "success : 현재 웨딩카드 없음.", HttpStatus.OK);
+//        }
+//
+//        return makeResponse("200",retrieve.get(), "success", HttpStatus.OK);
+//    }
 }
