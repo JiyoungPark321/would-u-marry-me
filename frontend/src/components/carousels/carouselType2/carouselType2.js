@@ -18,6 +18,8 @@ SwiperCore.use([EffectCube, Pagination, Navigation]);
 const CarouselType2 = ({ setMusicId }) => {
 
   const [musicData, setMusicData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
 
   useEffect(() => {
     api.get('/music', {
@@ -60,16 +62,18 @@ const CarouselType2 = ({ setMusicId }) => {
           className={styles['swiper-container']}>
           <div className={styles['swiper-wrapper']}>
           {
-            musicData.map((data) => {
+            musicData.map((data, index) => {
               return (
                 <SwiperSlide
                   className={styles['swiper-slide']}
                   key={data.id}
                 >
                   <img 
-                    className={styles['album-img']}
+                    className={`${styles['album-img']} ${index === selectedIndex ? styles.selected : ''}`}
                     src={data.musicImgUrl} 
-                    onClick={() => {choiceMusic(data.id)}}
+                    onClick={() => {choiceMusic(data.id)
+                      setSelectedIndex(index);
+                    }}
                   />
                   <div className={styles['about-music-container']}>
                     <div className={styles['info-container']}>

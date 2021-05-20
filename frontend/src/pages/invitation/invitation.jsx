@@ -20,11 +20,7 @@ const Invitation = () => {
 
   
   useEffect(() => {
-    api.get(`/storyboard/${id}`, {
-      headers: {
-        Authorization: localStorage.getItem("jwt")
-      }
-    })
+    api.get(`/storyboard/guest/${id}`)
       .then((res) => {
         setInvitationData(res.data.data);
         console.log(res.data.data);

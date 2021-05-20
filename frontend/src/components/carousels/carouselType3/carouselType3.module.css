@@ -27,3 +27,8 @@
   height: 400px;
   border-radius: 30px;
 }
+
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+  border-radius: 30px;
+}
