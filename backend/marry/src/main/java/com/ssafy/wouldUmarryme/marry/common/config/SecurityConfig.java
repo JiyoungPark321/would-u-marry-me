@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/weddingcardtemplate").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/character").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/status").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/storyboard/guest/**").permitAll()
                 .anyRequest().authenticated();
     }
 

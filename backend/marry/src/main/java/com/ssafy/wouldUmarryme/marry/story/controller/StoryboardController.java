@@ -44,6 +44,12 @@ public class StoryboardController {
         Object response = storyboardService.getStoryboardDetail(Long.parseLong(id),account);
         return response;
     }
+    @GetMapping("/guset/{id}")
+    @ApiOperation(value = "카카오톡 공유하기 스토리보드 가져오기")
+    public Object retrieveGusetDetail(@PathVariable @NotNull String id){
+        Object response = storyboardService.getGuestDetail(Long.parseLong(id));
+        return response;
+    }
 
     @PutMapping("/updateTitle")
     @ApiOperation(value = "스토리보드 이름 변경")
