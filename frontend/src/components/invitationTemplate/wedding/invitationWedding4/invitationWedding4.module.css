@@ -5,7 +5,7 @@
   height: 750px;
   border: solid 7px #daa744;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.616);
+  background-color: rgba(255, 255, 255, 0.842);
 }
 
 .cancel-button {
@@ -25,6 +25,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
   border-right: solid 7px #daa744;
   height: 100%;
   width: 50%;
@@ -35,65 +37,53 @@
   width: 100%;
   height: 260px;
 
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  font-weight: bold;
+  line-height: 30px;
+  color: #534221;
+
+  resize: none;
+  overflow: hidden;
 }
 
 .thanks {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  color: #4d2d2d;
-  margin-bottom: 18px;
+  color: #444444;
+  margin-bottom: 50px;
 }
 
 .groom {
   font-size: 16px;
   font-weight: 900;
-  color: #59b0ab;
+  color: #3d7a77;
   margin-bottom: 20px;
 }
 
-.groom-phone-number-container {
+.groom-phone-number-container,
+.groom-account-number-container {
   width: 100%;
-  height: 40px;
-  color: #9bd2cf;
-
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  height: 35px;
+  font-weight: 500;
+  color: #3d7a77;
 }
 
 .groom-account-number-container {
-  width: 100%;
-  height: 40px;
-  color: #9bd2cf;
-
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  margin-bottom: 30px;
 }
 
 .bride {
   font-size: 16px;
   font-weight: 900;
-  color: #c660c2;
+  color: #ad2ea9;
   margin-bottom: 20px;
 }
 
-.bride-phone-number-container {
-  width: 100%;
-  height: 40px;
-  color: #e7a1e4;
-
-  /* 삭제할 코드 */
-  border: 2px solid blue;
-}
-
+.bride-phone-number-container,
 .bride-account-number-container {
   width: 100%;
-  height: 40px;
-  color: #e7a1e4;
-
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  height: 35px;
+  font-weight: 500;
+  color: #ad2ea9;
 }
 
 .section2 {
@@ -101,6 +91,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 100%;
   width: 50%;
   padding: 50px;
@@ -108,35 +99,37 @@
 
 .text2-container {
   width: 100%;
-  height: 50px;
+  height: 40px;
 
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  font-size: 15px;
+  font-weight: bold;
+  color: #745315;
+
+  resize: none;
+  overflow: hidden;
 }
 
-.image1-container {
+.image1-container,
+.image1 {
   width: 100%;
-  height: 460px;
+  height: 530px;
   border-radius: 30px;
-
-  /* 삭제할 코드 */
-  background-color: #efefef;
+  margin-bottom: 30px;
 }
 
-.date-and-time {
-  width: 100%;
-  height: 50px;
-  font-size: 14px;
-
-  /* 삭제할 코드 */
-  border: 2px solid blue;
-}
-
+.date-and-time,
 .place {
-  width: 100%;
-  height: 50px;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
-  /* 삭제할 코드 */
-  border: 2px solid blue;
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #745315;
+}
+
+.date {
+  margin-right: 20px;
 }
