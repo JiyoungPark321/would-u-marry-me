@@ -1,292 +1,103 @@
-.template-box {
-  display: flex;
-}
-
-.input-area1 {
+.invitation-wedding2 {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border: 7px solid #daa744;
-  width: 700px;
+  display: flex;
+  width: 1400px;
   height: 750px;
-  display: flex;
-  flex-direction: column;
-  padding: 40px 0;
+  border: solid 7px #daa744;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.616);
 }
 
-.input-area1-area1 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.input-area1-area2 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.text-box1 {
-  position: relative;
-  width: 640px;
-  height: 370px;
-  background-color: #f6f6e3;
-  border-radius: 30px;
-  margin-bottom: 30px;
-}
-
-.text1 {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 30px;
-  padding: 30px 30px 30px 30px;
-  font-size: 15px;
-  font-weight: bold;
-  resize: none;
-  overflow: hidden;
-  color: #534221;
-  background-color: transparent;
-}
-
-.text-box2 {
-  position: relative;
-  width: 640px;
-  height: 200px;
-  background-color: #f6f6e3;
-  border-radius: 30px;
-}
-
-.text2 {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 30px;
-  padding: 30px 30px 30px 30px;
-  font-size: 15px;
-  font-weight: bold;
-  resize: none;
-  overflow: hidden;
-  color: #31250d;
-  background-color: transparent;
-}
-
-.text-button {
-  cursor: pointer;
+.cancel-button {
   position: absolute;
-  right: 25px;
-  top: 20px;
-  background-color: transparent;
-  border: none;
-  z-index: 1;
-  font-size: 25px;
-  color: #e79b09;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  color: #444444;
 }
 
-.text1:focus,
-.text2:focus {
-  border: 3px solid #ffa600;
+.cancel-button:hover {
+  color: #a17f3b;
 }
 
-.date-button {
-  width: 640px;
-  height: 40px;
-  background-color: #ffffff;
-  border: 3px solid #9d9595;
-  border-radius: 100px;
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: center;
-  color: #af9d9f;
-  margin: 10px;
-}
-
-.date-input-box {
-  border-radius: 100px;
-  width: 100%;
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: solid 7px #daa744;
   height: 100%;
+  width: 50%;
+  padding: 10px;
 }
 
-.date-input {
-  border: none;
-  font-weight: bold;
-  color: #9d9595;
-  text-align: center;
-  font-size: 14px;
-  background-color: transparent;
-  width: 20%;
-  height: 100%;
-}
-
-.date-input::-webkit-calendar-picker-indicator {
-  font-size: 18px;
-}
-
-.date-input-box-on {
-  border-radius: 100px;
-  width: 100%;
-  height: 100%;
-  background-color: #af9d9f;
-}
-
-.date-input-on {
-  border: none;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-  background-color: transparent;
-  width: 20%;
-  height: 100%;
-}
-
-.date-input-on::-webkit-calendar-picker-indicator {
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.date-input2 {
-  border: none;
-  font-weight: bold;
-  color: #9d9595;
-  text-align: center;
-  font-size: 15px;
-  background-color: transparent;
-  width: 20%;
-  height: 100%;
-  margin-left: 0px;
-}
-
-.date-input2::-webkit-calendar-picker-indicator {
-  margin-left: -5px;
-  font-size: 22px;
-}
-
-.date-input2-on {
-  border: none;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  background-color: transparent;
-  width: 20%;
-  height: 100%;
-  margin-left: 0px;
-}
-
-.date-input2-on::-webkit-calendar-picker-indicator {
-  margin-left: -5px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.date-input3 {
-  border: none;
-  font-weight: bold;
-  color: #9d9595;
-  text-align: center;
-  font-size: 14px;
-  background-color: transparent;
-  width: 80%;
-  height: 100%;
-}
-
-.date-input3-on {
-  border: none;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-  background-color: transparent;
-  width: 80%;
-  height: 100%;
-}
-
-.date-input3-on::placeholder {
-  color: white;
-}
-
-.title-text {
+.intro-letters {
   font-size: 16px;
-  color: #4d2d2d;
   font-weight: bold;
+  color: #4d2d2d;
   margin-bottom: 20px;
 }
 
-.title-icon {
+.heart-icon {
   font-size: 10px;
   color: #4d2d2d;
   margin-bottom: 40px;
 }
 
-.input-area2 {
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 7px solid #daa744;
-  border-left: transparent;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  position: relative;
-  width: 700px;
-  height: 750px;
-  display: flex;
-  flex-direction: column;
-  padding: 40px 0;
+.text1-container {
+  width: 100%;
+  height: 416px;
+
+  /* 삭제할 코드 */
+  border: 2px solid blue;
 }
 
-.input-area2-area1 {
-  position: relative;
+.date {
+  width: 100%;
+  height: 40px;
+
+  /* 삭제할 코드 */
+  border: 2px solid blue;
+}
+
+.time {
+  width: 100%;
+  height: 40px;
+
+  /* 삭제할 코드 */
+  border: 2px solid blue;
+}
+
+.place {
+  width: 100%;
+  height: 40px;
+
+  /* 삭제할 코드 */
+  border: 2px solid blue;
+}
+
+.section2 {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  /* justify-content: space-evenly; */
+  height: 100%;
+  width: 50%;
+  padding: 50px;
 }
 
-.map-box {
-  position: relative;
-  width: 640px;
+.map {
+  width: 100%;
   height: 220px;
-  background-color: #dad4e9;
-  border-radius: 30px;
-  margin-bottom: 60px;
+
+  /* 삭제할 코드 */
+  border: 2px solid blue;
 }
 
-.map-icon {
-  font-size: 25px;
-  color: #a22bb6;
-}
+.text2-container {
+  width: 100%;
+  height: 200px;
 
-.map-component {
-  position: fixed;
-  width: 612px;
-  height: 500px;
-  top: 50%;
-  right: 50%;
-  margin-top: -250px;
-  margin-right: -306px;
-  z-index: 2;
-}
-
-.map-serached {
-  position: relative;
-  display: flex;
-  background-color: #efebfc;
-  width: 640px;
-  height: 220px;
-  border-radius: 30px;
-  margin-bottom: 60px;
-}
-
-.date-input {
-  border: none;
-  font-weight: bold;
-  color: #9d9595;
-  text-align: center;
-  font-size: 14px;
-  padding: 0px;
+  /* 삭제할 코드 */
+  border: 2px solid blue;
 }
