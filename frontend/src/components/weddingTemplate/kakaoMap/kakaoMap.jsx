@@ -9,10 +9,26 @@ const KakaoMap = (props) => {
   var mapInfo = props.mapInfo
   var mapExist = props.mapExist
   var open = props.open
+  const {readLocation} = props
+  console.log(readLocation)
   
   useEffect(() => {
     console.log(searchExist)
-    if (mapExist === false || open === true) {
+    console.log(readLocation)
+    if(readLocation) {
+      var mapContainer = document.getElementById('searchedMap'), // 지도를 표시할 div
+      mapOption = { 
+          center: new kakao.maps.LatLng(readLocation.y, readLocation.x), // 지도의 중심좌표
+          level: 3 // 지도의 확대 레벨
+      };
+      var map = new kakao.maps.Map(mapContainer,  mapOption); // 지도를 생성합니다
+      var markerPosition  = new kakao.maps.LatLng(readLocation.y, readLocation.x); 
+      var marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
+      marker.setMap(map);
+    }
+    else if (mapExist === false || open === true) {
       if (mapExist === false || open === false && searchExist === 0) {
         var mapContainer = document.getElementById('myMap'), // 지도를 표시할 div
         mapOption = { 
@@ -124,7 +140,12 @@ const KakaoMap = (props) => {
 return (
   <>
   {(() => {
-    if ( mapExist === false || open === true) {
+    if ( readLocation ) {
+      return (
+        <div id='searchedMap'  className={styles['map-searched']}></div>
+      )
+    }
+    else if ( mapExist === false || open === true) {
       if (mapExist === false || open === false)
         return (
           <>

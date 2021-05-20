@@ -1,4 +1,5 @@
 import React from "react";
+import KakaoMap from "../../../weddingTemplate/kakaoMap/kakaoMap";
 import styles from "./invitationWedding1.module.css";
 
 const InvitationWedding1 = ({ setModalState, modalData }) => {
@@ -37,6 +38,9 @@ const InvitationWedding1 = ({ setModalState, modalData }) => {
         </div>
         <div className={styles.map}>
         {/* 지도 넣을 부분 */}
+          <KakaoMap
+            readLocation={modalData.weddingCardMap}
+          ></KakaoMap>
         </div>
         <div className={styles['text2-container']}>
           <pre>{modalData.secondComment}</pre>
