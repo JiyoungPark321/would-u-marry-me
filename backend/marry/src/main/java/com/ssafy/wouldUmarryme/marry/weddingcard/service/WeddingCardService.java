@@ -79,7 +79,7 @@ public class WeddingCardService {
             weddingCardImageRepository.delete(isWeddingCardImage.get());
         }
         if(image != null){
-            imgName = awsS3Service.uploadProfileImage(image,"card");
+            imgName = awsS3Service.uploadProfileImage(image,"card",weddingCard.getId());
             imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
             weddingCardImage = WeddingCardImage.builder()
                     .imgName(imgName)
