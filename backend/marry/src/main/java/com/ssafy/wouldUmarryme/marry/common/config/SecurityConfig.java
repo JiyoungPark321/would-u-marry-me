@@ -50,10 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.accountRepository))
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/account/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/account/id").permitAll()
-                .antMatchers(HttpMethod.POST, "/account/nickname").permitAll()
-                .antMatchers(HttpMethod.POST, "/account/search").permitAll()
-                .antMatchers(HttpMethod.POST, "/account/sms").permitAll()
+                .antMatchers(HttpMethod.POST, "/account","/account/id","/account/nickname","/account/search","/account/sms").permitAll()
                 .antMatchers(HttpMethod.POST, "/music").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/background").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/spot").hasRole("ADMIN")
@@ -61,9 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/weddingcardtemplate").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/character").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/status").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/account/password").permitAll()
-                .antMatchers(HttpMethod.POST, "/account").permitAll()
-                .antMatchers("/account/**").hasRole("USER")
                 .anyRequest().authenticated();
     }
 
