@@ -42,7 +42,36 @@
 
 ![프레젠테이션1](https://user-images.githubusercontent.com/58461395/119046389-999a0280-b9f7-11eb-87c4-bb5bb392fe52.jpg)
 
+### Why Would u marry me?
 
+1. 청첩장 생성
+
+- 나만의 StoryBoard를 생성해 한번에 여러가지 청첩장을 구상할 수 있습니다.
+- 청첩장의 배경, 음악, 캐릭터를 제공함으로서 나만의 청첩장을 꾸밀 수 있습니다.
+
+
+
+- 총 6 Step의 story가 존재하며, 각 story마다 템플릿을 정하고 예비 신랑, 신부님의 이야기를 풀어갈 수 있습니다.
+
+  - 5 Step의 Story 템플릿이 존재합니다.
+
+    ![스토리템플릿](https://user-images.githubusercontent.com/58461395/119057863-3a90b980-ba08-11eb-81c5-adcf5d78702e.gif)
+
+  - 1 Step의 Wedding 템플릿이 존재합니다.
+
+  ![웨딩템플릿](https://user-images.githubusercontent.com/58461395/119057115-d7eaee00-ba06-11eb-858a-ba3533714130.gif)
+
+2. 완성된 청첩장
+
+- 선택한 배경, 음악, 캐릭터를 이용한 청첩장이 완성됩니다.
+
+![완성된 청첩장](https://user-images.githubusercontent.com/58461395/119058356-35803a00-ba09-11eb-9651-627a667cdbbf.gif)
+
+3. 카카오톡 공유하기
+
+- 카카오톡 공유하기를 이용해 주변사람들에게 청첩장을 공유할 수 있습니다.
+
+![카카오톡공유](https://user-images.githubusercontent.com/58461395/119059251-eaffbd00-ba0a-11eb-9c54-207447ee7b97.gif)
 
 <br>
 
