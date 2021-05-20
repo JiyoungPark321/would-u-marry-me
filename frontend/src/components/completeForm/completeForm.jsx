@@ -15,7 +15,7 @@ const CompleteForm = ({ storyBoardId }) => {
     content: {
       title: userName + "의 결혼식에 초대합니다.",
       description: userName + "의 청첩장입니다. 웹으로 이용해주세요!",
-      imageUrl: "https://d3mf3wgh9v41yo.cloudfront.net/bck_kakao-thumbnail.png",
+      imageUrl: "https://d3mf3wgh9v41yo.cloudfront.net/bck_kakaoShareImg.png",
       link: {
         mobileWebUrl: `https://wouldumarryme.com/${userName}/invitation/${storyBoardId}`,
         webUrl: `https://wouldumarryme.com/${userName}/invitation/${storyBoardId}`,
