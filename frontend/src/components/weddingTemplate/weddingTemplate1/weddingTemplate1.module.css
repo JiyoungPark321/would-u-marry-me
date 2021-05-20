@@ -232,9 +232,10 @@
   height: 100%;
   border: none;
   border-radius: 30px;
-  padding: 10px 30px 10px 30px;
-  font-size: 15px;
+  padding: 10px 30px;
+  font-size: 16px;
   font-weight: bold;
+  line-height: 30px;
   resize: none;
   overflow: hidden;
   color: #745315;
@@ -257,6 +258,7 @@
   border-radius: 30px;
   padding: 10px 30px 10px 30px;
   font-size: 12px;
+  line-height: 25px;
   resize: none;
   overflow: hidden;
   color: #534221;

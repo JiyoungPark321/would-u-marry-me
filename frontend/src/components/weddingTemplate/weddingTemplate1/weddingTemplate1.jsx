@@ -59,7 +59,7 @@ const WeddingTemplate1 = ({
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 100;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
@@ -76,7 +76,7 @@ const WeddingTemplate1 = ({
   const handleText2 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 500;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
