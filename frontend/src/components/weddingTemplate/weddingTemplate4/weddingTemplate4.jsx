@@ -22,41 +22,11 @@ const WeddingTemplate4 = ({
   const [mouseCheck3, setMouseCheck3] = useState(false);
   const [imageHoverCheck, setImageHoverCheck] = useState(false);
 
-  
-  
-
-  // const sendWedding4 = () => {
-  //   let data = new FormData();
-  //   data.append("cardId", 4)
-  //   data.append("cardImg", imgFile)
-  //   data.append("cardDate", dateTime)
-  //   data.append("cardFirstComment", null)
-  //   data.append("cardSecondComment", null)
-  //   data.append("cardTime", null)
-  //   data.append("cardPlace", place)
-  //   data.append("placeName", null)
-  //   data.append("x", null)
-  //   data.append("y", null)
-  //   data.append("cardManPhone", manPhoneNumber)
-  //   data.append("cardManAccountNumber", manAccountNumber)
-  //   data.append("cardWomanPhone", womanPhoneNumber)
-  //   data.append("cardWomanAccountNumber", womanAccountNumber)
-  //   api
-  //   .put("/weddingcard", data, {
-  //     headers: { Authorization: localStorage.getItem("jwt") },
-  //   })
-  //   .then((res) => {
-  //     // wedding template 컴포넌트 끄는 bind함수?
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // }
 
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 300;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
@@ -73,7 +43,7 @@ const WeddingTemplate4 = ({
   const handleText2 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 100;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i

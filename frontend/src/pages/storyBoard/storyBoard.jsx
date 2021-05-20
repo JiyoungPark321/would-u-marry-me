@@ -359,7 +359,7 @@ const StoryBoard = () => {
         data.append("weddingMapX", weddingMapX);
         data.append("weddingMapY", weddingMapY);
 
-        api.put('/weddingcard', data, {
+        api.put('/weddingcard/template1', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -387,7 +387,7 @@ const StoryBoard = () => {
       data.append("weddingMapX", weddingMapX);
       data.append("weddingMapY", weddingMapY);
 
-      api.put('/weddingcard', data, {
+      api.put('/weddingcard/template2', data, {
         headers: {
           Authorization: localStorage.getItem("jwt"),
           "Content-Type": "multipart/form-data"
@@ -421,7 +421,7 @@ const StoryBoard = () => {
         data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
         
 
-        api.put('/weddingcard', data, {
+        api.put('/weddingcard/template3', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
@@ -451,7 +451,7 @@ const StoryBoard = () => {
         data.append("weddingManAccountNumber", weddingManAccountNumber);
         data.append("weddingWomanAccountNumber", weddingWomanAccountNumber);
 
-        api.put('/weddingcard', data, {
+        api.put('/weddingcard/template4', data, {
           headers: {
             Authorization: localStorage.getItem("jwt"),
             "Content-Type": "multipart/form-data"
