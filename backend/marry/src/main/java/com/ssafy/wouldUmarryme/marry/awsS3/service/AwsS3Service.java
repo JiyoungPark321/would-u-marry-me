@@ -29,10 +29,9 @@ public class AwsS3Service {
 
 
     @Transactional
-    public String uploadProfileImage(MultipartFile image,String prefix) throws IOException {
+    public String uploadProfileImage(MultipartFile image,String prefix,Long id) throws IOException {
         amazonS3 = awsConfiguration.setS3Client();
-        System.out.println(image.getOriginalFilename());
-        String imageName = prefix+"_"+image.getOriginalFilename();
+        String imageName = id+"_"+prefix+"_"+image.getOriginalFilename();
 
         amazonS3.putObject(new PutObjectRequest(awsS3Property.getBucket(), imageName, image.getInputStream(), null)
                 .withCannedAcl(CannedAccessControlList.PublicRead));

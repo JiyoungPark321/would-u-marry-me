@@ -27,7 +27,7 @@ public class CharacterStatusService {
 
     public Object createCharacter(String status,String gender, Long characterId, MultipartFile image) throws IOException {
         Optional<Character> character = characterRepository.findById(characterId);
-        String imgName = awsS3Service.uploadProfileImage(image,"status");
+        String imgName = awsS3Service.uploadProfileImage(image,"status",characterId);
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
         CharacterStatus characterStatus = CharacterStatus.builder()
                 .status(status)

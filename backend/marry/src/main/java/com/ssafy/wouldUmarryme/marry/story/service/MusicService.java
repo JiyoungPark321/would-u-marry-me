@@ -58,7 +58,7 @@ public class MusicService {
     }
 
     public Object createMusic(MultipartFile file) throws IOException {
-        String musicName = awsS3Service.uploadProfileImage(file,"music");
+        String musicName = awsS3Service.uploadProfileImage(file,"music",Long.parseLong("1"));
         String musicUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +musicName;
         Music music = Music.builder()
                 .musicName(musicName)
@@ -72,7 +72,7 @@ public class MusicService {
 
     public Object updateImageMusic(MultipartFile image, UpdateMusicRequest updateMusicRequest) throws IOException {
         Optional<Music> curMusic = musicRepository.findById(updateMusicRequest.getMusicId());
-        String imgName = awsS3Service.uploadProfileImage(image, "alb");
+        String imgName = awsS3Service.uploadProfileImage(image, "alb", updateMusicRequest.getMusicId());
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         if(curMusic.isPresent()) {
             curMusic.get().setMusicImgName(imgName);

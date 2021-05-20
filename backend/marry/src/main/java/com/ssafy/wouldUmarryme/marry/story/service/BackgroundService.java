@@ -52,7 +52,7 @@ public class BackgroundService {
     }
 
     public Object createBackground(MultipartFile image) throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(image,"bck");
+        String imgName = awsS3Service.uploadProfileImage(image,"bck",Long.parseLong("1"));
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         Background background = Background.builder()
                 .backgroundImgName(imgName)
