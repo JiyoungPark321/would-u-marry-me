@@ -6,12 +6,7 @@ import MusicInfo from '../../components/musicInfo/musicInfo';
 import api from '../../service/api';
 import Characters from '../../components/characters/characters';
 import Spots from '../../components/spots/spots';
-import InvitationStory1 from '../../components/invitationTemplate/story/invitationStory1/invitationStory1';
-import InvitationStory2 from '../../components/invitationTemplate/story/invitationStory2/invitationStory2';
-import InvitationStory3 from '../../components/invitationTemplate/story/invitationStory3/invitationStory3';
-import InvitationStory4 from '../../components/invitationTemplate/story/invitationStory4/invitationStory4';
-import InvitationStory5 from '../../components/invitationTemplate/story/invitationStory5/invitationStory5';
-import InvitationWedding1 from '../../components/invitationTemplate/wedding/invitationWedding1/invitationWedding1';
+import ModalContainer from '../../components/invitationTemplate/modalContainer/modalContainer';
 
 
 const Invitation = () => {
@@ -21,6 +16,7 @@ const Invitation = () => {
   const [x, setX] = useState(0);
 
   const [modalState, setModalState] = useState(false);
+  const [selectedStoryNumber, setSelectedStoryNumber] = useState(0);
 
   
   useEffect(() => {
@@ -66,6 +62,7 @@ const Invitation = () => {
           setX={setX}
           setModalState={setModalState}
           modalState={modalState}
+          setSelectedStoryNumber={setSelectedStoryNumber}
         />
         <Characters 
           charactersData={invitationData.character} 
@@ -73,16 +70,17 @@ const Invitation = () => {
           setX={setX}
         />
       </div>
-      <div className={styles.test}>
-        {/* <InvitationStory1 /> */}
-        {/* <InvitationStory2 /> */}
-        {/* <InvitationStory3 /> */}
-        {/* <InvitationStory4 /> */}
-        {/* <InvitationStory5 /> */}
-        <InvitationWedding1 />
-
-
-      </div>
+      {
+        modalState
+        &&
+        <div className={styles['modal-container']}>
+          <ModalContainer 
+            setModalState={setModalState}
+            invitationData={invitationData}
+            selectedStoryNumber={selectedStoryNumber}
+          />
+        </div>
+      }
     </div>
     :
     <div>완성된 청첩장이 없습니다.</div>

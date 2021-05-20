@@ -2,16 +2,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styles from './App.module.css';
 
-import Jaehyuk from './pages/jaehyuk';
 import Jiyoung from './pages/jiyoung';
 import Jiyoung2 from './pages/jiyoung2';
-import Sungjoon from './pages/sungjoon';
 
 import SignUp from './pages/signUp/signUp';
 import SignIn from './pages/signIn/signIn';
 import MyStoryBoard from './pages/myStoryBoard/myStoryBoard';
 import StoryBoard from './pages/storyBoard/storyBoard';
-import Character from './pages/characterPage'
 import Invitation from './pages/invitation/invitation';
 
 const App = () => {
@@ -21,9 +18,7 @@ const App = () => {
       <Switch>
         <Route path="/jiyoung" component={Jiyoung} exact />
         <Route path="/jiyoung2" component={Jiyoung2} exact />
-        <Route path="/jaehyuk" component={Jaehyuk} exact />
-        <Route path="/characterPage" component={Character} exact />
-        <Route path="/sungjoon" component={Sungjoon} exact />
+        
         
         <Route path="/" component={SignIn} exact />
         

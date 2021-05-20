@@ -3,7 +3,7 @@
   width: 1400px;
   height: 750px;
   padding: 50px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.479);
   border: 7px solid;
   border-color: #e2d0d2;
   border-radius: 20px;
@@ -95,7 +95,7 @@
   width: 700px;
   height: 300px;
   border-radius: 30px;
-  background-color: #f6f6e3;
+  background-color: #ebdedff5;
   position: relative;
 }
 
@@ -106,25 +106,28 @@
   background-color: transparent;
   border: none;
   font-size: 30px;
-  color: #e79b09;
+  color: #be4852f5;
 }
 
 .text1 {
-  /* text-align: center; */
-  /* justify-content: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 100%;
   height: 100%;
   border: none;
   border-radius: 30px;
-  padding: 30px 30px 30px 30px;
-  font-size: 47px;
+  padding: 50px;
+  font-size: 24px;
+  line-height: 50px;
   font-weight: bold;
   resize: none;
   overflow: hidden;
-  /* color: #c97e0e; */
+  color: #444444;
   background-color: transparent;
 }
 
 .text1:focus {
-  border: 3px solid #ffa600;
+  border: 3px solid #be4852f5;
 }

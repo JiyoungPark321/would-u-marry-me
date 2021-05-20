@@ -1,4 +1,5 @@
 .invitation-story2 {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +7,7 @@
   height: 750px;
   border: 7px solid #e2d0d2;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.938);
+  background-color: #efefef98;
 }
 
 .cancel-button {
@@ -15,15 +16,37 @@
   right: 20px;
   font-size: 2rem;
   color: #444444;
+  z-index: 3;
 }
 
 .cancel-button:hover {
   color: #c87575;
 }
 
+.image1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  z-index: 1;
+}
+
 .text1-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   width: 650px;
   height: 320px;
-  background-color: #f6f6e3b2;
+  background-color: #6262627e;
   border-radius: 30px;
+  z-index: 2;
+
+  font-size: 24px;
+  line-height: 50px;
+  font-weight: bold;
+  color: white;
+  resize: none;
+  overflow: hidden;
 }

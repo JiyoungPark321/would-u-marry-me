@@ -4,7 +4,7 @@
   height: 750px;
   border: solid 7px #e2d0d2;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.479);
+  background-color: rgba(255, 255, 255, 0.575);
   padding: 50px;
 }
 
@@ -21,18 +21,21 @@
 }
 
 .text1-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   width: 113px;
   height: 100%;
-
-  /* 삭제해야할 부분 */
-  border: 5px solid blue;
-
-  /* 필요할 것 같은 코드 */
-  /* text-align: center;
-  font-size: 47px;
+  font-size: 45px;
   font-weight: bold;
+  font-style: italic;
+  line-height: 60px;
+  color: #664719;
+
   resize: none;
-  overflow: hidden; */
+  overflow: hidden;
 }
 
 .image1-container {
@@ -46,6 +49,12 @@
   z-index: 2;
 }
 
+.image1 {
+  width: 400px;
+  height: 420px;
+  border-radius: 30px;
+}
+
 .image2-container {
   position: absolute;
   bottom: 30px;
@@ -57,6 +66,12 @@
   z-index: 3;
 }
 
+.image2 {
+  width: 344px;
+  height: 318px;
+  border-radius: 30px;
+}
+
 .image3-container {
   position: absolute;
   top: 30px;
@@ -66,4 +81,10 @@
   border-radius: 30px;
   background-color: #efefef;
   z-index: 1;
+}
+
+.image3 {
+  width: 850px;
+  height: 600px;
+  border-radius: 30px;
 }

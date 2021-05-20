@@ -3,7 +3,7 @@
   position: relative;
   width: 1400px;
   height: 750px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.575);
   border: 7px solid #e2d0d2;
   border-radius: 20px;
 }
@@ -28,15 +28,16 @@
 .text1 {
   width: 240px;
   height: 240px;
+  padding: 50px;
+  border: none;
   border-radius: 50%;
   background-color: transparent;
-  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 50px;
+  color: #64595d;
   resize: none;
   overflow: hidden;
-  font-size: 40px;
-  padding: 55px 50px 20px 50px;
-  color: #7d7a7b;
-  font-weight: bold;
 }
 
 .text1:focus {
@@ -52,7 +53,7 @@
   height: 28px;
   background-color: transparent;
   border: none;
-  font-size: 30px;
+  font-size: 25px;
   color: #e79b09;
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styles from './spots.module.css';
 import SpotsNotice from './spotsNotice';
 
-const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState }) => {
+const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState, setSelectedStoryNumber }) => {
 
   const spotsSlider = useRef(null);
   
@@ -25,12 +25,14 @@ const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState })
       >
         {/* <SpotsNotice /> */}
         {
-          storiesData.map(story => {
+          storiesData.map((story, index) => {
             return (
               <div className={styles['spot-container']}>
                 <SpotsNotice 
                   setModalState={setModalState}
                   modalState={modalState}
+                  setSelectedStoryNumber={setSelectedStoryNumber}
+                  storyNumber={index}
                 />
                 <img 
                   src={story.spot.imgUrl} 
@@ -45,6 +47,8 @@ const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState })
           <SpotsNotice 
             setModalState={setModalState}
             modalState={modalState}
+            setSelectedStoryNumber={setSelectedStoryNumber}
+            storyNumber={5}
           />
           <img 
             src={weddingData.spot.imgUrl} 

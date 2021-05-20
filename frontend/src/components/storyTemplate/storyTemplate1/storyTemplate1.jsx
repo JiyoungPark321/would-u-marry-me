@@ -16,12 +16,12 @@ const StoryTemplate1 = ({ image1, setImage1, image2, setImage2, text1, setText1,
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 95;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
       let currentByte = value.charCodeAt(i);
-      (96 < currentByte && currentByte < 123) ? totalByte += 0.85 : totalByte++
+      (96 < currentByte && currentByte < 123) ? totalByte += 0.5 : totalByte++
       if (totalByte > maxByte) {
         break;
       }
@@ -33,7 +33,7 @@ const StoryTemplate1 = ({ image1, setImage1, image2, setImage2, text1, setText1,
   const handleText2 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 95;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
@@ -166,6 +166,7 @@ const StoryTemplate1 = ({ image1, setImage1, image2, setImage2, text1, setText1,
               id="st1-text1-id"
               onChange={handleText1}
               value={text1}
+              rows={4}
             />
             <label 
               className={styles["text-icon"]}

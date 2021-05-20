@@ -19,7 +19,7 @@ const StoryTemplate4 = ({ image1, setImage1, image2, setImage2, image3, setImage
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 16;
+    let maxByte = 15;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
