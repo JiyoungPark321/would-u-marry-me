@@ -2,10 +2,7 @@ package com.ssafy.wouldUmarryme.marry.weddingcard.controller;
 
 import com.ssafy.wouldUmarryme.marry.account.domain.Account;
 import com.ssafy.wouldUmarryme.marry.common.annotation.CurrentAccount;
-import com.ssafy.wouldUmarryme.marry.weddingcard.dto.CreateWeddingCardRequest;
-import com.ssafy.wouldUmarryme.marry.weddingcard.dto.InputWeddingCardRequest;
-import com.ssafy.wouldUmarryme.marry.weddingcard.dto.RetrieveWeddingCardRequest;
-import com.ssafy.wouldUmarryme.marry.weddingcard.dto.TemplateNumberRequest;
+import com.ssafy.wouldUmarryme.marry.weddingcard.dto.*;
 import com.ssafy.wouldUmarryme.marry.weddingcard.service.WeddingCardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,11 +31,32 @@ public class WeddingCardController {
         return response;
     }
 
-    @PutMapping
-    @ApiOperation(value = "청첩장 값 넣기")
-    public Object insert(@Valid @ApiParam(value="웨딩카드 Id 필요",required = false)
-                               @ModelAttribute InputWeddingCardRequest inputWeddingCardRequest,@RequestParam(value = "weddingImage1",required = false) MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
-        Object response = weddingCardService.inputCard(inputWeddingCardRequest,weddingImage1,account);
+    @PutMapping("/template1")
+    @ApiOperation(value = "청첩장 1번 템플릿 값 넣기")
+    public Object insert1(@Valid @ApiParam(value="웨딩카드 Id 필요",required = false)
+                               @ModelAttribute InputWeddingCard1Request inputWeddingCard1Request, @RequestParam(value = "weddingImage1",required = false) MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard1(inputWeddingCard1Request,weddingImage1,account);
+        return response;
+    }
+    @PutMapping("/template2")
+    @ApiOperation(value = "청첩장 2번 템플릿 값 넣기")
+    public Object insert2(@Valid @ApiParam(value="웨딩카드 Id 필요",required = false)
+                         @ModelAttribute InputWeddingCard2Request inputWeddingCard2Request, @RequestParam(value = "weddingImage1",required = false) MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard2(inputWeddingCard2Request,weddingImage1,account);
+        return response;
+    }
+    @PutMapping("/template3")
+    @ApiOperation(value = "청첩장 3번 템플릿 값 넣기")
+    public Object insert3(@Valid @ApiParam(value="웨딩카드 Id 필요",required = false)
+                         @ModelAttribute InputWeddingCard3Request inputWeddingCard3Request, @RequestParam(value = "weddingImage1",required = false) MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard3(inputWeddingCard3Request,weddingImage1,account);
+        return response;
+    }
+    @PutMapping("/template4")
+    @ApiOperation(value = "청첩장 4번 템플릿 값 넣기")
+    public Object insert4(@Valid @ApiParam(value="웨딩카드 Id 필요",required = false)
+                         @ModelAttribute InputWeddingCard4Request inputWeddingCard4Request, @RequestParam(value = "weddingImage1",required = false) MultipartFile weddingImage1 , @ApiIgnore @CurrentAccount Account account) throws IOException {
+        Object response = weddingCardService.inputCard4(inputWeddingCard4Request,weddingImage1,account);
         return response;
     }
 
