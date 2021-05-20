@@ -32,10 +32,8 @@
   height: 800px;
 }
 
-/* test */
-
 .modal-container {
   position: absolute;
-  top: 160px;
-  left: 300px;
+  top: 200px;
+  left: 350px;
 }
