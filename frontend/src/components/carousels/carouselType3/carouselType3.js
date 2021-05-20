@@ -18,6 +18,7 @@ SwiperCore.use([EffectFlip, Pagination, Navigation]);
 const CarouselType3 = ({ setCharacterId }) => {
 
   const [characterData, setCharacterData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   useEffect(() => {
     api.get('character', {
@@ -55,15 +56,17 @@ const CarouselType3 = ({ setCharacterId }) => {
           className={styles['swiper-container']}>
           <div className={styles['swiper-wrapper']}>
           {
-            characterData.map((data) => {
+            characterData.map((data, index) => {
               return (
                 <SwiperSlide
                   className={styles['swiper-slide']}
                   key={data.id}
                 > 
                   <div 
-                    className={styles['img-container']}
-                    onClick={() => {choiceCharacter(data.id)}}
+                    className={`${styles['img-container']} ${index === selectedIndex ? styles.selected : ''}`}
+                    onClick={() => {choiceCharacter(data.id)
+                      setSelectedIndex(index);
+                    }}
                   >
                     <img 
                       src={data.coupleUrl} 

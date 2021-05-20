@@ -17,6 +17,7 @@ SwiperCore.use([EffectCoverflow, Pagination, Navigation]);
 const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
 
   const [backgroundData, setBackgroundData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   useEffect(() => {
     api.get('/background', {
@@ -36,7 +37,6 @@ const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
     setBackgroundUrl(backgroundImgUrl);
     setBackgroundId(backgroundImgId);
   };
-
 
 
   return (
@@ -64,7 +64,7 @@ const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
         >
           <div className={styles['swiper-wrapper']}>
             {
-              backgroundData.map((data) => {
+              backgroundData.map((data, index) => {
                 return (
                   <SwiperSlide
                     className={styles['swiper-slide']}
@@ -73,8 +73,10 @@ const CarouselType1 = ({ setBackgroundUrl, setBackgroundId }) => {
                     <div className={styles['img-container']}>
                       <img 
                         src={data.backgroundImgUrl} 
-                        className={styles['background-img']}
-                        onClick={() => {choiceBackground(data.backgroundImgUrl, data.id);}}
+                        className={`${styles['background-img']} ${index === selectedIndex ? styles.selected : ''}`}
+                        onClick={() => {choiceBackground(data.backgroundImgUrl, data.id);
+                          setSelectedIndex(index);
+                        }}
                       />
                     </div>
                   </SwiperSlide>
