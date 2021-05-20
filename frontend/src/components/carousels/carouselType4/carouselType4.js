@@ -17,6 +17,8 @@ SwiperCore.use([Pagination, Navigation]);
 const CarouselType4 = ({ setSpotId }) => {
 
   const [placeData, setPlaceData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
 
   useEffect(() => {
     api.get('/spot',{
@@ -56,17 +58,19 @@ const CarouselType4 = ({ setSpotId }) => {
           // speed={10}
           className={styles['swiper']}>
           {
-            placeData.map((data) => {
+            placeData.map((data, index) => {
               return (
                 <SwiperSlide
                   className={styles['swiper-slide']}
                   key={data.id}
                 >
-                  <div className={styles['place-img-container']}>
+                  <div className={`${styles['place-img-container']} ${index === selectedIndex ? styles.selected : ''}`}>
                   <img 
                     src={data.imgUrl} 
                     className={styles['place-img']}
-                    onClick={() => {choiceSpot(data.id)}}
+                    onClick={() => {choiceSpot(data.id)
+                      setSelectedIndex(index);
+                    }}
                   />
                   </div>
                 </SwiperSlide>
