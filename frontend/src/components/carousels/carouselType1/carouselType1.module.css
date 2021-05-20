@@ -21,6 +21,7 @@
   cursor: pointer;
 }
 
-.choice {
-  background-color: red;
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+  border-radius: 20px;
 }
