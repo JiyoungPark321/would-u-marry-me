@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import styles from './invitation.module.css';
 
 import MusicInfo from '../../components/musicInfo/musicInfo';
@@ -10,7 +10,10 @@ import ModalContainer from '../../components/invitationTemplate/modalContainer/m
 
 
 const Invitation = () => {
-  const { id } = useParams();
+  
+  const history = useHistory()
+
+  const { userName, id } = useParams();
 
   const [invitationData, setInvitationData] = useState(null);
   const [x, setX] = useState(0);
@@ -20,11 +23,7 @@ const Invitation = () => {
 
   
   useEffect(() => {
-    api.get(`/storyboard/${id}`, {
-      headers: {
-        Authorization: localStorage.getItem("jwt")
-      }
-    })
+    api.get(`/storyboard/guest/${id}`)
       .then((res) => {
         setInvitationData(res.data.data);
         console.log(res.data.data);
@@ -33,6 +32,7 @@ const Invitation = () => {
         console.error(err);
       })
   },[]);
+
 
   return (
     invitationData 
@@ -47,6 +47,7 @@ const Invitation = () => {
           src="/images/icon3.png" 
           alt="" 
           className={styles['logo3-img']}
+          onClick={() => {history.push(`/${userName}/storyboard`);}}
         />
         <img 
           src="/images/letter1.png" 

@@ -29,3 +29,8 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+  border-radius: 20px;
+}

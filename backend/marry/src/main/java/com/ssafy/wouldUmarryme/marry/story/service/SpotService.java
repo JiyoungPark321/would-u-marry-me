@@ -33,7 +33,7 @@ public class SpotService {
     }
 
     public Object createSpot(MultipartFile image) throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(image,"spot");
+        String imgName = awsS3Service.uploadProfileImage(image,"spot",Long.parseLong("1"));
         String imgUrl =  "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
         Spot spot = Spot.builder()
                 .spotName(imgName)

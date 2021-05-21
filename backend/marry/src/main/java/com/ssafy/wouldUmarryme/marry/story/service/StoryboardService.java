@@ -77,4 +77,14 @@ public class StoryboardService {
         storyBoardRepository.deleteByIdAndAccount(id,account);
         return makeResponse("200",null,"success",HttpStatus.OK);
     }
+
+    public Object getGuestDetail(long id) {
+        Optional<Storyboard> storyboard = storyBoardRepository.findById(id);
+        if(storyboard.isEmpty()){
+            return makeResponse("400", null, "fail : storyboard를 찾을 수 없음", HttpStatus.NOT_FOUND);
+        }
+        else{
+            return makeResponse("200", storyboard.get(), "success", HttpStatus.OK);
+        }
+    }
 }

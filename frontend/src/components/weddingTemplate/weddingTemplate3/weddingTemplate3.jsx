@@ -31,38 +31,10 @@ const WeddingTemplate3 = ({
   const [searchExist, setSearchExist] = useState(0);
   
 
-  // const sendWedding3 = () => {
-  //   let data = new FormData();
-  //   data.append("cardId", 3)
-  //   data.append("cardImg", imgFile)
-  //   data.append("cardDate", date)
-  //   data.append("cardFirstComment", null)
-  //   data.append("cardSecondComment", null)
-  //   data.append("cardTime", time)
-  //   data.append("cardPlace", place)
-  //   data.append("placeName", mapPlace)
-  //   data.append("x", mapX)
-  //   data.append("y", mapY)
-  //   data.append("cardManPhone", manPhoneNumber)
-  //   data.append("cardManAccountNumber", manAccountNumber)
-  //   data.append("cardWomanPhone", womanPhoneNumber)
-  //   data.append("cardWomanAccountNumber", womanAccountNumber)
-  //   api
-  //   .put("/weddingcard", data, {
-  //     headers: { Authorization: localStorage.getItem("jwt") },
-  //   })
-  //   .then((res) => {
-  //     // wedding template 컴포넌트 끄는 bind함수?
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // }
-
   const handleText1 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 30;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i
@@ -79,7 +51,7 @@ const WeddingTemplate3 = ({
   const handleText2 = (e) => {
     const value = e.target.value;
     let totalByte = 0;
-    let maxByte = 20;
+    let maxByte = 270;
     let lastIndex = 0
     for (let i = 0; i < value.length; i++) {
       lastIndex = i

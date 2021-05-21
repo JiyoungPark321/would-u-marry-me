@@ -39,7 +39,7 @@ public class CharacterService {
     }
 
     public Object createCharacter(String name,MultipartFile image)throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(image,"character");
+        String imgName = awsS3Service.uploadProfileImage(image,"character",Long.parseLong("1"));
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" +imgName;
         Character character = Character.builder()
                 .coupleName(name)

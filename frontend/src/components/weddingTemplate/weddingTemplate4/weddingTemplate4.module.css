@@ -4,7 +4,7 @@
 
 .input-area1 {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.698);
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border: 7px solid #daa744;
@@ -31,12 +31,14 @@
   height: 100%;
   border: none;
   border-radius: 30px;
-  padding: 30px 30px 30px 30px;
+  padding: 25px 30px;
   font-size: 12px;
-  resize: none;
-  overflow: hidden;
+  line-height: 30px;
   color: #534221;
   background-color: transparent;
+
+  resize: none;
+  overflow: hidden;
 }
 
 .text1:focus {
@@ -56,7 +58,7 @@
 
 .title-text {
   font-size: 18px;
-  color: #4d2d2d;
+  color: #444444;
   font-weight: bold;
   margin-bottom: 35px;
 }
@@ -67,7 +69,7 @@
   align-items: center;
   font-size: 16px;
   font-weight: bold;
-  color: #59b0ab;
+  color: #488f8b;
 }
 
 .info-man-title {
@@ -94,7 +96,9 @@
   border: 3px solid #59b0ab;
   border-radius: 8px;
   padding-left: 10px;
-  color: #9bd2cf;
+  color: #488f8b;
+  font-weight: 500;
+  text-align: center;
 }
 
 .info-man-text::placeholder {
@@ -107,7 +111,7 @@
   align-items: center;
   font-size: 16px;
   font-weight: bold;
-  color: #c660c2;
+  color: #ad2ea9;
 }
 
 .info-woman-title {
@@ -133,7 +137,9 @@
   border: 3px solid #c660c2;
   border-radius: 8px;
   padding-left: 10px;
-  color: #e7a1e4;
+  color: #ad2ea9;
+  font-weight: 500;
+  text-align: center;
 }
 
 .info-woman-text::placeholder {
@@ -141,7 +147,7 @@
 }
 
 .input-area2 {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.698);
   border: 7px solid #daa744;
   border-left: transparent;
   border-top-right-radius: 30px;
@@ -170,7 +176,8 @@
   height: 100%;
   border: none;
   border-radius: 30px;
-  padding: 0px 40px 0px 40px;
+  padding: 0px 60px 0px 60px;
+  text-align: center;
   font-size: 15px;
   line-height: 40px;
   font-weight: bold;

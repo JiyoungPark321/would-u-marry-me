@@ -17,6 +17,7 @@
   width: 100px;
   height: 100px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .letter1-img {
@@ -32,10 +33,8 @@
   height: 800px;
 }
 
-/* test */
-
 .modal-container {
   position: absolute;
-  top: 160px;
-  left: 300px;
+  top: 180px;
+  left: 270px;
 }

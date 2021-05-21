@@ -16,6 +16,8 @@ SwiperCore.use([Navigation]);
 const CarouselType6 = ({ setWeddingTemplateId }) => {
 
   const [weddingTemplateData, setWeddingTemplateData] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
 
   useEffect(() => {
     api.get('/weddingcardtemplate', {
@@ -56,7 +58,7 @@ const CarouselType6 = ({ setWeddingTemplateId }) => {
           className={styles['swiper-container']}>
           <div className={styles['swiper-wrapper']}>
           {
-            weddingTemplateData.map((data) => {
+            weddingTemplateData.map((data, index) => {
               return (
                 <SwiperSlide
                   className={styles['swiper-slide']}
@@ -65,8 +67,10 @@ const CarouselType6 = ({ setWeddingTemplateId }) => {
                   <div className={styles['img-container']}>
                     <img 
                       src={data.imgUrl} 
-                      className={styles['template-img']}
-                      onClick={()=> {choiceWeddingTemplate(data.id)}}
+                      className={`${styles['template-img']} ${index === selectedIndex ? styles.selected : ''}`}
+                      onClick={()=> {choiceWeddingTemplate(data.id)
+                        setSelectedIndex(index);
+                      }}
                     />
                   </div>
                 </SwiperSlide>

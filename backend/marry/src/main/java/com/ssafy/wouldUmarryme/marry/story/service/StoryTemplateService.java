@@ -40,7 +40,7 @@ public class StoryTemplateService {
     }
 
     public Object createTemplate(MultipartFile image) throws IOException {
-        String imgName = awsS3Service.uploadProfileImage(image,"storytemplate");
+        String imgName = awsS3Service.uploadProfileImage(image,"storytemplate",Long.parseLong("1"));
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imgName;
         StoryTemplate storyTemplate = StoryTemplate.builder()
                 .imgName(imgName)

@@ -48,7 +48,7 @@ public class WeddingCardTemplateService {
     }
 
     public Object createWeddingCardTemplate(MultipartFile image) throws IOException {
-        String imaName = awsS3Service.uploadProfileImage(image, "weddingcardtemplate");
+        String imaName = awsS3Service.uploadProfileImage(image, "weddingcardtemplate",Long.parseLong("1"));
         String imgUrl = "https://" + awsS3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + imaName;
         WeddingCardTemplate weddingCardTemplate = WeddingCardTemplate.builder()
                 .imageName(imaName)
