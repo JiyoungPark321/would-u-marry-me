@@ -10,7 +10,7 @@ const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState, s
     console.log(storiesData);
     console.log(weddingData);
     console.log(spotsSlider.current.style.left);
-    spotsSlider.current.style.left = `${12 - (x)}rem`;
+    spotsSlider.current.style.left = `${12 - (x / 2)}rem`;
   },[])
 
 
@@ -20,7 +20,7 @@ const Spots = ({ storiesData, weddingData, x, setX, setModalState, modalState, s
         className={styles['spots-slider']}
         ref={spotsSlider}
         style={{
-          left: `${12 - (x)}rem`,
+          left: `${12 - (x / 2)}rem`,
         }}
       >
         {/* <SpotsNotice /> */}
