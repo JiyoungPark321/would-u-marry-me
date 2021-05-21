@@ -53,19 +53,19 @@
 
 - 총 6 Step의 story가 존재하며, 각 story마다 템플릿을 정하고 예비 신랑, 신부님의 이야기를 풀어갈 수 있습니다.
 
-  - 5 Step의 Story 템플릿이 존재합니다.
+  - 5 Step의 Story 템플릿이 존재합니다. 
 
-    ![스토리템플릿](https://user-images.githubusercontent.com/58461395/119057863-3a90b980-ba08-11eb-81c5-adcf5d78702e.gif)
+    ![스토리템플릿neww](https://user-images.githubusercontent.com/58461395/119066551-fa870200-ba1a-11eb-9c55-8414915e5c6f.gif)
 
   - 1 Step의 Wedding 템플릿이 존재합니다.
 
-  ![웨딩템플릿](https://user-images.githubusercontent.com/58461395/119057115-d7eaee00-ba06-11eb-858a-ba3533714130.gif)
+    ![웨딩newnew](https://user-images.githubusercontent.com/58461395/119066712-5d789900-ba1b-11eb-9a63-2333aa3c68f2.gif)
 
 2. 완성된 청첩장
 
 - 선택한 배경, 음악, 캐릭터를 이용한 청첩장이 완성됩니다.
 
-![완성된 청첩장](https://user-images.githubusercontent.com/58461395/119058356-35803a00-ba09-11eb-9651-627a667cdbbf.gif)
+  ![완성본new](https://user-images.githubusercontent.com/58461395/119066827-9dd81700-ba1b-11eb-9259-1e211e64c755.gif)
 
 3. 카카오톡 공유하기
 
