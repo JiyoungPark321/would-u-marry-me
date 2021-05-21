@@ -53,7 +53,7 @@
 
 - 총 6 Step의 story가 존재하며, 각 story마다 템플릿을 정하고 예비 신랑, 신부님의 이야기를 풀어갈 수 있습니다.
 
-  - 5 Step의 Story 템플릿이 존재합니다. 
+  - 5 Step의 Story 템플릿이 존재합니다.
 
     ![스토리템플릿neww](https://user-images.githubusercontent.com/58461395/119066551-fa870200-ba1a-11eb-9c55-8414915e5c6f.gif)
 
