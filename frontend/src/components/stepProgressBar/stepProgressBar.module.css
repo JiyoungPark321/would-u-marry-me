@@ -1,0 +1,52 @@
+.step-progress-bar {
+  display: flex;
+  align-items: center;
+  height: 55px;
+}
+
+.step-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #b59d4b;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border: solid 5px #b59d4b;
+  border-radius: 50px;
+}
+
+.current-step {
+  background-color: #fffbd8;
+  color: #b59d4b;
+  -webkit-animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    background-color: #b59d4b;
+    color: white;
+  }
+  50% {
+    background-color: white;
+    color: #b59d4b;
+  }
+  100% {
+    background-color: #b59d4b;
+    color: white;
+  }
+}
+
+.save-step {
+  background-color: #b59d4b;
+  color: white;
+}
+
+.step-line {
+  display: flex;
+  width: 40px;
+  height: 5px;
+  background-color: #b59d4b;
+}

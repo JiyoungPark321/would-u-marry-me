@@ -1,0 +1,294 @@
+.template-box {
+  display: flex;
+}
+
+.input-area1 {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: 7px solid #daa744;
+  width: 700px;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.input-area1-area1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.input-area1-area2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-box1 {
+  position: relative;
+  width: 640px;
+  height: 370px;
+  background-color: #f6f6e3b9;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.text1 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 35px;
+  resize: none;
+  overflow: hidden;
+  color: #534221;
+  background-color: transparent;
+}
+
+.text-box2 {
+  position: relative;
+  width: 640px;
+  height: 200px;
+  background-color: #f6f6e3b9;
+  border-radius: 30px;
+}
+
+.text2 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 30px;
+  resize: none;
+  overflow: hidden;
+  color: #31250d;
+  background-color: transparent;
+}
+
+.text-button {
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  background-color: transparent;
+  border: none;
+  z-index: 1;
+  font-size: 25px;
+  color: #e79b09;
+}
+
+.text1:focus,
+.text2:focus {
+  border: 3px solid #ffa600;
+}
+
+.date-button {
+  width: 640px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 3px solid #9d9595;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: #af9d9f;
+  margin: 10px;
+}
+
+.date-input-box {
+  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9d9595;
+  text-align: center;
+  font-size: 14px;
+  background-color: transparent;
+  width: 20%;
+  height: 100%;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  font-size: 18px;
+}
+
+.date-input-box-on {
+  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+  background-color: #af9d9f;
+}
+
+.date-input-on {
+  border: none;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  background-color: transparent;
+  width: 20%;
+  height: 100%;
+}
+
+.date-input-on::-webkit-calendar-picker-indicator {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.date-input2 {
+  border: none;
+  font-weight: bold;
+  color: #9d9595;
+  text-align: center;
+  font-size: 15px;
+  background-color: transparent;
+  width: 20%;
+  height: 100%;
+  margin-left: 0px;
+}
+
+.date-input2::-webkit-calendar-picker-indicator {
+  margin-left: -5px;
+  font-size: 22px;
+}
+
+.date-input2-on {
+  border: none;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  background-color: transparent;
+  width: 20%;
+  height: 100%;
+  margin-left: 0px;
+}
+
+.date-input2-on::-webkit-calendar-picker-indicator {
+  margin-left: -5px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.date-input3 {
+  border: none;
+  font-weight: bold;
+  color: #9d9595;
+  text-align: center;
+  font-size: 14px;
+  background-color: transparent;
+  width: 80%;
+  height: 100%;
+}
+
+.date-input3-on {
+  border: none;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  background-color: transparent;
+  width: 80%;
+  height: 100%;
+}
+
+.date-input3-on::placeholder {
+  color: white;
+}
+
+.title-text {
+  font-size: 16px;
+  color: #4d2d2d;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.title-icon {
+  font-size: 10px;
+  color: #4d2d2d;
+  margin-bottom: 40px;
+}
+
+.input-area2 {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 7px solid #daa744;
+  border-left: transparent;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+  width: 700px;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.input-area2-area1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-evenly; */
+}
+
+.map-box {
+  position: relative;
+  width: 640px;
+  height: 220px;
+  background-color: #dad4e9b9;
+  border-radius: 30px;
+  margin-bottom: 60px;
+}
+
+.map-icon {
+  font-size: 25px;
+  color: #a22bb6;
+}
+
+.map-component {
+  position: fixed;
+  width: 612px;
+  height: 500px;
+  top: 50%;
+  right: 50%;
+  margin-top: -250px;
+  margin-right: -306px;
+  z-index: 2;
+}
+
+.map-serached {
+  position: relative;
+  display: flex;
+  background-color: #efebfc;
+  width: 640px;
+  height: 220px;
+  border-radius: 30px;
+  margin-bottom: 60px;
+}
+
+.date-input {
+  border: none;
+  font-weight: bold;
+  color: #9d9595;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+}

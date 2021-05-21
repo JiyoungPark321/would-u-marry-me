@@ -1,0 +1,135 @@
+.invitation-wedding4 {
+  position: relative;
+  display: flex;
+  width: 1400px;
+  height: 750px;
+  border: solid 7px #daa744;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.842);
+}
+
+.cancel-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  color: #444444;
+}
+
+.cancel-button:hover {
+  color: #a17f3b;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-right: solid 7px #daa744;
+  height: 100%;
+  width: 50%;
+  padding: 10px;
+}
+
+.text1-container {
+  width: 100%;
+  height: 260px;
+
+  font-weight: bold;
+  line-height: 30px;
+  color: #534221;
+
+  resize: none;
+  overflow: hidden;
+}
+
+.thanks {
+  font-size: 18px;
+  font-weight: bold;
+  color: #444444;
+  margin-bottom: 50px;
+}
+
+.groom {
+  font-size: 16px;
+  font-weight: 900;
+  color: #3d7a77;
+  margin-bottom: 20px;
+}
+
+.groom-phone-number-container,
+.groom-account-number-container {
+  width: 100%;
+  height: 35px;
+  font-weight: 500;
+  color: #3d7a77;
+}
+
+.groom-account-number-container {
+  margin-bottom: 30px;
+}
+
+.bride {
+  font-size: 16px;
+  font-weight: 900;
+  color: #ad2ea9;
+  margin-bottom: 20px;
+}
+
+.bride-phone-number-container,
+.bride-account-number-container {
+  width: 100%;
+  height: 35px;
+  font-weight: 500;
+  color: #ad2ea9;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+  padding: 50px;
+}
+
+.text2-container {
+  width: 100%;
+  height: 40px;
+
+  font-size: 15px;
+  font-weight: bold;
+  color: #745315;
+
+  resize: none;
+  overflow: hidden;
+}
+
+.image1-container,
+.image1 {
+  width: 100%;
+  height: 530px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.date-and-time,
+.place {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #745315;
+}
+
+.date {
+  margin-right: 20px;
+}

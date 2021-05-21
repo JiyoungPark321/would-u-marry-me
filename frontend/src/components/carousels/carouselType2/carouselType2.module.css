@@ -1,0 +1,50 @@
+.swiper-container {
+  width: 700px;
+  padding: 100px;
+  --swiper-navigation-size: 3rem;
+  --swiper-navigation-color: #444444;
+  --swiper-pagination-color: #444444;
+}
+
+.swiper-slide {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.album-img {
+  width: 500px;
+  height: 500px;
+  cursor: pointer;
+}
+
+.about-music-container {
+  position: absolute;
+  top: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 3em;
+}
+
+.info-container {
+  display: flex;
+  margin-bottom: 1.5em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #444444;
+}
+
+.title {
+  margin-right: 0.5em;
+}
+
+.divider {
+  margin-right: 0.5em;
+}
+
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+}

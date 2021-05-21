@@ -1,0 +1,38 @@
+.story-board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+  background-color: #e7d5d8;
+  padding: 15px 30px 15px 30px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom {
+  display: flex;
+}
+
+.prev-button {
+  width: 50%;
+}
+
+.none {
+  visibility: hidden;
+}
+
+.next-button {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50%;
+}

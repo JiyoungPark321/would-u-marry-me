@@ -1,0 +1,20 @@
+.intro {
+  width: 75rem;
+  height: 675px;
+  border: solid #e2d0d2 6px;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+
+  font-size: 30px;
+  font-weight: 900;
+  color: #b29ea0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-gif-file {
+  width: 98%;
+  height: 96%;
+  border-radius: 15px;
+}

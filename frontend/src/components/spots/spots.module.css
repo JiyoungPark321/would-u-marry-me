@@ -1,0 +1,28 @@
+.spots-container {
+  /* border: 5px solid black; */
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.spots-slider {
+  /* border: 5px solid red; */
+
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  height: 800px;
+
+  display: flex;
+}
+
+.spot-container {
+  margin: 0 350px;
+}
+
+.spot-img {
+  width: 500px;
+  height: 500px;
+}

@@ -1,0 +1,36 @@
+.swiper-container {
+  width: 1600px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+
+  --swiper-navigation-size: 3rem;
+  --swiper-navigation-color: #444444;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc((1600px - 30px) / 2);
+  height: calc((700px - 30px) / 2);
+}
+
+.img-container {
+  width: 700px;
+  height: 335px;
+  border-radius: 20px;
+  background-color: #44444486;
+}
+
+.template-img {
+  width: 700px;
+  height: 335px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 5px solid rgb(255, 85, 156);
+  border-radius: 20px;
+}

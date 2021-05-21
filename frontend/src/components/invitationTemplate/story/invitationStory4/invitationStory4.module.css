@@ -1,0 +1,91 @@
+.invitation-story4 {
+  position: relative;
+  width: 1400px;
+  height: 750px;
+  border: solid 7px #e2d0d2;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.575);
+  padding: 50px;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: #444444;
+}
+
+.cancel-button:hover {
+  color: #c87575;
+}
+
+.text1-container {
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 30px;
+  left: 300px;
+  width: 240px;
+  height: 240px;
+  padding: 50px;
+  border-radius: 50%;
+  background-color: #f6f6e3;
+
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 50px;
+  color: #64595d;
+
+  resize: none;
+  overflow: hidden;
+}
+
+.image1-container {
+  position: absolute;
+  top: 230px;
+  left: 65px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background-color: #e7d9d9;
+}
+
+.image1 {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+}
+
+.image2-container {
+  position: absolute;
+  bottom: 36px;
+  left: 297px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-color: #e2f4e2;
+}
+
+.image2 {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+}
+
+.image3-container {
+  position: absolute;
+  top: 45px;
+  right: 70px;
+  width: 710px;
+  height: 650px;
+  border-radius: 50%;
+  background-color: #d4eae7;
+}
+
+.image3 {
+  width: 710px;
+  height: 650px;
+  border-radius: 50%;
+}

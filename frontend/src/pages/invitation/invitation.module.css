@@ -1,0 +1,40 @@
+.invitation-container {
+  background: center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+  background-color: #e7d5d8;
+  padding: 20px;
+}
+
+.top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* height: 140px; */
+}
+
+.logo3-img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.letter1-img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 94px;
+  right: 42px;
+}
+
+.middle {
+  position: relative;
+  height: 800px;
+}
+
+.modal-container {
+  position: absolute;
+  top: 180px;
+  left: 270px;
+}

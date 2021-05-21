@@ -1,0 +1,48 @@
+.music-info {
+  display: flex;
+  width: 35rem;
+  border: solid 3px #444444;
+  border-left: none;
+  border-right: none;
+  padding: 1.1em;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #444444;
+}
+
+.album-container {
+  flex: 2.2;
+  width: 5rem;
+  height: 5rem;
+}
+
+.album-image {
+  width: 5rem;
+  height: 5rem;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 6.5;
+}
+
+.volume-controller-button {
+  font-size: 2.5rem;
+  flex: 1;
+  color: #444444;
+}
+
+.volume-on-icon {
+  display: none;
+}
+
+.volume-off-icon {
+  display: none;
+}
+
+.color-white {
+  color: rgb(248, 240, 240);
+  border-color: rgb(248, 240, 240);
+}

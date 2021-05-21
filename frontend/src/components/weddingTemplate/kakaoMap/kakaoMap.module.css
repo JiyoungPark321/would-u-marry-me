@@ -1,0 +1,19 @@
+.map {
+  width: 578px;
+  height: 399px;
+  border-radius: 10px;
+}
+.map-searched {
+  /* position: absolute; */
+  position: relative;
+  display: block;
+  /* display: inline-block; */
+  /* width: 612px;
+  height: 179px; */
+  width: 100%;
+  height: 100%;
+  /* width: 100vw;
+  height: 100vh; */
+  background-color: black;
+  border-radius: 30px;
+}

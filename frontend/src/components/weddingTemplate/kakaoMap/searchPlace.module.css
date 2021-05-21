@@ -1,0 +1,71 @@
+.map-component {
+  width: 612px;
+  height: 500px;
+  background-color: #a99df1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.button-area {
+  width: 578px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+::placeholder {
+  color: #af9d9f;
+}
+
+.text-area {
+  padding-left: 10px;
+  width: 450px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  color: #af9d9f;
+}
+
+/* .text-area:focus {
+  outline: none;
+} */
+
+.button {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.icon {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.search:hover {
+  color: #faff00;
+}
+
+.check:hover {
+  color: #44e3d0;
+}
+
+.cancel:hover {
+  color: #484848;
+}
+
+.map-area {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.map {
+  width: 578px;
+  height: 399px;
+  border-radius: 10px;
+}
