@@ -16,9 +16,15 @@
 
 ​      
 
+> **wireFrame :**
+>
+> https://www.figma.com/file/Zvp9ZyPjpzwfh7skHTrj6E/자율프로젝트-Copy?node-id=178%3A3
+>
+> 
+>
 > 우쥬메리미 관련 새로운 소식들 Notion 에 적어 놓도록 하겠습니다. 
 >
-> ↓↓↓↓↓ 아래 주소로 들어와 주시면 됩니다! ↓↓↓↓↓
+> **Notion :**
 >
 > https://www.notion.so/2-d1236bcbcc37433899c7caaa646724a4
 
