@@ -18,7 +18,7 @@
 
 > **wireFrame :**
 >
-> https://www.figma.com/file/Zvp9ZyPjpzwfh7skHTrj6E/자율프로젝트-Copy?node-id=178%3A3
+> https://www.figma.com/file/Zvp9ZyPjpzwfh7skHTrj6E/%EC%9A%B0%EC%A5%AC%EB%A9%94%EB%A6%AC%EB%AF%B8-%EA%B3%B5%EC%9C%A0?node-id=178%3A3
 >
 > 
 >
@@ -28,7 +28,7 @@
 >
 > https://www.notion.so/2-d1236bcbcc37433899c7caaa646724a4
 
-​       
+​        
 
 ![새로운 프로젝트](https://user-images.githubusercontent.com/58461395/119040818-d8788a00-b9f0-11eb-8cc1-bcf1476716e0.gif)
 
