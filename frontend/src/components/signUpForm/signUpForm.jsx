@@ -213,7 +213,7 @@ const SignUpForm = () => {
           className={styles['agreement-text']}
           htmlFor="sign-up-agreement"
         >
-          가입에 동의 하시겠습니까잇?
+          가입에 동의 하시겠습니까?
         </label>
       </div>
       <button 
