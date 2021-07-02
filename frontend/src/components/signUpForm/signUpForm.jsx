@@ -49,7 +49,7 @@ const SignUpForm = () => {
       api.post('/account/nickname', { nickName })
         .then((res) => {
           setNickNameDuplicateCheck(true);
-          console.log(res);
+          //console.log(res);
         })
         .catch((err) => {
           alert('이미 사용중인 닉네임 입니다.')
